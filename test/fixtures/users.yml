@@ -1,0 +1,65 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uname: MyString
+  fname: MyString
+  mname: MyString
+  lname: MyString
+  tel: MyString
+  email: MyString
+  adr1: MyString
+  adr2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  country: MyString
+  git: MyString
+  twitter: MyString
+  lin: MyString
+  web: MyString
+  ytube: MyString
+  degree: MyString
+  sname: MyString
+  marital: MyString
+  spouse: MyString
+  kids: MyString
+  books: MyString
+  movies: MyString
+  activity: MyString
+  songs: MyString
+  games: MyString
+  jtitle: MyString
+  cname: MyString
+  ljob: MyString
+
+two:
+  uname: MyString
+  fname: MyString
+  mname: MyString
+  lname: MyString
+  tel: MyString
+  email: MyString
+  adr1: MyString
+  adr2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  country: MyString
+  git: MyString
+  twitter: MyString
+  lin: MyString
+  web: MyString
+  ytube: MyString
+  degree: MyString
+  sname: MyString
+  marital: MyString
+  spouse: MyString
+  kids: MyString
+  books: MyString
+  movies: MyString
+  activity: MyString
+  songs: MyString
+  games: MyString
+  jtitle: MyString
+  cname: MyString
+  ljob: MyString
