@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   get '/about',    to: 'static_pages#about'
   get '/howto',    to: 'static_pages#howto'
   get '/contact',  to: 'static_pages#contact'
+
+  # Set Users Paths #
+  get '/signup',   to: 'users#new'
 end
