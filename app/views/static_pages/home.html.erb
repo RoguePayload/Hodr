@@ -1,13 +1,47 @@
-<% provide(:title, "Home") %>
+<div class="jumbotron jumbotron-fluid bg-dark text-light text-center">
+  <div class="container">
+    <%= image_tag("hodr.webp", alt: "Hodr Logo", height: "300px", width: "100%") %>
+    <h1 class="display-4 mt-3">Welcome to Hodr</h1>
+    <p class="lead">The revolution of Social Media!</p>
+    <p class="lead">Join us and experience the freedom and empowerment of true social media.</p>
+    <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary mt-4" %>
+  </div>
+</div>
 
-<h1>Sample App</h1>
+<div class="container text-center mt-5">
+  <h2>Why Choose Hodr?</h2>
+  <p class="lead">At Hodr, we're committed to providing a platform where you can express yourself freely and connect with others without restrictions.</p>
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <h3>No Political Correctness</h3>
+      <p>Express your political views without fear of censorship.</p>
+    </div>
+    <div class="col-md-4">
+      <h3>No Religious Discrimination</h3>
+      <p>Respect for all religions and beliefs.</p>
+    </div>
+    <div class="col-md-4">
+      <h3>Privacy &amp; Anonymity</h3>
+      <p>Your privacy is our priority. We don't track or spy on you.</p>
+    </div>
+  </div>
+</div>
 
-<p>
-
-  This is the home page for the
-
-  <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-
-  sample application.
-
-</p>
+<div class="container text-center mt-5">
+  <h2>Our Technology Stack</h2>
+  <p class="lead">We use cutting-edge technologies to power Hodr and ensure a seamless user experience.</p>
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <h3>Ruby on Rails</h3>
+      <p>Powerful and scalable web development framework.</p>
+    </div>
+    <div class="col-md-4">
+      <h3>Bootstrap</h3>
+      <p>Responsive front-end framework for faster and easier web development.</p>
+    </div>
+    <div class="col-md-4">
+      <h3>PostgreSQL</h3>
+      <p>Reliable and efficient database management system.</p>
+    </div>
+  </div>
+</div>

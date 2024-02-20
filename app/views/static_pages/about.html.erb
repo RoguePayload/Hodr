@@ -1,25 +1,40 @@
 <% provide(:title, "About") %>
+<div class="about-page">
+  <section class="jumbotron text-center bg-light">
+    <div class="container">
+      <h1 class="jumbotron-heading">About Hodr</h1>
+      <p class="lead text-muted">Discover the vision, mission, and the people behind Hodr, the next revolution in social media.</p>
+    </div>
+  </section>
 
-<h1>About</h1>
+  <section class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Our Mission</h2>
+        <p class="text-muted">At Hodr, we're dedicated to creating a social media platform that prioritizes your freedom, privacy, and the ability to express yourself openly. We believe in building a community where everyone can share their thoughts and ideas without the fear of censorship or discrimination. Our platform is designed to be a safe space for all, promoting respectful dialogue and understanding across diverse cultures and viewpoints.</p>
 
-<p>
+        <h2>The Visionary Behind Hodr</h2>
+        <div class="media mb-4">
+          <%= image_tag("aubrey.jpeg", class: "mr-3 rounded-circle", alt: "Dr. Aubrey W. Love II", width: "100") %>
+          <div class="media-body">
+            <h5 class="mt-0">Dr. Aubrey W. Love II</h5>
+            <p>With a Ph.D. in Computer Science from Ashley University and over 14 years of experience as a programmer and freelancer, Dr. Aubrey W. Love II is no stranger to the challenges and pitfalls of current social media platforms. Inspired by his personal experiences and the desire to create a better online environment for his four children and users worldwide, Dr. Love founded Hodr. His vision is to provide a platform that ensures privacy, protection, and freedom of speech, while fostering a child-friendly atmosphere.</p>
+          </div>
+        </div>
 
-  The <a href="https://www.railstutorial.org/"><em>Ruby on Rails
+        <h2>Why Hodr?</h2>
+        <p class="text-muted">Hodr stands out because we understand the value of your voice and privacy. Unlike traditional social media platforms, we commit to:
+          <ul>
+            <li><strong>No Political Correctness:</strong> Express your political views without fear of censorship.</li>
+            <li><strong>No Religious Discrimination:</strong> A respectful space for all religions and beliefs.</li>
+            <li><strong>Privacy &amp; Anonymity:</strong> Your data belongs to you. We don't track or sell your information.</li>
+          </ul>
+        </p>
 
-  Tutorial</em></a>, part of the
-
-  <a href="https://www.learnenough.com/">Learn Enough</a> family of
-
-  tutorials, is a
-
-  <a href="https://www.railstutorial.org/book">book</a> and
-
-  <a href="https://screencasts.railstutorial.org/">screencast series</a>
-
-  to teach web development with
-
-  <a href="https://rubyonrails.org/">Ruby on Rails</a>.
-
-  This is the sample app for the tutorial.
-
-</p>
+        <h2>Join Us</h2>
+        <p class="text-muted">Be part of the Hodr community today. Experience the freedom and empowerment of true social media, designed with you in mind.</p>
+        <%= link_to 'Sign Up', '#', class: "btn btn-primary" %>
+      </div>
+    </div>
+  </section>
+</div>
