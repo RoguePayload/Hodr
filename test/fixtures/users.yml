@@ -1,65 +1,67 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-#one:
-#  uname: MyString
-#  fname: MyString
-#  mname: MyString
-#  lname: MyString
-#  tel: MyString
-#  email: MyString
-#  adr1: MyString
-#  adr2: MyString
-#  city: MyString
-#  state: MyString
-#  zip: MyString
-#  country: MyString
-#  git: MyString
-#  twitter: MyString
-#  lin: MyString
-#  web: MyString
-#  ytube: MyString
-#  degree: MyString
-#  sname: MyString
-#  marital: MyString
-#  spouse: MyString
-#  kids: MyString
-#  books: MyString
-#  movies: MyString
-#  activity: MyString
-#  songs: MyString
-#  games: MyString
-#  jtitle: MyString
-#  cname: MyString
-#  ljob: MyString
+aubrey:
+  uname: The Viking
+  fname: Dr. Aubrey
+  mname: Wayne
+  lname: Love II
+  tel: 872-975-5050
+  email: awlove@aubreylove.space
+  adr1: 404 Hacker BLVD
+  adr2: 403
+  city: Dallas
+  state: Texas
+  zip: 74512
+  country: United States of Failure
+  git: https://github.com/AubreyLove
+  twitter: https://twitter.com/AubreyLove
+  lin: https://linkedin.com/in/AubreyLove
+  web: https://aubreylove.space
+  ytube: https://youtube.com/AubreyLove
+  degree: Ph.D. Computer Science
+  sname: Ashley University
+  marital: Married
+  spouse: Khristane
+  kids: 4 Kids
+  books: Ruby on Rails for Dummies
+  movies: Hackers
+  activity: Reading the Bible, Hacking, Coding
+  songs: Teach me Lord to Wait
+  games: Halo, Call of Duty, Fortnite
+  jtitle: Lead Programmer
+  cname: Hodr
+  ljob: 1-Week
+  password_digest: <%= User.digest('password') %>
 
-#two:
-#  uname: MyString
-#  fname: MyString
-#  mname: MyString
-#  lname: MyString
-#  tel: MyString
-#  email: MyString
-#  adr1: MyString
-#  adr2: MyString
-#  city: MyString
-#  state: MyString
-#  zip: MyString
-#  country: MyString
-#  git: MyString
-#  twitter: MyString
-#  lin: MyString
-#  web: MyString
-#  ytube: MyString
-#  degree: MyString
-#  sname: MyString
-#  marital: MyString
-#  spouse: MyString
-#  kids: MyString
-#  books: MyString
-#  movies: MyString
-#  activity: MyString
-#  songs: MyString
-#  games: MyString
-#  jtitle: MyString
-#  cname: MyString
-#  ljob: MyString
+daniel:
+  uname: BibleMan
+  fname: Daniel
+  mname: Unknown
+  lname: Morris
+  tel: 817-555-0505
+  email: dmorris@hodr.net
+  adr1: 403 Coders BLVD
+  adr2: 404NotFound
+  city: Dallas
+  state: Texas
+  zip: 75505
+  country: United States of America
+  git: https://github.com/DanielMorris
+  twitter: https://twitter.com/DMorris
+  lin: https://linkedin.com/in/MorrisD
+  web: https://hodr.online
+  ytube: https://youtube.com/channels/DanielMorris
+  degree: High School Diploma
+  sname: Dallas High School
+  marital: Married
+  spouse: Rebecca
+  kids: 3 Kids
+  books: Bible
+  movies: Passion of the Christ
+  activity: Working and spending time with family
+  songs: How great thou art
+  games: Fortnite
+  jtitle: Marketing Director
+  cname: Hodr
+  ljob: 1-Week
+  password_digest: <%= User.digest('password') %>
