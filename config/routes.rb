@@ -10,4 +10,7 @@ Rails.application.routes.draw do
 
   # Set Users Paths #
   get '/signup',   to: 'users#new'
+
+  # Set Project Resources #
+  resources :users
 end

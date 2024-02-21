@@ -7,7 +7,8 @@ class UserTest < ActiveSupport::TestCase
     adr1: "404 Hackers BLVD", adr2: "#403", city: "Dallas", state: "Texas", zip: "77548", country: "United States of Failure", git: "https://github.com/AubreyLove",
     twitter: "https://twitter.com/AubreyLove", lin: "https://linkedin.com/in/AubreyLove", web: "https://aubreylove.space", ytube: "https://youtube.com/AubreyLove",
     degree: "Ph.D. Computer Science", sname: "Ashley University", marital: "Married", spouse: "Khristane", kids: "4", books: "Ruby on Rails, Coding for Dummies",
-    activity: "Coding, Family Time, God Time", songs: "Teach me Lord to Wait", games: "Fortnite, Call of Duty, Halo", jtitle: "Lead Programmer", cname: "Hodr", ljob: "1 Year")
+    activity: "Coding, Family Time, God Time", songs: "Teach me Lord to Wait", games: "Fortnite, Call of Duty, Halo", jtitle: "Lead Programmer", cname: "Hodr", ljob: "1 Year",
+    password: "abc123", password_confirmation: "abc123")
   end
 
   test "should be valid" do
@@ -60,7 +61,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "Telephone (tel) should not be too long" do
-    @user.tel = "a" * 11
+    @user.tel = "a" * 21
     assert_not @user.valid?
   end
 
@@ -72,6 +73,37 @@ class UserTest < ActiveSupport::TestCase
   test "Email (email) should not be too long" do
     @user.email = "a" * 244 + "@example.com"
     assert_not @user.valid?
+  end
+
+  test "email validation should accept valid addresses" do
+    valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
+                         first.last@foo.jp alice+bob@baz.cn]
+    valid_addresses.each do |valid_address|
+      @user.email = valid_address
+      assert @user.valid?, "#{valid_address.inspect} should be valid"
+    end
+  end
+
+  test "email validation should reject invalid addresses" do
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
+                         foo@bar_baz.com foo@bar+baz.com]
+    invalid_addresses.each do |invalid_address|
+      @user.email = invalid_address
+      assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
+    end
+  end
+
+  test "email addresses should be unique" do
+    duplicate_user = @user.dup
+    @user.save
+    assert_not duplicate_user.valid?
+  end
+
+  test "email addresses should be saved as lowercase" do
+    mixed_case_email = "Foo@ExAMPle.CoM"
+    @user.email = mixed_case_email
+    @user.save
+    assert_equal mixed_case_email.downcase, @user.reload.email
   end
 
   test "Address 1 (adr1) should be present" do
@@ -312,8 +344,16 @@ class UserTest < ActiveSupport::TestCase
   test "Length at Job (ljob) should not be too long" do
     @user.ljob = "a" * 91
     assert_not @user.valid?
-  end 
+  end
 
+  test "password should be present (nonblank)" do
+    @user.password = @user.password_confirmation = " " * 6
+    assert_not @user.valid?
+  end
+
+  test "password should have a minimum length" do
+    @user.password = @user.password_confirmation = "a" * 5
+    assert_not @user.valid?
   end
 
 end
