@@ -6,8 +6,9 @@
 			<img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/418725510_122101216100178093_7329622279612923318_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=Rfr8FrzyeqoAX9lrRLU&_nc_ht=scontent-dfw5-2.xx&oh=00_AfDhXe_n3TwieENQbXK4iLTo2afb6r8sw-Ma-Md5zZGUwg&oe=65D9EDF2" class="img-circle profile-avatar" alt="User avatar">
 		</div>
 		<div class="col-sm-12 profile-actions text-right">
-			<button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Add Friend</button>
-			<button type="button" class="btn btn-danger btn-sm"><i class="fa fa-circle"></i> Remove Friend</button>
+      <%= render 'follow_form' if logged_in? %>
+   </div>
+
 		</div>
 	</div>
     <div class="content">
@@ -28,11 +29,15 @@
               <% end %>
 					  </li>
 					  <li class="list-group-item">
-						<span class="badge">1,245</span>
+						<span class="badge">
+              <%= @user.followers.count %>
+            </span>
 						Followers
 					  </li>
 					  <li class="list-group-item">
-						<span class="badge">245</span>
+						<span class="badge">
+              <%= @user.following.count %>
+            </span>
 						Following
 					  </li>
 					  <li class="list-group-item">
