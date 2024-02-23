@@ -344,7 +344,7 @@ class UserTest < ActiveSupport::TestCase
   test "Length at Job (ljob) should not be too long" do
     @user.ljob = "a" * 91
     assert_not @user.valid?
-  end 
+  end
 
   test "password should be present (nonblank)" do
     @user.password = @user.password_confirmation = " " * 6
@@ -378,6 +378,14 @@ class UserTest < ActiveSupport::TestCase
   test "College Studies (cstudies) should not be too long" do
     @user.cstudies = "a" * 1501
     assert_not @user.valid?
+  end
+
+  test "associated microposts should be destroyed" do
+    @user.save
+    @user.microposts.create!(content: "Lorem ipsum")
+    assert_difference 'Micropost.count', -1 do
+      @user.destroy
+    end
   end
 
 end

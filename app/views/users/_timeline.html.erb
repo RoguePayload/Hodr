@@ -3,73 +3,20 @@
   <!-- Begin timeline -->
   <div class="the-timeline">
     <% if @user == current_user %>
-    <form role="form" class="post-to-timeline">
-      <textarea class="form-control" style="height: 70px;margin-bottom:10px;" placeholder="Whats on your mind..."></textarea>
-      <div class="row">
-      <div class="col-sm-6">
-        <a class="btn btn-sm btn-default"><i class="fa fa-camera"></i></a>
-        <a class="btn btn-sm btn-default"><i class="fa fa-video-camera"></i></a>
-        <a class="btn btn-sm btn-default"><i class="fa fa-map-marker"></i></a>
-      </div>
-      <div class="col-sm-6 text-right"><button type="submit" class="btn btn-primary">Post</button></div>
-      </div>
-    </form>
+    <section class="micropost_form">
+      <%= render 'shared/micropost_form' %>
+    </section>
     <% end %>
     <br><br>
     <ul>
-      <li>
-        <div class="the-date">
-          <span>01</span>
-          <small>Feb</small>
+      <div class="col-md-8">
+        <% if @user.microposts.any? %>
+        <div class="col-md-8">
+          <h3>Micropost Feed</h3>
+          <%= render 'shared/feed' %>
         </div>
-        <h4>Lorem ipsum dolor!</h4>
-        <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        </p>
-      </li>
-      <li>
-        <div class="the-date">
-          <span>31</span>
-          <small>Jan</small>
-        </div>
-        <h4>Yohoo! you can put video here</h4>
-        <div class="videoWrapper">
-        <iframe src="//player.vimeo.com/video/85847275?title=0&amp;byline=0&amp;portrait=0"></iframe>
-        </div>
-        <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        </p>
-      </li>
-      <li>
-        <div class="the-date">
-          <span>25</span>
-          <small>Jan</small>
-        </div>
-        <h4>You also can put Soundcloud iframe here</h4>
-        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/132890481&amp;color=ff9900&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=true"></iframe>
-        <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        </p>
-      </li>
-      <li class="the-year"><p>2013</p></li>
-      <li>
-        <div class="the-date">
-          <span>20</span>
-          <small>Dec</small>
-        </div>
-        <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        </p>
-      </li>
-      <li>
-        <div class="the-date">
-          <span>27</span>
-          <small>Nov</small>
-        </div>
-        <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        </p>
-      </li>
+        <% end %>
+      </div>
     </ul>
   </div><!-- End div .the-timeline -->
   <!-- End timeline -->
