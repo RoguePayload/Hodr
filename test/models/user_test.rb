@@ -6,9 +6,9 @@ class UserTest < ActiveSupport::TestCase
     @user = User.new(uname: "The Viking", fname: "Dr. Aubrey", mname: "Wayne", lname: "Love II", tel: "972-872-5054", email: "awlove@aubreylove.space",
     adr1: "404 Hackers BLVD", adr2: "#403", city: "Dallas", state: "Texas", zip: "77548", country: "United States of Failure", git: "https://github.com/AubreyLove",
     twitter: "https://twitter.com/AubreyLove", lin: "https://linkedin.com/in/AubreyLove", web: "https://aubreylove.space", ytube: "https://youtube.com/AubreyLove",
-    degree: "Ph.D. Computer Science", sname: "Ashley University", marital: "Married", spouse: "Khristane", kids: "4", books: "Ruby on Rails, Coding for Dummies",
+    degree: "Ph.D. Computer Science", sname: "Ashley University", cstudies: "Did school work", marital: "Married", spouse: "Khristane", kids: "4", books: "Ruby on Rails, Coding for Dummies",
     activity: "Coding, Family Time, God Time", songs: "Teach me Lord to Wait", games: "Fortnite, Call of Duty, Halo", jtitle: "Lead Programmer", cname: "Hodr", ljob: "1 Year",
-    password: "abc123", password_confirmation: "abc123")
+    password: "abc123", password_confirmation: "abc123", bio: "A simple man trying to make it in this world!")
   end
 
   test "should be valid" do
@@ -344,7 +344,7 @@ class UserTest < ActiveSupport::TestCase
   test "Length at Job (ljob) should not be too long" do
     @user.ljob = "a" * 91
     assert_not @user.valid?
-  end
+  end 
 
   test "password should be present (nonblank)" do
     @user.password = @user.password_confirmation = " " * 6
@@ -358,6 +358,26 @@ class UserTest < ActiveSupport::TestCase
 
   test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?('')
+  end
+
+  test "Biography (bio) should be present" do
+    @user.bio = "    "
+    assert_not @user.valid?
+  end
+
+  test "Biography (bio) should not be too long" do
+    @user.bio = "a" * 3501
+    assert_not @user.valid?
+  end
+
+  test "College Studies (cstudies) should be present" do
+    @user.cstudies = "    "
+    assert_not @user.valid?
+  end
+
+  test "College Studies (cstudies) should not be too long" do
+    @user.cstudies = "a" * 1501
+    assert_not @user.valid?
   end
 
 end

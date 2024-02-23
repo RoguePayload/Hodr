@@ -1,0 +1,74 @@
+<div class="scroll-user-widget">
+  <ul class="media-list">
+    <li class="media">
+    <div class="media-body">
+      <h3 class="media-heading">
+        Work Information;
+      </h3>
+      <h5>
+        Job Title:
+        <% if @user.jtitle.present? %>
+          <%= @user.jtitle %>
+        <% else %>
+          No Job Found
+        <% end %>
+      </h5>
+      <h5>
+        Company Name:
+        <% if @user.cname.present? %>
+          <%= @user.cname %>
+        <% else %>
+          No Company Name Found
+        <% end %>
+      </h5>
+      <h5>
+        Length At Job:
+        <% if @user.ljob.present? %>
+          <%= @user.ljob %>
+        <% else %>
+          Invalid Data
+        <% end %>
+      </h5>
+      <h5>
+        Job Description:
+        <% if @user.jdesc.present? %>
+          <%= @user.jdesc %>
+        <% else %>
+          No Job Description
+        <% end %>
+      </h5>
+    </div>
+    </li>
+    <li class="media">
+    <div class="media-body">
+      <h3 class="media-heading">
+        School Information;
+      </h3>
+      <h5>
+        Degree &amp; Type:
+        <% if @user.degree.present? %>
+          <%= @user.degree %>
+        <% else %>
+          No Brains Detected
+        <% end %>
+      </h4>
+      <h5>
+        College Name:
+        <% if @user.sname.present? %>
+          <%= @user.sname %>
+        <% else %>
+          No School Found
+        <% end %>
+      </h5>
+      <h5>
+        Description of Studies
+        <% if @user.cstudies.present? %>
+          <%= @user.cstudies %>
+        <% else %>
+          Unknown Morals
+        <% end %>
+      </h5>
+    </div>
+    </li>
+  </ul>
+</div><!-- End div .scroll-user-widget -->

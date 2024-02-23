@@ -1,11 +1,166 @@
 <% provide(:title, @user.uname) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.uname %>
-      </h1>
-    </section>
-  </aside>
+<div class="container bootdey">
+<div class="content-page">
+    <div class="profile-banner" style="background:url(https://img.freepik.com/free-photo/ultra-detailed-nebula-abstract-wallpaper-4_1562-749.jpg);">
+		<div class="col-sm-3 avatar-container">
+			<img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/418725510_122101216100178093_7329622279612923318_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=Rfr8FrzyeqoAX9lrRLU&_nc_ht=scontent-dfw5-2.xx&oh=00_AfDhXe_n3TwieENQbXK4iLTo2afb6r8sw-Ma-Md5zZGUwg&oe=65D9EDF2" class="img-circle profile-avatar" alt="User avatar">
+		</div>
+		<div class="col-sm-12 profile-actions text-right">
+			<button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Add Friend</button>
+			<button type="button" class="btn btn-danger btn-sm"><i class="fa fa-circle"></i> Remove Friend</button>
+		</div>
+	</div>
+    <div class="content">
+
+		<div class="row">
+			<div class="col-sm-3">
+				<!-- Begin user profile -->
+				<div class="text-center user-profile-2" style="margin-top:120px">
+					<ul class="list-group">
+            <li class="list-group-item">
+              <h4>Greetings, <b><%= @user.uname %></b></h4>
+              <% if @user.admin? %>
+                <strong>Role:</strong><h5>Administrator</h5>
+              <% end %>
+					  </li>
+					  <li class="list-group-item">
+						<span class="badge">1,245</span>
+						Followers
+					  </li>
+					  <li class="list-group-item">
+						<span class="badge">245</span>
+						Following
+					  </li>
+					  <li class="list-group-item">
+						<span class="badge">1,245</span>
+						Posts
+					  </li>
+					</ul>
+
+						<!-- User button -->
+					<div class="user-button">
+						<div class="row">
+							<div class="col-lg-6">
+								<button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-cross"></i> Remove Friend</button>
+							</div>
+							<div class="col-lg-6">
+								<button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-user"></i> Add as friend</button>
+							</div>
+						</div>
+					</div><!-- End div .user-button -->
+				</div><!-- End div .box-info -->
+				<!-- Begin user profile -->
+			</div><!-- End div .col-sm-4 -->
+
+			<div class="col-sm-9">
+				<div class="widget widget-tabbed">
+					<!-- Nav tab -->
+					<ul class="nav nav-tabs nav-justified">
+            <li><button onclick="feedBtn()" data-toggle="tab" class="btn btn-success"><i class="fa fa-pencil"></i> Feed</button></li>
+            <li><button onclick="aboutBtn()" data-toggle="tab" class="btn btn-primary"><i class="fa fa-user"></i> About</button></li>
+            <li><button onclick="activityBtn()" data-toggle="tab" class="btn btn-warning"><i class="fa fa-laptop"></i> Activities</button></li>
+            <li><button onclick="careerBtn()" data-toggle="tab" class="btn btn-danger"><i class="fa fa-envelope"></i> Career</button></li>
+					</ul>
+					<!-- End nav tab -->
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+
+
+						<!-- Tab timeline -->
+						<div class="tab-pane animated active fadeInRight" id="feed" style="display: none">
+              <%= render 'timeline' %>
+						</div><!-- End div .tab-pane -->
+						<!-- End Tab timeline -->
+
+						<!-- Tab about -->
+						<div class="tab-pane animated fadeInRight" id="about" style="display: none">
+              <%= render 'about' %>
+						</div><!-- End div .tab-pane -->
+						<!-- End Tab about -->
+
+
+						<!-- Tab user activities -->
+						<div class="tab-pane animated fadeInRight" id="activities" style="display: none">
+              <%= render 'activities' %>
+						</div><!-- End div .tab-pane -->
+						<!-- End Tab user activities -->
+
+						<!-- Tab user Careeer -->
+						<div class="tab-pane animated fadeInRight" id="career" style="display: none">
+              <%= render 'career' %>
+						</div><!-- End div .tab-pane -->
+						<!-- End Tab user messages -->
+					</div><!-- End div .tab-content -->
+				</div><!-- End div .box-info -->
+			</div>
+		</div>
+	</div>
 </div>
+</div>
+
+<script>
+function feedBtn()
+{
+  var x = document.getElementById("feed");
+  if (x.style.display === "none")
+  {
+    x.style.display = "block";
+    document.getElementById("about").style.display = "none";
+    document.getElementById("activities").style.display = "none";
+    document.getElementById("career").style.display = "none";
+  }
+  else
+  {
+    x.style.display = "none";
+  }
+}
+
+function aboutBtn()
+{
+  var y = document.getElementById("about");
+  if (y.style.display === "none")
+  {
+    y.style.display = "block";
+    document.getElementById("activities").style.display = "none";
+    document.getElementById("career").style.display = "none";
+    document.getElementById("feed").style.display = "none";
+  }
+  else
+  {
+    y.style.display = "none";
+  }
+}
+
+function activityBtn()
+{
+  var z = document.getElementById("activities");
+  if (z.style.display === "none")
+  {
+    z.style.display = "block";
+    document.getElementById("about").style.display = "none";
+    document.getElementById("career").style.display = "none";
+    document.getElementById("feed").style.display = "none";
+  }
+  else
+  {
+    z.style.display = "none";
+  }
+}
+
+function careerBtn()
+{
+  var a = document.getElementById("career");
+  if (a.style.display === "none")
+  {
+    a.style.display = "block";
+    document.getElementById("activities").style.display = "none";
+    document.getElementById("feed").style.display = "none";
+    document.getElementById("about").style.display = "none";
+  }
+  else
+  {
+    a.style.display = "none";
+  }
+}
+</script>

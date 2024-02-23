@@ -31,7 +31,10 @@ aubrey:
   jtitle: Lead Programmer
   cname: Hodr
   ljob: 1-Week
+  jdesc: Code hard
+  bio: Write code and hang with family
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 daniel:
   uname: BibleMan
@@ -64,4 +67,6 @@ daniel:
   jtitle: Marketing Director
   cname: Hodr
   ljob: 1-Week
+  jdesc: promote the Hodr platform to the world
+  bio: enjoy life with God and family
   password_digest: <%= User.digest('password') %>
