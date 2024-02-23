@@ -18,7 +18,11 @@
 				<div class="text-center user-profile-2" style="margin-top:120px">
 					<ul class="list-group">
             <li class="list-group-item">
-              <h4>Greetings, <b><%= @user.uname %></b></h4>
+              <% if current_user == @user %>
+                <h4>Greetings, <b><%= @user.uname %></b></h4>
+              <% else %>
+                <h4><b><%= @user.uname %>'s Profile</b></h4>
+              <% end %>
               <% if @user.admin? %>
                 <strong>Role:</strong><h5>Administrator</h5>
               <% end %>
@@ -32,7 +36,9 @@
 						Following
 					  </li>
 					  <li class="list-group-item">
-						<span class="badge">1,245</span>
+						<span class="badge">
+              <%= @user.microposts.count %>
+            </span>
 						Posts
 					  </li>
 					</ul>
