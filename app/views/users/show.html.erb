@@ -15,11 +15,8 @@
         <%= image_tag("hodr_logo.png", class: "img-circle profile-avatar") %>
       <% end %>
 		</div>
-		<div class="col-sm-12 profile-actions text-right">
-      <%= render 'follow_form' if logged_in? %>
    </div>
-
-		</div>
+</div>
 	</div>
     <div class="content">
 
@@ -56,8 +53,12 @@
             </span>
 						Posts
 					  </li>
+            <li class="list-group-item">
+              <%= render 'follow_form' if logged_in? %>
+            </li>
 					</ul>
 				</div><!-- End div .box-info -->
+
 				<!-- Begin user profile -->
 			</div><!-- End div .col-sm-4 -->
 
