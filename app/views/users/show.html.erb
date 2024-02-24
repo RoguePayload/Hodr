@@ -1,9 +1,19 @@
 <% provide(:title, @user.uname) %>
 <div class="container bootdey">
 <div class="content-page">
-    <div class="profile-banner" style="background:url(https://img.freepik.com/free-photo/ultra-detailed-nebula-abstract-wallpaper-4_1562-749.jpg);">
+    <div class="profile-banner" style="margin-bottom: -300px;">
+      <% if @user.banner.attached? %>
+        <%= image_tag @user.banner, class: 'profile-banner' %>
+      <% else %>
+        <%= image_tag("banner.png", class: 'profile-banner') %>
+      <% end %>
+    </div>
 		<div class="col-sm-3 avatar-container">
-			<img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/418725510_122101216100178093_7329622279612923318_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=Rfr8FrzyeqoAX9lrRLU&_nc_ht=scontent-dfw5-2.xx&oh=00_AfDhXe_n3TwieENQbXK4iLTo2afb6r8sw-Ma-Md5zZGUwg&oe=65D9EDF2" class="img-circle profile-avatar" alt="User avatar">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, class: "img-circle profile-avatar", alt: "User Avatar" %>
+      <% else %>
+        <%= image_tag("hodr_logo.png", class: "img-circle profile-avatar") %>
+      <% end %>
 		</div>
 		<div class="col-sm-12 profile-actions text-right">
       <%= render 'follow_form' if logged_in? %>

@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 
       def user_params
         params.require(:user).permit(:uname, :fname, :mname, :lname, :tel, :email, :adr1, :adr2, :city, :state, :zip, :country, :git, :twitter, :ytube, :lin, :web, :degree, :sname, :cstudies, :marital, :spouse, :kids, :books,
-          :movies, :activity, :songs, :games, :jtitle, :cname, :ljob, :jdesc, :password, :password_confirmation, :bio, :cstudies)
+          :movies, :activity, :songs, :games, :jtitle, :cname, :ljob, :jdesc, :password, :password_confirmation, :bio, :cstudies, :avatar, :banner)
       end
 
       # Before filters

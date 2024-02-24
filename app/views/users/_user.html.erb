@@ -1,6 +1,12 @@
 <li>
-  <%= gravatar_for user, size: 50 %>
-  <%= link_to user.uname, user %>
+  <% if user.avatar.attached? %>
+    <%= image_tag user.avatar, size: 50 %>
+  <% else %>
+    <%= image_tag('hodr_logo.png', size: 50) %>
+  <% end %>
+  <%= link_to user.uname, user %><br/>
+  Total Posts: <%= user.microposts.count %><br/>
+  Time of Creation: <%= time_ago_in_words(user.created_at) %> ago
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %>
   <% end %>

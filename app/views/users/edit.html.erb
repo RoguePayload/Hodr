@@ -7,6 +7,14 @@
       <%= render 'shared/error_messages' %>
 
       <br/>
+      <h3>Image Alteration:</h3>
+      <br/>
+      <%= f.label "Avatar:" %>
+      <%= f.file_field :avatar %>
+
+      <%= f.label "Banner:" %>
+      <%= f.file_field :banner %>
+      <br/>
       <h3>Basic Information:</h3>
       <br/>
       <%= f.label "Username:" %>

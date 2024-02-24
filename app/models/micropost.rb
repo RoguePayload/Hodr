@@ -6,8 +6,8 @@ class Micropost < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :content, presence: true, length: { minimum: 4 }
-  validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
+  validates :image, content_type: { in: %w[image/png,image/jpeg,image/jpg,image/gif,image/ani,audio/wav,audio/wave,audio/x-wav,audio/mp3,audio/mpeg],
                                      message: "must be a valid image format" },
-                    size:         { less_than: 950.megabytes,
-                                     message:   "should be less than 950MB" }
+                    size:         { less_than: 5.gigabytes,
+                                     message:   "should be less than 5GB" }
 end
