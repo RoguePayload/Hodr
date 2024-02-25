@@ -1,8 +1,8 @@
 <li id="micropost-<%= micropost.id %>">
-  <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar, size: 50 %>
+  <% if micropost.user.avatar.attached? %>
+    <%= image_tag micropost.user.avatar, size: "50x50" %>
   <% else %>
-    <%= image_tag("hodr_logo.png", size: 50) %>
+    <%= image_tag("hodr_logo.png", size: "50x50") %>
   <% end %>
   <span class="user"><%= link_to micropost.user.uname, micropost.user %></span>
   <span class="content"><%= micropost.content %></span>
