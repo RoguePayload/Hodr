@@ -1,19 +1,129 @@
 <% provide(:title, "How To") %>
+<div class="how-to-page">
+  <div class="jumbotron jumbotron-fluid bg-dark text-light text-center howto_intro_div">
+    <div class="container">
+      <%= image_tag("howto.png", alt: "Hodr Logo", height: "300px", width: "100%") %>
+      <h1 class="howto_h1">How To Use Hodr</h1>
+      <p class="lead howto_p">
+        Discover how quickly &amp; easily you can create a new account, log into your account, edit your account details and much more!
+      </p>
+    </div>
+  </div>
 
-<h1>Help</h1>
+  <section class="how-to-page howto_secondary">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
 
-<p>
+        <!-- Create an Account -->
+        <h2 class="howto_sec_h2">Creating an Account</h2>
+        <p class="text-muted howto_sec_p">To create an account on Hodr, follow these simple steps:</p>
+        <ol class="howto_list">
+          <li>Visit the Hodr website.</li>
+          <li>Click on the "Sign Up" button.</li>
+          <li>Fill out the registration form with your information.</li>
+          <li>Click "Submit" to create your account.</li>
+        </ol>
 
-  Get help on the Ruby on Rails Tutorial at the
+        <!-- Log Into Account -->
+        <h2 class="howto_sec_h2">Logging Into Your Account</h2>
+        <p class="text-muted howto_sec_p">To log into your Hodr account:</p>
+        <ol class="howto_list">
+          <li>Visit the Hodr website.</li>
+          <li>Click on the "Log In" button.</li>
+          <li>Enter your username and password.</li>
+          <li>Click "Login" to access your account.</li>
+        </ol>
 
+        <!-- Edit Your Account -->
+        <h2 class="howto_sec_h2">Editing Your Account</h2>
+        <p class="text-muted howto_sec_p">To Edit Your Profile:</p>
+        <ol class="howto_list">
+          <li>Visit the Hodr website.</li>
+          <li>Click on the "Log In" button.</li>
+          <li>Enter your username and password.</li>
+          <li>Click "Login" to access your account.</li>
+          <li>Click on "Account".</li>
+          <li>Click on "Settings".</li>
+          <li>Fill out information accordingly.</li>
+          <i>certain fields are not editable for security &amp; account reasons.</i>
+        </ol>
 
+        <!-- Follow Users -->
+        <h2 class="howto_sec_h2">Following Users</h2>
+        <p class="text-muted howto_sec_p">To follow your friends:</p>
+        <ol class="howto_list">
+          <li>Visit the Hodr website.</li>
+          <li>Click on the "Log In" button.</li>
+          <li>Enter your username and password.</li>
+          <li>Click "Login" to access your account.</li>
+          <li>Click on "Users".</li>
+          <li>Scroll through the list and find your friend.</li>
+          <li>Click on their username to be taken to their profile.</li>
+          <li>Click on "Follow" button on left side under their stats to follow them.</li>
+        </ol>
 
-  <a href="https://www.railstutorial.org/help">Rails Tutorial Help page</a>.
+        <!-- Unfollow Users -->
+        <h2 class="howto_sec_h2">UnFollowing Users</h2>
+        <p class="text-muted howto_sec_p">To unfollow your friends:</p>
+        <ol class="howto_list">
+          <li>Visit the Hodr website.</li>
+          <li>Click on the "Log In" button.</li>
+          <li>Enter your username and password.</li>
+          <li>Click "Login" to access your account.</li>
+          <li>Click on "Users".</li>
+          <li>Scroll through the list and find your friend.</li>
+          <li>Click on their username to be taken to their profile.</li>
+          <li>Click on "Unfollow" button on left side under their stats to unfollow them.</li>
+        </ol>
 
-  To get help on this sample app, see the
+        <!-- Understanding The Profile View Page -->
+        <h2 class="howto_sec_h2">How Your Page Works</h2>
+        <p class="text-muted howto_sec_p">Understanding How Your Page Works:</p>
+        <ol class="howto_list">
+          <li><strong>Top Section (Banner &amp; Avatar):</strong></li>
+          <i>These images are defaulted to the developers choice. If you update your avatar &amp; banner, your
+            new images will appear there. These are set so you can have a bit of customization to your profile!</i>
+          <li><strong>Profile Navigation (Feed | About | Activities | Career):</strong></li>
+          <i>These buttons hide or show each other. For example, if you are seeing your feed section, the other sections
+            are hidden. But if you click on About, you will see the about section and not the feed section.</i>
+          <li><strong>Feed Section:</strong></li>
+          <i>This section is where you can see the posts you had created, as well as the posts from your followers.
+            You will not see posts from other users that you do not follow. Also, if you are viewing another persons profile,
+            this feed section will only show posts that user has created.</i>
+          <li><strong>About Section:</strong></li>
+          <i>This section displays your information about you. Including Biography, first, last, middle name, and other
+            important information. You choose what you want to share. If you are viewing another persons profile, this tab
+            will show their information. But only what they choose to put on the site.</i>
+          <li><strong>Activities Section:</strong></li>
+          <i>This section covers your favorite activities and hobbies. From the books you read, to the movies and songs you
+            enjoy. These are text-based and does not "tag" or "use" your information in here to perform any marketing techniques.</i>
+          <li><strong>Career Section:</strong></li>
+          <i>This section allows you to showcase the employment of what you are currently doing, as well as your highest level
+            of education you have completed.</i>
+          <li><strong>The only thing that other users can see about you, and what you see about other people, is what they, or you,
+            had put inside of your settings. You are not required to fill everything out. It is at your own choice to fill it out
+            or not.</li>
+        </ol>
 
-  <a href="https://www.railstutorial.org/book"><em>Ruby on Rails Tutorial</em>
-
-  book</a>.
-
-</p>
+        <!-- Account Deletion -->
+        <h2 class="howto_sec_h2">Account Deletion</h2>
+        <p class="text-muted howto_sec_p">If you would like to Delete your Account:</p>
+        <ol class="howto_list">
+          <li><strong>Contact an Admin:</strong></li>
+          <i>If you want your account to be deleted, please send us an email from the email
+            associated with your account. This will help with verification.<br/>
+          Admin Email: <%= link_to "Hodr Admin", 'mailto:help.hodr@gmail.com', target: '_blank' %></i>
+          <li><strong>Explain the Reason:</strong></li>
+          <i>While you can use something short like "I no longer use this site", a more detailed
+            explaination would be helpful for our user interactions. This is also to help aid in
+            verification of the account deletion.</i>
+          <li><strong>Wait for Deletion/Approval:</strong></li>
+          <i>While we are investigating the deletion of your account, we will also search through
+            your profile. If we notice something that goes against our policies &amp; rules, we
+            will take the correct actions. Which can include locking you out of the account and
+            reporting your profile to the proper authorities.</i>
+        </ol>
+      </div>
+    </div>
+  </section>
+</div>

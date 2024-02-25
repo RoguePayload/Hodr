@@ -4,12 +4,12 @@
   <% else %>
     <%= image_tag("hodr_logo.png", size: "50x50") %>
   <% end %>
-  <span class="user"><%= link_to micropost.user.uname, micropost.user %></span>
-  <span class="content"><%= micropost.content %></span>
+  <span class="user"><%= link_to micropost.user.uname, micropost.user, class: 'post_user_link' %></span>
+  <span class="content post_content"><%= micropost.content %></span>
   <% if micropost.image.attached? %>
     <%= image_tag micropost.image, width: "500", height: "500" %>
   <% end %>
-  <span class="timestamp">
+  <span class="timestamp post_time">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     <% if current_user?(micropost.user) %>
       <%= link_to "delete", micropost, data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %>

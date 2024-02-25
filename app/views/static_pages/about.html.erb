@@ -1,38 +1,41 @@
 <% provide(:title, "About") %>
 <div class="about-page">
-  <section class="jumbotron text-center bg-light">
+  <div class="jumbotron jumbotron-fluid bg-dark text-light text-center about_intro_div">
     <div class="container">
-      <h1 class="jumbotron-heading">About Hodr</h1>
-      <p class="lead text-muted">Discover the vision, mission, and the people behind Hodr, the next revolution in social media.</p>
+      <%= image_tag("about_hodr.png", alt: "Hodr Logo", height: "300px", width: "100%") %>
+      <h1 class="about_h1">About Hodr</h1>
+      <p class="lead about_p">
+        Hodr is not just another social media platform; it's a revolution. We believe in empowering individuals to express themselves freely without fear of censorship or discrimination. At Hodr, we're committed to creating a safe and inclusive space where users can connect, share ideas, and engage in meaningful conversations without the constraints imposed by traditional social platforms. With our emphasis on privacy, anonymity, and freedom of expression, Hodr offers a refreshing alternative to the status quo. Join us in shaping the future of social media and experience the difference Hodr can make.
+      </p>
     </div>
-  </section>
+  </div>
 
-  <section class="container">
+  <section class="about-page about_secondary">
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <h2>Our Mission</h2>
-        <p class="text-muted">At Hodr, we're dedicated to creating a social media platform that prioritizes your freedom, privacy, and the ability to express yourself openly. We believe in building a community where everyone can share their thoughts and ideas without the fear of censorship or discrimination. Our platform is designed to be a safe space for all, promoting respectful dialogue and understanding across diverse cultures and viewpoints.</p>
+        <h2 class="about_sec_h2">Our Mission</h2>
+        <p class="text-muted about_sec_p">At Hodr, we're dedicated to creating a social media platform that prioritizes your freedom, privacy, and the ability to express yourself openly. We believe in building a community where everyone can share their thoughts and ideas without the fear of censorship or discrimination. Our platform is designed to be a safe space for all, promoting respectful dialogue and understanding across diverse cultures and viewpoints.</p>
 
-        <h2>The Visionary Behind Hodr</h2>
+        <h2 class="about_sec_h2">The Visionary Behind Hodr</h2>
         <div class="media mb-4">
-          <%= image_tag("aubrey.jpeg", class: "mr-3 rounded-circle", alt: "Dr. Aubrey W. Love II", width: "100") %>
+          <%= image_tag("aubrey.jpeg", class: "about_img mr-3 rounded-circle", alt: "Dr. Aubrey W. Love II", width: "100") %>
           <div class="media-body">
-            <h5 class="mt-0">Dr. Aubrey W. Love II</h5>
-            <p>With a Ph.D. in Computer Science from Ashley University and over 14 years of experience as a programmer and freelancer, Dr. Aubrey W. Love II is no stranger to the challenges and pitfalls of current social media platforms. Inspired by his personal experiences and the desire to create a better online environment for his four children and users worldwide, Dr. Love founded Hodr. His vision is to provide a platform that ensures privacy, protection, and freedom of speech, while fostering a child-friendly atmosphere.</p>
+            <h5 class="mt-0 about_coder_h5">Dr. Aubrey W. Love II</h5>
+            <p class="about_coder_p">With a Ph.D. in Computer Science from Ashley University and over 14 years of experience as a programmer and freelancer, Dr. Aubrey W. Love II is no stranger to the challenges and pitfalls of current social media platforms. Inspired by his personal experiences and the desire to create a better online environment for his four children and users worldwide, Dr. Love founded Hodr. His vision is to provide a platform that ensures privacy, protection, and freedom of speech, while fostering a child-friendly atmosphere.</p>
           </div>
         </div>
 
-        <h2>Why Hodr?</h2>
-        <p class="text-muted">Hodr stands out because we understand the value of your voice and privacy. Unlike traditional social media platforms, we commit to:
-          <ul>
+        <h2 class="about_sec_h2">Why Hodr?</h2>
+        <p class="text-muted about_sec_p">Hodr stands out because we understand the value of your voice and privacy. Unlike traditional social media platforms, we commit to:
+          <ul class="about_list">
             <li><strong>No Political Correctness:</strong> Express your political views without fear of censorship.</li>
             <li><strong>No Religious Discrimination:</strong> A respectful space for all religions and beliefs.</li>
             <li><strong>Privacy &amp; Anonymity:</strong> Your data belongs to you. We don't track or sell your information.</li>
           </ul>
         </p>
 
-        <h2>Join Us</h2>
-        <p class="text-muted">Be part of the Hodr community today. Experience the freedom and empowerment of true social media, designed with you in mind.</p>
+        <h2 class="about_join_h5">Join Us</h2>
+        <p class="text-muted about_join_p">Be part of the Hodr community today. Experience the freedom and empowerment of true social media, designed with you in mind.</p>
         <%= link_to 'Sign Up', signup_path, class: "btn btn-primary" %>
       </div>
     </div>

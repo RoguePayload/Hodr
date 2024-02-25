@@ -1,25 +1,30 @@
 <% provide(:title, "Contact") %>
-
-<h1>About</h1>
-
-<p>
-
-  The <a href="https://www.railstutorial.org/"><em>Ruby on Rails
-
-  Tutorial</em></a>, part of the
-
-  <a href="https://www.learnenough.com/">Learn Enough</a> family of
-
-  tutorials, is a
-
-  <a href="https://www.railstutorial.org/book">book</a> and
-
-  <a href="https://screencasts.railstutorial.org/">screencast series</a>
-
-  to teach web development with
-
-  <a href="https://rubyonrails.org/">Ruby on Rails</a>.
-
-  This is the sample app for the tutorial.
-
-</p>
+<div class="container mt-5">
+  <div class="jumbotron jumbotron-fluid bg-dark text-light text-center howto_intro_div">
+    <div class="container">
+      <%= image_tag("contact.png", alt: "Hodr Logo", height: "300px", width: "100%") %>
+      <h1 class="howto_h1">Contact Hodr</h1>
+      <p class="lead howto_p">
+        Thank you for wanting to connect with us. You can reach out to us via email or through our Github profile.
+      </p>
+    </div>
+  </div>
+  <div class="row mt-4 contact_inner">
+    <div class="col-md-4 offset-md-2 text-center">
+      <h2 class="contact_h2">Email</h2>
+      <p class="contact_p">
+        <%= link_to 'Email Us', 'mailto:help.hodr@gmail.com', target: '_blank' %>
+      </p>
+    </div>
+    <div class="col-md-4 text-center">
+      <h2 class="contact_h2">GitHub</h2>
+      <p class="contact_p">
+        <%= link_to('<i class="fa fa-github"></i> Github'.html_safe, 'https://github.com/AubreyLove', target: '_blank', class: 'btn btn-primary') %>
+      </p>
+      <h2 class="contact_h2">GoFundMe</h2>
+      <p class="contact_p">
+        <%= link_to('<i class="fa fa-money"></i> GoFundMe'.html_safe, 'https://gofundme.com', target: '_blank', class: 'btn btn-success') %>
+      </p>
+    </div>
+  </div>
+</div>

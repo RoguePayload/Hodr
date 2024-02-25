@@ -13,7 +13,7 @@
         <% if current_user == @user %>
           <% if @user.microposts.any? %>
             <div class="col-md-8">
-              <h3>Micropost Feed</h3>
+              <h3 class="post_title">Micropost Feed</h3>
               <%= render 'shared/feed' %>
             </div>
           <% end %>

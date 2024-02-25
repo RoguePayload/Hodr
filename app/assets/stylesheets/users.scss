@@ -1,0 +1,131 @@
+ .user_card
+ {
+   background-color: #C0C0C0;
+   border: 2px solid #00F;
+   padding: 15px;
+   text-align: center;
+   .user_card_avatar
+   {
+     border-radius: 75%;
+     border: 2px solid #F00;
+     box-shadow: 10px 10px 12px;
+     margin: 10px auto;
+     height: 75px;
+     width: 75px;
+   }
+   .user_card_title
+   {
+     color: #00F;
+     font-family: "Cinzel", serif;
+   }
+   .user_card_email
+   {
+     color: #F00;
+     font-family: "Cinzel", serif;
+   }
+   .user_card_creation
+   {
+     font-family: "Cinzel", serif;
+     color: green;
+   }
+ }
+.users_header
+{
+  color: #FFF;
+  font-family: "Black Ops One", system-ui;
+}
+.users_count
+{
+  color: #0F0;
+  font-family: "Orbitron", sans-serif;
+}
+
+/* Custom Styles for Settings Page */
+.section-title {
+  font-size: 24px;
+  color: #00ffcc;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #00ffcc;
+  padding-bottom: 10px;
+  font-family: "Cinzel", serif;
+  text-align: center;
+}
+
+.form-label {
+  font-size: 18px;
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+}
+
+.form-control {
+  background-color: #0b0b0b;
+  color: #fff;
+  border: 1px solid #00ffcc;
+  font-family: "Electrolize", sans-serif;
+}
+.form-control:disabled{
+  background-color: #000;
+  font-family: "Philosopher", sans-serif;
+}
+
+.btn-primary {
+  background-color: #00ffcc;
+  border-color: #00ffcc;
+}
+
+.btn-primary:hover {
+  background-color: #00e6b8;
+  border-color: #00e6b8;
+}
+
+.edit_header
+{
+  color: #00FFCC;
+  font-family: "Black Ops One", system-ui;
+}
+
+
+.post_area
+{
+  background-color: #000;
+  border: 3px solid purple;
+  box-shadow: 10px 10px 12px #C0C0C0;
+  padding: 10px;
+  color: #0F0;
+  font-family: "Electrolize", sans-serif;
+}
+
+.post_title
+{
+  color: #00F;
+  font-family: "Electrolize", sans-serif;
+}
+
+.post_user_link
+{
+  color: #F00;
+  font-family: "Orbitron", sans-serif;
+}
+.post_content
+{
+  color: #FFF;
+  font-family: "Orbitron", sans-serif;
+}
+.post_time
+{
+  color: #C0C0C0;
+  font-family: "Electrolize", sans-serif;
+}
+
+.comment_uname
+{
+  color: purple;
+  font-family: "Cinzel", serif;
+}
+.comment_content
+{
+  color: #FFF;
+  font-family: "EB Garamond", serif;
+  font-size: 20px;
+}

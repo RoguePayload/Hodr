@@ -1,147 +1,154 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<div class="container">
+  <h1 class="mb-4 text-center edit_header">Update Your Profile</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-8" style="margin: 20px auto;">
+      <%= form_with(model: @user) do |f| %>
+        <%= render 'shared/error_messages' %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user) do |f| %>
-      <%= render 'shared/error_messages' %>
+        <h3 class="section-title">Image Alteration</h3>
+        <div class="form-group">
+          <%= f.label "Avatar", class: "form-label" %>
+          <%= f.file_field :avatar, class: 'form-control' %>
+        </div>
 
-      <br/>
-      <h3>Image Alteration:</h3>
-      <br/>
-      <%= f.label "Avatar:" %>
-      <%= f.file_field :avatar %>
+        <div class="form-group">
+          <%= f.label "Banner", class: "form-label" %>
+          <%= f.file_field :banner, class: 'form-control' %>
+        </div>
 
-      <%= f.label "Banner:" %>
-      <%= f.file_field :banner %>
-      <br/>
-      <h3>Basic Information:</h3>
-      <br/>
-      <%= f.label "Username:" %>
-      <%= f.text_field :uname, class: 'form-control', disabled: true %>
+        <h3 class="section-title">Basic Information</h3>
+        <div class="form-group">
+          <%= f.label "Username:", class: "form-label" %>
+          <%= f.text_field :uname, class: 'form-control', disabled: true %>
 
-      <%= f.label "First Name:" %>
-      <%= f.text_field :fname, class: 'form-control', placeholder: "Hodr" %>
+          <%= f.label "First Name:", class: 'form-label' %>
+          <%= f.text_field :fname, class: 'form-control', placeholder: 'Hodr' %>
 
-      <%= f.label "Middle Name:" %>
-      <%= f.text_field :mname, class: 'form-control', placeholder: "Social" %>
+          <%= f.label "Middle Name:", class: 'form-label' %>
+          <%= f.text_field :mname, class: 'form-control', placeholder: 'Social' %>
 
-      <%= f.label "Last Name:" %>
-      <%= f.text_field :lname, class: 'form-control', placeholder: "Media" %>
+          <%= f.label "Last Name:", class: 'form-label' %>
+          <%= f.text_field :lname, class: 'form-control', placeholder: 'Media' %>
 
-      <%= f.label "Biography:" %>
-      <%= f.text_area :bio, class: 'form-control', placeholder: "About me...." %>
-      <br/>
-      <h3>Contact Information:</h3>
-      <br/>
-      <%= f.label "Telephone:" %>
-      <%= f.telephone_field :tel, class: 'form-control', placeholder: "972-555-0505" %>
+          <%= f.label "Biography:", class: 'form-label' %>
+          <%= f.text_area :bio, class: 'form-control', placeholder: 'About me....' %>
+        </div>
 
-      <%= f.label "Email:" %>
-      <%= f.email_field :email, class: 'form-control', disabled: true %>
+        <h3 class="section-title">Contact Information</h3>
+        <div class="form-group">
+          <%= f.label "Telephone:", class: 'form-label' %>
+          <%= f.telephone_field :tel, class: 'form-control', placeholder: '817-555-0505' %>
 
-      <%= f.label "Address #1:" %>
-      <%= f.text_field :adr1, class: 'form-control', placeholder: "404 Hackers BLVD" %>
+          <%= f.label "Email:", class: 'form-label' %>
+          <%= f.email_field :email, class: 'form-control', disabled: true %>
 
-      <%= f.label "Address #2:" %>
-      <%= f.text_field :adr2, class: 'form-control', placeholder: "#403" %>
+          <%= f.label "Address #1:", class: 'form-label' %>
+          <%= f.text_field :adr1, class: 'form-control', placeholder: '404 Hackers BLVD' %>
 
-      <%= f.label "City:" %>
-      <%= f.text_field :city, class: 'form-control', placeholder: "Dallas" %>
+          <%= f.label "Address #2:", class: 'form-label' %>
+          <%= f.text_field :adr2, class: 'form-control', placeholder: '#403' %>
 
-      <%= f.label "State:" %>
-      <%= f.text_field :state, class: 'form-control', placeholder: "Texas" %>
+          <%= f.label "City:", class: 'form-label' %>
+          <%= f.text_field :city, class: 'form-control', placeholder: 'Dallas' %>
 
-      <%= f.label "Zip:" %>
-      <%= f.number_field :zip, class: 'form-control', placeholder: "75505" %>
+          <%= f.label "State:", class: 'form-label' %>
+          <%= f.text_field :state, class: 'form-control', placeholder: 'Texas' %>
 
-      <%= f.label "Country:" %>
-      <%= f.text_field :country, class: 'form-control', placeholder: "United States of Failure!" %>
-      <br/>
-      <h3>Online Presence:</h3>
-      <br/>
-      <%= f.label "Git Account:" %>
-      <%= f.url_field :git, class: 'form-control', placeholder: 'https://github.com/Hodr' %>
+          <%= f.label "Zip:", class: 'form-label' %>
+          <%= f.number_field :zip, class: 'form-control', placeholder: '75542' %>
 
-      <%= f.label "Twitter:" %>
-      <%= f.url_field :twitter, class: 'form-control', placeholder: 'https://twitter.com/Hodr' %>
+          <%= f.label "Country:", class: 'form-label' %>
+          <%= f.text_field :country, class: 'form-control', placeholder: 'United States of America' %>
+        </div>
 
-      <%= f.label "LinkedIn:" %>
-      <%= f.url_field :lin, class: 'form-control', placeholder: 'https://linkedin.com/in/Hodr' %>
+        <h3 class="section-title">Online Presence</h3>
+        <div class="form-group">
+          <%= f.label "Git Account:", class: 'form-label' %>
+          <%= f.url_field :git, class: 'form-control', placeholder: 'https://github.com/AubreyLove' %>
 
-      <%= f.label "Website:" %>
-      <%= f.url_field :web, class: 'form-control', placeholder: 'https://hodr.online' %>
+          <%= f.label "Twitter:", class: 'form-label' %>
+          <%= f.url_field :twitter, class: 'form-control', placeholder: 'https://twitter.com/AubreyLove' %>
 
-      <%= f.label "YouTube:" %>
-      <%= f.url_field :ytube, class: 'form-control', placeholder: 'https://youtube.com/Hodr' %>
-      <br/>
-      <h3>Education Information:</h3>
-      <br/>
-      <%= f.label "Highest Education Degree:" %>
-      <%= f.text_field :degree, class: 'form-control', placeholder: 'Ph.D. Computer Science' %>
+          <%= f.label "LinkedIn:", class: 'form-label' %>
+          <%= f.url_field :lin, class: 'form-control', placeholder: 'https://linkedin.com/in/AubreyLove' %>
 
-      <%= f.label "School Name:" %>
-      <%= f.text_field :sname, class: 'form-control', placeholder: 'Ashley University' %>
+          <%= f.label "Website:", class: 'form-label' %>
+          <%= f.url_field :web, class: 'form-control', placeholder: 'https://aubreylove.space' %>
 
-      <%= f.label "Description of Studies:" %>
-      <%= f.text_area :cstudies, class: 'form-control', placeholder: 'While at this school, I did the following...' %>
-      <br/>
-      <h3>Relationship Status:</h3>
-      <br/>
-      <%= f.label "Marital Status:" %>
-      <%= f.select :marital, [['Married'], ['Single'], ['Dating'], ['Widow']], class: 'form-control' %>
+          <%= f.label "YouTube:", class: 'form-label' %>
+          <%= f.url_field :ytube, class: 'form-control', placeholder: 'https://youtube.com/channel/AubreyLove' %>
+        </div>
 
-      <%= f.label "Spouses Name:" %>
-      <%= f.text_field :spouse, class: 'form-control', placeholder: 'My Angel' %>
+        <h3 class="section-title">Education Information</h3>
+        <div class="form-group">
+          <%= f.label "Highest Educational Degree:", class: 'form-label' %>
+          <%= f.text_field :degree, class: 'form-control', placeholder: 'Ph.D. Computer Science' %>
 
-      <%= f.label "Number of Kids:" %>
-      <%= f.number_field :kids, class: 'form-control', placeholder: '4' %>
-      <br/>
-      <h3>Activities &amp; Hobbies Information:</h3>
-      <br/>
-      <%= f.label "Favorite Books:" %>
-      <%= f.text_area :books, class: 'form-control', placeholder: 'Bible, Ruby on Rails for Dummies, Ruby on Rails 7th Edition, Goosebumps, Astrophysics for Dummies' %>
+          <%= f.label "School Name:", class: 'form-label' %>
+          <%= f.text_field :sname, class: 'form-control', placeholder: 'Ashley University' %>
 
-      <%= f.label "Favorite Movies/Shows:" %>
-      <%= f.text_area :movies, class: 'form-control', placeholder: 'Hackers, Coneheads, Matrix, Family Guy, Passion of the Christ' %>
+          <%= f.label "Description of Studies:", class: 'form-label' %>
+          <%= f.text_field :cstudies, class: 'form-control', placeholder: 'While attending this school, ' %>
+        </div>
 
-      <%= f.label "Favorite Activity:" %>
-      <%= f.text_area :activity, class: 'form-control', placeholder: 'Hacking, Programming, Reading the Bible, Spending time with family!' %>
+        <h3 class="section-title">Relationship Status</h3>
+        <div class="form-group">
+          <%= f.label "Marital Status:", class: 'form-label' %>
+          <%= f.select :marital, [['Married'], ['Single'], ['Dating'], ['Widow']], class: 'form-control' %>
 
-      <%= f.label "Favorite Songs:" %>
-      <%= f.text_area :songs, class: 'form-control', placeholder: 'Teach me Lord to Wait, Your Man, Amazing Grace' %>
+          <%= f.label "Spouses Name:", class: 'form-label' %>
+          <%= f.text_field :spouse, class: 'form-control', placeholder: 'Khristane' %>
 
-      <%= f.label "Favorite Games:" %>
-      <%= f.text_area :games, class: 'form-control', placeholder: 'Halo, Fortnite, Call of Duty' %>
-      <br/>
-      <h3>Work Information:</h3>
-      <br/>
-      <%= f.label "Job Title:" %>
-      <%= f.text_field :jtitle, class: 'form-control', placeholder: "Ruby on Rails Engineer" %>
+          <%= f.label "Number of Kids:", class: 'form-label' %>
+          <%= f.number_field :kids, class: 'form-control', placeholder: '4' %>
+        </div>
 
-      <%= f.label "Company Name:" %>
-      <%= f.text_field :cname, class: 'form-control', placeholder: "Hodr" %>
+        <h3 class="section-title">Activities &amp; Hobbies</h3>
+        <div class="form-group">
+          <%= f.label "Favorite Books:", class: 'form-label' %>
+          <%= f.text_area :books, class: 'form-control', placeholder: 'Bible, Ruby on Rails for Dummies,' %>
 
-      <%= f.label "Time at Employer:" %>
-      <%= f.text_field :ljob, class: 'form-control', placeholder: "1-Year" %>
+          <%= f.label "Favorite Movies/T.V. Shows:", class: 'form-label' %>
+          <%= f.text_area :movies, class: 'form-control', placeholder: 'Hackers, Passion of the Christ, How Its Made' %>
 
-      <%= f.label "Job Description:" %>
-      <%= f.text_area :jdesc, class: 'form-control', placeholder: "I do the following..." %>
-      <br/>
-      <h3>Password:</h3>
-      <br/>
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+          <%= f.label "Favorite Activity:", class: 'form-label' %>
+          <%= f.text_area :activity, class: 'form-control', placeholder: 'Coding, hacking, spending time with family' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+          <%= f.label "Favorite Songs:", class: 'form-label' %>
+          <%= f.text_area :songs, class: 'form-control', placeholder: 'Teach me Lord to Wait' %>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+          <%= f.label "Favorite Games:", class: 'form-label' %>
+          <%= f.text_area :games, class: 'form-control', placeholder: 'Dungeons & Dragons, Call of Duty, Fortnite' %>
+        </div>
 
-    <% end %>
+        <h3 class="section-title">Employment Information</h3>
+        <div class="form-group">
+          <%= f.label "Job Title:", class: 'form-label' %>
+          <%= f.text_field :jtitle, class: 'form-control', placeholder: 'Ruby on Rails Engineer' %>
 
+          <%= f.label "Company Name:", class: 'form-label' %>
+          <%= f.text_field :cname, class: 'form-control', placeholder: 'Hodr Social' %>
 
+          <%= f.label "Length of Employment:", class: 'form-label' %>
+          <%= f.text_field :ljob, class: 'form-control', placeholder: '1 Year' %>
 
+          <%= f.label "Job Description:", class: 'form-label' %>
+          <%= f.text_area :jdesc, class: 'form-control', placeholder: 'Write the code for Hodr!' %>
+        </div>
+
+        <h3 class="section-title">Password Information</h3>
+        <div class="form-group">
+          <%= f.label "Password:", class: 'form-label' %>
+          <%= f.password_field :password, class: 'form-control' %>
+
+          <%= f.label "Confirm Password:", class: 'form-label' %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <div class="form-group">
+          <%= f.submit "Save changes", class: "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
 </div>
