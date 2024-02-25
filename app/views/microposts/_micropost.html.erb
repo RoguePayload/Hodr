@@ -15,4 +15,11 @@
       <%= link_to "delete", micropost, data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %>
     <% end %>
   </span>
+  <%= render micropost.comments %>
+
+  <%= form_with(model: [micropost, Comment.new], local: true) do |form| %>
+  <%= form.text_area :content, placeholder: "Write a comment..." %>
+  <%= form.submit "Post Comment" %>
+<% end %>
+
 </li>

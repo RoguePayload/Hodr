@@ -21,7 +21,9 @@ Rails.application.routes.draw do
         get :following, :followers
      end
   end
-  resources :microposts,          only: [:create, :destroy]
+  resources :microposts,          only: [:create, :destroy]do
+    resources :comments, only: [:create, :destroy]
+  end
   resources :relationships,       only: [:create, :destroy]
 
   get '/microposts', to: 'users#show'
