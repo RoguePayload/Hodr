@@ -4,7 +4,7 @@
     <%= f.text_area :content, placeholder: "Compose new post..." %>
   </div>
   <span class="image">
-    <%= f.file_field :image, accept: "image/png,image/jpeg,image/jpg,image/gif,image/ani,audio/wav,audio/wave,audio/x-wav,audio/mp3,audio/mpeg", class: 'btn btn-success', style: 'width: 30%; float: center; padding: 5px; text-align: center;' %>
+    <%= f.file_field :image, accept: "image/jpeg image/gif image/png", class: 'btn btn-success', style: 'width: 30%; float: center; padding: 5px; text-align: center;' %>
   </span><br/>
   <%= f.submit "Post", class: "btn btn-primary" %>
 
