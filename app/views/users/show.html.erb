@@ -1,182 +1,112 @@
 <% provide(:title, @user.uname) %>
-<div class="container bootdey">
-<div class="content-page">
-    <div class="profile-banner" style="margin-bottom: -300px;">
-      <% if @user.banner.attached? %>
-        <%= image_tag @user.banner, class: 'profile-banner' %>
-      <% else %>
-        <%= image_tag("banner.png", class: 'profile-banner') %>
-      <% end %>
+
+    <div class="container-fluid gedf-wrapper">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="h5"><%= @user.uname %></div>
+                        <div class="h7 text-muted">Fullname : <%= @user.fname %> <%= @user.lname %></div>
+                        <div class="h7">
+                          <%= @user.bio %>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="h6 text-muted">Followers</div>
+                            <div class="h5">
+                              <%= @user.followers.count %>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="h6 text-muted">Following</div>
+                            <div class="h5">
+                              <%= @user.following.count %>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="h6 text-muted">Number of Posts</div>
+                          <div class="h5">
+                            <%= @user.microposts.count %>
+                          </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 gedf-main">
+
+                <!--- \\\\\\\Post-->
+                <div class="card gedf-card">
+                    <div class="card-body">
+                        <div class="btn-toolbar justify-content-between">
+                            <div class="btn-group">
+                                <%= render 'shared/micropost_form' %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Post /////-->
+
+                <!--- \\\\\\\Post-->
+                <div class="card gedf-card">
+                    <div class="card-body">
+                        <%= render 'shared/feed' %>
+                    </div>
+                </div>
+                <!-- Post /////-->
+
+            </div>
+            <div class="col-md-3">
+                <div class="card gedf-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= link_to 'GoFundMe', 'https://www.gofundme.com/f/launch-our-dream-building-a-social-media-platform?utm_campaign=p_lico+share-sheet&utm_medium=copy_link&utm_source=customer', target: '_blank' %></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                          Help Use Raise Funds
+                        </h6>
+                        <p class="card-text">
+                          In today’s digital age, social media has the power to connect us with friends and family across the globe. Yet, somewhere along the way, our online spaces became crowded with ads, our data turned into commodities, and genuine connections started to feel a bit more distant. That’s why we’re building Hodr!
+                        </p>
+                    </div>
+                </div>
+                <div class="card gedf-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
     </div>
-		<div class="col-sm-3 avatar-container">
-      <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, class: "img-circle profile-avatar", alt: "User Avatar" %>
-      <% else %>
-        <%= image_tag("hodr_logo.png", class: "img-circle profile-avatar") %>
-      <% end %>
-		</div>
-   </div>
-</div>
-	</div>
-    <div class="content">
+<style>
+body {
+            background-color: #eeeeee;
+        }
 
-		<div class="row">
-			<div class="col-sm-3">
-				<!-- Begin user profile -->
-				<div class="text-center user-profile-2" style="margin-top:120px">
-					<ul class="list-group">
-            <li class="list-group-item">
-              <% if current_user == @user %>
-                <h4>Greetings, <b><%= @user.uname %></b></h4>
-              <% else %>
-                <h4><b><%= @user.uname %>'s Profile</b></h4>
-              <% end %>
-              <% if @user.admin? %>
-                <strong>Role:</strong><h5>Administrator</h5>
-              <% end %>
-					  </li>
-					  <li class="list-group-item">
-						<span class="badge">
-              <%= @user.followers.count %>
-            </span>
-						Followers
-					  </li>
-					  <li class="list-group-item">
-						<span class="badge">
-              <%= @user.following.count %>
-            </span>
-						Following
-					  </li>
-					  <li class="list-group-item">
-						<span class="badge">
-              <%= @user.microposts.count %>
-            </span>
-						Posts
-					  </li>
-            <li class="list-group-item">
-              <% if current_user == @user %>
-                <div class="gfm-embed" data-url="https://www.gofundme.com/f/launch-our-dream-building-a-social-media-platform/widget/large?sharesheet=coachingTask"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
-              <% else %>
-                <%= render 'follow_form' %>
-              <% end %>
+        .h7 {
+            font-size: 0.8rem;
+        }
 
-            </li>
-					</ul>
-				</div><!-- End div .box-info -->
+        .gedf-wrapper {
+            margin-top: 0.97rem;
+        }
 
-				<!-- Begin user profile -->
-			</div><!-- End div .col-sm-4 -->
+        @media (min-width: 992px) {
+            .gedf-main {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+            .gedf-card {
+                margin-bottom: 2.77rem;
+            }
+        }
 
-			<div class="col-sm-9">
-				<div class="widget widget-tabbed">
-					<!-- Nav tab -->
-					<ul class="nav nav-tabs nav-justified">
-            <li><button onclick="feedBtn()" data-toggle="tab" class="btn btn-success"><i class="fa fa-pencil"></i> Feed</button></li>
-            <li><button onclick="aboutBtn()" data-toggle="tab" class="btn btn-primary"><i class="fa fa-user"></i> About</button></li>
-            <li><button onclick="activityBtn()" data-toggle="tab" class="btn btn-warning"><i class="fa fa-laptop"></i> Activities</button></li>
-            <li><button onclick="careerBtn()" data-toggle="tab" class="btn btn-danger"><i class="fa fa-envelope"></i> Career</button></li>
-					</ul>
-					<!-- End nav tab -->
-
-					<!-- Tab panes -->
-					<div class="tab-content">
-
-
-						<!-- Tab timeline -->
-						<div class="tab-pane animated active fadeInRight" id="feed" style="display: block; width: 90%;">
-              <%= render 'timeline' %>
-						</div><!-- End div .tab-pane -->
-						<!-- End Tab timeline -->
-
-						<!-- Tab about -->
-						<div class="tab-pane animated fadeInRight" id="about" style="display: none">
-              <%= render 'about' %>
-						</div><!-- End div .tab-pane -->
-						<!-- End Tab about -->
-
-
-						<!-- Tab user activities -->
-						<div class="tab-pane animated fadeInRight" id="activities" style="display: none">
-              <%= render 'activities' %>
-						</div><!-- End div .tab-pane -->
-						<!-- End Tab user activities -->
-
-						<!-- Tab user Careeer -->
-						<div class="tab-pane animated fadeInRight" id="career" style="display: none">
-              <%= render 'career' %>
-						</div><!-- End div .tab-pane -->
-						<!-- End Tab user messages -->
-					</div><!-- End div .tab-content -->
-
-				</div><!-- End div .box-info -->
-			</div>
-		</div>
-
-	</div>
-</div>
-
-<script>
-function feedBtn()
-{
-  var x = document.getElementById("feed");
-  if (x.style.display === "none")
-  {
-    x.style.display = "block";
-    document.getElementById("about").style.display = "none";
-    document.getElementById("activities").style.display = "none";
-    document.getElementById("career").style.display = "none";
-  }
-  else
-  {
-    x.style.display = "none";
-  }
-}
-
-function aboutBtn()
-{
-  var y = document.getElementById("about");
-  if (y.style.display === "none")
-  {
-    y.style.display = "block";
-    document.getElementById("activities").style.display = "none";
-    document.getElementById("career").style.display = "none";
-    document.getElementById("feed").style.display = "none";
-  }
-  else
-  {
-    y.style.display = "none";
-  }
-}
-
-function activityBtn()
-{
-  var z = document.getElementById("activities");
-  if (z.style.display === "none")
-  {
-    z.style.display = "block";
-    document.getElementById("about").style.display = "none";
-    document.getElementById("career").style.display = "none";
-    document.getElementById("feed").style.display = "none";
-  }
-  else
-  {
-    z.style.display = "none";
-  }
-}
-
-function careerBtn()
-{
-  var a = document.getElementById("career");
-  if (a.style.display === "none")
-  {
-    a.style.display = "block";
-    document.getElementById("activities").style.display = "none";
-    document.getElementById("feed").style.display = "none";
-    document.getElementById("about").style.display = "none";
-  }
-  else
-  {
-    a.style.display = "none";
-  }
-}
-</script>
+        /**Reset Bootstrap*/
+        .dropdown-toggle::after {
+            content: none;
+            display: none;
+        }
+        </style>
