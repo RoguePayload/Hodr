@@ -18,6 +18,8 @@
       <%= f.label "Password Confirmation:" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+
+      <%= link_to "By creating a new account, you are agreing to Hodr's Terms & Conditions as well as our EULA (End User License Agreement)", eula_path, target: '_blank' %>
       <%= f.submit "Create my account", class: "btn btn-primary" %>
 
     <% end %>

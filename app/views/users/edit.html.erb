@@ -6,6 +6,10 @@
       <%= form_with(model: @user) do |f| %>
         <%= render 'shared/error_messages' %>
 
+        <div class="form-group">
+          <%= f.submit "Save changes", class: "btn btn-primary btn-block" %>
+        </div>
+
         <h3 class="section-title">Image Alteration</h3>
         <div class="form-group">
           <%= f.label "Avatar", class: "form-label" %>

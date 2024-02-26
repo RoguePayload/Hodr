@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/about',    to: 'static_pages#about'
   get '/howto',    to: 'static_pages#howto'
   get '/contact',  to: 'static_pages#contact'
+  get '/eula',     to: 'static_pages#eula'
+  get '/admin',    to: 'static_pages#admin'
+
 
   # Set Users Paths #
   get    '/signup',   to: 'users#new'

@@ -18,6 +18,12 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "About | #{@base_title}"
   end
 
+  test "should get admin" do
+    get admin_path
+    assert_response :success
+    assert_select "title", "Admin | #{@base_title}"
+  end
+
   test "should get howto" do
     get howto_path
     assert_response :success
@@ -28,5 +34,11 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get contact_path
     assert_response :success
     assert_select "title", "Contact | #{@base_title}"
+  end
+
+  test "should get eula" do
+    get eula_path
+    assert_response :success
+    assert_select "title", "EULA | #{@base_title}"
   end
 end
