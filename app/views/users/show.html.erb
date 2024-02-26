@@ -1,4 +1,20 @@
 <% provide(:title, @user.uname) %>
+<div class="content-page" style="margin-bottom: 450px;">
+	<div class="profile-banner" style="margin-bottom: -300px;">
+  	<% if @user.banner.attached? %>
+    	<%= image_tag @user.banner, class: 'profile-banner' %>
+  	<% else %>
+    	<%= image_tag("banner.png", class: 'profile-banner') %>
+  	<% end %>
+	</div>
+   	 <div class="col-sm-3 avatar-container">
+  	<% if @user.avatar.attached? %>
+    	<%= image_tag @user.avatar, class: "img-circle profile-avatar", alt: "User Avatar" %>
+  	<% else %>
+    	<%= image_tag("hodr_logo.png", class: "img-circle profile-avatar") %>
+  	<% end %>
+   	 </div>
+</div>
 
     <div class="container-fluid gedf-wrapper">
         <div class="row">
@@ -83,7 +99,7 @@
     </div>
 <style>
 body {
-            background-color: #eeeeee;
+            background-color: #000000;
         }
 
         .h7 {
