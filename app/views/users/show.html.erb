@@ -22,25 +22,25 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="h5"><%= @user.uname %></div>
-                        <div class="h7 text-muted">Fullname : <%= @user.fname %> <%= @user.lname %></div>
-                        <div class="h7">
+                        <div class="h7 text-muted pname">Fullname : <%= @user.fname %> <%= @user.lname %></div>
+                        <div class="h7 pbio">
                           <%= @user.bio %>
                         </div>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
+                        <li class="list-group-item" style="background-color: #000">
                             <div class="h6 text-muted">Followers</div>
                             <div class="h5">
                               <%= @user.followers.count %>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item" style="background-color: #000;">
                             <div class="h6 text-muted">Following</div>
                             <div class="h5">
                               <%= @user.following.count %>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item" style="background-color: #000">
                           <div class="h6 text-muted">Number of Posts</div>
                           <div class="h5">
                             <%= @user.microposts.count %>
@@ -55,7 +55,7 @@
                 <div class="card gedf-card">
                     <div class="card-body">
                         <div class="btn-toolbar justify-content-between">
-                            <div class="btn-group">
+                            <div class="btn-group" style="width: 100%;">
                                 <%= render 'shared/micropost_form' %>
                             </div>
                         </div>
@@ -75,23 +75,21 @@
             <div class="col-md-3">
                 <div class="card gedf-card">
                     <div class="card-body">
-                        <h5 class="card-title"><%= link_to 'GoFundMe', 'https://www.gofundme.com/f/launch-our-dream-building-a-social-media-platform?utm_campaign=p_lico+share-sheet&utm_medium=copy_link&utm_source=customer', target: '_blank' %></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
+                        <h5 class="card-title url"><%= link_to 'GoFundMe', 'https://www.gofundme.com/f/launch-our-dream-building-a-social-media-platform?utm_campaign=p_lico+share-sheet&utm_medium=copy_link&utm_source=customer', target: '_blank' %></h5>
+                        <h6 class="card-subtitle mb-2 text-muted url_bio">
                           Help Use Raise Funds
                         </h6>
-                        <p class="card-text">
+                        <p class="card-text ad_bio">
                           In today’s digital age, social media has the power to connect us with friends and family across the globe. Yet, somewhere along the way, our online spaces became crowded with ads, our data turned into commodities, and genuine connections started to feel a bit more distant. That’s why we’re building Hodr!
                         </p>
                     </div>
                 </div>
                 <div class="card gedf-card">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            <h5 class="card-title url">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted url_bio">Card subtitle</h6>
+                            <p class="card-text ad_bio">Some quick example text to build on the card title and make up the bulk of the
                                 card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
                         </div>
                     </div>
             </div>
@@ -101,10 +99,46 @@
 body {
             background-color: #000000;
         }
+				.h5
+				{
+					font-family: "Electrolize", sans-serif;
+					color: #0F0;
+				}
 
         .h7 {
             font-size: 0.8rem;
         }
+
+				.ad_bio
+				{
+					font-family: "Gideon Roman", serif;
+					color: #FFF;
+				}
+
+				.url
+				{
+					font-family: "Black Ops One", system-ui;
+				}
+
+				.url_bio
+				{
+					color: #00F;
+					font-family: "Orbitron", sans-serif;
+				}
+
+				.pname
+				{
+					color: #00F;
+					font-size: 20px;
+					font-family: "Philosopher", sans-serif;
+				}
+
+				.pbio
+				{
+					font-family: "Gideon Roman", serif;
+					font-size: 15px;
+					color: #FFF;
+				}
 
         .gedf-wrapper {
             margin-top: 0.97rem;
