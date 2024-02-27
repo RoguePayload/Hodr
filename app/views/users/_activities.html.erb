@@ -1,7 +1,7 @@
 <div class="scroll-user-widget">
   <ul class="media-list">
     <li class="media">
-      <p><strong>Movies:</strong><br/>
+      <p class="text_intel"><strong class="text_header">Movies:</strong><br/>
         <% if @user.movies.present? %>
           <%= @user.movies %>
         <% else %>
@@ -10,7 +10,7 @@
       </p>
     </li>
     <li class="media">
-      <p><strong>Books:</strong><br/>
+      <p class="text_intel"><strong class="text_header">Books:</strong><br/>
         <% if @user.books.present? %>
           <%= @user.books %>
         <% else %>
@@ -19,7 +19,7 @@
       </p>
     </li>
     <li class="media">
-      <p><strong>Activities:</strong><br/>
+      <p class="text_intel"><strong class="text_header">Activities:</strong><br/>
         <% if @user.activity.present? %>
           <%= @user.activity %>
         <% else %>
@@ -28,7 +28,7 @@
       </p>
     </li>
     <li class="media">
-      <p><strong>Songs:</strong><br/>
+      <p class="text_intel"><strong class="text_header">Songs:</strong><br/>
         <% if @user.songs.present? %>
           <%= @user.songs %>
         <% else %>
@@ -37,7 +37,7 @@
       </p>
     </li>
     <li class="media">
-      <p><strong>Games:</strong><br/>
+      <p class="text_intel"><strong class="text_header">Games:</strong><br/>
         <% if @user.games.present? %>
           <%= @user.games %>
         <% else %>
