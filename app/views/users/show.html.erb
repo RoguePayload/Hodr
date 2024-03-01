@@ -24,7 +24,7 @@
                         <div class="h5"><%= @user.uname %></div>
                         <div class="h7 text-muted pname">Name : <%= @user.fname %> <%= @user.lname %></div>
                         <div class="h7 pbio">
-													<% account_age = (Time.zone.now - current_user.created_at).to_i / 1.day %>
+													<% account_age = ((Time.zone.now - @user.created_at) / 1.day).to_i %>
 													<p style="font-size: 20px;">Account age: <%= account_age %> days</p>
                         </div>
 												<div class="h7 pbio">

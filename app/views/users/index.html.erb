@@ -16,9 +16,6 @@
             <p class="card-text user_card_email">Total Posts: <%= user.microposts.count %></p>
             <p class="card-text user_card_creation">Time of Creation: <%= time_ago_in_words(user.created_at) %> ago</p>
             <%= link_to 'View profile', user, class: 'btn btn-success' %>
-            <% if current_user.admin? && !current_user?(user) %>
-              | <%= link_to "delete", user, data: { "turbo-method": :delete, turbo_confirm: "You sure?" }, class: 'btn btn-danger' %>
-            <% end %>
           </div>
         </div>
       </div>
