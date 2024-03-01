@@ -16,5 +16,9 @@ class StaticPagesController < ApplicationController
   end
 
   def admin
-  end 
+    @users = User.paginate(page: params[:page], per_page: 10)
+    # Data for monthly new user registrations chart
+    @new_users_by_month = User.group_by_month(:created_at).count
+    @daily_active_users = Micropost.select(:user_id).distinct.group_by_day(:created_at).count
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_25_110924) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_01_020443) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_25_110924) do
     t.datetime "updated_at", null: false
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "metrics", force: :cascade do |t|
+    t.string "name"
+    t.float "value"
+    t.datetime "captured_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "microposts", force: :cascade do |t|

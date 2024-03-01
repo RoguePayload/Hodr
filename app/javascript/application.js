@@ -6,3 +6,6 @@ import "custom/image_upload"
 //= require jquery3
 //= require popper
 //= require bootstrap
+// app/javascript/packs/application.js
+require("chartkick")
+require("chart.js")

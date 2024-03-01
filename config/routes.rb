@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
 
   get '/microposts', to: 'users#show'
+
 end
