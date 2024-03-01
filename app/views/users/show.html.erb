@@ -51,6 +51,16 @@
                             <%= @user.microposts.count %>
                           </div>
                         </li>
+												<li class="list-group-item" style="background-color: #000">
+													<div class="h6 text-muted">Follow This User</div>
+													<div class="h5">
+														<% if current_user == @user %>
+															<div class="gfm-embed" data-url="https://www.gofundme.com/f/launch-our-dream-building-a-social-media-platform/widget/large?sharesheet=coachingTask"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
+														<% else %>
+															<%= render 'follow_form' %>
+														<% end %>
+													</div>
+												</li>
                     </ul>
                 </div>
             </div>
