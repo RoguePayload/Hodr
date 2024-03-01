@@ -68,6 +68,23 @@ class UsersController < ApplicationController
        render 'show_follow', status: :unprocessable_entity
     end
 
+    def edit_password
+      @user = User.find(params[:id])
+      unless current_user.admin?
+        redirect_to(admin_path, status: :see_other) unless current_user?(@user)
+      end
+    end
+
+
+    def update_password
+      @user = User.find(params[:id])
+      if @user.update(user_params)
+        redirect_to admin_path, notice: 'Password updated successfully.'
+      else
+        render :edit_password
+      end
+    end
+
     private
 
       def user_params
