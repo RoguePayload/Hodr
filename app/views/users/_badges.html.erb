@@ -10,5 +10,12 @@
 <% end %>
 <% if @user.email == 'mystang26@yahoo.com' %>
   <%= image_tag 'hundred.png', class: 'profile-badge' %>
-  <%= image_tag 'influencer.png', class: 'profile-badge' %>
+<% end %>
+
+<!-- Support Users -->
+
+
+<!-- Influencer Users -->
+<% if @user.email == 'dsmorris71@gmail.com' %>
+  <%= image_tag 'supporter.png', class: 'profile-badge' %>
 <% end %>
