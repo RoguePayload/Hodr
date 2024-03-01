@@ -27,6 +27,10 @@
 													<% account_age = (Time.zone.now - current_user.created_at).to_i / 1.day %>
 													<p style="font-size: 20px;">Account age: <%= account_age %> days</p>
                         </div>
+												<div class="h7 pbio">
+													<% if @user=user.email('awlove32009@gmail.com') %>
+													<p>Son of the Developer</p>
+												</div>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item" style="background-color: #000">
