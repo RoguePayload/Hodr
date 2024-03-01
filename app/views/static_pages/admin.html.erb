@@ -35,16 +35,16 @@
       <!-- Display Charts for Users -->
       <div id="Charts" style="display: none">
         <!-- Monthly New User Registration -->
-        <div class="my-4 w-100" id="usersChart" style="height: 300px;">
+        <div class="my-4 w-100">
           <h4>Monthly New User Registrations</h4>
           <%= line_chart @new_users_by_month, xtitle: "Month", ytitle: "New Users" %>
         </div>
 
-        <!-- Daily User Activity -->
-        <div class="my-4 w-100" id="activityChart" style="height: 300px;">
+        <div class="my-4 w-100">
           <h4>Daily User Activity</h4>
-          <!--<%= line_chart @daily_active_users, xtitle: "Day", ytitle: "Active Users" %>-->
+          <%= line_chart @daily_user_activity, xtitle: "Day", ytitle: "Active Users" %>
         </div>
+
       </div>
 
       <!-- Display User Management -->
@@ -89,6 +89,8 @@
     </main>
   </div>
 </div>
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+<%= javascript_include_tag "chartkick" %>
 
 <script>
 function Analytics()
