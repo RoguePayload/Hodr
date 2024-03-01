@@ -19,17 +19,13 @@
 <% end %>
 <% if @user.email == 'awlove@aubreylove.space' %>
   <%= image_tag 'hundred.png', class: 'profile-badge' %>
+    <%= image_tag 'influencer.png', class: 'profile-badge' %>
+      <%= image_tag 'supporter.png', class: 'profile-badge' %>
 <% end %>
 
 <!-- Support Users -->
 <% if @user.email == 'dsmorris71@gmail.com' %>
   <%= image_tag 'supporter.png', class: 'profile-badge' %>
 <% end %>
-<% if @user.email == 'awlove@aubreylove.space' %>
-  <%= image_tag 'supporter.png', class: 'profile-badge' %>
-<% end %>
 
 <!-- Influencer Users -->
-<% if @user.email == 'awlove@aubreylove.space' %>
-  <%= image_tag 'influencer.png', class: 'profile-badge' %>
-<% end %>
