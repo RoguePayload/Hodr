@@ -29,7 +29,7 @@
       <div id="Dashboard" style="display: none">
         Total Registered Users: <%= User.count %><br/>
         <h3>Server Metrics</h3>
-        
+
       </div>
 
       <!-- Display Charts for Users -->
@@ -43,7 +43,7 @@
         <!-- Daily User Activity -->
         <div class="my-4 w-100" id="activityChart" style="height: 300px;">
           <h4>Daily User Activity</h4>
-          <%= line_chart @daily_active_users, xtitle: "Day", ytitle: "Active Users" %>
+          <!--<%= line_chart @daily_active_users, xtitle: "Day", ytitle: "Active Users" %>-->
         </div>
       </div>
 
