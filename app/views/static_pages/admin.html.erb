@@ -35,15 +35,16 @@
       <!-- Display Charts for Users -->
       <div id="Charts" style="display: none">
         <!-- Monthly New User Registration -->
-        <div class="my-4 w-100" id="usersChart" style="height: 300px;">
+        <div class="my-4 w-100" id="usersChart">
           <h4>Monthly New User Registrations</h4>
-          <%= line_chart @new_users_by_month, xtitle: "Month", ytitle: "New Users", library: {backgroundColor: "#f8f9fa", chartArea: {width: '100%', height: '70%'}} %>
+          <%= line_chart @new_users_by_month, xtitle: "Month", ytitle: "New Users", library: {backgroundColor: "#f8f9fa"} %>
         </div>
-        <div class="my-4 w-100" id="activityChart" style="height: 300px;">
+        <div class="my-4 w-100" id="activityChart">
           <h4>Daily User Activity</h4>
-          <%= line_chart @daily_user_activity, xtitle: "Day", ytitle: "Active Users", library: {backgroundColor: "#f8f9fa", chartArea: {width: '50%', height: '70%'}} %>
+          <%= line_chart @daily_user_activity, xtitle: "Day", ytitle: "Active Users", library: {backgroundColor: "#f8f9fa"} %>
         </div>
       </div>
+
 
       <!-- Display User Management -->
         <div id="UserManage" style="display: none">
