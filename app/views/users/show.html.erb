@@ -28,9 +28,7 @@
 													<p style="font-size: 20px;">Account age: <%= account_age %> days</p>
                         </div>
 												<div class="h7 pbio">
-													<% if @user=user.email('awlove32009@gmail.com') %>
-														<p>Son of the Developer</p>
-													<% end %>
+													<%= render 'family' %>
 												</div>
 
                     </div>
