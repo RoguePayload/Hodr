@@ -29,9 +29,7 @@
       <div id="Dashboard" style="display: none">
         Total Registered Users: <%= User.count %><br/>
         <h3>Server Metrics</h3>
-        <% Metric.order(captured_at: :desc).limit(5).each do |metric| %>
-          <p><%= metric.name.titleize %>: <%= metric.value %> (captured at <%= metric.captured_at.strftime("%Y-%m-%d %H:%M:%S") %>)</p>
-        <% end %>
+        
       </div>
 
       <!-- Display Charts for Users -->
