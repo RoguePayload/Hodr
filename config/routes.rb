@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'messages/create'
+  get 'boards/new'
+  get 'boards/create'
+  get 'boards/show'
+  get 'boards/index'
   get 'sessions/new'
 
   # Set Root Path #
@@ -30,7 +35,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   resources :relationships,       only: [:create, :destroy]
-
+  resources :boards do
+    resources :messages, only: [:create]
+    get 'fetch_messages', on: :member
+  end
   get '/microposts', to: 'users#show'
 
 end

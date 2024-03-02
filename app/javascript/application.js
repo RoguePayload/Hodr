@@ -9,3 +9,4 @@ import "custom/image_upload"
 // app/javascript/packs/application.js
 require("chartkick")
 require("chart.js")
+//= require rails-ujs

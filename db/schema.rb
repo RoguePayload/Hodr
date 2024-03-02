@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_02_112245) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_02_135326) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,17 +50,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_112245) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "businesses", force: :cascade do |t|
-    t.string "name"
-    t.string "slogan"
-    t.string "url"
-    t.string "phone"
-    t.string "address"
-    t.text "description"
-    t.text "services"
-    t.string "team_members"
+  create_table "board_memberships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "board_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_board_memberships_on_board_id"
+    t.index ["user_id"], name: "index_board_memberships_on_user_id"
+  end
+
+  create_table "boards", force: :cascade do |t|
+    t.string "name"
+    t.string "avatar"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -71,6 +77,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_112245) do
     t.datetime "updated_at", null: false
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "board_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_messages_on_board_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "metrics", force: :cascade do |t|
@@ -144,7 +160,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_112245) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "board_memberships", "boards"
+  add_foreign_key "board_memberships", "users"
+  add_foreign_key "boards", "users"
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
+  add_foreign_key "messages", "boards"
+  add_foreign_key "messages", "users"
   add_foreign_key "microposts", "users"
 end

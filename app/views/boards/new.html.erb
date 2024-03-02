@@ -1,0 +1,19 @@
+<h1>New Board</h1>
+
+<%= form_with model: @board, local: true do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :avatar %><br>
+    <%= form.file_field :avatar %>
+  </div>
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.submit "Create Board" %>
+  </div>
+<% end %>

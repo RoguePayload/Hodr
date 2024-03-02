@@ -1,0 +1,37 @@
+<% if @board.avatar.attached? %>
+  <%= image_tag url_for(@board.avatar), alt: 'Board Avatar', class: 'board-avatar' %>
+<% else %>
+  <%= image_tag('board_avatar.png', alt: 'Board Avatar', class: 'board-avatar') %>
+<% end %>
+<h1 class="board_name"><%= @board.name %></h1>
+<p class="board_description"><%= @board.description %></p>
+<%= link_to "<- Back", boards_path, class: 'board_button' %>
+
+<h2 class="board_title">Messages</h2>
+<div class="message-window">
+  <% @board.messages.each do |message| %>
+    <p class="board_chat_messages">
+      <!-- Display the Message Text -->
+      <%= message.content %><br/>
+      <!-- Display Message Image -->
+      <% if message.image.attached? %>
+        <%= image_tag message.image, class: 'board_chat_image' %><br/>
+      <% end %>
+      <!-- Display Message User -->
+      - <i class="board_chat_user"><%= message.user.uname %></i>
+    </p>
+  <% end %>
+</div>
+
+<h3 class="board_post_title">Post a Message</h3>
+<%= form_with(model: [@board, @message]) do |form| %>
+  <%= form.text_area :content, class: 'board_post_input' %>
+  <%= form.file_field :image %>
+  <%= form.submit "Post", class: 'btn btn-success' %>
+<% end %>
+<script>
+  $(document).on('turbolinks:load', function() {
+    var messageWindow = $('.message-window');
+    messageWindow.scrollTop(messageWindow.prop("scrollHeight"));
+  });
+</script>

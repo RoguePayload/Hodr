@@ -1,0 +1,20 @@
+<h1>Boards</h1>
+
+<%= link_to 'New Board', new_board_path %>
+
+<ul>
+  <% @boards.each do |board| %>
+    <li>
+      <% if board.avatar.attached? %>
+        <%= image_tag url_for(board.avatar), alt: 'Board Avatar', class: 'board-avatar-small' %>
+      <% else %>
+        <%= image_tag('board_avatar.png', alt: 'Board Avatar', class: 'board-avatar-small') %>
+      <% end %>&nbsp;&nbsp;
+      <%= link_to board.name, board %>
+      <span>(<%= board.messages.count %> messages)</span>
+      <% if current_user&.admin? %>
+        <%= link_to 'Delete Board', board_path(board), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </li><br/>
+  <% end %>
+</ul>
