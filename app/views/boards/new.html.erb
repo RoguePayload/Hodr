@@ -1,19 +1,19 @@
-<h1>New Board</h1>
+<h1 class="boards_new_title">New Board</h1>
 
 <%= form_with model: @board, local: true do |form| %>
   <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.label "Board Name:", class: 'boards_new_names' %><br>
+    <%= form.text_field :name, class: 'boards_new_input' %>
   </div>
   <div>
-    <%= form.label :avatar %><br>
-    <%= form.file_field :avatar %>
+    <%= form.label "Board Avatar:", class: 'boards_new_names' %><br>
+    <%= form.file_field :avatar, class: 'boards_new_input' %>
   </div>
   <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
+    <%= form.label "Board Description:", class: 'boards_new_names' %><br>
+    <%= form.text_area :description, class: 'boards_new_input' %>
   </div>
   <div>
-    <%= form.submit "Create Board" %>
+    <%= form.submit "Create Board", class: 'btn btn-success' %>
   </div>
 <% end %>
