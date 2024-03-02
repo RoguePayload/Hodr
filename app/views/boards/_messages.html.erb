@@ -1,12 +1,9 @@
-<% @board.messages.each do |message| %>
+<% messages.each do |message| %>
   <p class="board_chat_messages">
-    <!-- Display the Message Text -->
     <%= message.content %><br/>
-    <!-- Display Message Image -->
     <% if message.image.attached? %>
       <%= image_tag message.image, class: 'board_chat_image' %><br/>
     <% end %>
-    <!-- Display Message User -->
-    - <i class="board_chat_user"><%= link_to message.user.uname, user_path(message.user) %></i>
+    - <i class="board_chat_user"><%= message.user.uname %></i>
   </p>
 <% end %>

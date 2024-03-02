@@ -9,18 +9,7 @@
 
 <h2 class="board_title">Messages</h2>
 <div class="message-window">
-  <% @board.messages.each do |message| %>
-    <p class="board_chat_messages">
-      <!-- Display the Message Text -->
-      <%= message.content %><br/>
-      <!-- Display Message Image -->
-      <% if message.image.attached? %>
-        <%= image_tag message.image, class: 'board_chat_image' %><br/>
-      <% end %>
-      <!-- Display Message User -->
-      - <i class="board_chat_user"><%= message.user.uname %></i>
-    </p>
-  <% end %>
+  <%= render partial: 'messages', locals: { messages: @board.messages } %>
 </div>
 
 <h3 class="board_post_title">Post a Message</h3>
@@ -30,7 +19,19 @@
   <%= form.submit "Post", class: 'btn btn-success' %>
 <% end %>
 <script>
+  function fetchMessages() {
+    $.ajax({
+      url: "<%= fetch_messages_board_path(@board) %>",
+      type: "GET",
+      dataType: "html",
+      success: function(data) {
+        $('.message-window').html(data);
+      }
+    });
+  }
+
   $(document).on('turbolinks:load', function() {
+    setInterval(fetchMessages, 1000);
     var messageWindow = $('.message-window');
     messageWindow.scrollTop(messageWindow.prop("scrollHeight"));
   });

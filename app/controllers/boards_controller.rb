@@ -30,7 +30,7 @@ class BoardsController < ApplicationController
   def fetch_messages
     @board = Board.find(params[:id])
     @messages = @board.messages
-    render partial: 'boards/messages', locals: { messages: @board.messages }
+    render partial: 'messages', locals: { messages: @messages }
   end
 
   def destroy
