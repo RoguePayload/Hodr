@@ -9,18 +9,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
-    @micropost = current_user.microposts.build if logged_in?
-
-    if logged_in? && current_user == @user
-      @micropost = current_user.microposts.build
-      @feed_items = current_user.feed.paginate(page: params[:page])
-    elsif logged_in? && current_user != @user
-      @feed_items = @user.feed.paginate(page: params[:page])
-    end
+      @user = User.find(params[:id])
+      @microposts = @user.microposts.paginate(page: params[:page])
+      @micropost = current_user.microposts.build if logged_in?
+      if logged_in? && current_user == @user
+        @micropost  = current_user.microposts.build
+        @feed_items = current_user.feed.paginate(page: params[:page])
+      else
+        @feed_items = @user.feed.paginate(page: params[:page])
+      end
   end
-
 
   def new
     @user = User.new
