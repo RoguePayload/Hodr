@@ -5,27 +5,13 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
-
-    if params[:micropost][:image].present?
-      @micropost.image.attach(params[:micropost][:image])
-
-      # Save the attached file to a temporary file for scanning
-      tempfile = @micropost.image.attachment.blob.download
-      scan_result = Clamby.safe?(tempfile)
-
-      # Check if the file is safe
-      unless scan_result
-        flash[:danger] = "File upload failed. Potential virus detected!"
-        redirect_to current_user and return
-      end
-    end
-
+    @micropost.image.attach(params[:micropost][:image])
     if @micropost.save
       flash[:success] = "Micropost created!"
       redirect_to current_user
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
-      flash[:danger] = "Your post could not be posted."
+      flash[:danger] = "Could not create post"
       render current_user, status: :unprocessable_entity
     end
   end
