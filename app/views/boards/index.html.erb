@@ -13,9 +13,13 @@
       <% end %>&nbsp;&nbsp;
       <%= link_to board.name, board, class: 'boards_main_name' %>
       <span class="boards_main_count">(<%= board.messages.count %> messages)</span>
-      <% if current_user&.admin? %>
-        <%= link_to 'Delete Board', board_path(board), method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
+        <% if current_user.admin? %>
+          <%= form_with url: board, method: :delete, local: true do |form| %>
+            <%= form.submit 'Delete Board', data: { confirm: 'Are you sure?' }, style: 'width: 25%; background-color: #F00; color: #000; font-family: "Orbitron", sans-serif;' %>
+          <% end %>
+        <% end %>
+
+
     </li><br/>
   <% end %>
 </ul>

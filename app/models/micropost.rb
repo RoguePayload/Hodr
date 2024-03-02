@@ -8,8 +8,9 @@ class Micropost < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :content, presence: true, length: { minimum: 4 }
-  validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
-                                     message: "must be a valid image format" },
-                    size:         { less_than: 5.gigabytes,
-                                     message:   "should be less than 5GB" }
+  validates :image, content_type: { in: ['image/jpeg', 'image/gif', 'image/png', 'image/webp', 'application/pdf', 'video/mp4', 'audio/mpeg', 'text/plain', 'application/msword', 'application/vnd.ms-excel', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'],
+                                    message: "is not a supported format" },
+                     size:         { less_than: 15.gigabytes,
+                                     message:   "should be less than 15GB" }
+
 end
