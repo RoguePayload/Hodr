@@ -7,8 +7,18 @@
   <span class="user"><%= link_to micropost.user.uname, micropost.user, class: 'post_user_link' %></span>
   <span class="content post_content"><%= micropost.content %></span>
   <% if micropost.image.attached? %>
-    <%= image_tag micropost.image, width: "100%", height: "500" %>
+    <% case micropost.image.content_type %>
+    <% when 'image/jpeg', 'image/png', 'image/gif' %>
+      <%= image_tag micropost.image, width: "100%", height: "500" %>
+    <% when 'application/pdf' %>
+      <%= link_to 'View PDF', rails_blob_path(micropost.image, disposition: 'inline'), target: '_blank' %>
+    <% when 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' %>
+      <%= link_to 'Download Excel', rails_blob_path(micropost.image, disposition: 'attachment') %>
+    <% else %>
+      <%= link_to 'Download File', rails_blob_path(micropost.image, disposition: 'attachment') %>
+    <% end %>
   <% end %>
+
   <span class="timestamp post_time">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     <% if current_user?(micropost.user) %>
