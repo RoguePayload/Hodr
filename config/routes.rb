@@ -23,7 +23,7 @@ Rails.application.routes.draw do
      member do
         get :following, :followers
         get 'edit_password', to: 'users#edit_password'
-        patch 'update_password', to: 'users#update_password'        
+        patch 'update_password', to: 'users#update_password'
      end
   end
   resources :microposts,          only: [:create, :destroy]do

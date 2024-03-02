@@ -1,5 +1,6 @@
 class Micropost < ApplicationRecord
   belongs_to :user
+  belongs_to :business, optional: true
   has_many :comments, dependent: :destroy
   has_one_attached :image do |attachable|
     attachable.variant :display, resize_to_limit: [500, 500]
