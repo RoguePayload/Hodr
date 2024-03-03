@@ -10,7 +10,7 @@
 <h2 class="board_title">Messages</h2>
 <div class="message-window">
   <%= render partial: 'messages', locals: { messages: @board.messages } %>
-</div>
+</div> 
 
 <h3 class="board_post_title">Post a Message</h3>
 <%= form_with(model: [@board, @message]) do |form| %>
