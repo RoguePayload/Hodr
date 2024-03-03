@@ -5,7 +5,8 @@
     <%= image_tag("hodr_logo.png", size: "50x50") %>
   <% end %>
   <span class="user"><%= link_to micropost.user.uname, micropost.user, class: 'post_user_link' %></span>
-  <span class="content post_content"><%= micropost.content %></span>
+  <!-- Updated to use auto_link_user_mentions helper for micropost content -->
+  <span class="content post_content"><%= auto_link_user_mentions(micropost.content) %></span>
   <% if micropost.image.attached? %>
     <% case micropost.image.content_type %>
     <% when 'image/jpeg', 'image/png', 'image/gif' %>
@@ -22,14 +23,13 @@
   <span class="timestamp post_time">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     <% if current_user?(micropost.user) %>
-      <%= link_to "delete", micropost, data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %>
+      <%= link_to "delete", micropost, data: { "turbo-method": :delete, turbo_confirm: "You sure?" }, class: 'delete_post_link' %>
     <% end %>
   </span>
   <%= render micropost.comments %>
 
   <%= form_with(model: [micropost, Comment.new], local: true) do |form| %>
-  <%= form.text_area :content, placeholder: "Write a comment..." %>
-  <%= form.submit "Post Comment" %>
-<% end %>
-
+    <%= form.text_area :content, placeholder: "Write a comment...", class: 'comment_text_area' %>
+    <%= form.submit "Post Comment", class: 'comment_submit_button' %>
+  <% end %>
 </li>
