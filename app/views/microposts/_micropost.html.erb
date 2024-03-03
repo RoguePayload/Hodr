@@ -6,7 +6,7 @@
   <% end %>
   <span class="user"><%= link_to micropost.user.uname, micropost.user, class: 'post_user_link' %></span>
   <!-- Updated to use auto_link_user_mentions helper for micropost content -->
-  <span class="content post_content"><%= auto_link_user_mentions(micropost.content) %></span>
+  <span class="content post_content"><%= micropost.content %></span>
   <% if micropost.image.attached? %>
     <% case micropost.image.content_type %>
     <% when 'image/jpeg', 'image/png', 'image/gif' %>

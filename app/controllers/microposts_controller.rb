@@ -38,19 +38,6 @@ class MicropostsController < ApplicationController
       redirect_to root_url, status: :see_other if @micropost.nil?
     end
 
-    def process_mentions(micropost)
-      usernames = micropost.content.scan(/@\w+/).map { |mention| mention[1..] }
-      usernames.each do |uname|
-        mentioned_user = User.find_by(uname: uname)
-        if mentioned_user && mutual_following?(micropost.user, mentioned_user)
-          # Here, implement your logic for a valid mention.
-          # For example, you could notify the mentioned user, link their profile, etc.
-        end
-      end
-    end
 
-    def mutual_following?(user_one, user_two)
-      user_one.following?(user_two) && user_two.following?(user_one)
-    end
 
 end
