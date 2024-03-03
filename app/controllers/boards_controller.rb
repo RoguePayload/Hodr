@@ -45,12 +45,12 @@ class BoardsController < ApplicationController
 
   def fetch_messages
     @board = Board.find(params[:id])
-    @messages = @board.messages.order(created_at: :asc) # Assuming you have a `messages` association
+    @messages = @board.messages.order(created_at: :asc)
     render partial: 'messages', locals: { messages: @messages }, layout: false
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_path, alert: "Board not found."
-    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "Board not found."
   end
+
 
   private
 
