@@ -4,8 +4,7 @@ class BoardsController < ApplicationController
 
 
   def index
-    @priority_board = Board.find_by(name: "Hodr Admins") # Assuming the board name is unique
-    @boards = Board.where.not(id: @priority_board.id).priority_order + [@priority_board]
+    @boards = Board.all
   end
 
   def show
