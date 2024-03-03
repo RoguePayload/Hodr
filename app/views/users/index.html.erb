@@ -15,6 +15,13 @@
             <h5 class="card-title user_card_title"><%= user.uname %></h5>
             <p class="card-text user_card_email">Total Posts: <%= user.microposts.count %></p>
             <p class="card-text user_card_creation">Time of Creation: <%= time_ago_in_words(user.created_at) %> ago</p>
+            <p class="card-text user_card_role">Role:
+              <% if user.admin %>
+                Administrator
+              <% else %>
+                Standard User
+              <% end %>
+            </p>
             <%= link_to 'View profile', user, class: 'btn btn-success' %>
           </div>
         </div>

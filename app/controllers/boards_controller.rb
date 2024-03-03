@@ -1,11 +1,15 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show]
 
-
-
   def index
-    @boards = Board.all
+    if params[:category_id].present?
+      @boards = Board.where(category_id: params[:category_id])
+    else
+      @boards = Board.all
+    end
+    @categories = Category.all # For the dropdown
   end
+
 
   def show
     @message = Message.new # For the message form on the board's page
@@ -52,7 +56,7 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:name, :avatar, :description)
+    params.require(:board).permit(:name, :avatar, :description, :category_id)
   end
 
 
