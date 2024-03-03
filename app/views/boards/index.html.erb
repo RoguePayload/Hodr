@@ -7,7 +7,8 @@
   <%= form.label :category_id, 'Filter by category', class: 'boards_main_name' %>
   <%= form.collection_select :category_id, @categories, :id, :name, include_blank: true, class: 'boards_drop_down' %>
   <%= form.submit 'Filter', class: 'btn btn-success' %>
-<% end %>
+<% end %><br/>
+<br/>
 <ul>
   <% @boards.each do |board| %>
     <li>
