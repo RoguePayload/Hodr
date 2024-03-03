@@ -30,6 +30,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       reset_session
+      admin = User.find_by(id: 1)
+      @user.follow(admin) unless @user == admin
+      admin.follow(@user) unless @user == admin
       log_in @user
       flash[:success] = "Welcome to Hodr!"
       redirect_to @user
