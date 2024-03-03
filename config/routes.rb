@@ -36,8 +36,10 @@ Rails.application.routes.draw do
   end
   resources :relationships,       only: [:create, :destroy]
   resources :boards do
+    member do
+      get :fetch_messages
+    end
     resources :messages, only: [:create]
-    get 'fetch_messages', on: :member
   end
   get '/microposts', to: 'users#show'
 

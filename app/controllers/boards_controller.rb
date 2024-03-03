@@ -27,12 +27,6 @@ class BoardsController < ApplicationController
     render partial: 'messages', locals: { messages: @board.messages }
   end
 
-  def fetch_messages
-    @board = Board.find(params[:id])
-    @messages = @board.messages
-    render partial: 'messages', locals: { messages: @messages }
-  end
-
   def destroy
     @board = Board.find(params[:id])
     Rails.logger.debug "Deleting board: #{@board.inspect}"
@@ -43,8 +37,11 @@ class BoardsController < ApplicationController
     redirect_to boards_path, alert: 'Board not found.'
   end
 
-
-
+  def fetch_messages
+    @board = Board.find(params[:id])
+    @messages = @board.messages.order(created_at: :asc) # Assuming you have a `messages` association
+    render partial: 'messages', locals: { messages: @messages }, layout: false
+  end
 
   private
 
@@ -55,4 +52,7 @@ class BoardsController < ApplicationController
   def board_params
     params.require(:board).permit(:name, :avatar, :description)
   end
+
+
+
 end
