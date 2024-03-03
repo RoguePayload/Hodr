@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_02_135326) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_03_164207) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_135326) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "board_categories", force: :cascade do |t|
+    t.integer "board_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_board_categories_on_board_id"
+    t.index ["category_id"], name: "index_board_categories_on_category_id"
+  end
+
   create_table "board_memberships", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "board_id", null: false
@@ -66,7 +75,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_135326) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_boards_on_category_id"
     t.index ["user_id"], name: "index_boards_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -160,8 +177,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_135326) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "board_categories", "boards"
+  add_foreign_key "board_categories", "categories"
   add_foreign_key "board_memberships", "boards"
   add_foreign_key "board_memberships", "users"
+  add_foreign_key "boards", "categories"
   add_foreign_key "boards", "users"
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
