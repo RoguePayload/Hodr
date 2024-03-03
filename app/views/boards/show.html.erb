@@ -13,8 +13,37 @@
 </div>
 
 <h3 class="board_post_title">Post a Message</h3>
+<%= turbo_frame_tag "new_message" do %>
   <%= form_with(model: [@board, Message.new], id: "new_message_form") do |form| %>
     <%= form.text_area :content, class: 'board_post_input' %>
     <%= form.file_field :image %>
     <%= form.submit "Post", class: 'btn btn-success' %>
   <% end %>
+<% end %>
+
+
+<!-- Import jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JavaScript logic -->
+<script>
+  document.addEventListener("turbo:load", function() {
+    function fetchMessages() {
+      $.ajax({
+        url: "<%= fetch_messages_board_path(@board) %>",
+        type: "GET",
+        dataType: "html",
+        success: function(data) {
+          $('.message-window').html(data);
+        }
+      });
+    }
+
+    setInterval(fetchMessages, 5000);
+    var messageWindow = $('.message-window');
+    if (messageWindow.length > 0) {
+      messageWindow.scrollTop(messageWindow.prop("scrollHeight"));
+    }
+
+  });
+</script>
