@@ -4,6 +4,7 @@
   <% else %>
     <%= image_tag("hodr_logo.png", size: "50x50") %>
   <% end %>
+  <span class="user"><%= link_to micropost.user.uname, micropost.user, class: 'post_user_link' %></span>
   <span class="content post_content"><%= micropost.content %></span>
   <% if micropost.image.attached? %>
     <% case micropost.image.content_type %>
