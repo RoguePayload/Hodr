@@ -1,8 +1,11 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show]
 
+
+
   def index
-    @boards = Board.all
+    @priority_board = Board.find_by(name: "Hodr Admins") # Assuming the board name is unique
+    @boards = Board.where.not(id: @priority_board.id).priority_order + [@priority_board]
   end
 
   def show
