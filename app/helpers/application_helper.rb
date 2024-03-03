@@ -15,10 +15,11 @@ module ApplicationHelper
       uname = mention[1..] # Removes the '@' character
       user = User.find_by(uname: uname)
       if user
-        # Creates a link to the user's profile. Adjust 'user_path(user)' as necessary.
+        # Creates a link to the user's profile.
         link_to mention, user_path(user)
       else
-        mention # No change if user not found
+        # If user not found, just return the mention text without a link.
+        mention
       end
     end.html_safe
   end
