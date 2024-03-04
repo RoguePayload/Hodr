@@ -15,6 +15,9 @@ class StaticPagesController < ApplicationController
   def eula
   end
 
+  def privacy
+  end 
+
   def admin
     @users = User.paginate(page: params[:page], per_page: 10)
     # Data for monthly new user registrations chart

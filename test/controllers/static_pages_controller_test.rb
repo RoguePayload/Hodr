@@ -41,4 +41,10 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "title", "EULA | #{@base_title}"
   end
+
+  test "should get android privacy" do
+    get android_path
+    assert_response :success
+    assert_select "title", "Android Privacy | #{@base_title}"
+  end 
 end

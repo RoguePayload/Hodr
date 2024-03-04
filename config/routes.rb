@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/contact',  to: 'static_pages#contact'
   get '/eula',     to: 'static_pages#eula'
   get '/admin',    to: 'static_pages#admin'
+  get '/android',  to: 'static_pages#android_privacy' 
 
 
   # Set Users Paths #
