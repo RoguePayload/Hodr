@@ -207,3 +207,93 @@ span.image {
   }
 
 }
+
+/* Hide mobile navigation by default and display desktop navigation */
+.mobile-view {
+  display: none;
+}
+
+.desktop-view {
+  display: block;
+}
+
+/* Media query for devices with a max-width of 768px */
+@media (max-width: 768px) {
+  /* Hide desktop navigation and show mobile navigation for smaller devices */
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: block;
+  }
+
+  .mobile-link {
+    display: inline-block; /* Change to inline-block for better control over width/height */
+    padding: 8px; /* Increase padding for larger touch targets */
+    background-color: #007bff; /* Example button color, adjust as needed */
+    color: white; /* Adjust text color as needed for contrast */
+    margin: 0px auto;
+    text-align: center;
+    border-radius: 8px; /* Soften the corners for a more button-like appearance */
+    font-family: "Orbitron", sans-serif; /* Apply the Orbitron font */
+    font-size: 12px; /* Adjust font size for readability on mobile devices */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+
+  .mobile-link-admin
+  {
+    display: inline-block; /* Change to inline-block for better control over width/height */
+    padding: 8px; /* Increase padding for larger touch targets */
+    background-color: orange; /* Example button color, adjust as needed */
+    color: black; /* Adjust text color as needed for contrast */
+    margin: 0px auto;
+    text-align: center;
+    border-radius: 8px; /* Soften the corners for a more button-like appearance */
+    font-family: "Black Ops One", system-ui;
+    font-size: 12px; /* Adjust font size for readability on mobile devices */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+}
+
+
+.mobile-banner-img
+{
+  width: 100%;
+  height: 200px;
+  margin-bottom: -275px;
+}
+.mobile-avatar-img
+{
+  width: 45px;
+  height: 45px;
+  border-radius: 75%;
+}
+
+.mobile-nav_button
+{
+  text-align: center;
+  margin: 1px auto;
+  float: center;
+  background-color: #00F;
+  color: #FFF;
+  font-family: "Cinzel", serif;
+}
+
+.mobile-uname
+{
+  color: #0F0;
+  font-family: "Orbitron", sans-serif;
+}
+.mobile-account-age
+{
+  color: #FFF;
+  font-family: "Cinzel", serif;
+}
+.mobile-account-intel
+{
+  color: orange;
+  font-family: "Black Ops One", system-ui;
+}

@@ -101,6 +101,7 @@ GEM
       sassc (>= 2.0.0)
     bootstrap-will_paginate (1.0.0)
       will_paginate
+    browser (5.3.1)
     builder (3.2.4)
     capybara (3.37.1)
       addressable
@@ -359,6 +360,7 @@ DEPENDENCIES
   bootsnap (= 1.12.0)
   bootstrap-sass (~> 3.4.1)
   bootstrap-will_paginate (= 1.0.0)
+  browser
   capybara (= 3.37.1)
   chartkick
   clamby

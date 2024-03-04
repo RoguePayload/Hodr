@@ -24,6 +24,7 @@ gem 'platform-api'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'clamby'
+gem 'browser'
 
 
 
