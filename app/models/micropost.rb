@@ -12,5 +12,10 @@ class Micropost < ApplicationRecord
                                     message: "is not a supported format" },
                      size:         { less_than: 15.gigabytes,
                                      message:   "should be less than 15GB" }
+  after_save :assign_user_post_badges
+  private
 
+  def assign_user_post_badges
+    user.assign_post_badges
+  end
 end

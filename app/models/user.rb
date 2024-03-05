@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  after_create :assign_registration_badges
+  after_create :assign_badge_based_on_id
 
   has_many :microposts, dependent: :destroy
 
@@ -164,22 +164,43 @@ class User < ApplicationRecord
      following.include?(other_user)
   end
 
+  # Call this method after creating or updating microposts
+  def assign_post_badges
+    assign_youngling_badge
+    assign_padawan_badge
+    # Add more methods for other badges as needed
+  end
+
   private
 
-  def assign_registration_badges
-    assign_first_100_badge
-    assign_first_1k_badge
+  def assign_badge_based_on_id
+    assign_hundred_badge if id <= 100
+    assign_thousand_badge if id > 100 && id <= 1000
   end
 
-  def assign_first_100_badge
-    return unless User.count <= 100
+  def assign_hundred_badge
+    return unless id <= 100
     badge = Badge.find_by(name: 'First 100')
-    UserBadge.create(user: self, badge: badge) if badge
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
   end
 
-  def assign_first_1k_badge
-    return unless User.count <= 1000
+  def assign_thousand_badge
+    return unless id > 100 && id <= 1000
     badge = Badge.find_by(name: 'First 1K')
-    UserBadge.create(user: self, badge: badge) if badge
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  end
+
+  def assign_youngling_badge
+    if microposts.count >= 1 && microposts.count <= 100
+      badge = Badge.find_by(name: 'Youngling')
+      UserBadge.find_or_create_by(user: self, badge: badge) if badge
+    end
+  end
+
+  def assign_padawan_badge
+    if microposts.count > 101 && microposts.count <= 200
+      badge = Badge.find_by(name: 'Padawan')
+      UserBadge.find_or_create_by(user: self, badge: badge) if badge
+    end
   end
 end
