@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  after_create :assign_registration_badges
+
   has_many :microposts, dependent: :destroy
 
   has_many :comments, dependent: :destroy
@@ -7,6 +9,10 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   has_one_attached :banner
+
+  has_many :user_badges
+
+  has_many :badges, through: :user_badges
 
   has_many :board_memberships
   has_many :boards, through: :board_memberships
@@ -158,4 +164,22 @@ class User < ApplicationRecord
      following.include?(other_user)
   end
 
+  private
+
+  def assign_registration_badges
+    assign_first_100_badge
+    assign_first_1k_badge
+  end
+
+  def assign_first_100_badge
+    return unless User.count <= 100
+    badge = Badge.find_by(name: 'First 100')
+    UserBadge.create(user: self, badge: badge) if badge
+  end
+
+  def assign_first_1k_badge
+    return unless User.count <= 1000
+    badge = Badge.find_by(name: 'First 1K')
+    UserBadge.create(user: self, badge: badge) if badge
+  end
 end

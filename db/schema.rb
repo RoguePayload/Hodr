@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_03_183045) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_05_131752) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -46,6 +46,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_03_183045) do
     t.string "image_url"
     t.string "link_url"
     t.integer "display_duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -133,6 +141,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_03_183045) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "user_badges", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "badge_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["badge_id"], name: "index_user_badges_on_badge_id"
+    t.index ["user_id"], name: "index_user_badges_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "uname"
     t.string "fname"
@@ -188,4 +205,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_03_183045) do
   add_foreign_key "messages", "boards"
   add_foreign_key "messages", "users"
   add_foreign_key "microposts", "users"
+  add_foreign_key "user_badges", "badges"
+  add_foreign_key "user_badges", "users"
 end

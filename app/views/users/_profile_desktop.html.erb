@@ -36,7 +36,9 @@
 												<li class="list-group-item" style="background-color: #000">
 													<div class="h6 text-muted">Badges Earned</div>
 													<div class="h5">
-														<%= render 'badges' %>
+														<% @user.badges.uniq.each do |badge| %>
+														  <%= image_tag badge.image_url, class: 'profile-badge' %>
+														<% end %>
 													</div>
 												</li>
                         <li class="list-group-item" style="background-color: #000">
