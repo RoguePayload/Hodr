@@ -22,10 +22,9 @@
     <p class="mobile-account-age">Followers: <%= @user.followers.count %> | Following: <%= @user.following.count %></p>
     <p class="mobile-account-age">Posts: <%= @user.microposts.count %></p>
     <div class="h5">
-      <% @user.badges.each do |badge| %>
-        <%= image_tag badge.image_url, alt: badge.name, title: badge.description %>
-        <% end %>
-      <%= render 'badges' %>
+      <% @user.badges.uniq.each do |badge| %>
+        <%= image_tag badge.image_url, class: 'profile-badge' %>
+      <% end %>
     </div>
     <%= render 'follow_form' if current_user != @user %>
     <div class="mobile-account-intel">
