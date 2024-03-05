@@ -27,7 +27,7 @@ Badge.create([
   { name: 'First 1K', description: 'Awarded to the first 1,000 registered users.', image_url: 'thousand.png'},
   # Post Creation Badges #
   { name: 'Youngling', description: 'Awarded for making 1-100 posts.', image_url: 'youngling.png' },
-  { name: 'Padawan', description: 'Awarded for making 101~200 posts.', image_url: 'padawan.png'},
+  { name: 'Padawan', description: 'Awarded for making 101~200 posts.', image_url: 'yadoling.png'},
   { name: 'Jedi Knight', description: 'Awarded for making 201~300 posts.', image_url: 'knight.png'},
   { name: 'Jedi Master', description: 'Awarded for making 301~400 posts.', image_url: 'master.png'},
   { name: 'Jedi Council Member', description: 'Awarded for making 401~500 posts.', image_url: 'council.png'},
