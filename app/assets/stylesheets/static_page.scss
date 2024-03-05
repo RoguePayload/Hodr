@@ -218,3 +218,95 @@ body
     font-family: "Cinzel", serif;
   }
 }
+
+
+.mobile_home_intro_div
+{
+  width: 90%;
+  padding: 5px;
+  background-color: #000;
+  border: 1px solid #00F;
+  box-shadow: 3px 3px 5px #C0C0C0;
+  .mobile_home_h1
+  {
+    font-family: "Orbitron", sans-serif;
+    color: #0F0;
+    font-size: 25px;
+  }
+  .mobile_home_p
+  {
+    color: #FFF;
+    font-family: "Cinzel", serif;
+    font-size: 17px;
+  }
+}
+.mobile_home_why_h1
+{
+  font-family: "Orbitron", sans-serif;
+  color: #0F0;
+}
+.mobile_home_why_div
+{
+  width: 90%;
+  padding: 3px;
+  border: 2px solid gold;
+  .mobile_home_why_h1
+  {
+    font-family: "Black Ops One", system-ui;
+    color: #F0FF0A;
+    text-align: center;
+  }
+  .home_why_p
+  {
+    font-family: "Play", sans-serif;
+    color: #FFF;
+    text-align: left;
+  }
+  .mobile_home_why_inner_div
+  {
+    background-color: yellow;
+    width: 90%;
+    float: center;
+    margin: 2px auto;
+    .mobile_home_why_inner_h3
+    {
+      color: #000;
+      font-family: "Gideon Roman", serif;
+    }
+    .mobile_home_why_inner_p
+    {
+      color: #000;
+      font-family: "Source Code Pro", monospace;
+    }
+  }
+}
+.mobile_home_tech_div
+{
+  width: 90%;
+  padding: 3px;
+  border: 2px solid #0F0;
+  margin-top: 35px;
+  .mobile_home_tech_h2
+  {
+    font-family: "Source Code Pro", monospace;
+    color: #0F0;
+    font-size: 25px;
+  }
+  .mobile_home_tech_p
+  {
+    font-family: "Bebas Neue", sans-serif;
+    color: #FFF;
+    font-size: 20px;
+  }
+  .mobile_home_tech_inner_h3
+  {
+    font-family: "Anta", sans-serif;
+    color: darkgreen;
+  }
+  .mobile_home_tech_inner_p
+  {
+    font-family: "EB Garamond", serif;
+    color: pink;
+    font-size: 20px;
+  }
+}
