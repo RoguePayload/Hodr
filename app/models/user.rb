@@ -171,6 +171,11 @@ class User < ApplicationRecord
     # Add more methods for other badges as needed
   end
 
+  def assign_all_badges
+    assign_badge_based_on_id
+    assign_post_badges
+  end  
+
   private
 
   def assign_badge_based_on_id
