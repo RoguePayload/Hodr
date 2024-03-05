@@ -45,7 +45,8 @@
         <div class="my-4 w-100" id="userActiveChart">
           <h4>Active vs NonActive Users</h4>
           <i>Inactive Users ~ Greater than 30-Days since last online</i><br/>
-          
+          <% data = {'Active Users' => @active_users_count, 'Inactive Users' => @inactive_users_count} %>
+          <%= pie_chart data %>
         </div>
       </div>
 
