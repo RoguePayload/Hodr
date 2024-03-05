@@ -24,7 +24,6 @@ class StaticPagesController < ApplicationController
     @new_users_by_month = User.group_by_month(:created_at).count
     @daily_user_activity = Micropost.all.group_by { |micropost| micropost.created_at.to_date }.transform_values(&:count)
     @top_contributors = User.top_contributors(limit: 10)
-    @active_users_count = User.active.count
-    @inactive_users_count = User.inactive.count
+    @active_users, @inactive_users = User.activity_split
   end
 end

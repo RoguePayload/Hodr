@@ -109,12 +109,6 @@ class User < ApplicationRecord
     joins(:microposts).group(:id).order('COUNT(microposts.id) DESC').limit(limit)
   }
 
-  # Scope to get users who have logged in within the last 30 days
-  scope :active, -> { where('last_login_at > ?', 30.days.ago) }
-
-  # Scope to get users who haven't logged in within the last 30 days
-  scope :inactive, -> { where('last_login_at <= ? OR last_login_at IS NULL', 30.days.ago) }
-
   def self.activity_split
     active_cutoff = 30.days.ago
     active_users = User.where("last_login_at > ?", active_cutoff).count
