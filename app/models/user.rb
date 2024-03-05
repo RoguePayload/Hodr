@@ -105,6 +105,17 @@ class User < ApplicationRecord
 
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  scope :top_contributors, -> (limit: 5) {
+    joins(:microposts).group(:id).order('COUNT(microposts.id) DESC').limit(limit)
+  }
+
+  def self.activity_split
+    active_cutoff = 30.days.ago
+    active_users = User.where("last_login_at > ?", active_cutoff).count
+    inactive_users = User.count - active_users
+    [active_users, inactive_users]
+  end
+  
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -174,7 +185,7 @@ class User < ApplicationRecord
   def assign_all_badges
     assign_badge_based_on_id
     assign_post_badges
-  end  
+  end
 
   private
 

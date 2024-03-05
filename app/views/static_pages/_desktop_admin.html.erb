@@ -29,7 +29,6 @@
       <div id="Dashboard" style="display: none">
         Total Registered Users: <%= User.count %><br/>
         Total Number of Posts: <%= Micropost.count %><br/>
-
       </div>
 
       <!-- Display Charts for Users -->
@@ -43,6 +42,10 @@
           <h4>Daily User Activity</h4>
           <%= line_chart @daily_user_activity, xtitle: "Day", ytitle: "Active Users", library: {backgroundColor: "#f8f9fa"} %>
         </div>
+        <div class="my-4 w-100" id="userActiveChart">
+          <h4>Active vs NonActive Users</h4>
+          <%= pie_chart 'Active' => 5, 'Inactive' => 3 %>
+        </div>
       </div>
 
 
@@ -53,6 +56,7 @@
               <tr>
                 <th>Avatar</th>
                 <th>Username</th>
+                <th>Last IP</th>
                 <th>View Account</th>
                 <th>Change Password</th>
                 <th>Delete User</th>
@@ -69,6 +73,7 @@
                     <% end %>
                   </td>
                   <td><%= user.uname %></td>
+                  <td><%= user.last_login_ip %></td>
                   <td><%= link_to 'View Account', user_path(user) %></td>
                   <td>
                     <% if current_user.admin? %>
