@@ -14,6 +14,26 @@ body
   height: 300px; /* Set height as needed */
 }
 
+/* app/assets/stylesheets/application.css or a specific stylesheet */
+
+.images-container .main-image {
+  max-width: 100%;
+  display: block;
+  margin-bottom: 15px; /* Adjust space between the main image and grid */
+}
+
+.additional-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust spacing between grid images */
+}
+
+.additional-images .sub-image {
+  flex: 1 0 21%; /* Adjust width of sub-images, change 21% for more or fewer columns */
+  max-width: 21%; /* Ensure it doesn't grow beyond the flex basis */
+  height: auto; /* Maintain aspect ratio */
+}
+
 
 /* header */
 

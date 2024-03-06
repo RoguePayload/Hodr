@@ -4,10 +4,7 @@
     <%= f.text_area :content, placeholder: "Compose new post...", class: 'post_area' %>
   </div>
   <span class="image">
-    <%= f.file_field :image,
-    accept: "image/jpeg,image/gif,image/png,image/webp,application/pdf,video/mp4,audio/mpeg,text/plain,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation",
-    class: 'btn btn-warning',
-    style: 'width: 100%; float: center; padding: 5px; text-align: center;' %>
+    <%= f.file_field :images, multiple: true, accept: "image/png,image/jpeg,image/gif,image/webp" %>
 
   </span><br/>
   <br/>
