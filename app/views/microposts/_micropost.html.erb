@@ -5,7 +5,16 @@
     <%= image_tag("hodr_logo.png", size: "50x50") %>
   <% end %>
   <span class="user"><%= link_to micropost.user.uname, micropost.user, class: 'post_user_link' %></span>
-  <span class="content post_content"><%= micropost.content %></span>
+  <span class="content post_content">
+    <%= micropost.content.gsub(/@(\w+)/) do |match|
+          user = User.find_by(uname: $1)
+          if user
+            link_to match, user_path(user)
+          else
+            match
+          end
+        end.html_safe %>
+  </span>
   <% if micropost.images.attached? %>
     <%= image_tag micropost.images.first, width: "100%" %>
     <% if micropost.images.count > 1 %>

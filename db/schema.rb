@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_05_222232) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_06_011821) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -102,6 +102,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_05_222232) do
     t.datetime "updated_at", null: false
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "mentions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "micropost_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["micropost_id"], name: "index_mentions_on_micropost_id"
+    t.index ["user_id"], name: "index_mentions_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -204,6 +213,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_05_222232) do
   add_foreign_key "boards", "users"
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
+  add_foreign_key "mentions", "microposts"
+  add_foreign_key "mentions", "users"
   add_foreign_key "messages", "boards"
   add_foreign_key "messages", "users"
   add_foreign_key "microposts", "users"

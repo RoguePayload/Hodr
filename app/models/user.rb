@@ -14,6 +14,9 @@ class User < ApplicationRecord
 
   has_many :badges, through: :user_badges
 
+  has_many :mentions
+  has_many :mentioned_in_posts, through: :mentions, source: :micropost  
+
   has_many :board_memberships
   has_many :boards, through: :board_memberships
 
