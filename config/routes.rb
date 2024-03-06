@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'b_sessions/new'
+  get 'b_sessions/create'
+  get 'b_sessions/destroy'
+  get 'businesses/new'
+  get 'businesses/create'
+  get 'businesses/show'
   get 'messages/create'
   get 'boards/new'
   get 'boards/create'
@@ -15,7 +21,7 @@ Rails.application.routes.draw do
   get '/contact',  to: 'static_pages#contact'
   get '/eula',     to: 'static_pages#eula'
   get '/admin',    to: 'static_pages#admin'
-  get '/android',  to: 'static_pages#android_privacy' 
+  get '/android',  to: 'static_pages#android_privacy'
 
 
   # Set Users Paths #
@@ -43,5 +49,10 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
   get '/microposts', to: 'users#show'
+  resources :businesses, only: [:new, :create, :show, :edit, :update]
+  get 'b_login', to: 'b_sessions#new', as: :b_login
+  post 'b_login', to: 'b_sessions#create'
+  delete 'b_logout', to: 'b_sessions#destroy', as: :b_logout
+
 
 end

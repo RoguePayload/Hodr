@@ -1,0 +1,75 @@
+<!-- Display other business attributes here -->
+<div class="content-page" style="margin-bottom: 325px;">
+	<div class="profile-banner" style="margin-bottom: -300px;">
+    <% if @business.banner.attached? %>
+    	<%= image_tag @business.banner, class: 'profile-banner' %>
+  	<% else %>
+    	<%= image_tag("banner.png", class: 'profile-banner') %>
+  	<% end %>
+	</div>
+   	 <div class="col-sm-3 avatar-container">
+       <% if @business.avatar.attached? %>
+       	<%= image_tag @business.avatar, class: "img-circle profile-avatar", alt: "User Avatar" %>
+     	<% else %>
+       	<%= image_tag("hodr_logo.png", class: "img-circle profile-avatar") %>
+     	<% end %>
+   	 </div>
+     <p>Business Name:</p> <%= @business.name %>
+</div>
+<div class="container-fluid gedf-wrapper">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="h5"><%= @business.name %></div>
+                    <div class="h7 pbio">
+                      <% account_age = ((Time.zone.now - @business.created_at) / 1.day).to_i %>
+                      <p style="font-size: 20px;">Account age: <%= account_age %> days</p>
+                    </div>
+                    <div class="h7 pbio">
+                    </div>
+
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background-color: #000">
+                      <div class="h6 text-muted">Contact This Business:</div>
+                      <div class="h5">
+                          <%= @business.email %><br/>
+                          <%= @business.phone %><br/>
+                          <%= @business.address %>
+                          <%= @business.city %> <%= @business.state %> <%= @business.zip %>
+                      </div>
+                    </li>
+                    <li class="list-group-item" style="background-color: #000">
+                        <div class="h6 text-muted">Number of Products/Services</div>
+                        <div class="h5">
+                          150
+                        </div>
+                    </li>
+                    <li class="list-group-item" style="background-color: #000;">
+                        <div class="h6 text-muted">Current Number of Open Positions</div>
+                        <div class="h5">
+                          5
+                        </div>
+                    </li>
+                    <li class="list-group-item" style="background-color: #000">
+                      <div class="h6 text-muted">Number of Posts</div>
+                      <div class="h5">
+                      </div>
+                    </li>
+                    <li class="list-group-item" style="background-color: #000">
+                      <div class="h6 text-muted">Edit This Business</div>
+                      <div class="h5">
+                        <%= link_to "Edit Business Profile", edit_business_path(@business), class: 'btn btn-primary' %>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 gedf-main">
+
+
+
+        </div>
+    </div>
+</div>

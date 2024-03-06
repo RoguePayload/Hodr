@@ -4,7 +4,9 @@
     <h1 class="home_h1">Welcome to Hodr</h1>
     <p class="lead home_p" style="color: #FFF;">The revolution of Social Media!</p>
     <p class="lead home_p" style="color: #FFF;">Join us and experience the freedom and empowerment of true social media.</p>
-    <%= link_to "Create A New Account!", signup_path, class: "btn btn-lg btn-primary mt-4" %>&nbsp;&nbsp;<%= link_to "Log Into Your Account!", login_path, class: "btn btn-lg btn-success" %>
+    <%= link_to "Create A New Account!", signup_path, class: "btn btn-lg btn-primary mt-4" %>&nbsp;&nbsp;<%= link_to "Log Into Your Account!", login_path, class: "btn btn-lg btn-success" %><br/>
+    <%= link_to 'Business Owner? Register Here', new_business_path, class: 'btn btn-warning' %>
+    <%= link_to 'Existing Business Owner?', b_login_path, class: 'btn btn-success' %>
   </div>
 </div>
 

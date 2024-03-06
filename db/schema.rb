@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_06_011821) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_06_190902) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -77,6 +77,22 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_011821) do
     t.index ["category_id"], name: "index_boards_on_category_id"
   end
 
+  create_table "businesses", force: :cascade do |t|
+    t.string "name"
+    t.string "website"
+    t.string "avatar"
+    t.string "banner"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -127,6 +143,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_011821) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.string "postable_type", null: false
+    t.integer "postable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["postable_type", "postable_id"], name: "index_posts_on_postable"
   end
 
   create_table "relationships", force: :cascade do |t|
