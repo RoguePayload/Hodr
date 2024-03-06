@@ -7,17 +7,14 @@
   <span class="user"><%= link_to micropost.user.uname, micropost.user, class: 'post_user_link' %></span>
   <span class="content post_content"><%= micropost.content %></span>
   <% if micropost.images.attached? %>
-    <div class="images-container">
-      <%= image_tag micropost.images.first, class: "main-image" if micropost.images.any? %>
-
-      <% if micropost.images.count > 1 %>
-        <div class="additional-images">
-          <% micropost.images.drop(1).each do |image| %>
-            <%= image_tag image, class: "sub-image" %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <%= image_tag micropost.images.first, width: "100%" %>
+    <% if micropost.images.count > 1 %>
+      <div class="additional-images">
+        <% micropost.images.drop(1).each do |image| %>
+          <%= image_tag image.variant(resize_to_limit: [100, 100]), class: "small-image" %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 
 
