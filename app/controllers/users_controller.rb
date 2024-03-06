@@ -33,10 +33,10 @@ class UsersController < ApplicationController
       admin = User.find_by(id: 1)
       @user.follow(admin) unless @user == admin
       admin.follow(@user) unless @user == admin
-      user.update(last_login_at: Time.current, last_login_ip: request.remote_ip)
+      @user.update(last_login_at: Time.current, last_login_ip: request.remote_ip)
       log_in @user
       flash[:success] = "Welcome to Hodr!"
-      user.update(last_login_at: Time.current)
+      @user.update(last_login_at: Time.current)
       redirect_to @user
     else
       render 'new', status: :unprocessable_entity
