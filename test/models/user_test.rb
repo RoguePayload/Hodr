@@ -8,7 +8,7 @@ class UserTest < ActiveSupport::TestCase
     twitter: "https://twitter.com/AubreyLove", lin: "https://linkedin.com/in/AubreyLove", web: "https://aubreylove.space", ytube: "https://youtube.com/AubreyLove",
     degree: "Ph.D. Computer Science", sname: "Ashley University", cstudies: "Did school work", marital: "Married", spouse: "Khristane", kids: "4", books: "Ruby on Rails, Coding for Dummies",
     activity: "Coding, Family Time, God Time", songs: "Teach me Lord to Wait", games: "Fortnite, Call of Duty, Halo", jtitle: "Lead Programmer", cname: "Hodr", ljob: "1 Year",
-    password: "abc123", password_confirmation: "abc123", bio: "A simple man trying to make it in this world!")
+    password: "Abc123!", password_confirmation: "Abc123!", bio: "A simple man trying to make it in this world!")
   end
 
   test "should be valid" do
@@ -24,6 +24,11 @@ class UserTest < ActiveSupport::TestCase
     @user.uname = "a" * 51
     assert_not @user.valid?
   end
+
+  test "Username (uname) should not include spaces" do
+  @user.uname = "my username"
+  assert_not @user.valid?, "username with spaces should be invalid"
+end
 
   test "First Name (fname) should be present" do
     @user.fname = "    "
@@ -104,6 +109,14 @@ class UserTest < ActiveSupport::TestCase
     @user.email = mixed_case_email
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email
+  end
+
+  test "email should not include forbidden words" do
+    forbidden_emails = %w[user@hodr.me user@hodr.com user@hodr.net]
+    forbidden_emails.each do |forbidden_email|
+      @user.email = forbidden_email
+      assert_not @user.valid?, "#{forbidden_email.inspect} should be invalid"
+    end
   end
 
   test "Address 1 (adr1) should be present" do
@@ -354,6 +367,18 @@ class UserTest < ActiveSupport::TestCase
   test "password should have a minimum length" do
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
+  end
+
+  test 'password should have a minimum complexity' do
+    invalid_passwords = ['password', 'PASSWORD', '123456', '12345a', '12345A', '12345!', 'aA!2']
+    invalid_passwords.each do |invalid_password|
+      @user.password = @user.password_confirmation = invalid_password
+      assert_not @user.valid?, "#{invalid_password.inspect} should be invalid"
+    end
+
+    valid_password = 'Password1!'
+    @user.password = @user.password_confirmation = valid_password
+    assert @user.valid?, "#{valid_password.inspect} should be valid"
   end
 
   test "authenticated? should return false for a user with nil digest" do

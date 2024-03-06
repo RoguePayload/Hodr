@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :badges, through: :user_badges
 
   has_many :mentions
-  has_many :mentioned_in_posts, through: :mentions, source: :micropost  
+  has_many :mentioned_in_posts, through: :mentions, source: :micropost
 
   has_many :board_memberships
   has_many :boards, through: :board_memberships
@@ -38,6 +38,8 @@ class User < ApplicationRecord
 
   validates :uname, presence: true, length: { maximum: 50 }, allow_nil: true
 
+  validates :uname, format: { without: /\s/, message: "must not contain spaces" }
+
   validates :fname, length: { maximum: 50 }, allow_nil: true
 
   validates :mname, length: { maximum: 50 }, allow_nil: true
@@ -49,6 +51,8 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
+
+  validate :email_excludes_forbidden_words
 
   validates :adr1, length: { maximum: 50 }, allow_nil: true
 
@@ -107,6 +111,8 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  validate :password_complexity
 
   scope :top_contributors, -> (limit: 5) {
     joins(:microposts).group(:id).order('COUNT(microposts.id) DESC').limit(limit)
@@ -196,7 +202,21 @@ class User < ApplicationRecord
     assign_post_badges
   end
 
+  # New custom validation method
+  def email_excludes_forbidden_words
+    forbidden_words = ["hodr", "hodr.me", "hodr.com", "hodr.net", "hodr.xyz", "hodr.org", "hodr.online", "hodr.site"]
+    if forbidden_words.any? { |word| email.include?(word) }
+      errors.add(:email, "contains a forbidden word or domain")
+    end
+  end
+
   private
+
+  def password_complexity
+    return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[#?!@$%^&*-])/
+
+    errors.add :password, 'Complexity requirement not met. Length should be 6-20 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
+  end  
 
   def assign_badge_based_on_id
     assign_hundred_badge if id <= 100
