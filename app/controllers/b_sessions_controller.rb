@@ -21,7 +21,8 @@ class BSessionsController < ApplicationController
   end
 
   def destroy
-    session[:business_id] = nil
-    redirect_to root_path, notice: 'Logged out successfully.'
+    session[:business_id] = nil  # Clear business session
+    flash[:success] = "You have successfully logged out."
+    redirect_to root_url  # Adjust as needed
   end
 end
