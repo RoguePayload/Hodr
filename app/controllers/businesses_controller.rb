@@ -2,6 +2,10 @@ class BusinessesController < ApplicationController
 
   before_action :set_business, only: [:show, :edit, :update]
 
+  def index
+    @businesses = Business.paginate(page: params[:page], per_page: 10) # Adjust `per_page` as needed
+  end
+
   def new
     @business = Business.new
   end

@@ -61,7 +61,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
   get '/microposts', to: 'users#show'
-  resources :businesses, only: [:new, :create, :show, :edit, :update] do
+  resources :businesses, only: [:new, :create, :show, :edit, :update, :index] do
     resources :products
     resources :jobs
   end

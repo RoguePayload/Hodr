@@ -1,0 +1,26 @@
+<h1>Businesses</h1>
+<div class="container">
+  <h1 class="mb-4 users_header">All Businesses</h1>
+  <p class="mb-4 users_count">Total Registered Businesses: <%= Business.count %></p>
+  <div class="row">
+    <% @businesses.each do |business| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body user_card">
+            <% if business.avatar.attached? %>
+              <%= image_tag business.avatar, class: 'user_card_avatar' %>
+            <% else %>
+              <%= image_tag('hodr_logo.png', class: 'user_card_avatar') %>
+            <% end %>
+            <h5 class="card-title user_card_title"><%= business.name %></h5>
+            <p class="card-text user_card_creation">Time of Creation: <%= time_ago_in_words(business.created_at) %> ago</p>
+            <%= link_to 'View profile', business_path(business), class: 'btn btn-success' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="mt-4">
+    <%= will_paginate %>
+  </div>
+</div>
