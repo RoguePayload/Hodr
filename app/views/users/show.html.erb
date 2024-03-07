@@ -1,17 +1,143 @@
 <% provide(:title, @user.uname) %>
-<%# Mobile View %>
-<% if mobile_view? %>
-  <div class="mobile-profile-view">
-    <%= render 'profile_mobile' %>
-  </div>
-<% end %>
+<div class="content-page" style="margin-bottom: 325px;">
+	<div class="profile-banner" style="margin-bottom: -300px;">
+  	<% if @user.banner.attached? %>
+    	<%= image_tag @user.banner, class: 'profile-banner' %>
+  	<% else %>
+    	<%= image_tag("banner.png", class: 'profile-banner') %>
+  	<% end %>
+	</div>
+   	 <div class="col-sm-3 avatar-container">
+  	<% if @user.avatar.attached? %>
+    	<%= image_tag @user.avatar, class: "img-circle profile-avatar", alt: "User Avatar" %>
+  	<% else %>
+    	<%= image_tag("hodr_logo.png", class: "img-circle profile-avatar") %>
+  	<% end %>
+   	 </div>
+</div>
 
-<%# Desktop View %>
-<% if desktop_view? %>
-  <div class="desktop-profile-view">
-    <%= render 'profile_desktop' %>
-  </div>
-<% end %>
+    <div class="container-fluid gedf-wrapper">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="h5"><%= @user.uname %></div>
+                        <div class="h7 text-muted pname">Name : <%= @user.fname %> <%= @user.lname %></div>
+                        <div class="h7 pbio">
+													<% account_age = ((Time.zone.now - @user.created_at) / 1.day).to_i %>
+													<p style="font-size: 20px;">Account age: <%= account_age %> days</p>
+                        </div>
+												<div class="h7 pbio">
+													<%= render 'family' %>
+													<%= render 'status' %>
+												</div>
+
+                    </div>
+                    <ul class="list-group list-group-flush">
+												<li class="list-group-item" style="background-color: #000">
+													<div class="h6 text-muted">Badges Earned</div>
+													<div class="h5">
+														<% @user.badges.uniq.each do |badge| %>
+														  <%= image_tag badge.image_url, class: 'profile-badge' %>
+														<% end %>
+													</div>
+												</li>
+                        <li class="list-group-item" style="background-color: #000">
+                            <div class="h6 text-muted">Followers</div>
+                            <div class="h5">
+                              <%= @user.followers.count %>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="background-color: #000;">
+                            <div class="h6 text-muted">Following</div>
+                            <div class="h5">
+                              <%= @user.following.count %>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="background-color: #000">
+                          <div class="h6 text-muted">Number of Posts</div>
+                          <div class="h5">
+                            <%= @user.microposts.count %>
+                          </div>
+                        </li>
+												<li class="list-group-item" style="background-color: #000">
+													<div class="h6 text-muted">Follow This User</div>
+													<div class="h5">
+														<%= render 'follow_form' %>
+													</div>
+												</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 gedf-main">
+                <!-- User Buttons -->
+                <div class="card gedf-card">
+                    <div class="card-body">
+                        <div class="btn-toolbar justify-content-between">
+                            <div class="btn-group" style="width: 100%;">
+                                <button onclick="feedBtn()" class="nav_button">Feed</button>
+																<button onclick="aboutBtn()" class="nav_button">About</button>
+																<button onclick="activityBtn()" class="nav_button">Activities</button>
+																<button onclick="careerBtn()" class="nav_button">Career</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- User Buttons-->
+
+                <!-- Feed -->
+                <div class="card gedf-card" id="feed" style="display: block">
+										<div class="btn-group" style="width: 100%;">
+                        <% if @user == current_user %>
+												    <%= render 'shared/micropost_form' %>
+                        <% end %>
+										</div>
+                    <div class="card-body">
+                        <%= render 'shared/feed' %>
+                    </div>
+                </div>
+                <!-- Feed -->
+
+								<!-- About -->
+								<div class="card gedf-card" id="about" style="display: none">
+									<div class="btn-group" style="width: 100%;">
+										<%= render 'about' %>
+									</div>
+								</div>
+								<!-- About -->
+
+								<!-- Activities -->
+								<div class="card gedf-card" id="activities" style="display: none">
+									<div class="btn-group" style="width: 100%;">
+										<%= render 'activities' %>
+									</div>
+								</div>
+								<!-- Activities -->
+
+								<!-- Career -->
+								<div class="card gedf-card" id="career" style="display: none">
+									<div clsas="btn-group" style="width: 100%;">
+										<%= render 'career' %>
+									</div>
+								</div>
+								<!-- Career -->
+
+            </div>
+            <div class="col-md-3">
+
+							<div id="ad-space" class="card gedf-card">
+							    <div class="card-body">
+							        <h5 class="card-title url"><a href="#" target="_blank" id="ad-link">Ad Title</a></h5>
+							        <h6 class="card-subtitle mb-2 text-muted url_bio" id="ad-subtitle">Ad Subtitle</h6>
+							        <p class="card-text ad_bio" id="ad-description">Ad Description</p>
+							        <img src="" id="ad-image" alt="Ad Image" style="width:100%;">
+							    </div>
+							</div>
+
+
+            </div>
+        </div>
+    </div>
 
 <style>
 body {

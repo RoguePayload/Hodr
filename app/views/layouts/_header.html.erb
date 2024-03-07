@@ -1,25 +1,4 @@
-<% if request.variant.mobile? %>
-  <!-- Mobile Navigation -->
-  <nav class="mobile-nav" style="text-align: center;">
-    <% unless controller_name == 'static_pages' && action_name == 'home' %>
-      <% if logged_in? %>
-        <%= link_to "Users", users_path, class: 'mobile-link' %>
-        <%= link_to "Chat Boards", boards_path, class: 'mobile-link' %>
-        <%= link_to "Feed", current_user, class: 'mobile-link' %>
-        <%= link_to "Edit Profile", edit_user_path(current_user), class: 'mobile-link' %>
-        <% if current_user&.admin %>
-          <%= link_to "Admin Portal", admin_path, class: 'mobile-link-admin' %>
-        <% end %>
-        <%= link_to "Logout", logout_path, data: { "turbo-method": :delete }, class: 'mobile-link' %>
-      <% else %>
-        <%= link_to "Log in", login_path, class: 'mobile-link' %>
-        <%= link_to "Sign up", signup_path, class: 'mobile-link' %>
-      <% end %>
-    <% end %>
-  </nav>
-<% else %>
-  <!-- Desktop Navigation -->
-  <header class="navbar navbar-fixed-top navbar-inverse">
+  <header class="navbar navbar-fixed-top navbar-inverse" style="width: 100%;">
     <div class="container">
       <%= link_to "Hodr", root_path, id: "logo" %>
       <nav>
@@ -58,4 +37,3 @@
       </nav>
     </div>
   </header>
-<% end %>
