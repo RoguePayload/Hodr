@@ -28,11 +28,8 @@
             <li><%= link_to "Add Products", new_business_product_path(current_business) %></li>
             <li><%= link_to "Edit Business Page", edit_business_path(current_business) %></li>
             <li><%= link_to "Add Jobs", new_business_job_path(current_business) %></li>
-            <li>
-              <% if current_business %>
-                <%= link_to 'Logout Business', business_logout_path, method: :delete, class: 'btn btn-warning' %>
-              <% end %>
-            </li>              
+            <li><%= link_to 'Logout', b_logout_path, method: :delete, class: 'btn btn-danger' %>
+            </li>
             <!-- Add more business-specific links as needed -->
           <% else %>
             <li><%= link_to "Log in", login_path %></li>
