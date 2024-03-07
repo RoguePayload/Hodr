@@ -10,7 +10,7 @@ class Micropost < ApplicationRecord
   end
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
-  validates :content, presence: true, length: { minimum: 4 }
+  validates :content, presence: false, length: { minimum: 4 }
   validates :images, content_type: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'image/webp'],
                        size: { less_than: 5.gigabytes , message: 'should be less than 5GB' }
   after_save :assign_user_post_badges
@@ -28,5 +28,5 @@ class Micropost < ApplicationRecord
       user = User.find_by(uname: uname)
       mentions.create(user: user) if user
     end
-  end  
+  end
 end
