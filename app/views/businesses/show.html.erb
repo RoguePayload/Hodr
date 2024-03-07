@@ -43,13 +43,13 @@
                     <li class="list-group-item" style="background-color: #000">
                         <div class="h6 text-muted">Number of Products/Services</div>
                         <div class="h5">
-                          150
+                          <%= @business.products.count %>
                         </div>
                     </li>
                     <li class="list-group-item" style="background-color: #000;">
                         <div class="h6 text-muted">Current Number of Open Positions</div>
                         <div class="h5">
-                          5
+                          <%= @business.jobs.count %>
                         </div>
                     </li>
                     <li class="list-group-item" style="background-color: #000">

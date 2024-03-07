@@ -2,18 +2,19 @@
   <!-- Mobile Navigation -->
   <nav class="mobile-nav" style="text-align: center;">
     <% unless controller_name == 'static_pages' && action_name == 'home' %>
-    <% if logged_in? %>
-      <%= link_to "Users", users_path, class: 'mobile-link' %>
-      <%= link_to "Chat Boards", boards_path, class: 'mobile-link' %>
-      <%= link_to "Feed", current_user, class: 'mobile-link' %>
-      <%= link_to "Edit Profile", edit_user_path(current_user), class: 'mobile-link' %>
-      <% if current_user&.admin %>
-        <%= link_to "Admin Portal", admin_path, class: 'mobile-link-admin' %>
+      <% if logged_in? %>
+        <%= link_to "Users", users_path, class: 'mobile-link' %>
+        <%= link_to "Chat Boards", boards_path, class: 'mobile-link' %>
+        <%= link_to "Feed", current_user, class: 'mobile-link' %>
+        <%= link_to "Edit Profile", edit_user_path(current_user), class: 'mobile-link' %>
+        <% if current_user&.admin %>
+          <%= link_to "Admin Portal", admin_path, class: 'mobile-link-admin' %>
+        <% end %>
+        <%= link_to "Logout", logout_path, data: { "turbo-method": :delete }, class: 'mobile-link' %>
+      <% else %>
+        <%= link_to "Log in", login_path, class: 'mobile-link' %>
+        <%= link_to "Sign up", signup_path, class: 'mobile-link' %>
       <% end %>
-    <% else %>
-      <%= link_to "Log in", login_path, class: 'mobile-link' %>
-      <%= link_to "Sign up", signup_path, class: 'mobile-link' %>
-    <% end %>
     <% end %>
   </nav>
 <% else %>
@@ -23,7 +24,7 @@
       <%= link_to "Hodr", root_path, id: "logo" %>
       <nav>
         <div class="navbar-header">
-          <button id="hamburger" type="button" class="navbar-toggle collapsed">
+          <button id="hamburger" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -35,33 +36,23 @@
           <li><%= link_to "About", about_path %></li>
           <li><%= link_to "How To", howto_path %></li>
           <li><%= link_to "Contact", contact_path %></li>
-          <% if current_user&.admin %>
-            <li><%= link_to "Admin Portal", admin_path %></li>
-          <% end %>
           <% if logged_in? %>
             <li><%= link_to "Users", users_path %></li>
-            <li class="dropdown">
-              <a href="#" id="account" class="dropdown-toggle" data-turbo="false">
-                Account <b class="caret"></b>
-              </a>
-              <ul id="dropdown-menu" class="dropdown-menu">
-                <li><%= link_to "Profile", current_user %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Chat Boards", boards_path %></li>
-                <li class="divider"></li>
-                <li><%= link_to "EULA & Terms", eula_path %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Android Privacy", android_path %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Log out", logout_path, data: { "turbo-method": :delete } %></li>
-              </ul>
-            </li>
+            <li><%= link_to "Profile", current_user %></li>
+            <% if current_user&.admin %>
+              <li><%= link_to "Admin Portal", admin_path %></li>
+            <% end %>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li><%= link_to "Chat Boards", boards_path %></li>
+            <li><%= link_to "Log out", logout_path, data: { "turbo-method": :delete } %></li>
+          <% elsif current_business %>
+            <li><%= link_to "Add Products", new_business_product_path(current_business) %></li>
+            <li><%= link_to "Edit Business Page", edit_business_path(current_business) %></li>
+            <li><%= link_to "Add Jobs", new_business_job_path(current_business) %></li>
+            <!-- Add more business-specific links as needed -->
           <% else %>
             <li><%= link_to "Log in", login_path %></li>
-            <li><%= link_to "EULA & Terms", eula_path %></li>
-            <li><%= link_to "Android Privacy", android_path %></li>
+            <li><%= link_to "Sign up", signup_path %></li>
           <% end %>
         </ul>
       </nav>

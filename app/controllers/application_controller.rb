@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  helper_method :current_business # Makes the method available in views
   include SessionsHelper
   before_action :detect_device_variant
   helper_method :mobile_view?, :desktop_view?
@@ -23,5 +24,11 @@ class ApplicationController < ActionController::Base
 
     def desktop_view?
       !mobile_view?
+    end
+
+    def current_business
+      @current_business ||= Business.find(session[:business_id]) if session[:business_id]
+    rescue ActiveRecord::RecordNotFound
+      session[:business_id] = nil # Handles edge case where business does not exist
     end    
 end

@@ -5,10 +5,37 @@
     <p class="lead home_p" style="color: #FFF;">The revolution of Social Media!</p>
     <p class="lead home_p" style="color: #FFF;">Join us and experience the freedom and empowerment of true social media.</p>
     <%= link_to "Create A New Account!", signup_path, class: "btn btn-lg btn-primary mt-4" %>&nbsp;&nbsp;<%= link_to "Log Into Your Account!", login_path, class: "btn btn-lg btn-success" %><br/>
-    <%= link_to 'Business Owner? Register Here', new_business_path, class: 'btn btn-warning' %>
-    <%= link_to 'Existing Business Owner?', b_login_path, class: 'btn btn-success' %>
   </div>
 </div>
+
+<div class="container text-center mt-5 home_why_div">
+  <h2 class="home_why_h1">Have a Business?</h2>
+  <p class="lead home_why_p">We are excited to announce the launch of our Business module aspect of Hodr! While this is currently still in <i>Beta Stages</i>, we are excited to announce that
+    businesses can now create their very own business profile page! <br/>
+    <strong>What Can Your Business Page Do?</strong><br/>
+    * <b>Host Products</b> ~ ou can host as many products on our page as you would like too! We put a twist on things. Instead of us handling the payment processing aspect for you,
+      what we do is allow you to post a link to your website to allow users to check out on your website! Why? If we start hosting and handling the payment processing, we would charge a
+      small fee for handling it, then our payment software would charge an additional fee as well. By not charging these extra fees, you have more money in your pocket!<br/>
+      <br/>
+    * <b>Host Jobs</b> ~ ow you can add your jobs that you have available for your company! You can easily set the name of the position, the description of it, as well as the payment
+      that you wish to pay for that position! And, replicating the product, you can include a link to where users can go and apply for that position directly on your website! This allows
+      you to keep and manage your applications in your desired employment system. This can be directly on your site, or on a third party site like monster.com or indeed.com. Your choice!<br/>
+      <br/>
+    * <b>Posting</b> ~ OMING SOON! This new feature that will be released soon will allow you to create new posts to add to your business page. It will operate in the same context as the current
+      posts work on the users page. This feature will allow you to keep engaging with your customers, and help reach new customers as well. And yes, we will have comments that will allow other
+      users and businesses to post comments on your posts!<br/>
+      <br/>
+    * <b>Following</b> ~ OMING SOON! With the addition of allowing users to follow your business, when you create a new post, you will be able to instantly reach all of those who follow your business page!
+      By allowing the users, and other businesses, to follow your business page, you can help grow your audience to a new level!<br/>
+      <br/>
+    * <b>New Features</b> ~ ere at Hodr, we are always constantly looking forward to ways we can improve our services to better cater to everyone's desires and needs. And while we understand
+      that there are some features that could be pivotal to a business, or user, this website has only 1 developer. So integrating new ideas and concepts can be done, however, he does need
+      your assistance! If you have a suggestion or an idea on how we can improve this site, please send the developer an email <%= link_to 'dev@hodr.me', 'mailto:dev@hodr.me', target: '_blank' %>!<br/>
+      <br/>
+      <%= link_to 'Business Owner? Register Here', new_business_path, class: 'btn btn-warning' %>
+      <%= link_to 'Existing Business Owner?', b_login_path, class: 'btn btn-success' %>
+    </p>
+  </div>
 
 <div class="container text-center mt-5 home_why_div">
   <h2 class="home_why_h1">Why Choose Hodr?</h2>
@@ -46,7 +73,4 @@
       <p class="home_tech_inner_p">Reliable and efficient database management system.</p>
     </div>
   </div>
-</div>
-<div class="container text-center mt-5">
-  <div class="gfm-embed" data-url="https://www.gofundme.com/f/launch-our-dream-building-a-social-media-platform/widget/large?sharesheet=coachingTask"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
 </div>
