@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_06_190902) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_07_105115) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -109,6 +109,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_190902) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.string "jname"
+    t.text "jdesc"
+    t.string "jpay"
+    t.string "jlink"
+    t.integer "business_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_jobs_on_business_id"
+  end
+
   create_table "mentions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "micropost_id", null: false
@@ -152,6 +163,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_190902) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["postable_type", "postable_id"], name: "index_posts_on_postable"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "pname"
+    t.text "pdesc"
+    t.string "pimage"
+    t.string "plink"
+    t.integer "business_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_products_on_business_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -223,11 +245,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_190902) do
   add_foreign_key "board_memberships", "users"
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
+  add_foreign_key "jobs", "businesses"
   add_foreign_key "mentions", "microposts"
   add_foreign_key "mentions", "users"
   add_foreign_key "messages", "boards"
   add_foreign_key "messages", "users"
   add_foreign_key "microposts", "users"
+  add_foreign_key "products", "businesses"
   add_foreign_key "user_badges", "badges"
   add_foreign_key "user_badges", "users"
 end

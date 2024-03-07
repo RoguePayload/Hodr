@@ -61,6 +61,8 @@
                       <div class="h6 text-muted">Edit This Business</div>
                       <div class="h5">
                         <%= link_to "Edit Business Profile", edit_business_path(@business), class: 'btn btn-primary' %>
+												<%= link_to 'Add New Product', new_business_product_path(@business), class: 'btn btn-primary' %>
+												<%= link_to 'Add New Job', new_business_job_path(@business), class: 'btn btn-primary' %>
                       </div>
                     </li>
                 </ul>
@@ -68,8 +70,29 @@
         </div>
         <div class="col-md-6 gedf-main">
 
-
+					<h3>Products</h3>
+					<div class="row">
+					  <% @business.products.each do |product| %>
+					    <div class="col-md-4 mb-3">
+					      <%= render 'products/product', product: product %>
+					    </div>
+					  <% end %>
+					</div>
 
         </div>
+
+				<div class="col-md-6 gedf-main">
+					<div class="row">
+						<h3>Job Listings</h3>
+						<% @business.jobs.each do |job| %>
+						  <div class="job-listing">
+						    <h4><%= job.jname %></h4>
+						    <p><%= job.jdesc %></p>
+						    <p>Pay Scale: <%= job.jpay %></p>
+						    <a href="<%= job.jlink %>" class="btn btn-info" target="_blank">Apply Now</a>
+						  </div>
+						<% end %>
+					</div>
+				</div>
     </div>
 </div>

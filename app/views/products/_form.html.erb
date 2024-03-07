@@ -1,0 +1,28 @@
+<!-- app/views/products/_form.html.erb -->
+<%= form_with(model: [ @business, @product ], local: true) do |form| %>
+  <% if @product.errors.any? %>
+    <!-- Error messages -->
+  <% end %>
+
+  <div>
+    <%= form.label :pname, "Product Name" %>
+    <%= form.text_field :pname %>
+  </div>
+
+  <div>
+    <%= form.label :pdesc, "Product Description" %>
+    <%= form.text_area :pdesc %>
+  </div>
+
+  <div>
+    <%= form.label :pimage, "Product Image URL" %>
+    <%= form.text_field :pimage %>
+  </div>
+
+  <div>
+    <%= form.label :plink, "Product Link" %>
+    <%= form.text_field :plink %>
+  </div>
+
+  <%= form.submit "Save Product" %>
+<% end %>

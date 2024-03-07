@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pname: MyString
+  pdesc: MyText
+  pimage: MyString
+  plink: MyString
+  business: one
+
+two:
+  pname: MyString
+  pdesc: MyText
+  pimage: MyString
+  plink: MyString
+  business: two

@@ -1,0 +1,11 @@
+<!-- app/views/products/_product.html.erb -->
+<div class="card" style="width: 18rem;">
+  <% if product.pimage.present? %>
+    <img src="<%= product.pimage %>" class="card-img-top" alt="<%= product.pname %>">
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= product.pname %></h5>
+    <p class="card-text"><%= product.pdesc %></p>
+    <a href="<%= product.plink %>" class="btn btn-primary">Buy Now</a>
+  </div>
+</div>

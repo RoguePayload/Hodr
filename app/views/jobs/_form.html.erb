@@ -1,0 +1,24 @@
+<!-- app/views/jobs/_form.html.erb -->
+<%= form_with(model: [ @business, @job ], local: true) do |form| %>
+  <div>
+    <%= form.label :jname, "Job Position Name" %>
+    <%= form.text_field :jname %>
+  </div>
+
+  <div>
+    <%= form.label :jdesc, "Job Description" %>
+    <%= form.text_area :jdesc %>
+  </div>
+
+  <div>
+    <%= form.label :jpay, "Job Pay Scale" %>
+    <%= form.text_field :jpay %>
+  </div>
+
+  <div>
+    <%= form.label :jlink, "Link to Apply" %>
+    <%= form.text_field :jlink %>
+  </div>
+
+  <%= form.submit "Save Job Listing" %>
+<% end %>

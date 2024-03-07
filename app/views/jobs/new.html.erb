@@ -1,0 +1,6 @@
+<!-- app/views/jobs/new.html.erb -->
+<h1>Add a New Job Listing</h1>
+
+<%= render 'form', business: @business, job: @job %>
+
+<%= link_to 'Back to Business', business_path(@business) %>
