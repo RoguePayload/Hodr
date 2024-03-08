@@ -106,3 +106,19 @@
     }
   }
 }
+
+.comment_submit_button
+{
+  background-color: purple;
+  font-family: "Gideon Roman", serif;
+  color: gold;
+  text-shadow: 3px 3px 5px #C0C0C0;
+  padding: 3px;
+}
+.comment_text_area
+{
+  background-color: #C0C0C0;
+  border: 1px solid purple;
+  color: #FFF;
+  font-family: "Source Code Pro", monospace;
+}

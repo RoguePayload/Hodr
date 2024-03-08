@@ -1,3 +1,7 @@
-
-<p class="comment_uname"><%= comment.user.uname %></p>
-<p class="comment_content"><%= comment.content %></p>
+<div class="comment">
+  <p class="comment_uname"><%= comment.user.uname %></p>
+  <p class="comment_content"><%= auto_link(comment.content, html: { target: '_blank' }) %></p>
+  <% comment.images.each do |image| %>
+    <%= image_tag image, height: '100' %>
+  <% end %>
+</div>

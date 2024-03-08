@@ -4,8 +4,7 @@
     <%= f.text_area :content, placeholder: "Compose new post...", class: 'post_area' %>
   </div>
   <span class="image">
-    <%= f.file_field :images, multiple: true, accept: "image/png,image/jpeg,image/gif,image/webp" %>
-
+    <%= f.file_field :images, multiple: true, accept: "image/png,image/jpeg,image/gif,image/webp,video/mp4,video/mov,video/webm" %>
   </span><br/>
   <br/>
   <%= f.submit "Post", class: "btn btn-success", style: 'width: 100%;' %>

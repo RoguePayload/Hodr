@@ -25,7 +25,8 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'clamby'
 gem 'browser'
-
+gem 'link_thumbnailer'
+gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
 
 
 group :development, :test do

@@ -6,23 +6,16 @@
   <% end %>
   <span class="user"><%= link_to micropost.user.uname, micropost.user, class: 'post_user_link' %></span>
   <span class="content post_content">
-    <%= micropost.content.gsub(/@(\w+)/) do |match|
-          user = User.find_by(uname: $1)
-          if user
-            link_to match, user_path(user)
-          else
-            match
-          end
-        end.html_safe %>
+    <%= auto_link(simple_format(micropost.content), html: { target: '_blank' }) %>
   </span>
-  <% if micropost.images.attached? %>
-    <%= image_tag micropost.images.first, width: "100%" %>
-    <% if micropost.images.count > 1 %>
-      <div class="additional-images">
-        <% micropost.images.drop(1).each do |image| %>
-          <%= image_tag image.variant(resize_to_limit: [100, 100]), class: "small-image" %>
-        <% end %>
-      </div>
+  <% micropost.images.each do |media| %>
+    <% if media.content_type.start_with?('image/') %>
+      <%= image_tag media, width: "100%" %>
+    <% elsif media.content_type.start_with?('video/') %>
+      <video width="320" height="240" controls>
+        <source src="<%= url_for(media) %>" type="<%= media.content_type %>">
+        Your browser does not support the video tag.
+      </video>
     <% end %>
   <% end %>
 
@@ -37,6 +30,7 @@
 
   <%= form_with(model: [micropost, Comment.new], local: true) do |form| %>
     <%= form.text_area :content, placeholder: "Write a comment...", class: 'comment_text_area' %>
+    <%= form.file_field :images, multiple: true, accept: 'image/png,image/jpeg' %>
     <%= form.submit "Post Comment", class: 'comment_submit_button' %>
   <% end %>
 </li>
