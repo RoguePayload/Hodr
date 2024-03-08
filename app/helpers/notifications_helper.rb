@@ -3,7 +3,8 @@ module NotificationsHelper
     actor = notification.actor
     case notification.action
     when 'commented'
-      "#{actor.uname} commented on your post."
+      comment_text = notification.notifiable.content.truncate(50) # Truncate to avoid overly long texts
+      "#{actor.uname} commented on your post: \"#{comment_text}\""
     when 'followed'
       "#{actor.uname} followed you."
     # Add more cases as needed for other notification types
