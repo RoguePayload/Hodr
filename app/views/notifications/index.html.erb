@@ -2,6 +2,5 @@
 <% @notifications.each do |notification| %>
   <div class="<%= 'unread' if notification.read_at.nil? %>">
     <%= render_notification(notification) %>
-    <%= link_to 'Mark as read', mark_as_read_notification_path(notification), method: :patch %>
   </div>
 <% end %>
