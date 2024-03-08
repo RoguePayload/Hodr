@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ads.each do |ad| %>
+      <tr>
+        <td><%= ad.title %></td>
+        <td><%= ad.ad_type %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_ad_path(ad) %>
+          <%= link_to 'Delete', admin_ad_path(ad), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

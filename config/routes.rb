@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :ads
+  end
   get 'jobs/new'
   get 'jobs/create'
   get 'jobs/edit'
@@ -64,10 +67,13 @@ Rails.application.routes.draw do
   resources :businesses, only: [:new, :create, :show, :edit, :update, :index] do
     resources :products
     resources :jobs
+    get 'edit_password', to: 'businesses#edit_password'
+    patch 'update_password', to: 'businesses#update_password'
   end
   get 'b_login', to: 'b_sessions#new', as: :b_login
   post 'b_login', to: 'b_sessions#create'
-  delete 'b_logout', to: 'b_sessions#destroy', as: :b_logout
+  delete 'b_logout', to: 'sessions#destroy', as: :b_logout
+
 
 
 end

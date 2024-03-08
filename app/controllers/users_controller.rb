@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
     @micropost = current_user.microposts.build if logged_in?
-
+    @ad = Ad.where("start_date <= ? AND end_date >= ?", Date.today, Date.today).order("RANDOM()").first
     if logged_in? && current_user == @user
       @micropost = current_user.microposts.build
       @feed_items = current_user.feed.paginate(page: params[:page])

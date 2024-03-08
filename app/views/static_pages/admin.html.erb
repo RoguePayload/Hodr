@@ -12,7 +12,13 @@
             <button class="btn btn-warning btn-block"  onclick="Users()">User Management</button><br/>
           </li>
           <li class="nav-item">
+            <button class="btn btn-warning btn-block" onclick="Businesses()">Business Management</button><br/>
+          </li>
+          <li class="nav-item">
             <button class="btn btn-warning btn-block" onclick="Analytics()">Analytics</button><br/>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-warning btn-block" onclick="Ads()">Ads Management</button><br/>
           </li>
           <!-- Additional links for other admin sections -->
         </ul>
@@ -29,6 +35,7 @@
       <div id="Dashboard" style="display: none">
         Total Registered Users: <%= User.count %><br/>
         Total Number of Posts: <%= Micropost.count %><br/>
+        Total Registered Businesses: <%= Business.count %><br/>
       </div>
 
       <!-- Display Charts for Users -->
@@ -36,17 +43,23 @@
         <!-- Monthly New User Registration -->
         <div class="my-4 w-100" id="usersChart">
           <h4>Monthly New User Registrations</h4>
-          <%= line_chart @new_users_by_month, xtitle: "Month", ytitle: "New Users", library: {backgroundColor: "#f8f9fa"} %>
+          <%= line_chart User.group_by_month_of_year(:created_at, format: "%b").count, width: "100%", library: {title: {text: "User Registrations This Year", x: -20}, yAxis: {title: {text: "Number of Users"}}} %>
+        </div>
+        <div class="my-4 w-100" id="businessesChart">
+          <h4>Monthly New Business Registrations</h4>
+          <%= line_chart Business.group_by_month_of_year(:created_at, format: "%b").count, width: "100%", library: { title: { text: "Business Registrations This Year", x: -20 }, yAxis: { title: { text: "Number of Businesses" } } } %>
         </div>
         <div class="my-4 w-100" id="activityChart">
           <h4>Daily User Activity</h4>
-          <%= line_chart @daily_user_activity, xtitle: "Day", ytitle: "Active Users", library: {backgroundColor: "#f8f9fa"} %>
+          <%= line_chart @daily_user_activity, xtitle: "Day", ytitle: "Active Users", width: "100%", library: {backgroundColor: "#f8f9fa"} %>
         </div>
         <div class="my-4 w-100" id="userActiveChart">
           <h4>Active vs NonActive Users</h4>
           <i>Inactive Users ~ Greater than 30-Days since last online</i><br/>
           <h4>Active Users: <%= @active_users_count %><br/></h4>
-          <h4>Inactive Users: <%= @inactive_users_count %></h4>
+          <h4>Inactive Users: <%= @inactive_users_count %></h4><br/>
+          <h4>Active Businesses: <%= @active_businesses_count %><br/></h4>
+          <h4>Inactive Businesses: <%= @inactive_businesses_count %></h4>
         </div>
       </div>
 
@@ -82,7 +95,7 @@
                       <%= link_to 'Update Password', edit_password_user_path(user) %>
                     <% end %>
                   </td>
-                  <td><%= link_to "delete", user, data: { "turbo-method": :delete, turbo_confirm: "You sure?" }, class: 'btn btn-danger' %></td>
+                  <td>COMING SOON</td>
                 </tr>
               <% end %>
             </tbody>
@@ -90,6 +103,71 @@
 
           <%= will_paginate @users %>
         </div>
+
+        <!-- Display Business Management -->
+          <div id="BizManage" style="display: none">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Avatar</th>
+                  <th>Business Name</th>
+                  <th>Last IP</th>
+                  <th>View Account</th>
+                  <th>Change Password</th>
+                  <th>Delete Business</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @businesses.each do |business| %>
+                  <tr>
+                    <td>
+                      <% if business.avatar.attached? %>
+                        <%= image_tag business.avatar, class: 'user_card_avatar', style: 'width: 25px; height: 25px;' %>
+                      <% else %>
+                        <%= image_tag('hodr_logo.png', class: 'user_card_avatar', style: 'width: 25px; height: 25px;') %>
+                      <% end %>
+                    </td>
+                    <td><%= business.name %></td>
+                    <td><%= business.last_login_ip %></td>
+                    <td><%= link_to 'View Account', business_path(business) %></td>
+                    <td>COMING SOON</td>
+                    <td>COMING SOON</td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+            <%= will_paginate @businesses %>
+          </div>
+
+
+
+          <!-- Display User Management -->
+            <div id="AdManage" style="display: none">
+              <%= link_to 'Create Ad', new_admin_ad_path, class: 'btn btn-primary' %>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @ads.each do |ad| %>
+                    <tr>
+                      <td><%= ad.title %></td>
+                      <td><%= ad.end_date %></td>
+                      <td>
+                        <%= link_to 'Edit', edit_admin_ad_path(ad) %>
+                        <%= link_to 'Delete', admin_ad_path(ad), method: :delete, data: { confirm: 'Are you sure?' } %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+
+            </div>
 
       </div>
 
@@ -111,6 +189,7 @@ function Analytics()
     a.style.display = "block";
     document.getElementById("UserManage").style.display = "none";
     document.getElementById("Dashboard").style.display = "none";
+    document.getElementById("AdManage").style.display = "none";
   }
   else
   {
@@ -126,6 +205,8 @@ function Users()
     b.style.display = "block";
     document.getElementById("Charts").style.display = "none";
     document.getElementById("Dashboard").style.display = "none";
+    document.getElementById("BizManage").style.display = "none";
+    document.getElementById("AdManage").style.display = "none";
   }
   else
   {
@@ -141,10 +222,46 @@ function Dashboard()
     c.style.display = "block";
     document.getElementById("Charts").style.display = "none";
     document.getElementById("UserManage").style.display = "none";
+    document.getElementById("BizManage").style.display = "none";
+    document.getElementById("AdManage").style.display = "none";
   }
   else
   {
     c.style.display = "none";
+  }
+}
+
+function Businesses()
+{
+  var d = document.getElementById("BizManage");
+  if (d.style.display === "none")
+  {
+    d.style.display = "block";
+    document.getElementById("Charts").style.display = "none";
+    document.getElementById("UserManage").style.display = "none";
+    document.getElementById("Dashboard").style.display = "none";
+    document.getElementById("AdManage").style.display = "none";
+  }
+  else
+  {
+    d.style.display = "none";
+  }
+}
+
+function Ads()
+{
+  var e = document.getElementById("AdManage");
+  if (e.style.display === "none")
+  {
+    e.style.display = "block";
+    document.getElementById("Charts").style.display = "none";
+    document.getElementById("UserManage").style.display = "none";
+    document.getElementById("Dashboard").style.display = "none";
+    document.getElementById("BizManage").style.display = "none";
+  }
+  else
+  {
+    e.style.display = "none";
   }
 }
 </script>

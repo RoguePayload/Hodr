@@ -1,0 +1,30 @@
+<%= form_for([:admin, @ad]) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :subtitle %>
+  <%= f.text_field :subtitle %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :link %>
+  <%= f.text_field :link %>
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+
+  <%= f.label :duration %>
+  <%= f.number_field :duration %>
+
+  <%= f.label :start_date %>
+  <%= f.date_select :start_date %>
+
+  <%= f.label :end_date %>
+  <%= f.date_select :end_date %>
+
+  <%= f.label :ad_type %>
+  <%= f.select :ad_type, [['Weekly', 'weekly'], ['Monthly', 'monthly']] %>
+
+  <%= f.submit "Save Ad" %>
+<% end %>

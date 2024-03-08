@@ -1,0 +1,27 @@
+<%= form_for([:admin, @ad]) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :subtitle %>
+  <%= f.text_field :subtitle %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :link_url, "Link" %> <!-- Update this line -->
+  <%= f.text_field :link_url %> <!-- And this one -->
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+
+  <%= f.label :display_duration %>
+  <%= f.number_field :display_duration %>
+
+  <%= f.label :start_date %>
+  <%= f.date_select :start_date %>
+
+  <%= f.label :end_date %>
+  <%= f.date_select :end_date %>
+
+  <%= f.submit "Create Ad" %>
+<% end %>

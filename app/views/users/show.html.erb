@@ -125,14 +125,23 @@
             </div>
             <div class="col-md-3">
 
-							<div id="ad-space" class="card gedf-card">
+							<% if @ad %>
+							  <div id="ad-space" class="card gedf-card">
 							    <div class="card-body">
-							        <h5 class="card-title url"><a href="#" target="_blank" id="ad-link">Ad Title</a></h5>
-							        <h6 class="card-subtitle mb-2 text-muted url_bio" id="ad-subtitle">Ad Subtitle</h6>
-							        <p class="card-text ad_bio" id="ad-description">Ad Description</p>
-							        <img src="" id="ad-image" alt="Ad Image" style="width:100%;">
+							      <h5 class="card-title url">
+							        <%= link_to @ad.title, @ad.link_url, target: "_blank", id: "ad-link" %>
+							      </h5>
+							      <h6 class="card-subtitle mb-2 text-muted url_bio" id="ad-subtitle">
+							        <%= @ad.subtitle %>
+							      </h6>
+							      <p class="card-text ad_bio" id="ad-description">
+							        <%= @ad.description %>
+							      </p>
+							      <%= image_tag @ad.image_url, id: "ad-image", alt: "Ad Image", style: "width:100%;" if @ad.image_url.present? %>
 							    </div>
-							</div>
+							  </div>
+							<% end %>
+
 
 
             </div>
