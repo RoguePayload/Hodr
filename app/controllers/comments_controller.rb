@@ -6,7 +6,12 @@ class CommentsController < ApplicationController
     @comment = @micropost.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      flash[:success] = "Comment added!"
+      Notification.create(
+        user: @comment.micropost.user,
+        actor: current_user,
+        action: 'commented',
+        notifiable: @comment
+      )
     else
       flash[:alert] = "Error adding comment."
     end

@@ -73,7 +73,11 @@ Rails.application.routes.draw do
   get 'b_login', to: 'b_sessions#new', as: :b_login
   post 'b_login', to: 'b_sessions#create'
   delete 'b_logout', to: 'sessions#destroy', as: :b_logout
-
+  resources :notifications, only: [:index] do
+    member do
+      patch :mark_as_read
+    end
+  end
 
 
 end

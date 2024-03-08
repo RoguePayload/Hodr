@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :notifications, dependent: :destroy 
+
   has_one_attached :avatar
 
   has_one_attached :banner
@@ -216,7 +218,7 @@ class User < ApplicationRecord
     return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[#?!@$%^&*-])/
 
     errors.add :password, 'Complexity requirement not met. Length should be 6-20 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
-  end  
+  end
 
   def assign_badge_based_on_id
     assign_hundred_badge if id <= 100
