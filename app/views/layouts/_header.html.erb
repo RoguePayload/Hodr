@@ -30,6 +30,8 @@
               <li class="divider"></li>
               <li><%= link_to "EULA & Terms", eula_path %></li>
               <li class="divider"></li>
+              <li><%= link_to "Chat Boards", boards_path %></li>
+              <li class="divider"></li>
               <li><%= link_to "Log out", logout_path, data: { "turbo-method": :delete } %></li>
               <% elsif current_business %>
                 <li><%= link_to "Add Products", new_business_product_path(current_business) %></li>
