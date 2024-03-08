@@ -1,6 +1,8 @@
-<h1>Notifications</h1>
-<% @notifications.each do |notification| %>
-  <div class="<%= 'unread' if notification.read_at.nil? %>">
-    <%= render_notification(notification) %>
-  </div>
-<% end %>
+<div class="notification_div">
+  <h1 class="notification_header">Notifications</h1>
+  <% @notifications.each do |notification| %>
+    <div class="<%= 'unread' if notification.read_at.nil? %> notification_messages">
+      <%= render_notification(notification) %>
+    </div>
+  <% end %>
+</div>
