@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_08_231845) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_09_020600) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -79,6 +79,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_08_231845) do
     t.index ["category_id"], name: "index_boards_on_category_id"
   end
 
+  create_table "business_followers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "business_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_business_followers_on_business_id"
+    t.index ["user_id"], name: "index_business_followers_on_user_id"
+  end
+
   create_table "businesses", force: :cascade do |t|
     t.string "name"
     t.string "website"
@@ -95,6 +104,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_08_231845) do
     t.string "password_digest"
     t.datetime "last_login_at"
     t.string "last_login_ip"
+    t.text "description"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -261,6 +271,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_08_231845) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "board_memberships", "boards"
   add_foreign_key "board_memberships", "users"
+  add_foreign_key "business_followers", "businesses"
+  add_foreign_key "business_followers", "users"
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
   add_foreign_key "jobs", "businesses"

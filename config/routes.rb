@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'businesses/new'
   get 'businesses/create'
   get 'businesses/show'
+  get 'businesses', to: 'businesses#index'
   get 'messages/create'
   get 'boards/new'
   get 'boards/create'

@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
 
-  before_action :set_business, only: [:show, :edit, :update, :destroy, :index]
+  before_action :set_business, only: [:show, :edit, :update, :destroy]
   before_action :admin_user,     only: :destroy
 
 
@@ -15,7 +15,7 @@ class BusinessesController < ApplicationController
   def create
     @business = Business.new(business_params)
     if @business.save
-      @user.update(last_login_at: Time.current, last_login_ip: request.remote_ip)
+      @business.update(last_login_at: Time.current, last_login_ip: request.remote_ip)
       redirect_to @business, notice: 'Business profile was successfully created.'
     else
       render :new
@@ -33,7 +33,7 @@ class BusinessesController < ApplicationController
 
   def update
     if @business.update(business_params)
-      @user.update(last_login_at: Time.current)
+      @business.update(last_login_at: Time.current)
       redirect_to @business, notice: 'Business profile was successfully updated.'
     else
       render :edit
@@ -63,7 +63,7 @@ class BusinessesController < ApplicationController
   end
 
   def business_params
-    params.require(:business).permit(:name, :website, :avatar, :banner, :address, :city, :state, :zip, :email, :phone, :password, :password_confirmation)
+    params.require(:business).permit(:name, :website, :avatar, :description, :banner, :address, :city, :state, :zip, :email, :phone, :password, :password_confirmation)
   end
 
   # Confirms an admin user.
