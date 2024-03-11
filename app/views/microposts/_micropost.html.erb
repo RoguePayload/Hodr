@@ -8,16 +8,31 @@
   <span class="content post_content">
     <%= auto_link(simple_format(micropost.content), html: { target: '_blank' }) %>
   </span>
-  <% micropost.images.each do |media| %>
-    <% if media.content_type.start_with?('image/') %>
-      <%= image_tag media, width: "100%" %>
-    <% elsif media.content_type.start_with?('video/') %>
-      <video width="320" height="240" controls>
-        <source src="<%= url_for(media) %>" type="<%= media.content_type %>">
-        Your browser does not support the video tag.
-      </video>
+
+  <% if micropost.images.any? %>
+    <!-- Display the first image outside the flexbox if it's an image -->
+    <% if micropost.images.first.content_type.start_with?('image/') %>
+      <%= image_tag micropost.images.first, width: "100%" %>
     <% end %>
   <% end %>
+
+  <!-- Create a flex container for additional images and videos -->
+  <div class="media-container" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+    <% micropost.images.each_with_index do |media, index| %>
+      <% if index > 0 && media.content_type.start_with?('image/') %>
+        <!-- Display additional images if there are more than one -->
+        <%= image_tag media, width: "100px" %>
+      <% elsif media.content_type.start_with?('video/') %>
+        <!-- Display videos, adjusting the size to match the smaller images -->
+        <video width="100" controls>
+          <source src="<%= url_for(media) %>" type="<%= media.content_type %>">
+          Your browser does not support the video tag.
+        </video>
+      <% end %>
+    <% end %>
+  </div>
+
+
 
 
   <span class="timestamp post_time">
@@ -34,3 +49,21 @@
     <%= form.submit "Post Comment", class: 'comment_submit_button' %>
   <% end %>
 </li>
+
+<style>
+.images-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-large {
+  width: 100%;
+  max-width: 600px; /* Adjust as needed */
+}
+
+.image-small {
+  width: 100px; /* Adjust as needed */
+  margin-top: 10px;
+}
+</style>
