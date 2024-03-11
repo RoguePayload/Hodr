@@ -9,4 +9,5 @@
   <!-- Desktop-specific view -->
   <%= render 'desktop_login' %>
 <% end %>
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<p class="registration_page">New user? <%= link_to "Sign up now!", signup_path, class: 'btn btn-primary' %></p>
+<p class="registration_page">Business User? <%= link_to "Business Signup!", new_business_path, class: 'btn btn-warning' %></p>
