@@ -1,40 +1,70 @@
 <%= form_with(model: @business, url: business_path(@business), method: :patch) do |form| %>
 
 
-  <%= form.label 'Business Name: ' %>
-  <%= form.text_field :name %>
+  <%= form.label 'Business Name: ', class: 'biz_new_title' %>
+  <%= form.text_field :name, class: 'biz_new_input' %>
 
-  <%= form.label 'Business Website: ' %>
-  <%= form.text_field :website %>
+  <%= form.label 'Business Website: ', class: 'biz_new_title' %>
+  <%= form.text_field :website, class: 'biz_new_input' %>
 
-  <%= form.label 'Business Profile Picture: ' %>
-  <%= form.file_field :avatar %>
+  <%= form.label 'Business Profile Picture: ', class: 'biz_new_title' %>
+  <%= form.file_field :avatar, class: 'biz_new_input' %>
 
-  <%= form.label 'Business Profile Banner: ' %>
-  <%= form.file_field :banner %>
+  <%= form.label 'Business Profile Banner: ', class: 'biz_new_title' %>
+  <%= form.file_field :banner, class: 'biz_new_input' %>
 
-  <%= form.label 'Business Description: ' %>
-  <%= form.text_field :description %>
+  <%= form.label 'Business Description: ', class: 'biz_new_title' %>
+  <%= form.text_field :description, class: 'biz_new_input' %>
 
-  <%= form.label 'Business Address: ' %>
-  <%= form.text_field :address %>
+  <%= form.label 'Business Address: ', class: 'biz_new_title' %>
+  <%= form.text_field :address, class: 'biz_new_input' %>
 
-  <%= form.label 'Business City: ' %>
-  <%= form.text_field :city %>
+  <%= form.label 'Business City: ', class: 'biz_new_title' %>
+  <%= form.text_field :city, class: 'biz_new_input' %>
 
-  <%= form.label 'Business State: ' %>
-  <%= form.text_field :state %>
+  <%= form.label 'Business State: ', class: 'biz_new_title' %>
+  <%= form.text_field :state, class: 'biz_new_input' %>
 
-  <%= form.label 'Business Zip: ' %>
-  <%= form.text_field :zip %>
+  <%= form.label 'Business Zip: ', class: 'biz_new_title' %>
+  <%= form.text_field :zip, class: 'biz_new_input' %>
 
-  <%= form.label 'Business Email: ' %>
-  <%= form.email_field :email %>
+  <%= form.label 'Business Email: ', class: 'biz_new_title' %>
+  <%= form.email_field :email, class: 'biz_new_input', disabled: true %>
 
-  <%= form.label 'Business Phone: ' %>
-  <%= form.telephone_field :phone %>
+  <%= form.label 'Business Phone: ', class: 'biz_new_title' %>
+  <%= form.telephone_field :phone, class: 'biz_new_input' %>
 
   <!-- Add fields for other attributes as needed -->
 
-  <%= form.submit "Update Profile", class: "btn btn-primary" %>
+  <%= form.submit "Update Profile", class: "btn btn-primary biz_btn" %>
+  <br/>
+  <%= link_to 'Back to Business', business_path(@business) %><br/>
+  <br/>
 <% end %>
+
+
+<style>
+body
+{
+  background-color: #CCC;
+}
+.biz_new_title
+{
+  font-family: "Cinzel", serif;
+  color: black;
+  text-shadow: 5px 5px 7px #000;
+}
+.biz_new_input
+{
+  font-family: "Source Code Pro", monospace;
+  background-color: #000;
+  border: 2px solid gold;
+  padding: 4px;
+  color: #0F0;
+}
+.biz_btn
+{
+  font-family: "Gideon Roman", serif;
+  font-size: 20px;
+}
+</style>

@@ -1,7 +1,10 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
+    <!-- Logo Link -->
     <%= link_to "Hodr", root_path, id: "logo" %>
+
     <nav>
+      <!-- Hamburger Menu for Mobile View -->
       <div class="navbar-header">
         <button id="hamburger" type="button" class="navbar-toggle collapsed">
           <span class="sr-only">Toggle navigation</span>
@@ -10,24 +13,33 @@
           <span class="icon-bar"></span>
         </button>
       </div>
+
+      <!-- Navigation Links -->
       <ul id="navbar-menu" class="nav navbar-nav navbar-right collapse navbar-collapse">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "How To", howto_path %></li>
         <li><%= link_to "Contact", contact_path %></li>
-        <li><%= link_to "Business Listings", businesses_path %></li>
+
+        <!-- Admin Portal Link -->
         <% if current_user&.admin %>
-        <li><%= link_to "Admin Portal", admin_path %></li>
+          <li><%= link_to "Admin Portal", admin_path %></li>
         <% end %>
+
+        <!-- Logged-in User Links -->
         <% if logged_in? %>
-        <li>
+          <li><%= link_to "Business Listings", businesses_path %></li>
+
+          <!-- Notifications Link (for users only) -->
           <% if user_signed_in? %>
-            <%= link_to notifications_path do %>
+            <li><%= link_to notifications_path do %>
               Notifications (<%= current_user.notifications.where(read_at: nil).count %>)
-            <% end %>
+            <% end %></li>
           <% end %>
-        </li>
+
           <li><%= link_to "Users", users_path %></li>
+
+          <!-- Dropdown for User Account Management -->
           <li class="dropdown">
             <a href="#" id="account" class="dropdown-toggle">
               Account <b class="caret"></b>
@@ -40,15 +52,30 @@
               <li class="divider"></li>
               <li><%= link_to "Chat Boards", boards_path %></li>
               <li class="divider"></li>
-              <li class="divider"></li>
               <li><%= link_to "Log out", logout_path, data: { "turbo-method": :delete } %></li>
-              <% elsif current_business %>
-                <li><%= link_to "Add Products", new_business_product_path(current_business) %></li>
-                <li><%= link_to "Edit Business Page", edit_business_path(current_business) %></li>
-                <li><%= link_to "Add Jobs", new_business_job_path(current_business) %></li>
-                <li><%= link_to 'Logout',  b_sessions_destroy_path, method: :delete, class: 'btn btn-danger' %></li>
             </ul>
           </li>
+
+        <!-- Business Account Links -->
+        <% elsif current_business %>
+        <li class="dropdown">
+          <a href="#" id="account" class="dropdown-toggle">
+            Business Account <b class="caret"></b>
+          </a>
+          <ul id="dropdown-menu" class="dropdown-menu">
+              <li><%= link_to "My Business", current_business %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Add Products", new_business_product_path(current_business) %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Edit Business Page", edit_business_path(current_business) %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Add Jobs", new_business_job_path(current_business) %></li>
+              <li class="divider"></li>
+              <li><%= link_to 'Logout', b_sessions_destroy_path, method: :delete %></li>
+            </ul>
+          </li>
+
+        <!-- Guest Links -->
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
           <li><%= link_to "EULA & Terms", eula_path %></li>

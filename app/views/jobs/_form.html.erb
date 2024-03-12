@@ -1,24 +1,49 @@
 <!-- app/views/jobs/_form.html.erb -->
 <%= form_with(model: [ @business, @job ], local: true) do |form| %>
   <div>
-    <%= form.label :jname, "Job Position Name" %>
-    <%= form.text_field :jname %>
+    <%= form.label :jname, "Job Position Name", class: 'biz_new_title' %>
+    <%= form.text_field :jname, class: 'biz_new_input' %>
   </div>
 
   <div>
-    <%= form.label :jdesc, "Job Description" %>
-    <%= form.text_area :jdesc %>
+    <%= form.label :jdesc, "Job Description", class: 'biz_new_title' %>
+    <%= form.text_area :jdesc, class: 'biz_new_input' %>
   </div>
 
   <div>
-    <%= form.label :jpay, "Job Pay Scale" %>
-    <%= form.text_field :jpay %>
+    <%= form.label :jpay, "Job Pay Scale", class: 'biz_new_title' %>
+    <%= form.text_field :jpay, class: 'biz_new_input' %>
   </div>
 
   <div>
-    <%= form.label :jlink, "Link to Apply" %>
-    <%= form.text_field :jlink %>
+    <%= form.label :jlink, "Link to Apply", class: 'biz_new_title' %>
+    <%= form.text_field :jlink, class: 'biz_new_input' %>
   </div>
 
-  <%= form.submit "Save Job Listing" %>
+  <%= form.submit "Save Job Listing", class: 'btn btn-success biz_btn' %>
 <% end %>
+<style>
+body
+{
+  background-color: #CCC;
+}
+.biz_new_title
+{
+  font-family: "Cinzel", serif;
+  color: black;
+  text-shadow: 5px 5px 7px #000;
+}
+.biz_new_input
+{
+  font-family: "Source Code Pro", monospace;
+  background-color: #000;
+  border: 2px solid gold;
+  padding: 4px;
+  color: #0F0;
+}
+.biz_btn
+{
+  font-family: "Gideon Roman", serif;
+  font-size: 20px;
+}
+</style>

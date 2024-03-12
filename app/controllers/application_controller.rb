@@ -40,12 +40,14 @@ class ApplicationController < ActionController::Base
 
     def user_signed_in?
       !!current_user
-    end        
+    end
 
     def fetch_unread_notifications
       if user_signed_in?
         @unread_notifications = current_user.notifications.where(read_at: nil)
       end
     end
+
+
 
 end

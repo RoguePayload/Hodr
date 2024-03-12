@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name, class: 'user_new_title' %>
-    <%= form.text_field :name, id: :business_name %>
+    <%= form.label :name, class: 'biz_new_title' %>
+    <%= form.text_field :name, id: :business_name, class: 'biz_new_input' %>
   </div>
 
   <div class="field">
-    <%= form.label :email, class: 'user_new_title' %>
-    <%= form.text_field :email, id: :email %>
+    <%= form.label :email, class: 'biz_new_title' %>
+    <%= form.email_field :email, id: :email, class: 'biz_new_input' %>
   </div>
 
   <div class="field">
-    <%= form.label :password, class: 'user_new_title' %>
-    <%= form.password_field :password %>
+    <%= form.label :password, class: 'biz_new_title' %>
+    <%= form.password_field :password, class: 'biz_new_input' %>
   </div>
 
   <div class="field">
-    <%= form.label :password_confirmation, class: 'user_new_title' %>
-    <%= form.password_field :password_confirmation %>
+    <%= form.label :password_confirmation, class: 'biz_new_title' %>
+    <%= form.password_field :password_confirmation, class: 'biz_new_input' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success biz_btn' %>
   </div>
 <% end %>

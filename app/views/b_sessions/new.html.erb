@@ -3,14 +3,40 @@
 
 <%= form_with url: b_login_path, local: true do |form| %>
   <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email, required: true %>
+    <%= form.label :email, class: 'biz_new_title' %>
+    <%= form.email_field :email, required: true, class: 'biz_new_input' %>
   </div>
   <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
+    <%= form.label :password, class: 'biz_new_title' %>
+    <%= form.password_field :password, required: true, class: 'biz_new_input' %>
   </div>
   <div class="actions">
-    <%= form.submit "Login" %>
+    <%= form.submit "Login", class: 'btn btn-success biz_btn' %>
   </div>
 <% end %>
+
+<style>
+body
+{
+  background-color: #CCC;
+}
+.biz_new_title
+{
+  font-family: "Cinzel", serif;
+  color: #00F;
+  text-shadow: 5px 5px 7px #000;
+}
+.biz_new_input
+{
+  font-family: "Source Code Pro", monospace;
+  background-color: #000;
+  border: 2px solid gold;
+  padding: 4px;
+  color: #0F0;
+}
+.biz_btn
+{
+  font-family: "Gideon Roman", serif;
+  font-size: 20px;
+}
+</style>

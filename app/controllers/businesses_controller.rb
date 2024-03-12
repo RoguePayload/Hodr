@@ -16,7 +16,8 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
     if @business.save
       @business.update(last_login_at: Time.current, last_login_ip: request.remote_ip)
-      redirect_to @business, notice: 'Business profile was successfully created.'
+      session[:business_id] = @business.id
+      redirect_to business_path(@business), notice: 'Business profile was successfully created and logged in.'
     else
       render :new
     end

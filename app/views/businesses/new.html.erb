@@ -1,5 +1,31 @@
 <h1>New Business</h1>
 
 <%= render 'form', business: @business %>
-
-<%= link_to 'Back', root_path %>
+<br/>
+<%= link_to 'Home Page', root_path, class: 'btn btn-primary' %>
+<%= link_to 'Business Login', b_login_path, class: 'btn btn-warning' %>
+<style>
+body
+{
+  background-color: #CCC;
+}
+.biz_new_title
+{
+  font-family: "Cinzel", serif;
+  color: #00F;
+  text-shadow: 5px 5px 7px #000;
+}
+.biz_new_input
+{
+  font-family: "Source Code Pro", monospace;
+  background-color: #000;
+  border: 2px solid gold;
+  padding: 4px;
+  color: #0F0;
+}
+.biz_btn
+{
+  font-family: "Gideon Roman", serif;
+  font-size: 20px;
+}
+</style>

@@ -5,24 +5,24 @@
   <% end %>
 
   <div>
-    <%= form.label :pname, "Product Name" %>
-    <%= form.text_field :pname %>
+    <%= form.label :pname, "Product Name", class: 'prod_new_title' %>
+    <%= form.text_field :pname, class: 'prod_new_input' %>
   </div>
 
   <div>
-    <%= form.label :pdesc, "Product Description" %>
-    <%= form.text_area :pdesc %>
+    <%= form.label :pdesc, "Product Description", class: 'prod_new_title' %>
+    <%= form.text_area :pdesc, class: 'prod_new_input' %>
   </div>
 
   <div>
-    <%= form.label :pimage, "Product Image URL" %>
-    <%= form.text_field :pimage %>
+    <%= form.label :pimage, "Product Image URL", class: 'prod_new_title' %>
+    <%= form.text_field :pimage, class: 'prod_new_input' %>
   </div>
 
   <div>
-    <%= form.label :plink, "Product Link" %>
-    <%= form.text_field :plink %>
+    <%= form.label :plink, "Product Link", class: 'prod_new_title' %>
+    <%= form.text_field :plink, class: 'prod_new_input' %>
   </div>
 
-  <%= form.submit "Save Product" %>
+  <%= form.submit "Save Product", class: 'btn btn-success biz_btn' %>
 <% end %>
