@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #000;">
   <div class="container">
     <!-- Logo Link -->
     <%= link_to "Hodr", root_path, id: "logo" %>
@@ -16,43 +16,43 @@
 
       <!-- Navigation Links -->
       <ul id="navbar-menu" class="nav navbar-nav navbar-right collapse navbar-collapse">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "How To", howto_path %></li>
-        <li><%= link_to "Contact", contact_path %></li>
+        <li><%= link_to "Home", root_path, id: 'navigation_button' %></li>
+        <li><%= link_to "About", about_path, id: 'navigation_button' %></li>
+        <li><%= link_to "How To", howto_path, id: 'navigation_button' %></li>
+        <li><%= link_to "Contact", contact_path, id: 'navigation_button' %></li>
 
         <!-- Admin Portal Link -->
         <% if current_user&.admin %>
-          <li><%= link_to "Admin Portal", admin_path %></li>
+          <li><%= link_to "Admin Portal", admin_path, id: 'navigation_button' %></li>
         <% end %>
 
         <!-- Logged-in User Links -->
         <% if logged_in? %>
-          <li><%= link_to "Business Listings", businesses_path %></li>
+          <!--<li><%= link_to "Business Listings", businesses_path %></li>-->
 
           <!-- Notifications Link (for users only) -->
           <% if user_signed_in? %>
-            <li><%= link_to notifications_path do %>
+            <li><%= link_to notifications_path, id: 'navigation_button' do %>
               Notifications (<%= current_user.notifications.where(read_at: nil).count %>)
             <% end %></li>
           <% end %>
 
-          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Users", users_path, id: 'navigation_button' %></li>
 
           <!-- Dropdown for User Account Management -->
           <li class="dropdown">
-            <a href="#" id="account" class="dropdown-toggle">
+            <a href="#" id="account" class="dropdown-toggle" style="color: #00FF00; font-family: "Source Code Pro", monospace;">
               Account <b class="caret"></b>
             </a>
-            <ul id="dropdown-menu" class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <ul id="dropdown-menu" class="dropdown-menu" style="background-color: #000;">
+              <li><%= link_to "Profile", current_user, id: 'navigation_button' %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user), id: 'navigation_button' %></li>
               <li class="divider"></li>
-              <li><%= link_to "EULA & Terms", eula_path %></li>
+              <li><%= link_to "EULA & Terms", eula_path, id: 'navigation_button' %></li>
               <li class="divider"></li>
-              <li><%= link_to "Chat Boards", boards_path %></li>
+              <li><%= link_to "Chat Boards", boards_path, id: 'navigation_button' %></li>
               <li class="divider"></li>
-              <li><%= link_to "Log out", logout_path, data: { "turbo-method": :delete } %></li>
+              <li><%= link_to "Log out", logout_path, data: { "turbo-method": :delete }, id: 'navigation_button' %></li>
             </ul>
           </li>
 
