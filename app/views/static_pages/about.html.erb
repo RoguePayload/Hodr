@@ -1,43 +1,46 @@
 <% provide(:title, "About") %>
+<div style="background: url('<%= asset_path 'hodr_about-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
+
 <div class="about-page">
-  <div class="jumbotron jumbotron-fluid bg-dark text-light text-center about_intro_div">
+  <div class="jumbotron jumbotron-fluid text-light text-center about_intro_div" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), center / cover no-repeat;">
     <div class="container">
-      <%= image_tag("about_hodr.png", alt: "Hodr Logo", height: "300px", width: "100%") %>
+      <%= image_tag("hodr_logo.png", alt: "Hodr Sci-Fi Logo", height: "300px", width: "100%") %>
       <h1 class="about_h1">About Hodr</h1>
-      <p class="lead about_p">
-        Hodr is not just another social media platform; it's a revolution. We believe in empowering individuals to express themselves freely without fear of censorship or discrimination. At Hodr, we're committed to creating a safe and inclusive space where users can connect, share ideas, and engage in meaningful conversations without the constraints imposed by traditional social platforms. With our emphasis on privacy, anonymity, and freedom of expression, Hodr offers a refreshing alternative to the status quo. Join us in shaping the future of social media and experience the difference Hodr can make.
+      <p class="lead">
+        Hodr is a beacon in the digital cosmos, a revolution in the social media galaxy. It’s a domain where free spirits roam the cybernetic space, sharing their visions and voyages without the fear of being silenced. Here, in the vastness of the digital universe, Hodr stands as a sanctuary of free expression, privacy, and interstellar connection. Join our constellation of explorers in a venture beyond the known, where every voice echoes across stars.
       </p>
     </div>
   </div>
 
-  <section class="about-page about_secondary">
+  <section class="about-page about_secondary" style="background-color: rgba(0,0,0,0.8);">
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <h2 class="about_sec_h2">Our Mission</h2>
-        <p class="text-muted about_sec_p">At Hodr, we're dedicated to creating a social media platform that prioritizes your freedom, privacy, and the ability to express yourself openly. We believe in building a community where everyone can share their thoughts and ideas without the fear of censorship or discrimination. Our platform is designed to be a safe space for all, promoting respectful dialogue and understanding across diverse cultures and viewpoints.</p>
+        <p class="text-muted" style="color: #FFF;">In the boundless expanse of the internet, Hodr serves as a haven for those who seek to share their knowledge and curiosity without constraint. Inspired by the infinite possibilities of astrophysics and the precision of computer science, we are forging a community where the frontiers of exploration and expression are limitless.</p>
 
-        <h2 class="about_sec_h2">The Visionary Behind Hodr</h2>
+        <h2 class="about_sec_h2">The Navigator Behind Hodr</h2>
         <div class="media mb-4">
-          <%= image_tag("aubrey.jpeg", class: "about_img mr-3 rounded-circle", alt: "Dr. Aubrey W. Love II", width: "100") %>
+          <%= image_tag("alienagent.jpg", class: "about_img mr-3 rounded-circle", alt: "Your Name", width: "100") %>
           <div class="media-body">
-            <h5 class="mt-0 about_coder_h5">Dr. Aubrey W. Love II</h5>
-            <p class="about_coder_p">With a Ph.D. in Computer Science from Ashley University and over 14 years of experience as a programmer and freelancer, Dr. Aubrey W. Love II is no stranger to the challenges and pitfalls of current social media platforms. Inspired by his personal experiences and the desire to create a better online environment for his four children and users worldwide, Dr. Love founded Hodr. His vision is to provide a platform that ensures privacy, protection, and freedom of speech, while fostering a child-friendly atmosphere.</p>
+            <h5 class="mt-0 about_coder_h5">The Self-Taught Visionary</h5>
+            <p class="about_coder_p">Charting courses through both the celestial and cyber realms, I've navigated the vast seas of astrophysics and the intricate web of programming languages. With a background illuminated by the stars of hacktivism and the shadows of cyber warfare, I've pivoted towards utilizing my skills for the greater good. My arsenal includes Python, Ruby on Rails, PHP, and more, making me a versatile architect of the digital age. Hodr's journey into the unknown is captained by me, a testament to friendship and a shared decade of digital adventures. With a new horizon in sight, Hodr is set to embark on a mission filled with innovation, community, and the infinite potential of social connectivity.</p>
           </div>
         </div>
 
         <h2 class="about_sec_h2">Why Hodr?</h2>
-        <p class="text-muted about_sec_p">Hodr stands out because we understand the value of your voice and privacy. Unlike traditional social media platforms, we commit to:
+        <p class="text-muted" style="color: #FFF;">In the cosmos of Hodr, you’ll find:
           <ul class="about_list">
-            <li><strong>No Political Correctness:</strong> Express your political views without fear of censorship.</li>
-            <li><strong>No Religious Discrimination:</strong> A respectful space for all religions and beliefs.</li>
-            <li><strong>Privacy &amp; Anonymity:</strong> Your data belongs to you. We don't track or sell your information.</li>
+            <li><strong>Boundless Expression:</strong> Navigate through galaxies of thought without the fear of being lost in the void.</li>
+            <li><strong>Celestial Sanctuary:</strong> A realm where every creed and code is respected, a nexus of diversity and understanding.</li>
+            <li><strong>Quantum Privacy:</strong> In our universe, your digital footprint is yours alone, shielded by the latest in encryption and ethical principles.</li>
           </ul>
         </p>
 
-        <h2 class="about_join_h5">Join Us</h2>
-        <p class="text-muted about_join_p">Be part of the Hodr community today. Experience the freedom and empowerment of true social media, designed with you in mind.</p>
-        <%= link_to 'Sign Up', signup_path, class: "btn btn-primary" %>
+        <h2 class="about_join_h5">Embark With Us</h2>
+        <p class="text-muted">Your seat among the stars awaits. Join the Hodr odyssey and propel your social media experience into a new dimension, designed with the adventurer in mind.</p>
+        <%= link_to 'Begin Your Journey', signup_path, class: "btn btn-primary" %>
       </div>
     </div>
   </section>
+</div>
 </div>

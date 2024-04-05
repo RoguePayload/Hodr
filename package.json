@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
     "chart.js": "^4.4.2",
-    "chartkick": "^5.0.1"
+    "chartkick": "^5.0.1",
+    "jquery": "^3.7.1"
   }
 }

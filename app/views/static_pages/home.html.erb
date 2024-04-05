@@ -1,76 +1,62 @@
-<div class="jumbotron jumbotron-fluid bg-dark text-light text-center home_intro_div">
+<div style="background: url('<%= asset_path 'hodr_home-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
+
+<div class="p-5 text-light text-center home_intro_div" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)),  center / cover no-repeat;">
   <div class="container">
-    <%= image_tag("robotic_scifi_wallpaper.png", alt: "Hodr Logo", height: "300px", width: "100%") %>
-    <h1 class="home_h1">Welcome to Hodr</h1>
-    <p class="lead home_p" style="color: #FFF;">The revolution of Social Media!</p>
-    <p class="lead home_p" style="color: #FFF;">Join us and experience the freedom and empowerment of true social media.</p>
-    <%= link_to "Create A New Account!", signup_path, class: "btn btn-lg btn-primary mt-4" %>&nbsp;&nbsp;<%= link_to "Log Into Your Account!", login_path, class: "btn btn-lg btn-success" %><br/>
+    <h1 class="display-3 home_h1">Discover the Unknown</h1>
+    <p class="lead home_p">Dive into the new era of social media where the cosmos meets technology.</p>
+    <p class="lead home_p">Join our galaxy of explorers and express yourself in a universe without boundaries.</p>
+    <%= link_to "Start Your Journey", signup_path, class: "btn btn-lg btn-primary mt-4 me-2" %>
+    <%= link_to "Already Exploring?", login_path, class: "btn btn-lg btn-success mt-4" %>
   </div>
 </div>
 
-<div class="container text-center mt-5 home_why_div">
-  <h2 class="home_why_h1">Have a Business?</h2>
-  <p class="lead home_why_p">We are excited to announce the launch of our Business module aspect of Hodr! While this is currently still in <i>Beta Stages</i>, we are excited to announce that
-    businesses can now create their very own business profile page! <br/>
-    <strong>What Can Your Business Page Do?</strong><br/>
-    * <b>Host Products</b> ~ ou can host as many products on our page as you would like too! We put a twist on things. Instead of us handling the payment processing aspect for you,
-      what we do is allow you to post a link to your website to allow users to check out on your website! Why? If we start hosting and handling the payment processing, we would charge a
-      small fee for handling it, then our payment software would charge an additional fee as well. By not charging these extra fees, you have more money in your pocket!<br/>
-      <br/>
-    * <b>Host Jobs</b> ~ ow you can add your jobs that you have available for your company! You can easily set the name of the position, the description of it, as well as the payment
-      that you wish to pay for that position! And, replicating the product, you can include a link to where users can go and apply for that position directly on your website! This allows
-      you to keep and manage your applications in your desired employment system. This can be directly on your site, or on a third party site like monster.com or indeed.com. Your choice!<br/>
-      <br/>
-    * <b>Posting</b> ~ OMING SOON! This new feature that will be released soon will allow you to create new posts to add to your business page. It will operate in the same context as the current
-      posts work on the users page. This feature will allow you to keep engaging with your customers, and help reach new customers as well. And yes, we will have comments that will allow other
-      users and businesses to post comments on your posts!<br/>
-      <br/>
-    * <b>Following</b> ~ OMING SOON! With the addition of allowing users to follow your business, when you create a new post, you will be able to instantly reach all of those who follow your business page!
-      By allowing the users, and other businesses, to follow your business page, you can help grow your audience to a new level!<br/>
-      <br/>
-    * <b>New Features</b> ~ ere at Hodr, we are always constantly looking forward to ways we can improve our services to better cater to everyone's desires and needs. And while we understand
-      that there are some features that could be pivotal to a business, or user, this website has only 1 developer. So integrating new ideas and concepts can be done, however, he does need
-      your assistance! If you have a suggestion or an idea on how we can improve this site, please send the developer an email <%= link_to 'dev@hodr.me', 'mailto:dev@hodr.me', target: '_blank' %>!<br/>
-      <br/>
-      <%= link_to 'Business Owner? Register Here', new_business_path, class: 'btn btn-warning' %>
-      <%= link_to 'Existing Business Owner?', b_login_path, class: 'btn btn-success' %>
-    </p>
-  </div>
-
-<div class="container text-center mt-5 home_why_div">
-  <h2 class="home_why_h1">Why Choose Hodr?</h2>
-  <p class="lead home_why_p">At Hodr, we're committed to providing a platform where you can express yourself freely and connect with others without restrictions.</p>
+<div class="container text-center mt-5 home_why_div" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)),  center / cover no-repeat;">
+  <h2 class="display-4 home_why_h1">Why Hodr?</h2>
+  <p class="lead home_why_p">At Hodr, we're reshaping social media into an infinite playground for expression, connection, and discovery.</p>
   <div class="row mt-4">
     <div class="col-md-4 home_why_inner_div">
-      <h3 class="home_why_inner_h3">No Political Correctness</h3>
-      <p class="home_why_inner_p">Express your political views without fear of censorship.</p>
+      <h3>Uncharted Freedom</h3>
+      <p>Share your adventures, thoughts, and discoveries freely, in an expansive digital cosmos.</p>
     </div>
     <div class="col-md-4 home_why_inner_div">
-      <h3 class="home_why_inner_h3">No Religious Discrimination</h3>
-      <p class="home_why_inner_p">Respect for all religions and beliefs.</p>
+      <h3>Interstellar Connection</h3>
+      <p>Connect with beings from all corners of the universe, in forums and groups that transcend galaxies.</p>
     </div>
     <div class="col-md-4 home_why_inner_div">
-      <h3 class="home_why_inner_h3">Privacy &amp; Anonymity</h3>
-      <p class="home_why_inner_p">Your privacy is our priority. We don't track or spy on you.</p>
+      <h3>Cosmic Privacy</h3>
+      <p>Your space, your rules. Navigate the cosmos with the assurance that your privacy is safeguarded.</p>
     </div>
   </div>
 </div>
 
-<div class="container text-center mt-5 home_tech_div">
-  <h2 class="home_tech_h2">Our Technology Stack</h2>
-  <p class="lead home_tech_p">We use cutting-edge technologies to power Hodr and ensure a seamless user experience.</p>
+<div class="container text-center mt-5 home_tech_div" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)),  center / cover no-repeat;">
+  <h2 class="display-4 home_tech_h2">Our Technology Constellation</h2>
+  <p class="lead home_tech_p">We harness advanced technologies to fuel your journey through Hodr, ensuring a seamless and immersive experience.</p>
   <div class="row mt-4">
     <div class="col-md-4">
-      <h3 class="home_tech_inner_h3">Ruby on Rails</h3>
-      <p class="home_tech_inner_p">Powerful and scalable web development framework.</p>
+      <h3 style="color: #0000FF">Ruby on Rails</h3>
+      <p style="color: #FFFFFF">The backbone of our interstellar journey, providing powerful and scalable web development.</p>
     </div>
     <div class="col-md-4">
-      <h3 class="home_tech_inner_h3">Bootstrap</h3>
-      <p class="home_tech_inner_p">Responsive front-end framework for faster and easier web development.</p>
+      <h3 style="color: #00FF00">Bootstrap</h3>
+      <p style="color: #FFFFFF">The fabric of our universe, enabling responsive and flexible design that adapts to any device or screen size.</p>
     </div>
     <div class="col-md-4">
-      <h3 class="home_tech_inner_h3">PostgreSQL</h3>
-      <p class="home_tech_inner_p">Reliable and efficient database management system.</p>
+      <h3 style="color: #FF0000">PostgreSQL</h3>
+      <p style="color: #FFFFFF">The core of our galaxy, storing the universe's knowledge securely and efficiently.</p>
+    </div>
+    <div class="col-md-4">
+      <h3 style="color: #FF00FF">Heroku</h3>
+      <p style="color: #FFFFFF">The launchpad for our mission, offering a scalable, managed hosting environment that lets our platform soar through the digital cosmos with ease.</p>
+    </div>
+    <div class="col-md-4">
+      <h3 style="color: #FFFF00">Amazon AWS S3 Buckets</h3>
+      <p style="color: #FFFFFF">The cosmic vaults of our universe, providing secure and infinite storage space for the myriad of data and discoveries made by our explorers across the galaxy.</p>
+    </div>
+    <div class="col-md-4">
+      <h3 style="color: #00FFFF">Cryptocurrency Gateway</h3>
+      <p style="color: #FFFFFF">The star portal of commerce, enabling seamless transactions across the cosmos. This gateway allows explorers to trade and transact with digital currencies, fueling the economic engines of our galactic community.</p>
     </div>
   </div>
+</div>
 </div>

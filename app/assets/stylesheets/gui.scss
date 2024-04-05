@@ -1,4 +1,3 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* universal */
@@ -197,7 +196,7 @@ aside
   {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px solid grey;
   }
 }
 
@@ -232,7 +231,7 @@ aside
 
   .timestamp
   {
-    color: $gray-light;
+    color: grey;
     display: block;
     margin-left: 60px;
   }
