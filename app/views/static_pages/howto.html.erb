@@ -1,176 +1,58 @@
 <% provide(:title, "How To") %>
-<div class="how-to-page">
-  <div class="jumbotron jumbotron-fluid bg-dark text-light text-center howto_intro_div">
-    <div class="container">
-      <%= image_tag("howto.png", alt: "Hodr Logo", height: "300px", width: "100%") %>
-      <h1 class="howto_h1">How To Use Hodr</h1>
-      <p class="lead howto_p">
-        Discover how quickly &amp; easily you can create a new account, log into your account, edit your account details and much more!
-      </p>
-    </div>
+<div style="background: url('<%= asset_path 'hodr_howto-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
+
+<div class="how-to-page" style="background-color: rgba(0,0,0,0.8)">
+  <div class="container py-5 text-center">
+    <%= image_tag("hodr_logo_sci_fi.png", alt: "Hodr Logo", style: 'height: 50px; width: 175px;') %>
+    <h1 class="display-4" style="color: #29f3c3;">Navigating the Cosmos of Hodr</h1>
+    <p class="lead" style="color: #d4c1ec;">
+      Embark on a digital odyssey and master the art of cosmic connectivity on Hodr. Below, uncover the pathways to digital enlightenment.
+    </p>
   </div>
 
-  <section class="how-to-page howto_secondary">
+  <section class="container my-5">
     <div class="row">
       <div class="col-lg-8 mx-auto">
 
-        <!-- Create an Account -->
-        <h2 class="howto_sec_h2">Creating an Account</h2>
-        <p class="text-muted howto_sec_p">To create an account on Hodr, follow these simple steps:</p>
-        <ol class="howto_list">
-          <li>Visit the Hodr website.</li>
-          <li>Click on the "Sign Up" button.</li>
-          <li>Fill out the registration form with your information.</li>
-          <li>Click "Submit" to create your account.</li>
-        </ol>
+        <h2 class="mt-5" style="color: #ef7d00;">Creating a Cosmic Identity</h2>
+        <p style="color: #a7b9d9;">Commence your journey through Hodr’s universe:</p>
+        <ul class="howto_list" style="list-style-type: none;">
+          <li>1. Navigate to the Hodr portal.</li>
+          <li>2. Initiate the "Sign Up" sequence.</li>
+          <li>3. Transmit your data into the registration conduit.</li>
+          <li>4. Engage "Submit" to materialize your cosmic identity.</li>
+        </ul>
 
-        <!-- Log Into Account -->
-        <h2 class="howto_sec_h2">Logging Into Your Account</h2>
-        <p class="text-muted howto_sec_p">To log into your Hodr account:</p>
-        <ol class="howto_list">
-          <li>Visit the Hodr website.</li>
-          <li>Click on the "Log In" button.</li>
-          <li>Enter your username and password.</li>
-          <li>Click "Login" to access your account.</li>
-        </ol>
+        <h2 class="mt-5" style="color: #ef7d00;">Accessing Your Galactic Dashboard</h2>
+        <p style="color: #a7b9d9;">To interface with your Hodr account:</p>
+        <ul class="howto_list" style="list-style-type: none;">
+          <li>1. Proceed to the Hodr entry point.</li>
+          <li>2. Activate the "Log In" command.</li>
+          <li>3. Input your identification codes.</li>
+          <li>4. Select "Login" to enter your dashboard.</li>
+        </ul>
 
-        <!-- Edit Your Account -->
-        <h2 class="howto_sec_h2">Editing Your Account</h2>
-        <p class="text-muted howto_sec_p">To Edit Your Profile:</p>
-        <ol class="howto_list">
-          <li>Visit the Hodr website.</li>
-          <li>Click on the "Log In" button.</li>
-          <li>Enter your username and password.</li>
-          <li>Click "Login" to access your account.</li>
-          <li>Click on "Account".</li>
-          <li>Click on "Settings".</li>
-          <li>Fill out information accordingly.</li>
-          <i>certain fields are not editable for security &amp; account reasons.</i>
-        </ol>
+        <h2 class="mt-5" style="color: #ef7d00;">Modifying Your Star Chart</h2>
+        <p style="color: #a7b9d9;">To recalibrate your Hodr profile:</p>
+        <ul class="howto_list" style="list-style-type: none;">
+          <li>1. Chart a course to the Hodr domain.</li>
+          <li>2. Engage "Account" > "Settings".</li>
+          <li>3. Update your celestial coordinates as desired.</li>
+          <i>Note: Some data fields are locked for your spacetime continuum's integrity.</i>
+        </ul>
 
-        <!-- Follow Users -->
-        <h2 class="howto_sec_h2">Following Users</h2>
-        <p class="text-muted howto_sec_p">To follow your friends:</p>
-        <ol class="howto_list">
-          <li>Visit the Hodr website.</li>
-          <li>Click on the "Log In" button.</li>
-          <li>Enter your username and password.</li>
-          <li>Click "Login" to access your account.</li>
-          <li>Click on "Users".</li>
-          <li>Scroll through the list and find your friend.</li>
-          <li>Click on their username to be taken to their profile.</li>
-          <li>Click on "Follow" button on left side under their stats to follow them.</li>
-        </ol>
+        <h2 class="mt-5" style="color: #ef7d00;">Forging Alliances</h2>
+        <p style="color: #a7b9d9;">To align with fellow explorers:</p>
+        <ul class="howto_list" style="list-style-type: none;">
+          <li>1. Locate and engage with the "Users" sector.</li>
+          <li>2. Identify an ally and navigate to their profile.</li>
+          <li>3. Transmit a "Follow" signal to initiate the alliance.</li>
+        </ul>
 
-        <!-- Unfollow Users -->
-        <h2 class="howto_sec_h2">UnFollowing Users</h2>
-        <p class="text-muted howto_sec_p">To unfollow your friends:</p>
-        <ol class="howto_list">
-          <li>Visit the Hodr website.</li>
-          <li>Click on the "Log In" button.</li>
-          <li>Enter your username and password.</li>
-          <li>Click "Login" to access your account.</li>
-          <li>Click on "Users".</li>
-          <li>Scroll through the list and find your friend.</li>
-          <li>Click on their username to be taken to their profile.</li>
-          <li>Click on "Unfollow" button on left side under their stats to unfollow them.</li>
-        </ol>
+        <!-- Add more sections as needed, following the same thematic approach -->
 
-        <!-- Understanding The Profile View Page -->
-        <h2 class="howto_sec_h2">How Your Page Works</h2>
-        <p class="text-muted howto_sec_p">Understanding How Your Page Works:</p>
-        <ol class="howto_list">
-          <li><strong>Top Section (Banner &amp; Avatar):</strong></li>
-          <i>These images are defaulted to the developers choice. If you update your avatar &amp; banner, your
-            new images will appear there. These are set so you can have a bit of customization to your profile!</i>
-          <li><strong>Profile Navigation (Feed | About | Activities | Career):</strong></li>
-          <i>These buttons hide or show each other. For example, if you are seeing your feed section, the other sections
-            are hidden. But if you click on About, you will see the about section and not the feed section.</i>
-          <li><strong>Feed Section:</strong></li>
-          <i>This section is where you can see the posts you had created, as well as the posts from your followers.
-            You will not see posts from other users that you do not follow. Also, if you are viewing another persons profile,
-            this feed section will only show posts that user has created.</i>
-          <li><strong>About Section:</strong></li>
-          <i>This section displays your information about you. Including Biography, first, last, middle name, and other
-            important information. You choose what you want to share. If you are viewing another persons profile, this tab
-            will show their information. But only what they choose to put on the site.</i>
-          <li><strong>Activities Section:</strong></li>
-          <i>This section covers your favorite activities and hobbies. From the books you read, to the movies and songs you
-            enjoy. These are text-based and does not "tag" or "use" your information in here to perform any marketing techniques.</i>
-          <li><strong>Career Section:</strong></li>
-          <i>This section allows you to showcase the employment of what you are currently doing, as well as your highest level
-            of education you have completed.</i>
-          <li><strong>The only thing that other users can see about you, and what you see about other people, is what they, or you,
-            had put inside of your settings. You are not required to fill everything out. It is at your own choice to fill it out
-            or not.</li>
-        </ol>
-
-        <!-- Account Deletion -->
-        <h2 class="howto_sec_h2">Account Deletion</h2>
-        <p class="text-muted howto_sec_p">If you would like to Delete your Account:</p>
-        <ol class="howto_list">
-          <li><strong>Contact an Admin:</strong></li>
-          <i>If you want your account to be deleted, please send us an email from the email
-            associated with your account. This will help with verification.<br/>
-          Admin Email: <%= link_to "Hodr Admin", 'mailto:help.hodr@gmail.com', target: '_blank' %></i>
-          <li><strong>Explain the Reason:</strong></li>
-          <i>While you can use something short like "I no longer use this site", a more detailed
-            explaination would be helpful for our user interactions. This is also to help aid in
-            verification of the account deletion.</i>
-          <li><strong>Wait for Deletion/Approval:</strong></li>
-          <i>While we are investigating the deletion of your account, we will also search through
-            your profile. If we notice something that goes against our policies &amp; rules, we
-            will take the correct actions. Which can include locking you out of the account and
-            reporting your profile to the proper authorities.</i>
-        </ol>
-
-        <!-- Using Boards -->
-        <h2 class="howto_sec_h2">Using Boards</h2>
-        <p class="text-muted howto_sec_p">Learn how to interact with boards on Hodr, create new boards, find and join existing ones, and understand the guidelines for communication.</p>
-
-        <!-- Creating a New Board -->
-        <h2 class="howto_sec_h2">Creating a New Board</h2>
-        <p class="text-muted howto_sec_p">To start your own discussion board:</p>
-        <ol class="howto_list">
-          <li>Log into your Hodr account and navigate to the Boards section.</li>
-          <li>Click on the "Create Board" button.</li>
-          <li>Fill in the details for your board, including a name, description, and choose a category that best fits the board’s theme.</li>
-          <li>Click "Create" to establish your new board. You’re now ready to post messages and invite others to join the discussion!</li>
-        </ol>
-
-        <!-- Finding and Joining Boards -->
-        <h2 class="howto_sec_h2">Finding and Joining Boards</h2>
-        <p class="text-muted howto_sec_p">To explore and join existing boards:</p>
-        <ol class="howto_list">
-          <li>Visit the Boards section after logging in.</li>
-          <li>Use the search function to find boards by name or browse through categories.</li>
-          <li>Click on a board name to view its posts. You can join the conversation by clicking "Join Board" if it's public or request an invitation for private boards.</li>
-        </ol>
-
-        <!-- Sending Messages on Boards -->
-        <h2 class="howto_sec_h2">Sending Messages</h2>
-        <p class="text-muted howto_sec_p">To contribute to a board by sending messages:</p>
-        <ol class="howto_list">
-          <li>Open the board you wish to participate in.</li>
-          <li>Type your message in the message box and use the formatting tools if needed.</li>
-          <li>Click "Send" to post your message. It will now be visible to all board members.</li>
-        </ol>
-
-        <!-- Board Etiquette -->
-        <h2 class="howto_sec_h2">Board Etiquette and Guidelines</h2>
-        <p class="text-muted howto_sec_p">While interacting on boards, remember to follow Hodr’s community guidelines:</p>
-        <ol class="howto_list">
-          <li><strong>Be Respectful:</strong> Treat all members with respect. Avoid insults, harassment, or any form of bullying.</li>
-          <li><strong>Stay On Topic:</strong> Keep your posts relevant to the board’s theme or ongoing discussions.</li>
-          <li><strong>No Profanity or Vulgarity:</strong> Refrain from using offensive language, including profanity, vulgarity, or sexual content. Discussions should comply with the site’s <a href="https://hodr.me/eula" target="_blank">EULA agreement</a>.</li>
-          <li><strong>Report Issues:</strong> If you encounter any posts or behavior that violates our guidelines, please report them to the moderators or via the "Report" button.</li>
-        </ol>
-
-        <p class="text-muted howto_sec_p">
-          Boards are a space for meaningful discussions, sharing knowledge, and connecting with others who share your interests. By following these guidelines, you help create a welcoming and positive environment for all members.
-        </p>
-        
       </div>
     </div>
   </section>
+</div>
 </div>

@@ -26,14 +26,14 @@
 
         <% if current_user&.admin %>
           <li class="nav-item">
-            <%= link_to "Admin Portal", admin_path, class: 'nav-link btn btn-outline-success me-2', style: 'margin-right: 7px; cursor: crosshair;' %>
+            <%= link_to "Admin Portal", admin_path, class: 'btn btn-outline-danger', style: 'margin-right: 7px; cursor: crosshair;' %>
           </li>
         <% end %>
 
         <% if logged_in? %>
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to notifications_path, class: 'nav-link btn btn-outline-success me-2', style: 'margin-right: 7px; cursor: crosshair;' do %>
+              <%= link_to notifications_path, class: 'btn btn-outline-warning', style: 'margin-right: 7px; cursor: crosshair;' do %>
                 Notifications (<%= current_user.notifications.where(read_at: nil).count %>)
               <% end %>
             </li>
