@@ -14,6 +14,12 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
+  def send_contact
+    # Logic to handle contact form submission, e.g., sending an email
+    ContactMailer.contact_email(contact_params).deliver_now
+    redirect_to contact_path, notice: "Your message has been sent successfully."
+  end
+
   def eula
   end
 
@@ -32,4 +38,11 @@ class StaticPagesController < ApplicationController
     @active_businesses_count = Business.active.count
     @inactive_businesses_count = Business.inactive.count
   end
+
+  private
+
+  def contact_params
+    params.require(:contact).permit(:name, :email, :message)
+  end
+
 end

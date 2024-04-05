@@ -1,30 +1,32 @@
 <% provide(:title, "Contact") %>
-<div class="container mt-5">
-  <div class="jumbotron jumbotron-fluid bg-dark text-light text-center howto_intro_div">
-    <div class="container">
-      <%= image_tag("contact.png", alt: "Hodr Logo", height: "300px", width: "100%") %>
-      <h1 class="howto_h1">Contact Hodr</h1>
-      <p class="lead howto_p">
-        Thank you for wanting to connect with us. You can reach out to us via email or through our Github profile.
-      </p>
-    </div>
-  </div>
-  <div class="row mt-4 contact_inner">
-    <div class="col-md-4 offset-md-2 text-center">
-      <h2 class="contact_h2">Email</h2>
-      <p class="contact_p">
-        <%= link_to 'Email Us', 'mailto:help.hodr@gmail.com', target: '_blank' %>
-      </p>
-    </div>
-    <div class="col-md-4 text-center">
-      <h2 class="contact_h2">GitHub</h2>
-      <p class="contact_p">
-        <%= link_to('<i class="fa fa-github"></i> Github'.html_safe, 'https://github.com/AubreyLove', target: '_blank', class: 'btn btn-primary') %>
-      </p>
-      <h2 class="contact_h2">GoFundMe</h2>
-      <p class="contact_p">
-        <%= link_to('<i class="fa fa-money"></i> GoFundMe'.html_safe, 'https://gofund.me/6e424d41', target: '_blank', class: 'btn btn-success') %>
-      </p>
+<div class="contact-page bg-dark text-light">
+  <div class="container py-5">
+    <h1>Contact Us</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Contact Details</h3>
+        <p>Alien Agent ~ Developer & Server Admin | <a href="mailto:dev@hodr.me">dev@hodr.me</a></p>
+        <p>Silver Spider ~ Marketing & Promotion Specialist | <a href="mailto:silder@hodr.me">silder@hodr.me</a></p>
+        <p>Phone ~ 972-872-5054</p>
+      </div>
+      <div class="col-md-6">
+        <h3>Send Us a Message</h3>
+        <%= form_with url: contact_path, method: :post, local: true do |form| %>
+          <div class="form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :email %>
+            <%= form.email_field :email, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :message %>
+            <%= form.text_area :message, class: 'form-control' %>
+          </div>
+          <%= form.submit "Send Message", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

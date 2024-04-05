@@ -1,4 +1,8 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
-  layout "mailer"
+  default to: 'admin@hodr.me', from: 'website@hodr.me'
+
+  def contact_email(contact)
+    @contact = contact
+    mail(subject: 'New Contact Message from Website')
+  end
 end
