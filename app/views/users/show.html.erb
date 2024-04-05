@@ -4,14 +4,14 @@
   	<% if @user.banner.attached? %>
     	<%= image_tag @user.banner, class: 'profile-banner' %>
   	<% else %>
-    	<%= image_tag("banner.png", class: 'profile-banner') %>
+    	<%= image_tag("hodr_logo.png", class: 'profile-banner') %>
   	<% end %>
 	</div>
    	 <div class="col-sm-3 avatar-container">
   	<% if @user.avatar.attached? %>
     	<%= image_tag @user.avatar, class: "img-circle profile-avatar", alt: "User Avatar" %>
   	<% else %>
-    	<%= image_tag("hodr_logo.png", class: "img-circle profile-avatar") %>
+    	<%= image_tag("hodr_alien-head.png", class: "img-circle profile-avatar") %>
   	<% end %>
    	 </div>
 </div>
