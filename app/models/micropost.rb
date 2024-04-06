@@ -5,7 +5,7 @@ class Micropost < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :mentions
   has_many :mentioned_users, through: :mentions, source: :user
-  has_many :notifications, as: :notifiable, dependent: :destroy 
+  has_many :notifications, as: :notifiable, dependent: :destroy
   has_many_attached :images do |attachable|
     attachable.variant :display, resize_to_limit: [500, 500]
   end

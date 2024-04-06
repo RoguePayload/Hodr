@@ -194,13 +194,8 @@ class User < ApplicationRecord
 
   # Call this method after creating or updating microposts
   def assign_post_badges
-    assign_freshalien_badge
-    assign_travelingalien_badge
-    assign_experiencedalien_badge
-    assign_galaxytraveler_badge
-    assign_cosmicexplorer_badge
-    assign_cosmicmapmaker_badge
-    assign_grandcosmicexplorer_badge
+    assign_youngling_badge
+    assign_padawan_badge
     # Add more methods for other badges as needed
   end
 
