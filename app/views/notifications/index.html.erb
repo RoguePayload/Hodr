@@ -1,8 +1,15 @@
-<div class="notification_div">
-  <h1 class="notification_header">Notifications</h1>
-  <% @notifications.each do |notification| %>
-    <div class="<%= 'unread' if notification.read_at.nil? %> notification_messages">
-      <%= render_notification(notification) %>
+<div style="background: url('<%= asset_path 'hodr_about-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
+
+<div class="about-page" style="height: 100%;">
+  <div class="jumbotron jumbotron-fluid text-light text-center about_intro_div" style="background: rgba(0,0,0,0.8)">
+    <div class="container">
+      <h1 class="notification-header" style="color: #0F0">Notifications</h1>
+      <% @notifications.each do |notification| %>
+          <div class="notification-item <%= 'unread' if notification.read_at.nil? %>">
+              <%= render_notification(notification) %>
+          </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+</div>
 </div>

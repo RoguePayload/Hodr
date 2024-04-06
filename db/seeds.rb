@@ -23,16 +23,16 @@ categories = [
 
 Badge.create([
   # Registration Badges #
-  { name: 'First 100', description: 'Awarded to the first 100 registered users.', image_url: 'hundred.png' },
+  { name: 'First 100', description: 'Awarded to the first 100 registered users.', image_url: 'hodr_hundred.png' },
   { name: 'First 1K', description: 'Awarded to the first 1,000 registered users.', image_url: 'thousand.png'},
   # Post Creation Badges #
-  { name: 'Youngling', description: 'Awarded for making 1-100 posts.', image_url: 'youngling.png' },
-  { name: 'Padawan', description: 'Awarded for making 101~200 posts.', image_url: 'yadoling.png'},
-  { name: 'Jedi Knight', description: 'Awarded for making 201~300 posts.', image_url: 'knight.png'},
-  { name: 'Jedi Master', description: 'Awarded for making 301~400 posts.', image_url: 'master.png'},
-  { name: 'Jedi Council Member', description: 'Awarded for making 401~500 posts.', image_url: 'council.png'},
-  { name: 'Master of Order', description: 'Awarded for making 501~1,000 posts.', image_url: 'order.png'},
-  { name: 'Grand Master', description: 'Awarded for making 1K+ posts.', image_url: 'grandmaster.png'},
+  { name: 'FreshAlien', description: 'Awarded for making 1-100 posts.', image_url: 'hodr_1-100.png' },
+  { name: 'TravelingAlien', description: 'Awarded for making 101~200 posts.', image_url: 'hodr_101-200.png'},
+  { name: 'ExperiencedAlien', description: 'Awarded for making 201~300 posts.', image_url: 'hodr_201-300.png'},
+  { name: 'GalaxyTraveler', description: 'Awarded for making 301~400 posts.', image_url: 'hodr_301-400.png'},
+  { name: 'CosmicExplorer', description: 'Awarded for making 401~500 posts.', image_url: 'hodr_401-500.png'},
+  { name: 'CosmicMapMaker', description: 'Awarded for making 501~1,000 posts.', image_url: 'hodr_501-1k.png'},
+  { name: 'GrandCosmicExplorer', description: 'Awarded for making 1K+ posts.', image_url: 'hodr_1k.png'},
 ])
 
 

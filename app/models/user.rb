@@ -194,8 +194,13 @@ class User < ApplicationRecord
 
   # Call this method after creating or updating microposts
   def assign_post_badges
-    assign_youngling_badge
-    assign_padawan_badge
+    assign_freshalien_badge
+    assign_travelingalien_badge
+    assign_experiencedalien_badge
+    assign_galaxytraveler_badge
+    assign_cosmicexplorer_badge
+    assign_cosmicmapmaker_badge
+    assign_grandcosmicexplorer_badge
     # Add more methods for other badges as needed
   end
 
@@ -239,14 +244,14 @@ class User < ApplicationRecord
 
   def assign_youngling_badge
     if microposts.count >= 1 && microposts.count <= 100
-      badge = Badge.find_by(name: 'Youngling')
+      badge = Badge.find_by(name: 'FreshAlien')
       UserBadge.find_or_create_by(user: self, badge: badge) if badge
     end
   end
 
   def assign_padawan_badge
     if microposts.count > 101 && microposts.count <= 200
-      badge = Badge.find_by(name: 'Padawan')
+      badge = Badge.find_by(name: 'TravelingAlien')
       UserBadge.find_or_create_by(user: self, badge: badge) if badge
     end
   end

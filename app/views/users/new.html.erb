@@ -1,27 +1,67 @@
-<% provide(:title, 'Sign up') %>
+<% provide(:title, 'Commence Uplink') %>
+<div style="background: url('<%= asset_path 'hodr_register-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user) do |f| %>
+<div class="uplink-initiation-container" style="color: rgba(0,0,0,0.8);">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3" style="background-color: rgba(0,0,0,0.4); padding: 20px; border-radius: 8px; box-shadow: 0 0 15px #00ff00; margin: 10px auto;">
+      <%= form_with(model: @user, html: { class: 'form-uplink-initiation' }) do |f| %>
 
-      <%= render 'shared/error_messages' %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label "Username:", class: 'user_new_title' %>
-      <%= f.text_field :uname, class: 'form-control' %>
+        <h2 class="form-heading" style="color: #58a6ff; text-align: center;">Commence Uplink</h2>
+        <div class="form-group">
+          <%= f.label :uname, "Username:", class: 'user_new_title' %>
+          <%= f.text_field :uname, class: 'form-control' %>
+        </div>
 
-      <%= f.label "Email:", class: 'user_new_title' %>
-      <%= f.email_field :email, class: 'form-control' %>
+        <div class="form-group">
+          <%= f.label :email, "Email:", class: 'user_new_title' %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
 
-      <%= f.label "Password:", class: 'user_new_title' %>
-      <%= f.password_field :password, class: 'form-control' %>
+        <div class="form-group">
+          <%= f.label :password, "Password:", class: 'user_new_title' %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
 
-      <%= f.label "Password Confirmation:", class: 'user_new_title' %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Password Confirmation:", class: 'user_new_title' %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
 
+        <div class="terms-conditions">
+          <%= link_to "By creating a new account, you are agreeing to Hodr's Terms & Conditions as well as our EULA (End User License Agreement)", eula_path, target: '_blank', class: 'eula-link', style: 'color: #0F0;' %>
+        </div>
+        <br/>
+        <%= f.submit "Initiate Uplink", class: "btn btn-outline-success btn-block" %>
 
-      <%= link_to "By creating a new account, you are agreing to Hodr's Terms & Conditions as well as our EULA (End User License Agreement)", eula_path, target: '_blank' %>
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
+</div>
+<style>
+.uplink-initiation-container {
+  /* Your container styling, including the dynamic background image set here */
+}
+
+.form-uplink-initiation .form-group label {
+  color: #58a6ff; /* Neon blue for labels */
+}
+
+.form-uplink-initiation .form-control {
+  background-color: #161B22; /* Dark background for input fields */
+  border: 1px solid #30363d;
+  color: #C9D1D9; /* Light text color */
+}
+
+.form-uplink-initiation .btn-primary {
+  background-color: #007bff; /* Adjust button color to fit the theme */
+  border-color: #0056b3;
+}
+
+.eula-link {
+  color: #8b949e; /* Subtle link color */
+  text-decoration: underline;
+}
+</style>

@@ -44,9 +44,9 @@
   <%= render micropost.comments %>
 
   <%= form_with(model: [micropost, Comment.new], local: true) do |form| %>
-    <%= form.text_area :content, placeholder: "Write a comment...", class: 'comment_text_area' %>
-    <%= form.file_field :images, multiple: true, accept: 'image/png,image/jpeg' %>
-    <%= form.submit "Post Comment", class: 'comment_submit_button' %>
+    <%= form.text_area :content, placeholder: "Write a comment...", style: 'width: 100%; background-color: rgba(255,255,255,0.3); color: #0F0;' %>
+    <%= form.file_field :images, multiple: true, accept: 'image/png,image/jpeg', style: 'color: #0F0; cursor: crosshair;' %>
+    <%= form.submit "Post Comment", class: 'btn btn-outline-warning btn-block', style: 'cursor: crosshair' %>
   <% end %>
 </li>
 

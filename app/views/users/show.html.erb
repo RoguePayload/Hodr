@@ -1,325 +1,141 @@
 <% provide(:title, @user.uname) %>
-<div class="content-page" style="margin-bottom: 325px;">
-	<div class="profile-banner" style="margin-bottom: -300px;">
-  	<% if @user.banner.attached? %>
-    	<%= image_tag @user.banner, class: 'profile-banner' %>
-  	<% else %>
-    	<%= image_tag("hodr_logo.png", class: 'profile-banner') %>
-  	<% end %>
-	</div>
-   	 <div class="col-sm-3 avatar-container">
-  	<% if @user.avatar.attached? %>
-    	<%= image_tag @user.avatar, class: "img-circle profile-avatar", alt: "User Avatar" %>
-  	<% else %>
-    	<%= image_tag("hodr_alien-head.png", class: "img-circle profile-avatar") %>
-  	<% end %>
-   	 </div>
-</div>
+<div style="background: url('<%= asset_path 'hodr_profile-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%; height: 100%;">
 
-    <div class="container-fluid gedf-wrapper">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="h5"><%= @user.uname %></div>
-                        <div class="h7 text-muted pname">Name : <%= @user.fname %> <%= @user.lname %></div>
-                        <div class="h7 pbio">
-													<% account_age = ((Time.zone.now - @user.created_at) / 1.day).to_i %>
-													<p style="font-size: 20px;">Account age: <%= account_age %> days</p>
-                        </div>
-												<div class="h7 pbio">
-													<%= render 'family' %>
-													<%= render 'status' %>
-												</div>
-
-                    </div>
-                    <ul class="list-group list-group-flush">
-												<li class="list-group-item" style="background-color: #000">
-													<div class="h6 text-muted">Badges Earned</div>
-													<div class="h5">
-														<% @user.badges.uniq.each do |badge| %>
-														  <%= image_tag badge.image_url, class: 'profile-badge' %>
-														<% end %>
-													</div>
-												</li>
-                        <li class="list-group-item" style="background-color: #000">
-                            <div class="h6 text-muted">Followers</div>
-                            <div class="h5">
-                              <%= @user.followers.count %>
-                            </div>
-                        </li>
-                        <li class="list-group-item" style="background-color: #000;">
-                            <div class="h6 text-muted">Following</div>
-                            <div class="h5">
-                              <%= @user.following.count %>
-                            </div>
-                        </li>
-                        <li class="list-group-item" style="background-color: #000">
-                          <div class="h6 text-muted">Number of Posts</div>
-                          <div class="h5">
-                            <%= @user.microposts.count %>
-                          </div>
-                        </li>
-												<li class="list-group-item" style="background-color: #000">
-													<div class="h6 text-muted">Follow This User</div>
-													<div class="h5">
-														<%= render 'follow_form' %>
-													</div>
-												</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-6 gedf-main">
-                <!-- User Buttons -->
-                <div class="card gedf-card">
-                    <div class="card-body">
-                        <div class="btn-toolbar justify-content-between">
-                            <div class="btn-group" style="width: 100%;">
-                                <button onclick="feedBtn()" class="nav_button">Feed</button>
-																<button onclick="aboutBtn()" class="nav_button">About</button>
-																<button onclick="activityBtn()" class="nav_button">Activities</button>
-																<button onclick="careerBtn()" class="nav_button">Career</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- User Buttons-->
-
-                <!-- Feed -->
-                <div class="card gedf-card" id="feed" style="display: block">
-										<div class="btn-group" style="width: 100%;">
-                        <% if @user == current_user %>
-												    <%= render 'shared/micropost_form' %>
-                        <% end %>
-										</div>
-                    <div class="card-body">
-                        <%= render 'shared/feed' %>
-                    </div>
-                </div>
-                <!-- Feed -->
-
-								<!-- About -->
-								<div class="card gedf-card" id="about" style="display: none">
-									<div class="btn-group" style="width: 100%;">
-										<%= render 'about' %>
-									</div>
-								</div>
-								<!-- About -->
-
-								<!-- Activities -->
-								<div class="card gedf-card" id="activities" style="display: none">
-									<div class="btn-group" style="width: 100%;">
-										<%= render 'activities' %>
-									</div>
-								</div>
-								<!-- Activities -->
-
-								<!-- Career -->
-								<div class="card gedf-card" id="career" style="display: none">
-									<div clsas="btn-group" style="width: 100%;">
-										<%= render 'career' %>
-									</div>
-								</div>
-								<!-- Career -->
-
-            </div>
-            <div class="col-md-3">
-
-							<% if @ad %>
-							  <div id="ad-space" class="card gedf-card">
-							    <div class="card-body">
-							      <h5 class="card-title url">
-							        <%= link_to @ad.title, @ad.link_url, target: "_blank", id: "ad-link" %>
-							      </h5>
-							      <h6 class="card-subtitle mb-2 text-muted url_bio" id="ad-subtitle">
-							        <%= @ad.subtitle %>
-							      </h6>
-							      <p class="card-text ad_bio" id="ad-description">
-							        <%= @ad.description %>
-							      </p>
-							      <%= image_tag @ad.image_url, id: "ad-image", alt: "Ad Image", style: "width:100%;" if @ad.image_url.present? %>
-							    </div>
-							  </div>
-							<% end %>
-
-
-
-            </div>
-        </div>
+<section style="background-color: rgba(0,0,0,0.2);">
+  <div class="container py-5">
+    <div class="row">
+			<div class="profile-banner" style="background-color: rgba(0,0,0,0.1); width: 100%;">
+		  	<% if @user.banner.attached? %>
+		    	<%= image_tag @user.banner, class: 'profile-banner' %>
+		  	<% else %>
+		    	<%= image_tag("hodr_logo.png", class: 'profile-banner') %>
+		  	<% end %>
+			</div>
     </div>
 
-<style>
-body {
-            background-color: #000000;
-        }
-				.h5
-				{
-					font-family: "Electrolize", sans-serif;
-					color: #0F0;
-					font-size: 25px;
-				}
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4" style="background-color: rgba(0,0,0,0.4)">
+          <div class="card-body text-center">
+						<% if @user.avatar.attached? %>
+				    	<%= image_tag @user.avatar, class: "rounded-circle img-fluid", alt: "User Avatar", style: 'width: 150px;' %>
+				  	<% else %>
+				    	<%= image_tag("hodr_alien-head.png", class: "rounded-circle img-fluid", style: 'width: 150px;') %>
+				  	<% end %>
+            <h5 class="my-3" style="color: #0F0;"><%= @user.uname %></h5>
+            <p style="color: #0F0"><%= @user.jtitle %> @ <%= @user.cname %></p>
+            <p style="color: #00F;">Number of Posts: <%= @user.microposts.count %></p>
+						<p style="color: #F00;">Number of Following: <%= @user.following.count %></p>
+						<p style="color: #FFF">Number of Followers: <%= @user.followers.count %></p>
+						<div style='color: #0F0'>Badges Earned</div>
+							<div class="h5">
+								<% @user.badges.uniq.each do |badge| %>
+									<%= image_tag badge.image_url, class: 'profile-badge' %>
+								<% end %>
+							</div>
+            <div class="d-flex justify-content-center mb-2">
+							<%= render 'follow_form' %>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0" style="background-color: rgba(0,0,0,0.1)">
+          <div class="card-body p-0" style="background-color: rgba(0,0,0,0.1)">
+            <ul class="list-group list-group-flush rounded-3" style="background-color: rgba(0,0,0,0.1)">
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
+                <i class="fa-brands fa-github" style="color: #0F0"></i>
+                <p class="mb-0" style="color: #00F;"><%= link_to 'GitHub', @user.git, target: '_blank' %></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
+                <i class="fa-brands fa-square-x-twitter" style="color: #0F0"></i>
+                <p class="mb-0"><%= link_to 'Twitter', @user.twitter, target: '_blank' %></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
+                <i class="fa-brands fa-linkedin" style="color: #0F0"></i>
+                <p class="mb-0"><%= link_to 'LinkedIn', @user.lin, target: '_blank' %></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
+                <i class="fa-brands fa-youtube" style="color: #0F0"></i>
+                <p class="mb-0"><%= link_to 'YouTube', @user.ytube, target: '_blank' %></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
+                <i class="fa-brands fa-chrome" style="color: #0F0"></i>
+                <p class="mb-0"><%= link_to 'Website', @user.web, target: '_blank' %></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8" style="background-color: rgba(0,0,0,0.1)">
+        <div class="card mb-4" style="background-color: rgba(0,0,0,0.1)">
+          <div class="card-body" style="background-color: rgba(0,0,0,0.5)">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color: #0F0;">Full Name</p>
+              </div>
+              <div class="col-sm-9" style="color: #FFF">
+                <p style="color: #FFF"><%= @user.fname %> <%= @user.mname %> <%= @user.lname %></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color: #0F0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p style="color: #FFF"><%= @user.email %></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color: #0F0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p style="color: #FFF"><%= @user.tel %></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color: #0F0">Highest Degree</p>
+              </div>
+              <div class="col-sm-9">
+                <p style="color: #FFF"><%= @user.degree %></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color: #0F0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p style="color: #FFF"><%= @user.state %>, <%= @user.country %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          </div>
 
-        .h7 {
-            font-size: 0.8rem;
-        }
+					<!-- Feed -->
+					<div class="card gedf-card" style="display: block; background-color: rgba(0,0,0,0.6)">
+					    <div class="btn-group" style="width: 100%;">
 
-				.ad_bio
-				{
-					font-family: "Gideon Roman", serif;
-					color: #FFF;
-				}
+					    </div>
+					    <div class="card-body">
+								<% if @user == current_user %>
+										<%= render 'shared/micropost_form' %>
+								<% end %>
+					        <!-- Project Status End -->
+					        <%= render 'shared/feed' %>
+					    </div>
+					</div>
+					<!-- Feed End -->
 
-				.url
-				{
-					font-family: "Black Ops One", system-ui;
-				}
-
-				.url_bio
-				{
-					color: #00F;
-					font-family: "Orbitron", sans-serif;
-				}
-
-				.pname
-				{
-					color: #00F;
-					font-size: 20px;
-					font-family: "Philosopher", sans-serif;
-				}
-
-				.pbio
-				{
-					font-family: "Gideon Roman", serif;
-					font-size: 15px;
-					color: #FFF;
-				}
-
-        .gedf-wrapper {
-            margin-top: 0.97rem;
-        }
-
-        @media (min-width: 992px) {
-            .gedf-main {
-                padding-left: 4rem;
-                padding-right: 4rem;
-            }
-            .gedf-card {
-                margin-bottom: 2.77rem;
-            }
-        }
-
-        /**Reset Bootstrap*/
-        .dropdown-toggle::after {
-            content: none;
-            display: none;
-        }
-
-				.nav_button
-				{
-					background-color: #0B6623;
-					font-family: "Cinzel", serif;
-					font-size: 15px;
-					box-shadow: 5px 5px 7px #C0C0C0;
-					margin: 15px;
-					color: #000;
-					border-radius: 25%;
-					border: 1px solid #C0C0C0;
-					padding: 6px;
-				}
-				.nav_button:hover
-				{
-					background-color: #00FF00;
-					font-size: 18px;
-					font-family: "Cinzel", serif;
-					color: #000;
-					cursor: crosshair;
-				}
-        </style>
-<script>
-function feedBtn()
-{
-	var a = document.getElementById("feed");
-	if (a.style.display === "none")
-	{
-		a.style.display = "block";
-		document.getElementById("about").style.display = "none";
-		document.getElementById("activities").style.display = "none";
-		document.getElementById("career").style.display = "none";
-	}
-	else
-	{
-		a.style.display = "none";
-	}
-}
-
-function aboutBtn()
-{
-	var b = document.getElementById("about");
-	if (b.style.display === "none")
-	{
-		b.style.display = "block";
-		document.getElementById("feed").style.display = "none";
-		document.getElementById("activities").style.display = "none";
-		document.getElementById("career").style.display = "none";
-	}
-	else
-	{
-		b.style.display = "none";
-	}
-}
-
-function activityBtn()
-{
-	var c = document.getElementById("activities");
-	if (c.style.display === "none")
-	{
-		c.style.display = "block";
-		document.getElementById("about").style.display = "none";
-		document.getElementById("feed").style.display = "none";
-		document.getElementById("career").style.display = "none";
-	}
-	else
-	{
-		c.style.display = "none";
-	}
-}
-
-function careerBtn()
-{
-	var d = document.getElementById("career");
-	if (d.style.display === "none")
-	{
-		d.style.display = "block";
-		document.getElementById("activities").style.display = "none";
-		document.getElementById("about").style.display = "none";
-		document.getElementById("feed").style.display = "none";
-	}
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    const ads = [
-        { title: "GoFundMe", subtitle: "Help Us Raise Funds", description: "In today’s digital age...", link: "https://www.gofundme.com/f/launch-our-dream-building-a-social-media-platform?utm_campaign=p_lico+share-sheet&utm_medium=copy_link&utm_source=customer", image: "https://images.gofundme.com/qPB-2xgLP1j_y8aW4Z7PXO0a90c=/720x405/https://d2g8igdw686xgo.cloudfront.net/78494051_1708748207509277_r.png", duration: 10000 },
-        { title: "LakePointe Church", subtitle: "Discover God, Find a Calling, Make A Difference", description: "Lakepointe Church is celebrating Easter...", link: "https://lakepointe.church", image: "https://scontent-dfw5-1.xx.fbcdn.net/v/t1.6435-9/117769166_3549992865045841_7815458755411706069_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=be3454&_nc_ohc=pFrtuMsNOpcAX882CQ7&_nc_ht=scontent-dfw5-1.xx&oh=00_AfA-3DNuY9OgcalFGEpLzsmsjS5bUy_o-ycuZmaBdOTl2A&oe=660A819E", duration: 30000 }
-        // Add more ads as needed
-    ];
-    let currentAdIndex = 0;
-
-    function rotateAds() {
-        const ad = ads[currentAdIndex];
-        document.getElementById("ad-link").href = ad.link;
-        document.getElementById("ad-link").textContent = ad.title;
-        document.getElementById("ad-subtitle").textContent = ad.subtitle;
-        document.getElementById("ad-description").textContent = ad.description;
-        document.getElementById("ad-image").src = ad.image;
-
-        // Set timeout for next ad
-        setTimeout(rotateAds, ad.duration);
-
-        // Update the index for the next ad
-        currentAdIndex = (currentAdIndex + 1) % ads.length;
-    }
-
-    rotateAds(); // Start rotating ads
-});
-
-</script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

@@ -1,24 +1,30 @@
-<% provide(:title, "Admin Portal") %>
-<div class="container-fluid" style="background-color: #C0C0C0; margin-top: 20px;">
+<% provide(:title, "Command Nexus") %>
+<div style="background: url('<%= asset_path 'hodr_admin-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
+
+<div class="nexus-container" style="background-color: rgba(0,0,0,0.8); color: #C9D1D9; padding: 20px; min-height: 100vh;">
   <div class="row">
     <!-- Navigation Sidebar -->
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <nav class="col-md-2 d-md-block sidebar" style="background-color: #161B22;">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <button class="btn btn-warning btn-block" onclick="Dashboard()">Dashboard</button><br/>
+            <button class="btn btn-outline-success btn-block" style="width: 100; cursor: crosshair;" onclick="Dashboard()">Nexus Overview</button><br/>
           </li>
           <li class="nav-item">
-            <button class="btn btn-warning btn-block"  onclick="Users()">User Management</button><br/>
+            <br/>
+            <button class="btn btn-outline-primary btn-block" style="width: 100; cursor: crosshair;" onclick="Users()">Operative Management</button><br/>
           </li>
           <li class="nav-item">
-            <button class="btn btn-warning btn-block" onclick="Businesses()">Business Management</button><br/>
+            <br/>
+            <button class="btn btn-outline-info btn-block" style="width: 100; cursor: crosshair;" onclick="Businesses()">Sector Management</button><br/>
           </li>
           <li class="nav-item">
-            <button class="btn btn-warning btn-block" onclick="Analytics()">Analytics</button><br/>
+            <br/>
+            <button class="btn btn-outline-danger btn-block" style="width: 100; cursor: crosshair;" onclick="Analytics()">Data Streams</button><br/>
           </li>
           <li class="nav-item">
-            <button class="btn btn-warning btn-block" onclick="Ads()">Ads Management</button><br/>
+            <br/>
+            <button class="btn btn-outline-warning btn-block" style="width: 100; cursor: crosshair;" onclick="Ads()">Transmission Control</button><br/>
           </li>
           <!-- Additional links for other admin sections -->
         </ul>
@@ -27,159 +33,151 @@
 
     <!-- Main Content Area -->
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Admin Dashboard</h1>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="border-color: #30363d !important;">
+        <h1 class="h2" style="color: #8b949e;">Command Nexus Dashboard</h1>
       </div>
 
       <!-- Display General Outline -->
       <div id="Dashboard" style="display: none">
-        Total Registered Users: <%= User.count %><br/>
-        Total Number of Posts: <%= Micropost.count %><br/>
-        Total Registered Businesses: <%= Business.count %><br/>
+        <h3 style="color: #58a6ff;">Nexus Statistics</h3>
+        Galactic Operatives Enlisted: <%= User.count %><br/>
+        Data Fragments Collected: <%= Micropost.count %><br/>
+        Sector Entities Registered: <%= Business.count %><br/>
       </div>
 
-      <!-- Display Charts for Users -->
+      <!-- Display Charts for Data Streams -->
       <div id="Charts" style="display: none">
-        <!-- Monthly New User Registration -->
         <div class="my-4 w-100" id="usersChart">
-          <h4>Monthly New User Registrations</h4>
-          <%= line_chart User.group_by_month_of_year(:created_at, format: "%b").count, width: "100%", library: {title: {text: "User Registrations This Year", x: -20}, yAxis: {title: {text: "Number of Users"}}} %>
+          <h4 style="color: #58a6ff;">Operative Enlistment Trends</h4>
+          <%= line_chart User.group_by_month_of_year(:created_at, format: "%b").count, width: "100%", library: {title: {text: "Operative Registrations This Cycle", x: -20}, yAxis: {title: {text: "Number of Operatives"}}} %>
         </div>
-        <div class="my-4 w-100" id="businessesChart">
-          <h4>Monthly New Business Registrations</h4>
-          <%= line_chart Business.group_by_month_of_year(:created_at, format: "%b").count, width: "100%", library: { title: { text: "Business Registrations This Year", x: -20 }, yAxis: { title: { text: "Number of Businesses" } } } %>
+        <div class="my-4 w-100" id="engagementMetrics">
+          <h4 style="color: #58a6ff;">User Engagement Metrics</h4>
+          Average Posts per User: <%= @average_posts_per_user %><br>
+          Average Comments per Post: <%= @average_comments_per_post %><br>
+          <%= line_chart @weekly_login_frequency, xtitle: "Week", ytitle: "Logins", width: "100%", library: {backgroundColor: "#161B22", title: {text: "Weekly Login Frequency", style: {color: "#C9D1D9"}}} %>
         </div>
-        <div class="my-4 w-100" id="activityChart">
-          <h4>Daily User Activity</h4>
-          <%= line_chart @daily_user_activity, xtitle: "Day", ytitle: "Active Users", width: "100%", library: {backgroundColor: "#f8f9fa"} %>
+        <div class="my-4 w-100" id="featureUtilization">
+          <h4 style="color: #58a6ff;">Feature Utilization</h4>
+          Total Relationships: <%= @relationships_count %><br>
+          Messages Sent: <%= @messages_sent %><br>
         </div>
-        <div class="my-4 w-100" id="userActiveChart">
-          <h4>Active vs NonActive Users</h4>
-          <i>Inactive Users ~ Greater than 30-Days since last online</i><br/>
-          <h4>Active Users: <%= @active_users_count %><br/></h4>
-          <h4>Inactive Users: <%= @inactive_users_count %></h4><br/>
-          <h4>Active Businesses: <%= @active_businesses_count %><br/></h4>
-          <h4>Inactive Businesses: <%= @inactive_businesses_count %></h4>
+        <div class="my-4 w-100" id="securityMetrics">
+          <h4 style="color: #58a6ff;">Security Metrics</h4>
+          <%= line_chart @failed_login_attempts, xtitle: "Week", ytitle: "Failed Attempts", width: "100%", library: {backgroundColor: "#161B22", title: {text: "Failed Login Attempts Over Time", style: {color: "#C9D1D9"}}} %>
         </div>
+
       </div>
 
-
-      <!-- Display User Management -->
-        <div id="UserManage" style="display: none">
-          <table class="table">
-            <thead>
+      <!-- User Management -->
+      <div id="UserManage" style="display: none">
+        <h3 style="color: #58a6ff;">Operative Directory</h3>
+        <table class="table" style="color: #C9D1D9; background-color: #161B22;">
+          <thead>
+            <tr>
+              <th>Avatar</th>
+              <th>Username</th>
+              <th>Last IP</th>
+              <th>Access Profile</th>
+              <th>Update Credentials</th>
+              <th>Terminate Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
               <tr>
-                <th>Avatar</th>
-                <th>Username</th>
-                <th>Last IP</th>
-                <th>View Account</th>
-                <th>Change Password</th>
-                <th>Delete User</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @users.each do |user| %>
-                <tr>
-                  <td>
-                    <% if user.avatar.attached? %>
-                      <%= image_tag user.avatar, class: 'user_card_avatar', style: 'width: 25px; height: 25px;' %>
-                    <% else %>
-                      <%= image_tag('hodr_logo.png', class: 'user_card_avatar', style: 'width: 25px; height: 25px;') %>
-                    <% end %>
-                  </td>
-                  <td><%= user.uname %></td>
-                  <td><%= user.last_login_ip %></td>
-                  <td><%= link_to 'View Account', user_path(user) %></td>
-                  <td>
-                    <% if current_user.admin? %>
-                      <%= link_to 'Update Password', edit_password_user_path(user) %>
-                    <% end %>
-                  </td>
-                  <td>COMING SOON</td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-
-          <%= will_paginate @users %>
-        </div>
-
-        <!-- Display Business Management -->
-          <div id="BizManage" style="display: none">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Avatar</th>
-                  <th>Business Name</th>
-                  <th>Last IP</th>
-                  <th>View Account</th>
-                  <th>Change Password</th>
-                  <th>Delete Business</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @businesses.each do |business| %>
-                  <tr>
-                    <td>
-                      <% if business.avatar.attached? %>
-                        <%= image_tag business.avatar, class: 'user_card_avatar', style: 'width: 25px; height: 25px;' %>
-                      <% else %>
-                        <%= image_tag('hodr_logo.png', class: 'user_card_avatar', style: 'width: 25px; height: 25px;') %>
-                      <% end %>
-                    </td>
-                    <td><%= business.name %></td>
-                    <td><%= business.last_login_ip %></td>
-                    <td><%= link_to 'View Account', business_path(business) %></td>
-                    <td>COMING SOON</td>
-                    <td>COMING SOON</td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-
-            <%= will_paginate @businesses %>
-          </div>
-
-
-
-          <!-- Display User Management -->
-            <div id="AdManage" style="display: none">
-              <%= link_to 'Create Ad', new_admin_ad_path, class: 'btn btn-primary' %>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Type</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @ads.each do |ad| %>
-                    <tr>
-                      <td><%= ad.title %></td>
-                      <td><%= ad.end_date %></td>
-                      <td>
-                        <%= link_to 'Edit', edit_admin_ad_path(ad) %>
-                        <%= link_to 'Delete', admin_ad_path(ad), method: :delete, data: { confirm: 'Are you sure?' } %>
-                      </td>
-                    </tr>
+                <td>
+                  <% if user.avatar.attached? %>
+                    <%= image_tag user.avatar, class: 'user_card_avatar', style: 'width: 25px; height: 25px;' %>
+                  <% else %>
+                    <%= image_tag('hodr_logo.png', class: 'user_card_avatar', style: 'width: 25px; height: 25px;') %>
                   <% end %>
-                </tbody>
-              </table>
+                </td>
+                <td><%= user.uname %></td>
+                <td><%= user.last_login_ip %></td>
+                <td><%= link_to 'Access Profile', user_path(user), class: "btn btn-sm btn-neon-blue" %></td>
+                <td>
+                  <% if current_user.admin? %>
+                    <%= link_to 'Update Credentials', edit_password_user_path(user), class: "btn btn-sm btn-neon-yellow" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to 'Terminate Access', user_path(user), method: :delete, data: { confirm: 'Confirm termination?' }, class: "btn btn-sm btn-neon-red" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @users, class: 'pagination' %>
+      </div>
 
-            </div>
+      <!-- Sector Management -->
+      <div id="BizManage" style="display: none;">
+        <h3 style="color: #58a6ff;">Sector (Business) Registry</h3>
+        <table class="table" style="color: #C9D1D9; background-color: #161B22;">
+          <thead>
+            <tr>
+              <th>Emblem</th>
+              <th>Sector Name</th>
+              <th>Last Transmission IP</th>
+              <th>View Sector</th>
+              <th>Deactivate Sector</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @businesses.each do |business| %>
+              <tr>
+                <td>
+                  <% if business.avatar.attached? %>
+                    <%= image_tag business.avatar, class: 'sector_card_emblem', style: 'width: 25px; height: 25px;' %>
+                  <% else %>
+                    <%= image_tag('default_sector_emblem.png', class: 'sector_card_emblem', style: 'width: 25px; height: 25px;') %>
+                  <% end %>
+                </td>
+                <td><%= business.name %></td>
+                <td><%= business.last_login_ip %></td>
+                <td><%= link_to 'View Sector', business_path(business), class: "btn btn-sm btn-neon-blue" %></td>
+                <td>
+                  <%= link_to 'Deactivate Sector', business_path(business), method: :delete, data: { confirm: 'Confirm sector deactivation?' }, class: "btn btn-sm btn-neon-red" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @businesses, class: 'pagination' %>
+      </div>
 
+      <!-- Ads Management -->
+      <div id="AdManage" style="display: none;">
+        <h3 style="color: #58a6ff;">Transmission Control Panel</h3>
+        <%= link_to 'Initiate Transmission', new_admin_ad_path, class: 'btn btn-neon-green mb-3' %>
+        <table class="table" style="color: #C9D1D9; background-color: #161B22;">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Expiry</th>
+              <th>Controls</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @ads.each do |ad| %>
+              <tr>
+                <td><%= ad.title %></td>
+                <td><%= ad.end_date %></td>
+                <td>
+                  <%= link_to 'Edit', edit_admin_ad_path(ad), class: "btn btn-sm btn-neon-yellow" %>
+                  <%= link_to 'Delete', admin_ad_path(ad), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-neon-red" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
 
 
-
-      <!-- Additional sections for other analytics or management tools can be added here -->
     </main>
   </div>
 </div>
-<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-<%= javascript_include_tag "chartkick" %>
-
 <script>
 function Analytics()
 {
@@ -265,3 +263,4 @@ function Ads()
   }
 }
 </script>
+</div>

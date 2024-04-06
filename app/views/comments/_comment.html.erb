@@ -1,5 +1,5 @@
 <div class="comment">
-  <p class="comment_uname"><%= comment.user.uname %></p>
+  <p style="color: #0F0"><%= comment.user.uname %> <i style="color: #FFF">~ Commented:</i></p>
   <p class="comment_content"><%= auto_link(comment.content, html: { target: '_blank' }) %></p>
   <% comment.images.each do |image| %>
     <%= image_tag image, height: '100' %>

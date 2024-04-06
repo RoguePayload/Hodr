@@ -21,7 +21,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get admin" do
     get admin_path
     assert_response :success
-    assert_select "title", "Admin | #{@base_title}"
+    assert_select "title", "Command Nexus | #{@base_title}"
   end
 
   test "should get howto" do
@@ -46,5 +46,5 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get android_path
     assert_response :success
     assert_select "title", "Android Privacy | #{@base_title}"
-  end 
+  end
 end

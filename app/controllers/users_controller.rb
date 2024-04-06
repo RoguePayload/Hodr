@@ -59,9 +59,10 @@ class UsersController < ApplicationController
 
     def destroy
       User.find(params[:id]).destroy
-      flash[:success] = "User deleted"
-      redirect_to admin_path, status: :see_other
+      flash[:success] = "User deleted."
+      redirect_to admin_path # Adjust the redirect as necessary
     end
+
 
     def following
        @title = "Following"

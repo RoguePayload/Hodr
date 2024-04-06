@@ -1,158 +1,279 @@
-<% provide(:title, "Edit user") %>
-<div class="container">
-  <h1 class="mb-4 text-center edit_header">Update Your Profile</h1>
-  <div class="row justify-content-center">
-    <div class="col-md-8" style="margin: 20px auto;">
-      <%= form_with(model: @user) do |f| %>
-        <%= render 'shared/error_messages' %>
+<% provide(:title, "Galactic Profile Configuration") %>
+<div style="background: url('<%= asset_path 'hodr_admin-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
 
-        <div class="form-group">
-          <%= f.submit "Save changes", class: "btn btn-primary btn-block" %>
-        </div>
+<div class="galactic-profile-configuration" style="color: rgba(0,0,0,0.8); margin: 10px auto;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8" style="background-color: rgba(0,0,0,0.8); padding: 20px; border-radius: 8px; box-shadow: 0 0 20px #00ff00; margin: 10px auto;">
+        <h1 class="mb-4 text-center edit_header" style="color: #58a6ff;">Galactic Profile Configuration</h1>
+        <%= form_with(model: @user, html: { class: 'form-galactic-profile' }) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
 
-        <h3 class="section-title">Image Alteration</h3>
-        <div class="form-group">
-          <%= f.label "Avatar", class: "form-label" %>
-          <%= f.file_field :avatar, class: 'form-control' %>
-        </div>
+          <!-- Configuration Sections Here -->
 
-        <div class="form-group">
-          <%= f.label "Banner", class: "form-label" %>
-          <%= f.file_field :banner, class: 'form-control' %>
-        </div>
+          <div class="form-group">
+            <%= f.submit "Save Configuration", class: "btn btn-outline-primary btn-block" %>
+          </div>
 
-        <h3 class="section-title">Basic Information</h3>
-        <div class="form-group">
-          <%= f.label "Username:", class: "form-label" %>
-          <%= f.text_field :uname, class: 'form-control', disabled: true %>
+          <!-- Image Configuration Section -->
+          <div class="image-configuration-section">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">Image Configuration</h3>
+            <p style="color: #8b949e; text-align: center;">Customize your digital appearance within the galactic network.</p>
 
-          <%= f.label "First Name:", class: 'form-label' %>
-          <%= f.text_field :fname, class: 'form-control', placeholder: 'Hodr' %>
+            <div class="form-group">
+              <%= f.label :avatar, "Profile Avatar:", class: "form-label" %>
+              <p style="color: #8b949e;">Select an image that represents your cosmic entity.</p>
+              <%= f.file_field :avatar, class: 'form-control-file', accept: "image/png,image/gif,image/jpeg" %>
+            </div>
 
-          <%= f.label "Middle Name:", class: 'form-label' %>
-          <%= f.text_field :mname, class: 'form-control', placeholder: 'Social' %>
+            <div class="form-group">
+              <%= f.label :banner, "Profile Banner:", class: "form-label" %>
+              <p style="color: #8b949e;">Choose a banner for your profile's background cosmos.</p>
+              <%= f.file_field :banner, class: 'form-control-file', accept: "image/png,image/gif,image/jpeg" %>
+            </div>
+          </div>
 
-          <%= f.label "Last Name:", class: 'form-label' %>
-          <%= f.text_field :lname, class: 'form-control', placeholder: 'Media' %>
 
-          <%= f.label "Biography:", class: 'form-label' %>
-          <%= f.text_area :bio, class: 'form-control', placeholder: 'About me....' %>
-        </div>
+          <!-- Identity Matrix Section -->
+          <div class="identity-matrix-section">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">Identity Matrix</h3>
+            <p style="color: #8b949e; text-align: center;">Define your essence within the galactic expanse.</p>
 
-        <h3 class="section-title">Contact Information</h3>
-        <div class="form-group">
-          <%= f.label "Telephone:", class: 'form-label' %>
-          <%= f.telephone_field :tel, class: 'form-control', placeholder: '817-555-0505' %>
+            <div class="form-group">
+              <%= f.label :uname, "Galactic Handle:", class: "form-label" %>
+              <p style="color: #8b949e;">Your unique identifier in the cosmos (cannot be altered).</p>
+              <%= f.text_field :uname, class: 'form-control', disabled: true %>
+            </div>
 
-          <%= f.label "Email:", class: 'form-label' %>
-          <%= f.email_field :email, class: 'form-control', disabled: true %>
+            <div class="form-group">
+              <%= f.label :fname, "First Name:", class: 'form-label' %>
+              <%= f.text_field :fname, class: 'form-control', placeholder: 'Your First Name' %>
+            </div>
 
-          <%= f.label "Address #1:", class: 'form-label' %>
-          <%= f.text_field :adr1, class: 'form-control', placeholder: '404 Hackers BLVD' %>
+            <div class="form-group">
+              <%= f.label :mname, "Middle Name:", class: 'form-label' %>
+              <%= f.text_field :mname, class: 'form-control', placeholder: 'Your Middle Name' %>
+            </div>
 
-          <%= f.label "Address #2:", class: 'form-label' %>
-          <%= f.text_field :adr2, class: 'form-control', placeholder: '#403' %>
+            <div class="form-group">
+              <%= f.label :lname, "Last Name:", class: 'form-label' %>
+              <%= f.text_field :lname, class: 'form-control', placeholder: 'Your Last Name' %>
+            </div>
 
-          <%= f.label "City:", class: 'form-label' %>
-          <%= f.text_field :city, class: 'form-control', placeholder: 'Dallas' %>
+            <div class="form-group">
+              <%= f.label :bio, "Holographic Bio:", class: 'form-label' %>
+              <p style="color: #8b949e;">A glimpse into your story. Share your journey, achievements, or the mysteries you've uncovered.</p>
+              <%= f.text_area :bio, class: 'form-control', placeholder: 'Share your cosmic journey...' %>
+            </div>
+          </div>
 
-          <%= f.label "State:", class: 'form-label' %>
-          <%= f.text_field :state, class: 'form-control', placeholder: 'Texas' %>
 
-          <%= f.label "Zip:", class: 'form-label' %>
-          <%= f.number_field :zip, class: 'form-control', placeholder: '75542' %>
+          <!-- Communication Relays Section -->
+          <div class="communication-relays-section">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">Communication Relays</h3>
+            <p style="color: #8b949e; text-align: center;">Establish your connections across the galactic network.</p>
 
-          <%= f.label "Country:", class: 'form-label' %>
-          <%= f.text_field :country, class: 'form-control', placeholder: 'United States of America' %>
-        </div>
+            <div class="form-group">
+              <%= f.label :tel, "Subspace Frequency (Telephone):", class: 'form-label' %>
+              <%= f.telephone_field :tel, class: 'form-control', placeholder: 'Your Subspace Frequency' %>
+            </div>
 
-        <h3 class="section-title">Online Presence</h3>
-        <div class="form-group">
-          <%= f.label "Git Account:", class: 'form-label' %>
-          <%= f.url_field :git, class: 'form-control', placeholder: 'https://github.com/AubreyLove' %>
+            <div class="form-group">
+              <%= f.label :email, "Quantum Mail (Email):", class: 'form-label' %>
+              <p style="color: #8b949e;">Quantum encrypted mail address (immutable).</p>
+              <%= f.email_field :email, class: 'form-control', disabled: true %>
+            </div>
 
-          <%= f.label "Twitter:", class: 'form-label' %>
-          <%= f.url_field :twitter, class: 'form-control', placeholder: 'https://twitter.com/AubreyLove' %>
+            <div class="form-group">
+              <%= f.label :adr1, "Docking Station Address #1:", class: 'form-label' %>
+              <%= f.text_field :adr1, class: 'form-control', placeholder: 'Primary Docking Coordinates' %>
+            </div>
 
-          <%= f.label "LinkedIn:", class: 'form-label' %>
-          <%= f.url_field :lin, class: 'form-control', placeholder: 'https://linkedin.com/in/AubreyLove' %>
+            <div class="form-group">
+              <%= f.label :adr2, "Docking Station Address #2:", class: 'form-label' %>
+              <%= f.text_field :adr2, class: 'form-control', placeholder: 'Secondary Docking Coordinates' %>
+            </div>
 
-          <%= f.label "Website:", class: 'form-label' %>
-          <%= f.url_field :web, class: 'form-control', placeholder: 'https://aubreylove.space' %>
+            <div class="form-group">
+              <%= f.label :city, "Sector (City):", class: 'form-label' %>
+              <%= f.text_field :city, class: 'form-control', placeholder: 'Nearest Galactic Sector' %>
+            </div>
 
-          <%= f.label "YouTube:", class: 'form-label' %>
-          <%= f.url_field :ytube, class: 'form-control', placeholder: 'https://youtube.com/channel/AubreyLove' %>
-        </div>
+            <div class="form-group">
+              <%= f.label :state, "Quadrant (State):", class: 'form-label' %>
+              <%= f.text_field :state, class: 'form-control', placeholder: 'Quadrant of Residence' %>
+            </div>
 
-        <h3 class="section-title">Education Information</h3>
-        <div class="form-group">
-          <%= f.label "Highest Educational Degree:", class: 'form-label' %>
-          <%= f.text_field :degree, class: 'form-control', placeholder: 'Ph.D. Computer Science' %>
+            <div class="form-group">
+              <%= f.label :zip, "Warp Signature (Zip):", class: 'form-label' %>
+              <%= f.number_field :zip, class: 'form-control', placeholder: 'Warp Trace Code' %>
+            </div>
 
-          <%= f.label "School Name:", class: 'form-label' %>
-          <%= f.text_field :sname, class: 'form-control', placeholder: 'Ashley University' %>
+            <div class="form-group">
+              <%= f.label :country, "Galaxy (Country):", class: 'form-label' %>
+              <%= f.text_field :country, class: 'form-control', placeholder: 'Galactic Territory' %>
+            </div>
+          </div>
 
-          <%= f.label "Description of Studies:", class: 'form-label' %>
-          <%= f.text_field :cstudies, class: 'form-control', placeholder: 'While attending this school, ' %>
-        </div>
 
-        <h3 class="section-title">Relationship Status</h3>
-        <div class="form-group">
-          <%= f.label "Marital Status:", class: 'form-label' %>
-          <%= f.select :marital, [['Married'], ['Single'], ['Dating'], ['Widow']], class: 'form-control' %>
+          <!-- Digital Footprint Section -->
+          <div class="digital-footprint-section">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">Digital Footprint</h3>
+            <p style="color: #8b949e; text-align: center;">Chart your virtual existence across the digital cosmos.</p>
 
-          <%= f.label "Spouses Name:", class: 'form-label' %>
-          <%= f.text_field :spouse, class: 'form-control', placeholder: 'Khristane' %>
+            <div class="form-group">
+              <%= f.label :git, "Hacking Codex (Git Account):", class: 'form-label' %>
+              <%= f.url_field :git, class: 'form-control', placeholder: 'https://git-realm.com/YourCodex' %>
+            </div>
 
-          <%= f.label "Number of Kids:", class: 'form-label' %>
-          <%= f.number_field :kids, class: 'form-control', placeholder: '4' %>
-        </div>
+            <div class="form-group">
+              <%= f.label :twitter, "Cosmic Chirps (Twitter):", class: 'form-label' %>
+              <%= f.url_field :twitter, class: 'form-control', placeholder: 'https://twitter.com/GalacticChirper' %>
+            </div>
 
-        <h3 class="section-title">Activities &amp; Hobbies</h3>
-        <div class="form-group">
-          <%= f.label "Favorite Books:", class: 'form-label' %>
-          <%= f.text_area :books, class: 'form-control', placeholder: 'Bible, Ruby on Rails for Dummies,' %>
+            <div class="form-group">
+              <%= f.label :lin, "Professional Galaxy (LinkedIn):", class: 'form-label' %>
+              <%= f.url_field :lin, class: 'form-control', placeholder: 'https://linkedin.com/in/GalacticProfessional' %>
+            </div>
 
-          <%= f.label "Favorite Movies/T.V. Shows:", class: 'form-label' %>
-          <%= f.text_area :movies, class: 'form-control', placeholder: 'Hackers, Passion of the Christ, How Its Made' %>
+            <div class="form-group">
+              <%= f.label :web, "Personal Universe (Website):", class: 'form-label' %>
+              <%= f.url_field :web, class: 'form-control', placeholder: 'https://www.youruniverse.com' %>
+            </div>
 
-          <%= f.label "Favorite Activity:", class: 'form-label' %>
-          <%= f.text_area :activity, class: 'form-control', placeholder: 'Coding, hacking, spending time with family' %>
+            <div class="form-group">
+              <%= f.label :ytube, "Holographic Chronicles (YouTube):", class: 'form-label' %>
+              <%= f.url_field :ytube, class: 'form-control', placeholder: 'https://youtube.com/channel/YourGalacticChronicles' %>
+            </div>
+          </div>
 
-          <%= f.label "Favorite Songs:", class: 'form-label' %>
-          <%= f.text_area :songs, class: 'form-control', placeholder: 'Teach me Lord to Wait' %>
 
-          <%= f.label "Favorite Games:", class: 'form-label' %>
-          <%= f.text_area :games, class: 'form-control', placeholder: 'Dungeons & Dragons, Call of Duty, Fortnite' %>
-        </div>
+          <!-- Education Information Section -->
+          <div class="education-section">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">Knowledge Accumulation</h3>
+            <p style="color: #8b949e; text-align: center;">Embark on cosmic journeys of learning and enlightenment.</p>
 
-        <h3 class="section-title">Employment Information</h3>
-        <div class="form-group">
-          <%= f.label "Job Title:", class: 'form-label' %>
-          <%= f.text_field :jtitle, class: 'form-control', placeholder: 'Ruby on Rails Engineer' %>
+            <div class="form-group">
+              <%= f.label :degree, "Highest Galactic Degree:", class: 'form-label' %>
+              <%= f.text_field :degree, class: 'form-control', placeholder: 'Ph.D. Cosmic Engineering' %>
+            </div>
 
-          <%= f.label "Company Name:", class: 'form-label' %>
-          <%= f.text_field :cname, class: 'form-control', placeholder: 'Hodr Social' %>
+            <div class="form-group">
+              <%= f.label :sname, "Educational Star System:", class: 'form-label' %>
+              <%= f.text_field :sname, class: 'form-control', placeholder: 'Galactic University of Science' %>
+            </div>
 
-          <%= f.label "Length of Employment:", class: 'form-label' %>
-          <%= f.text_field :ljob, class: 'form-control', placeholder: '1 Year' %>
+            <div class="form-group">
+              <%= f.label :cstudies, "Interstellar Studies:", class: 'form-label' %>
+              <%= f.text_field :cstudies, class: 'form-control', placeholder: 'Studied cosmic phenomena and stellar cartography.' %>
+            </div>
+          </div>
 
-          <%= f.label "Job Description:", class: 'form-label' %>
-          <%= f.text_area :jdesc, class: 'form-control', placeholder: 'Write the code for Hodr!' %>
-        </div>
 
-        <h3 class="section-title">Change Password</h3>
-        <div class="form-group">
-          <%= f.label "Password:", class: 'form-label' %>
-          <%= f.password_field :password, class: 'form-control' %>
+          <!-- Relationship Status Section -->
+          <div class="relationship-section">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">Social Connectivity</h3>
+            <p style="color: #8b949e; text-align: center;">Discover your cosmic alignment within the interconnected galaxies of relationships.</p>
 
-          <%= f.label "Confirm Password:", class: 'form-label' %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
+            <div class="form-group">
+              <%= f.label :marital, "Cosmic Marital Status:", class: 'form-label' %>
+              <%= f.select :marital, [['Married'], ['Single'], ['Dating'], ['Widow']], class: 'form-control' %>
+            </div>
 
-        <div class="form-group">
-          <%= f.submit "Save changes", class: "btn btn-primary btn-block" %>
-        </div>
-      <% end %>
+            <div class="form-group">
+              <%= f.label :spouse, "Galactic Partner's Name:", class: 'form-label' %>
+              <%= f.text_field :spouse, class: 'form-control', placeholder: 'Enter your partners cosmic appellation' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :kids, "Celestial Offspring Count:", class: 'form-label' %>
+              <%= f.number_field :kids, class: 'form-control', placeholder: 'Number of celestial offspring' %>
+            </div>
+          </div>
+
+
+          <!-- Activities & Hobbies Section -->
+          <div class="activities-section">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">Celestial Pursuits</h3>
+            <p style="color: #8b949e; text-align: center;">Embark on a journey through your cosmic pursuits and celestial pastimes.</p>
+
+            <div class="form-group">
+              <%= f.label :books, "Favorite Cosmic Chronicles:", class: 'form-label' %>
+              <%= f.text_area :books, class: 'form-control', placeholder: 'Explore the cosmic library of your favorite chronicles' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :movies, "Cosmic Cinematic Adventures:", class: 'form-label' %>
+              <%= f.text_area :movies, class: 'form-control', placeholder: 'Embark on cinematic voyages through the cosmos' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :activity, "Celestial Engagements:", class: 'form-label' %>
+              <%= f.text_area :activity, class: 'form-control', placeholder: 'Engage in cosmic activities and celestial pursuits' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :songs, "Galactic Melodies:", class: 'form-label' %>
+              <%= f.text_area :songs, class: 'form-control', placeholder: 'Immerse yourself in the celestial symphony of favorite songs' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :games, "Interstellar Adventures:", class: 'form-label' %>
+              <%= f.text_area :games, class: 'form-control', placeholder: 'Embark on interstellar journeys through cosmic games' %>
+            </div>
+          </div>
+
+
+          <!-- Employment Information Section -->
+          <div class="employment-section">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">Operational Assignment</h3>
+            <p style="color: #8b949e; text-align: center;">Embark on cosmic career endeavors and operational assignments across the universe.</p>
+
+            <div class="form-group">
+              <%= f.label :jtitle, "Position in Cosmic Organization:", class: 'form-label' %>
+              <%= f.text_field :jtitle, class: 'form-control', placeholder: 'Enter your cosmic job title' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :cname, "Cosmic Organization:", class: 'form-label' %>
+              <%= f.text_field :cname, class: 'form-control', placeholder: 'Enter your cosmic organization name' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :ljob, "Length of Cosmic Employment:", class: 'form-label' %>
+              <%= f.text_field :ljob, class: 'form-control', placeholder: 'Enter the length of your cosmic employment' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :jdesc, "Operational Description:", class: 'form-label' %>
+              <%= f.text_area :jdesc, class: 'form-control', placeholder: 'Describe your operational assignments in the cosmic realm' %>
+            </div>
+          </div>
+
+
+          <!-- Change Password Section -->
+          <div class="password-section">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">Encryption Key Update</h3>
+            <p style="color: #8b949e; text-align: center;">Update your encryption key to secure your cosmic digital presence.</p>
+
+            <div class="form-group">
+              <%= f.label :password, "New Encryption Key:", class: 'form-label' %>
+              <%= f.password_field :password, class: 'form-control', placeholder: 'Enter your new encryption key' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation, "Confirm Encryption Key:", class: 'form-label' %>
+              <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your new encryption key' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Save Configuration", class: "btn btn-outline-success btn-block" %>
+          </div>
+
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
 </div>
