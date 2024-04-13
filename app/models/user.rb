@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   after_create :assign_badge_based_on_id
 
+  has_one :subscription
+
   has_many :microposts, dependent: :destroy
 
   has_many :comments, dependent: :destroy
@@ -204,12 +206,20 @@ class User < ApplicationRecord
     assign_post_badges
   end
 
+  def has_premium_access?
+    is_premium || admin?
+  end  
+
   # New custom validation method
   def email_excludes_forbidden_words
     forbidden_words = ["hodr", "hodr.me", "hodr.com", "hodr.net", "hodr.xyz", "hodr.org", "hodr.online", "hodr.site"]
     if forbidden_words.any? { |word| email.include?(word) }
       errors.add(:email, "contains a forbidden word or domain")
     end
+  end
+
+  def subscribed?
+    subscription.present? && subscription.status == 'active'
   end
 
   private

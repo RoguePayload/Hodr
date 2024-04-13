@@ -21,6 +21,10 @@
       									<%= image_tag badge.image_url, class: 'profile-badge' %>
       								<% end %>
                       <%= render 'follow_form' %>
+                      <% if @user == current_user && !@user.subscribed? %>
+                        <%= link_to 'Upgrade', new_subscription_path, class: 'btn btn-primary' %>
+                      <% end %>
+
                     </div>
                   </div>
                 </div>

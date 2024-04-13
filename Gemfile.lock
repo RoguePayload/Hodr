@@ -354,6 +354,7 @@ GEM
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     stringio (3.1.0)
+    stripe (11.0.0)
     thor (1.3.1)
     tilt (2.3.0)
     timeout (0.4.1)
@@ -426,6 +427,7 @@ DEPENDENCIES
   sprockets-rails (= 3.4.2)
   sqlite3 (= 1.4.2)
   stimulus-rails (= 1.0.4)
+  stripe
   turbo-rails (= 1.1.1)
   web-console (= 4.2.0)
   webdrivers (= 5.0.0)
