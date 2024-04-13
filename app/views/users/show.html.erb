@@ -3,7 +3,7 @@
     <div class="main-body">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-              <div class="card">
+              <div class="card" style="background-image: url('<%= @user.banner.presence || asset_path('mypage_banner.png') %>'); background-size: cover;">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     <% if @user.avatar.attached? %>

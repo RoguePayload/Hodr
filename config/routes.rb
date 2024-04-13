@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  # Google AI Services
+  post "/translate", to: "translations#translate"
+  post '/process_audio', to: 'audio#process_audio'
+
+
   namespace :admin do
     resources :ads
   end

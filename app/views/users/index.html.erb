@@ -8,9 +8,9 @@
         <div class="card">
           <div class="card-body">
             <% if user.avatar.attached? %>
-              <%= image_tag user.avatar, class: 'card-img-top' %>
+              <%= image_tag user.avatar, class: 'card-img-top', style: 'width: 100%; height: 150px;' %>
             <% else %>
-              <%= image_tag('mypage_logo.png', class: 'card-img-top') %>
+              <%= image_tag('mypage_logo.png', class: 'card-img-top', style: 'width: 100%; height: 150px;') %>
             <% end %>
             <h5 class="card-title card_username"><%= user.uname %></h5>
             <p class="card-text card_posts">Total Posts: <%= user.microposts.count %> | Total Followers: <%= user.following.count %></p>

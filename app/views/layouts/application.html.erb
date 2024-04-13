@@ -50,11 +50,39 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
+    <!-- Language Selector Dropdown Menu -->
+
+
       <% flash.each do |message_type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
       <%= yield %>
     </div>
     <%= javascript_include_tag "chartkick", "data-turbo-track": "reload" %>
+    <!-- Import Google Cloud Translation API Client Library -->
+    <%= javascript_include_tag "https://www.gstatic.com/cloud-site-ux/v1/translations.bundle.js" %>
+
+    <!-- Custom JavaScript for Translation -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const languageSelector = document.getElementById("language-selector");
+
+        languageSelector.addEventListener("change", function() {
+          const selectedLanguage = languageSelector.value;
+          translateContent(selectedLanguage);
+        });
+
+        function translateContent(language) {
+          const elementsToTranslate = document.querySelectorAll(".translate");
+
+          elementsToTranslate.forEach(element => {
+            const originalText = element.innerText;
+
+            // Call Google Cloud Translation API to translate the text
+            google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: language, layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+          });
+        }
+      });
+    </script>
   </body>
 </html>
