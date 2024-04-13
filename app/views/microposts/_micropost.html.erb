@@ -1,8 +1,8 @@
 <li id="micropost-<%= micropost.id %>">
   <% if micropost.user.avatar.attached? %>
-    <%= image_tag micropost.user.avatar, size: "50x50" %>
+    <%= image_tag micropost.user.avatar, size: "25x25" %>
   <% else %>
-    <%= image_tag("hodr_logo.png", size: "50x50") %>
+    <%= image_tag("mypage_logo.png", size: "25x25") %>
   <% end %>
   <span class="user"><%= link_to micropost.user.uname, micropost.user, class: 'post_user_link' %></span>
   <span class="content post_content">
@@ -44,8 +44,8 @@
   <%= render micropost.comments %>
 
   <%= form_with(model: [micropost, Comment.new], local: true) do |form| %>
-    <%= form.text_area :content, placeholder: "Write a comment...", style: 'width: 100%; background-color: rgba(255,255,255,0.3); color: #0F0;' %>
-    <%= form.file_field :images, multiple: true, accept: 'image/png,image/jpeg', style: 'color: #0F0; cursor: crosshair;' %>
+    <%= form.text_area :content, placeholder: "Write a comment..." %><br/>
+    <%= form.file_field :images, multiple: true, accept: 'image/png,image/jpeg', style: 'color: #000; cursor: crosshair;' %><br/>
     <%= form.submit "Post Comment", class: 'btn btn-outline-warning btn-block', style: 'cursor: crosshair' %>
   <% end %>
 </li>

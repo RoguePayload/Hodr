@@ -1,62 +1,86 @@
-<div style="background: url('<%= asset_path 'hodr_home-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
+<div class="container mt-5">
+  <section class="text-center mb-4">
+    <h1 class="home_heading">Welcome to <strong class="home_heading_pro">MyPage</strong>!</h1>
+    <p class="home_paragraph">Reclaim your freedom to express, customize, and engage in a truly private social space.</p>
+    <%= link_to 'Create Your Page!', signup_path, class: 'btn btn-outline-success button_pro' %> <%= link_to 'Enter Your Page!', login_path, class: 'btn btn-outline-primary button_pro' %>
+  </section>
 
-<div class="p-5 text-light text-center home_intro_div" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)),  center / cover no-repeat;">
-  <div class="container">
-    <h1 class="display-3 home_h1">Discover the Unknown</h1>
-    <p class="lead home_p">Dive into the new era of social media where the cosmos meets technology.</p>
-    <p class="lead home_p">Join our galaxy of explorers and express yourself in a universe without boundaries.</p>
-    <%= link_to "Start Your Journey", signup_path, class: "btn btn-lg btn-outline-primary mt-4 me-2", style: 'cursor: crosshair' %>
-    <%= link_to "Already Exploring?", login_path, class: "btn btn-lg btn-outline-success mt-4", style: 'cursor: crosshair' %>
-  </div>
-</div>
-
-<div class="container text-center mt-5 home_why_div" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)),  center / cover no-repeat;">
-  <h2 class="display-4 home_why_h1">Why Hodr?</h2>
-  <p class="lead home_why_p">At Hodr, we're reshaping social media into an infinite playground for expression, connection, and discovery.</p>
-  <div class="row mt-4">
-    <div class="col-md-4 home_why_inner_div">
-      <h3>Uncharted Freedom</h3>
-      <p>Share your adventures, thoughts, and discoveries freely, in an expansive digital cosmos.</p>
-    </div>
-    <div class="col-md-4 home_why_inner_div">
-      <h3>Interstellar Connection</h3>
-      <p>Connect with beings from all corners of the universe, in forums and groups that transcend galaxies.</p>
-    </div>
-    <div class="col-md-4 home_why_inner_div">
-      <h3>Cosmic Privacy</h3>
-      <p>Your space, your rules. Navigate the cosmos with the assurance that your privacy is safeguarded.</p>
-    </div>
-  </div>
-</div>
-
-<div class="container text-center mt-5 home_tech_div" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)),  center / cover no-repeat;">
-  <h2 class="display-4 home_tech_h2">Our Technology Constellation</h2>
-  <p class="lead home_tech_p">We harness advanced technologies to fuel your journey through Hodr, ensuring a seamless and immersive experience.</p>
-  <div class="row mt-4">
+  <div class="row text-center">
     <div class="col-md-4">
-      <h3 style="color: #0000FF">Ruby on Rails</h3>
-      <p style="color: #FFFFFF">The backbone of our interstellar journey, providing powerful and scalable web development.</p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title card_pro">Freedom of Speech</h5>
+          <p class="card-text card_semi-pro">Express yourself without fear of censorship.</p>
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
-      <h3 style="color: #00FF00">Bootstrap</h3>
-      <p style="color: #FFFFFF">The fabric of our universe, enabling responsive and flexible design that adapts to any device or screen size.</p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title card_pro">Zero Tracking</h5>
+          <p class="card-text card_semi-pro">Your privacy is our priority. Enjoy a platform that respects your data and personal space.</p>
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
-      <h3 style="color: #FF0000">PostgreSQL</h3>
-      <p style="color: #FFFFFF">The core of our galaxy, storing the universe's knowledge securely and efficiently.</p>
-    </div>
-    <div class="col-md-4">
-      <h3 style="color: #FF00FF">Heroku</h3>
-      <p style="color: #FFFFFF">The launchpad for our mission, offering a scalable, managed hosting environment that lets our platform soar through the digital cosmos with ease.</p>
-    </div>
-    <div class="col-md-4">
-      <h3 style="color: #FFFF00">Amazon AWS S3 Buckets</h3>
-      <p style="color: #FFFFFF">The cosmic vaults of our universe, providing secure and infinite storage space for the myriad of data and discoveries made by our explorers across the galaxy.</p>
-    </div>
-    <div class="col-md-4">
-      <h3 style="color: #00FFFF">Cryptocurrency Gateway</h3>
-      <p style="color: #FFFFFF">The star portal of commerce, enabling seamless transactions across the cosmos. This gateway allows explorers to trade and transact with digital currencies, fueling the economic engines of our galactic community.</p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title card_pro">Customizable Profiles</h5>
+          <p class="card-text card_semi-pro">Show off your style with fully customizable profiles. Let your personality shine through every pixel.</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
+  <!-- Additional Features Section -->
+  <section class="my-5">
+    <h2 class="home_heading">Explore Advanced Features</h2>
+    <i><u><b>Please Note:</b> Most features are SOON to come!</u></i>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title card_pro">Enhanced Profile Customization</h5>
+            <p class="card-text card_semi-pro">
+              Elevate your MyPage profile with our advanced customization options. Choose from a variety of layout templates, integrate useful widgets, and create a personal soundtrack with your favorite music playlists. These features not only enhance your personal expression but also ensure your profile stands out in a crowded social media landscape. Tailor your digital space to reflect your unique style and preferences, making your MyPage profile a true extension of your personality.<br/>
+              <br/>
+              <br/>
+            </p>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-titl card_pro">Badges and Rewards</h5>
+            <p class="card-text card_semi-pro">
+              Elevate your engagement on MyPage with our dynamic badges and rewards system. Participate actively in the community to earn badges that showcase your contributions and achievements. From 'Newbie' to 'Influencer', each badge not only signifies your status but also unlocks new capabilities and rewards. Top user status brings additional perks, enhancing your visibility and influence within the community. Join us to make your mark, earn rewards, and gain recognition among your peers.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title card_pro">Advanced AI Integration</h5>
+            <p class="card-text card_semi-pro">
+              MyPage harnesses the power of advanced artificial intelligence through collaborations with industry leaders like Google AI and OpenAI's ChatGPT. Our platform integrates these sophisticated algorithms to refine user interaction, offer personalized content, and provide intelligent automated responses. This AI enhancement transforms traditional social networking into an intuitive, responsive, and user-centric experience. Discover how AI can make your social interactions more engaging and tailored to your interests, setting MyPage apart as a leader in innovative social media solutions.
+            </p>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title card_pro">Social and Productivity Integrations</h5>
+            <p class="card-text card_semi-pro">
+              Connect and streamline your social presence with MyPage’s new integration features. Effortlessly sync your profile with other social media platforms for seamless cross-posting. Link your account with calendar apps to manage event planning directly from your MyPage profile. Enjoy enriched content sharing with multimedia platforms like Spotify or YouTube, enhancing how you share and consume content. These integrations not only simplify your digital life but also amplify your online interactions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Optimization Section -->
+  <section class="my-5">
+    <h2 class="home_heading">Join a Private and Protected Community</h2>
+    <p class="text-center card_semi-pro">Discover a social media platform where privacy, protection, and personalization are built into the very fabric of the community.</p>
+  </section>
 </div>

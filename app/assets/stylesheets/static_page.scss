@@ -1,322 +1,119 @@
-body
-{
-  background-color: #000;
-}
+@import 'bootstrap';
 
-.registration_page
+/* Customize the Home Page: */
+.container
 {
-  font-family: "Gideon Roman", serif;
-  color: #FFF;
+  margin-top: 100px;
+}
+.home_heading
+{
+  font-family: "Space Grotesk", sans-serif;
+  .home_heading_pro
+  {
+    font-family: "Dancing Script", cursive;
+  }
+}
+.home_paragraph
+{
+  font-family: "Crimson Text", serif;
   font-size: 20px;
-  margin-top: 25px;
+}
+.button_pro
+{
+  font-family: "Dancing Script", cursive;
+  cursor: crosshair;
+  font-size: 30px;
 }
 
-.eula_head
+.card_pro
 {
-  font-family: "Gideon Roman", serif;
-  color: #FFF;
+  font-family: "Jacquard 24", system-ui;
+  font-size: 35px;
+  text-decoration: underline;
+}
+.card_semi-pro
+{
+  font-family: "Cormorant Garamond", serif;
   font-size: 20px;
 }
 
-.home_intro_div
-{
-  border: 3px solid #00F;
-  box-shadow: 10px 10px 13px #C0C0C0;
-  padding: 10px;
-  background-color: #000;
-  color: #0F0;
-}
 
-.home_h1
-{
-  font-family: "Electrolize", sans-serif;
-}
-
-.home_p
-{
-  font-family: "Orbitron", sans-serif;
-}
-
-.home_why_div
-{
-  color: #FFF;
-  border: 2px double #0F0;
-}
-
-.home_why_h1
-{
-  font-family: "Black Ops One", system-ui;
-}
-
-.home_why_p
+/* Customize the About Page: */
+.about_heading
 {
   font-family: "EB Garamond", serif;
+  color: #000;
+  font-size: 35px;
 }
-
-.home_why_inner_div
+.about_paragraph
 {
-  background-color: rgba(0,0,255,0.4);
-  border: 2px solid #000;
-  padding: 3px;
-}
-
-.home_why_inner_h3
-{
-  font-family: "Philosopher", sans-serif;
-}
-
-.home_why_inner_p
-{
-  font-family: "Play", sans-serif;
-}
-
-.home_tech_div
-{
-  border: 4px solid gold;
-  padding: 5px;
-  box-shadow: 10px 10px 13px #C0C0C0;
-  margin: 20px auto;
-  .home_tech_h2
-  {
-    color: #FFF;
-    font-family: "Source Code Pro", monospace;
-  }
-  .home_tech_p
-  {
-    color: #00F;
-    font-family: "Bebas Neue", sans-serif;
-  }
-  .home_tech_inner_h3
-  {
-    color: #C0C0C0;
-    font-family: "EB Garamond", serif;
-  }
-  .home_tech_inner_p
-  {
-    color: #0F0;
-    font-family: "Cinzel", serif;
-  }
-}
-
-.about_intro_div
-{
-  border: 3px solid #F00;
-  box-shadow: 10px 10px 13px #C0C0C0;
-  margin: 20px auto;
-  background-color: #000;
-  .about_h1
-  {
-    font-family: "Black Ops One", system-ui;
-    color: #F00;
-  }
-
-}
-.about_sec_p
-{
-  color: #FFF;
-  font-family: "EB Garamond", serif;
-  font-size: 20px;
-}
-.about_p
-{
-  color: #FFF;
-  font-family: "Orbitron", sans-serif;
-}
-.about_secondary
-{
-  border: 4px solid gold;
-  box-shadow: 10px 10px 13px #C0C0C0;
-  margin: 20px auto;
-  padding: 15px;
-  color: #FFF;
-  .about_sec_h2
-  {
-    color: #00F;
-    font-family: "Play", sans-serif;
-  }
-
-  .about_img
-  {
-    border-radius: 75%;
-    height: 250px;
-    width: 250px;
-    border: 3px double #0F0;
-    box-shadow: 8px 8px 10px #C0C0C0;
-    margin-bottom: 25px;
-  }
-  .about_coder_h5
-  {
-    color: #0F0;
-    font-family: "Source Code Pro", monospace;
-    font-size: 30px;
-  }
-  .about_coder_p
-  {
-    color: #FFF;
-    font-family: "Anta", sans-serif;
-    font-size: 20px;
-  }
-  .about_list
-  {
-    color: #C0C0C0;
-    font-family: "Orbitron", sans-serif;
-  }
-  .about_join_h5
-  {
-    color: #F00;
-    font-family: "Philosopher", sans-serif;
-  }
-  .about_join_p
-  {
-    color: #FFF;
-    font-family: "Cinzel", serif;
-  }
-}
-
-
-.howto_intro_div
-{
-  border: 3px solid #4c2967;
-  box-shadow: 10px 10px 13px #C0C0C0;
-  margin: 20px auto;
-  background-color: #000;
-  .howto_h1
-  {
-    color: #4C2967;
-    font-family: "Black Ops One", system-ui;
-  }
-  .howto_p
-  {
-    color: #FFF;
-    font-family: "Orbitron", sans-serif;
-  }
-}
-
-
-.howto_sec_h2
-{
-  color: #FFF;
-  font-family: "Electrolize", sans-serif;
-}
-
-.howto_sec_p
-{
-  color: #C0C0C0;
-  font-family: "Philosopher", sans-serif;
-}
-
-.howto_list
-{
-  color: #7a6ffa;
-  font-family: "Cinzel", serif;
-}
-
-.contact_inner
-{
-  margin: 25px auto;
-  border: 1px solid #0F0;
-  box-shadow: 10px 10px 13px #C0C0C0;
+  font-family: "Cormorant Garamond", serif;
+  color: #000;
   text-align: center;
-  .contact_h2
-  {
-    color: #0F0;
-    font-family: "Electrolize", sans-serif;
-  }
-  .contact_p
-  {
-    color: #00F;
-    font-family: "Cinzel", serif;
-  }
+  font-size: 25px;
+}
+.about_section_title
+{
+  font-family: "Bungee Spice", sans-serif;
+}
+.about_mypage
+{
+  font-family: "Exo 2", sans-serif;
+}
+
+/* Customize the How To Page: */
+.howto_header
+{
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 30px;
+}
+.howto_about
+{
+  font-family: "Crimson Text", serif;
+  font-size: 25px;
+}
+.howto_semi_title
+{
+  font-family: "Jacquard 24", system-ui;
+}
+.howto_semi_paragraph
+{
+  font-family: "Dancing Script", cursive;
+  font-size: 20px;
+}
+.howto_list_instructions
+{
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 25px;
 }
 
 
-.mobile_home_intro_div
+/* Customize the Contact Page: */
+.contact_header
 {
-  width: 90%;
-  padding: 5px;
-  background-color: #000;
-  border: 1px solid #00F;
-  box-shadow: 3px 3px 5px #C0C0C0;
-  .mobile_home_h1
-  {
-    font-family: "Orbitron", sans-serif;
-    color: #0F0;
-    font-size: 25px;
-  }
-  .mobile_home_p
-  {
-    color: #FFF;
-    font-family: "Cinzel", serif;
-    font-size: 17px;
-  }
+  font-family: "Crimson Text", serif;
 }
-.mobile_home_why_h1
+.contact_paragraph
 {
-  font-family: "Orbitron", sans-serif;
-  color: #0F0;
+  font-family: "Space Grotesk", sans-serif;
 }
-.mobile_home_why_div
+.contact_form_title
 {
-  width: 90%;
-  padding: 3px;
-  border: 2px solid gold;
-  .mobile_home_why_h1
-  {
-    font-family: "Black Ops One", system-ui;
-    color: #F0FF0A;
-    text-align: center;
-  }
-  .home_why_p
-  {
-    font-family: "Play", sans-serif;
-    color: #FFF;
-    text-align: left;
-  }
-  .mobile_home_why_inner_div
-  {
-    background-color: yellow;
-    width: 90%;
-    float: center;
-    margin: 2px auto;
-    .mobile_home_why_inner_h3
-    {
-      color: #000;
-      font-family: "Gideon Roman", serif;
-    }
-    .mobile_home_why_inner_p
-    {
-      color: #000;
-      font-family: "Source Code Pro", monospace;
-    }
-  }
+  font-family: "Teko", sans-serif;
 }
-.mobile_home_tech_div
+.contact_form_input
 {
-  width: 90%;
-  padding: 3px;
-  border: 2px solid #0F0;
-  margin-top: 35px;
-  .mobile_home_tech_h2
-  {
-    font-family: "Source Code Pro", monospace;
-    color: #0F0;
-    font-size: 25px;
-  }
-  .mobile_home_tech_p
-  {
-    font-family: "Bebas Neue", sans-serif;
-    color: #FFF;
-    font-size: 20px;
-  }
-  .mobile_home_tech_inner_h3
-  {
-    font-family: "Anta", sans-serif;
-    color: darkgreen;
-  }
-  .mobile_home_tech_inner_p
-  {
-    font-family: "EB Garamond", serif;
-    color: pink;
-    font-size: 20px;
-  }
+  font-family: "Cormorant Garamond", serif;
+}
+
+
+/* Customize the EULA Page: */
+.eula_header
+{
+  font-family: "Jacquard 24", system-ui;
+}
+.eula_paragraph
+{
+  font-family: "Dancing Script", cursive;
+  font-size: 25px;
 }

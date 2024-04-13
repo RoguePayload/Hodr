@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Set Meta Tags -->
+    <meta property="og:title" content="MyPage - A Secure and Customizable Social Media Platform">
+    <meta property="og:description" content="Join MyPage to enjoy a private, customizable social networking experience with advanced features designed to protect your data and enhance engagement.">
+    <meta property="og:image" content="<%= image_url('mypage_logo.png') %>">
+    <meta property="og:url" content="https://www.mypage.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RoguePayload">
+    <meta name="twitter:title" content="MyPage - A Secure and Customizable Social Media Platform">
+    <meta name="twitter:description" content="Explore MyPage, your go-to platform for secure and customizable social networking, designed with privacy in mind.">
+    <meta name="twitter:image" content="<%= image_url('mypage_logo.png') %>">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Dr. Aubrey W. Love II, Developer of MyPage">
+    <meta name="description" content="Explore MyPage, a secure and customizable social media platform designed for user privacy and freedom. Connect, share, and engage without compromising your data. Experience advanced features like profile syncing, interactive content formats, and privacy-focused social networking.">
+    <meta name="keywords" content="secure social media, customizable social network, privacy-focused social media, user profile syncing, interactive social media, advanced social networking features, data protection, no tracking social network">
+
+    <!-- Prevent Hackers from Hacking the Site -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://hodr.me; object-src 'none';">-->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
     <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= favicon_link_tag 'hodr_logo.png' %>
+    <%= favicon_link_tag 'mypage_logo.png' %>
     <%= render 'layouts/shim' %>
     <%= javascript_importmap_tags %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +42,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap" rel="stylesheet">
     <%= javascript_include_tag "chartkick", "data-turbo-track": "reload" %>
     <script src="https://kit.fontawesome.com/ba464c6581.js" crossorigin="anonymous"></script>
+    <!-- Import Google Fonts: -->
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Jacquard+24&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&family=Teko:wght@300..700&display=swap')
+    </style>
   </head>
   <body>
     <%= render 'layouts/header' %>
@@ -28,6 +55,6 @@
       <% end %>
       <%= yield %>
     </div>
-    <%= javascript_include_tag "chartkick", "data-turbo-track": "reload" %>    
+    <%= javascript_include_tag "chartkick", "data-turbo-track": "reload" %>
   </body>
 </html>

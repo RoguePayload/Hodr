@@ -1,7 +1,6 @@
-<header class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #000;">
+<header class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgba(0,0,0,0.8);">
   <div class="container-fluid">
-    <!-- Logo Image Link -->
-    <%= link_to image_tag("hodr_logo.png", alt: "Hodr Logo", style: 'height: 50px; width: 175px;'), root_path, class: "navbar-brand" %>
+    <%= link_to 'MyPage', root_path, class: 'navbar-brand nav_pro', style: 'color: #FFF' %>
 
     <!-- Hamburger Menu for Mobile View -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,35 +11,35 @@
       <!-- Navigation Links -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: 'btn btn-outline-success', style: 'margin-right: 7px; cursor: crosshair;' %>
+          <%= link_to "Home", root_path, class: 'btn btn-outline-success', id: 'nav_button_pro' %>
         </li>
         <li class="nav-item">
-          <%= link_to "About", about_path, class: 'btn btn-outline-warning', style: 'margin-right: 7px; cursor: crosshair;' %>
+          <%= link_to "About", about_path, class: 'btn btn-outline-warning', id: 'nav_button_pro' %>
         </li>
         <li class="nav-item">
-          <%= link_to "How To", howto_path, class: 'btn btn-outline-primary', style: 'margin-right: 7px; cursor: crosshair;' %>
+          <%= link_to "How To", howto_path, class: 'btn btn-outline-primary', id: 'nav_button_pro' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Contact", contact_path, class: 'btn btn-outline-info', style: 'margin-right: 7px; cursor: crosshair;' %>
+          <%= link_to "Contact", contact_path, class: 'btn btn-outline-info', id: 'nav_button_pro' %>
         </li>
 
         <% if current_user&.admin %>
           <li class="nav-item">
-            <%= link_to "Admin Portal", admin_path, class: 'btn btn-outline-danger', style: 'margin-right: 7px; cursor: crosshair;' %>
+            <%= link_to "Admin Portal", admin_path, class: 'btn btn-outline-danger', id: 'nav_button_pro' %>
           </li>
         <% end %>
 
         <% if logged_in? %>
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to notifications_path, class: 'btn btn-outline-warning', style: 'margin-right: 7px; cursor: crosshair;' do %>
+              <%= link_to notifications_path, class: 'btn btn-outline-warning', id: 'nav_button_pro' do %>
                 Notifications (<%= current_user.notifications.where(read_at: nil).count %>)
               <% end %>
             </li>
           <% end %>
 
           <li class="nav-item">
-            <%= link_to "Users", users_path, class: 'btn btn-outline-success', style: 'margin-right: 7px; cursor: crosshair;' %>
+            <%= link_to "Users", users_path, class: 'btn btn-outline-success', id: 'nav_button_pro' %>
           </li>
 
           <!-- User Account Dropdown -->
@@ -49,20 +48,20 @@
               Account
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #000;">
-              <li><%= link_to "Profile", current_user, class: 'dropdown-item text-light' %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item text-light' %></li>
+              <li><%= link_to "Profile", current_user, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
               <li><hr class="dropdown-divider"></li>
-              <li><%= link_to "EULA & Terms", eula_path, class: 'dropdown-item text-light' %></li>
-              <li><%= link_to "Chat Boards", boards_path, class: 'dropdown-item text-light' %></li>
-              <li><%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item text-light' %></li>
+              <li><%= link_to "EULA & Terms", eula_path, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
+              <li><%= link_to "Chat Boards", boards_path, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
+              <li><%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
             </ul>
           </li>
         <% else %>
         <li class="nav-item">
-          <%= link_to "EULA & Terms", eula_path, class: 'btn btn-outline-danger', style: 'margin-right: 7px; cursor: crosshair;' %>
+          <%= link_to "EULA & Terms", eula_path, class: 'btn btn-outline-danger', id: 'nav_button_pro' %>
         </li>
           <li class="nav-item">
-            <%= link_to "Log in", login_path, class: 'btn btn-outline-success', style: 'margin-right: 7px; cursor: crosshair;' %>
+            <%= link_to "Log in", login_path, class: 'btn btn-outline-success', id: 'nav_button_pro' %>
           </li>
         <% end %>
       </ul>

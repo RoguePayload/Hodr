@@ -1,34 +1,45 @@
 <% provide(:title, "Contact") %>
-<div style="background: url('<%= asset_path 'hodr_contact-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
 
-<div class="contact-page text-light">
-  <div class="container py-5">
-    <h1>Contact Us</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Contact Details</h3>
-        <p>Alien Agent ~ Developer & Server Admin | <a href="mailto:dev@hodr.me">dev@hodr.me</a></p>
-        <p>Phone ~ 972-872-5054</p>
+  <div class="contact-page">
+    <div class="container py-5">
+      <h1 class="contact_header">Contact Us</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="contact_header">Contact Details</h3>
+          <p class="contact_paragraph">Dr. Aubrey W. Love II ~ Developer &amp; Owner of MyPage</p>
+          <p class="contact_paragraph">Email ~ <%= link_to 'dev@mypage.me', 'mailto:dev@mypage.me' %>
+          <p class="contact_paragraph">Phone ~ <%= link_to '972-872-5054', 'tel:972-872-5054' %></p>
+          <p class="contact_paragraph">Dr. Aubrey brings over 19 years of IT experience and a deep commitment to creating a secure and open platform for digital expression.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="contact_header">Send Us a Message</h3>
+          <%= form_with url: contact_path, method: :post, local: true do |form| %>
+            <div class="form-group">
+              <%= form.label :name, class: 'contact_form_title' %>
+              <%= form.text_field :name, class: 'form-control contact_form_input' %>
+            </div>
+            <div class="form-group">
+              <%= form.label :email, class: 'contact_form_title' %>
+              <%= form.email_field :email, class: 'form-control contact_form_input' %>
+            </div>
+            <div class="form-group">
+              <%= form.label :message, class: 'contact_form_title' %>
+              <%= form.text_area :message, class: 'form-control contact_form_input' %>
+            </div>
+            <%= form.submit "Send Message", class: "btn btn-outline-success button_pro" %>
+          <% end %>
+        </div>
       </div>
-      <div class="col-md-6">
-        <h3>Send Us a Message</h3>
-        <%= form_with url: contact_path, method: :post, local: true do |form| %>
-          <div class="form-group">
-            <%= form.label :name %>
-            <%= form.text_field :name, class: 'form-control', style: 'background-color: rgba(0,0,0,0.6); color: #00FF00;' %>
+      <div class="row mt-5">
+        <div class="col-md-12">
+          <div class="developer-info" style="background-color: #f4f4f4; padding: 20px; border-radius: 8px;">
+            <h2 class="display-4 contact_header">Meet the Developer</h2>
+            <p class="contact_paragraph">Dr. Aubrey W. Love II, Ph.D.</p>
+            <p class="contact_paragraph">As the Developer and Owner of MyPage, I bring over 19 years of IT and freelance project experience to this platform. With a Ph.D. in Computer Science, my passion is to create digital spaces that promote freedom of expression and privacy.</p>
+            <h3 class="contact_header">Personal Touch</h3>
+            <p class="contact_paragraph">I've been married for over 15 years and am a proud father to four wonderful children. Balancing family life with technological innovation is my daily pursuit.</p>
           </div>
-          <div class="form-group">
-            <%= form.label :email %>
-            <%= form.email_field :email, class: 'form-control', style: 'background-color: rgba(0,0,0,0.6); color: #00FF00;' %>
-          </div>
-          <div class="form-group">
-            <%= form.label :message %>
-            <%= form.text_area :message, class: 'form-control', style: 'background-color: rgba(0,0,0,0.6); color: #00FF00;' %>
-          </div>
-          <%= form.submit "Send Message", class: "btn btn-outline-success" %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>

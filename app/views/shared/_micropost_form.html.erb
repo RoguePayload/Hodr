@@ -1,10 +1,10 @@
 <%= form_with(model: @micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field" style="width: 100%;">
-    <%= f.text_area :content, placeholder: "Compose new post...", style: 'width: 100%; background-color: rgba(255,255,255,0.3)' %>
+    <%= f.text_area :content, placeholder: "Compose new post..." %>
   </div>
   <span class="image">
-    <%= f.file_field :images, multiple: true, accept: "image/png,image/jpeg,image/gif,image/webp,video/mp4,video/mov,video/webm", style: 'color: #0F0; cursor: crosshair' %>
+    <%= f.file_field :images, multiple: true, accept: "image/png,image/jpeg,image/gif,image/webp,video/mp4,video/mov,video/webm", style: 'color: #000; cursor: crosshair' %>
   </span><br/>
   <br/>
   <%= f.submit "Post", class: "btn btn-outline-success", style: 'width: 100%;', style: 'cursor: crosshair' %>

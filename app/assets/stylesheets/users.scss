@@ -1,156 +1,108 @@
- .user_card
- {
-   background-color: #C0C0C0;
-   border: 2px solid #00F;
-   padding: 15px;
-   text-align: center;
-   .user_card_avatar
-   {
-     border-radius: 75%;
-     border: 2px solid #F00;
-     box-shadow: 10px 10px 12px;
-     margin: 10px auto;
-     height: 50px;
-     width: 50px;
-   }
-   .user_card_title
-   {
-     color: #00F;
-     font-family: "Cinzel", serif;
-   }
-   .user_card_email
-   {
-     color: #F00;
-     font-family: "Cinzel", serif;
-   }
-   .user_card_creation
-   {
-     font-family: "Cinzel", serif;
-     color: green;
-   }
-   .user_card_role
-   {
-     font-family: "Gideon Roman", serif;
-     color: #A33C00;
-   }
- }
-.users_header
+/* Customize the User Account Creation Page: */
+.create_heading
 {
-  color: #FFF;
-  font-family: "Black Ops One", system-ui;
+  font-family: "Cormorant Garamond", serif;
 }
-.users_count
+.create_title
 {
-  color: #0F0;
-  font-family: "Orbitron", sans-serif;
+  font-family: "Crimson Text", serif;
+  font-size: 20px;
+}
+.create_input
+{
+  font-family: "Red Hat Display", sans-serif;
 }
 
-/* Custom Styles for Settings Page */
-.section-title {
-  font-size: 24px;
-  color: #00ffcc;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #00ffcc;
-  padding-bottom: 10px;
-  font-family: "Cinzel", serif;
-  text-align: center;
-}
-
-.form-label {
-  font-size: 18px;
-  color: #fff;
-  font-family: "Orbitron", sans-serif;
-}
-
-.form-control {
-  background-color: #0b0b0b;
-  color: #fff;
-  border: 1px solid #00ffcc;
-  font-family: "Electrolize", sans-serif;
-}
-.form-control:disabled{
-  background-color: #000;
-  font-family: "Philosopher", sans-serif;
-}
-
+/* Customize the Edit User Page */
 .edit_header
 {
-  color: #00FFCC;
-  font-family: "Black Ops One", system-ui;
+  font-family: "Teko", sans-serif;
 }
-
-
-.post_area
+.form-label
 {
-  background-color: #000;
-  border: 3px solid #0F0;
-  box-shadow: 10px 10px 12px #C0C0C0;
-  padding: 10px;
-  color: #0F0;
-  font-family: "Electrolize", sans-serif;
-  width: 100%;
-}
-
-.post_title
-{
-  color: #00F;
-  font-family: "Electrolize", sans-serif;
-}
-
-.post_user_link
-{
-  color: #F00;
-  font-family: "Orbitron", sans-serif;
-}
-.post_content
-{
-  color: #FFF;
-  font-family: "Orbitron", sans-serif;
-}
-.post_time
-{
-  color: #C0C0C0;
-  font-family: "Electrolize", sans-serif;
-}
-
-.comment_uname
-{
-  color: purple;
-  font-family: "Cinzel", serif;
-}
-.comment_content
-{
-  color: #FFF;
   font-family: "EB Garamond", serif;
   font-size: 20px;
 }
-
-.text_intel
+.form-control
 {
-  color: #FFF;
-  font-family: "Gideon Roman", serif;
+  font-family: "Crimson Text", serif;
+}
+
+/* Customize the Users Index Page */
+.card_username
+{
+  font-family: "Exo 2", sans-serif;
+}
+.card_posts
+{
+  font-family: "Teko", sans-serif;
+}
+.card_time
+{
+  font-family: "Space Grotesk", sans-serif;
+}
+.card_role
+{
+  font-family: "Jacquard 24", system-ui;
   font-size: 20px;
 }
-.text_header
-{
-  color: #0F0;
-  font-size: 15px;
-  font-family: "Orbitron", sans-serif;
+
+/* Customize the Users Profile Page */
+body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;
 }
-.block_title
-{
-  color: #00F;
-  font-size: 25px;
-  font-family: "Black Ops One", system-ui;
+.main-body {
+    padding: 15px;
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
 }
 
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
 .profile-badge
 {
   width: 50px;
   height: 50px;
-  border-radius: 75%;
-  border: 1px solid gold;
-  box-shadow: 5px 5px 7px #C0C0C0;
-  margin: 10px auto;
 }

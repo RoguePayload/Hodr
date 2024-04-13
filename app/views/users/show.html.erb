@@ -1,141 +1,149 @@
-<% provide(:title, @user.uname) %>
-<div style="background: url('<%= asset_path 'hodr_profile-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%; height: 100%;">
+<div class="container">
+    <div class="main-body">
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <% if @user.avatar.attached? %>
+        				    	<%= image_tag @user.avatar, class: "rounded-circle img-fluid", alt: "User Avatar", style: 'width: 150px;' %>
+        				  	<% else %>
+        				    	<%= image_tag("mypage_logo.png", class: "rounded-circle img-fluid", style: 'width: 150px;') %>
+        				  	<% end %>
+                    <div class="mt-3">
+                      <h4>Username: <%= @user.uname %></h4>
+                      <p class="text-secondary mb-1">
+                        <%= @user.jtitle %> <%= @user.cname %>
+                      </p>
+                      <p class="text-muted font-size-sm"><%= @user.city %> <%= @user.state %></p>
+                      <% @user.badges.uniq.each do |badge| %>
+      									<%= image_tag badge.image_url, class: 'profile-badge' %>
+      								<% end %>
+                      <%= render 'follow_form' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3">
+                <ul class="list-group list-group-flush">
 
-<section style="background-color: rgba(0,0,0,0.2);">
-  <div class="container py-5">
-    <div class="row">
-			<div class="profile-banner" style="background-color: rgba(0,0,0,0.1); width: 100%;">
-		  	<% if @user.banner.attached? %>
-		    	<%= image_tag @user.banner, class: 'profile-banner' %>
-		  	<% else %>
-		    	<%= image_tag("hodr_logo.png", class: 'profile-banner') %>
-		  	<% end %>
-			</div>
-    </div>
+                  <!-- Display Users Website -->
+                  <% if @user.web.present? %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><i class="fa-brands fa-internet-explorer"></i></h6>
+                    <span class="text-secondary"><%= link_to @user.web, @user.web, target: '_blank' %></span>
+                  </li>
+                  <% end %>
 
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="card mb-4" style="background-color: rgba(0,0,0,0.4)">
-          <div class="card-body text-center">
-						<% if @user.avatar.attached? %>
-				    	<%= image_tag @user.avatar, class: "rounded-circle img-fluid", alt: "User Avatar", style: 'width: 150px;' %>
-				  	<% else %>
-				    	<%= image_tag("hodr_alien-head.png", class: "rounded-circle img-fluid", style: 'width: 150px;') %>
-				  	<% end %>
-            <h5 class="my-3" style="color: #0F0;"><%= @user.uname %></h5>
-            <p style="color: #0F0"><%= @user.jtitle %> @ <%= @user.cname %></p>
-            <p style="color: #00F;">Number of Posts: <%= @user.microposts.count %></p>
-						<p style="color: #F00;">Number of Following: <%= @user.following.count %></p>
-						<p style="color: #FFF">Number of Followers: <%= @user.followers.count %></p>
-						<div style='color: #0F0'>Badges Earned</div>
-							<div class="h5">
-								<% @user.badges.uniq.each do |badge| %>
-									<%= image_tag badge.image_url, class: 'profile-badge' %>
-								<% end %>
-							</div>
-            <div class="d-flex justify-content-center mb-2">
-							<%= render 'follow_form' %>
-            </div>
-          </div>
-        </div>
-        <div class="card mb-4 mb-lg-0" style="background-color: rgba(0,0,0,0.1)">
-          <div class="card-body p-0" style="background-color: rgba(0,0,0,0.1)">
-            <ul class="list-group list-group-flush rounded-3" style="background-color: rgba(0,0,0,0.1)">
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
-                <i class="fa-brands fa-github" style="color: #0F0"></i>
-                <p class="mb-0" style="color: #00F;"><%= link_to 'GitHub', @user.git, target: '_blank' %></p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
-                <i class="fa-brands fa-square-x-twitter" style="color: #0F0"></i>
-                <p class="mb-0"><%= link_to 'Twitter', @user.twitter, target: '_blank' %></p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
-                <i class="fa-brands fa-linkedin" style="color: #0F0"></i>
-                <p class="mb-0"><%= link_to 'LinkedIn', @user.lin, target: '_blank' %></p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
-                <i class="fa-brands fa-youtube" style="color: #0F0"></i>
-                <p class="mb-0"><%= link_to 'YouTube', @user.ytube, target: '_blank' %></p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: rgba(0,0,0,0.4)">
-                <i class="fa-brands fa-chrome" style="color: #0F0"></i>
-                <p class="mb-0"><%= link_to 'Website', @user.web, target: '_blank' %></p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-8" style="background-color: rgba(0,0,0,0.1)">
-        <div class="card mb-4" style="background-color: rgba(0,0,0,0.1)">
-          <div class="card-body" style="background-color: rgba(0,0,0,0.5)">
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0" style="color: #0F0;">Full Name</p>
-              </div>
-              <div class="col-sm-9" style="color: #FFF">
-                <p style="color: #FFF"><%= @user.fname %> <%= @user.mname %> <%= @user.lname %></p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0" style="color: #0F0">Email</p>
-              </div>
-              <div class="col-sm-9">
-                <p style="color: #FFF"><%= @user.email %></p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0" style="color: #0F0">Phone</p>
-              </div>
-              <div class="col-sm-9">
-                <p style="color: #FFF"><%= @user.tel %></p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0" style="color: #0F0">Highest Degree</p>
-              </div>
-              <div class="col-sm-9">
-                <p style="color: #FFF"><%= @user.degree %></p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0" style="color: #0F0">Address</p>
-              </div>
-              <div class="col-sm-9">
-                <p style="color: #FFF"><%= @user.state %>, <%= @user.country %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-          </div>
+                  <!-- Display Users Git Account -->
+                  <% if @user.git.present? %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><i class="fa-brands fa-square-git"></i></h6>
+                    <span class="text-secondary"><%= link_to 'Git', @user.git, target: '_blank' %></span>
+                  </li>
+                  <% end %>
 
-					<!-- Feed -->
-					<div class="card gedf-card" style="display: block; background-color: rgba(0,0,0,0.6)">
-					    <div class="btn-group" style="width: 100%;">
+                  <!-- Display Users Twitter Account -->
+                  <% if @user.twitter.present? %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><i class="fa-brands fa-square-x-twitter"></i></h6>
+                    <span class="text-secondary"><%= link_to 'Twitter', @user.twitter, target: '_blank' %></span>
+                  </li>
+                  <% end %>
 
-					    </div>
-					    <div class="card-body">
-								<% if @user == current_user %>
-										<%= render 'shared/micropost_form' %>
-								<% end %>
-					        <!-- Project Status End -->
-					        <%= render 'shared/feed' %>
-					    </div>
-					</div>
-					<!-- Feed End -->
+                  <!-- Display Users LinkedIn Account -->
+                  <% if @user.lin.present? %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><i class="fa-brands fa-linkedin"></i></h6>
+                    <span class="text-secondary"><%= link_to 'LinkedIn', @user.lin, target: '_blank' %></span>
+                  </li>
+                  <% end %>
 
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-</div>
+                  <!-- Display Users YouTube Account -->
+                  <% if @user.ytube.present? %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><i class="fa-brands fa-youtube"></i></h6>
+                    <span class="text-secondary"><%= link_to 'YouTube', @user.ytube, target: '_blank' %></span>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @user.fname %> <%= @user.mname %> <%= @user.lname %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @user.email %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @user.tel %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Highest Degree</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @user.degree %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @user.city %> <%= @user.state %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              					<!-- Feed -->
+              					<div class="card gedf-card" style="display: block; width: 100%">
+              					    <div class="btn-group" style="width: 100%;">
+
+              					    </div>
+              					    <div class="card-body" style="width: 100%">
+              								<% if @user == current_user %>
+              										<%= render 'shared/micropost_form' %>
+              								<% end %>
+              					        <!-- Project Status End -->
+              					        <%= render 'shared/feed' %>
+              					    </div>
+              					</div>
+              					<!-- Feed End -->
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              </div>

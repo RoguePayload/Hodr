@@ -1,30 +1,28 @@
-<% provide(:title, 'All users') %>
-<div style="background: url('<%= asset_path 'hodr_profile-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%; height: 100%;">
-
-<div class="container" style="background-color: rgba(0,0,0,0.1)">
-  <h1 class="mb-4 users_header">All users</h1>
-  <p class="mb-4 users_count">Total Registered Users: <%= User.count %></p>
-  <div class="row" style="background-color: rgba(0,0,0,0.1)">
+<% provide(:title, 'All Pages') %>
+<div class="container">
+  <h1 class="mb-4">All users</h1>
+  <p class="mb-4">Total Registered Users: <%= User.count %></p>
+  <div class="row">
     <% @users.each do |user| %>
-      <div class="col-md-4 mb-4" style="background-color: rgba(0,0,0,0.1)">
-        <div class="card" style="background-color: rgba(0,0,0,0.1)">
-          <div class="card-body user_card" style="background-color: rgba(0,0,0,0.8)">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
             <% if user.avatar.attached? %>
-              <%= image_tag user.avatar, class: 'user_card_avatar' %>
+              <%= image_tag user.avatar, class: 'card-img-top' %>
             <% else %>
-              <%= image_tag('hodr_logo.png', class: 'user_card_avatar') %>
+              <%= image_tag('mypage_logo.png', class: 'card-img-top') %>
             <% end %>
-            <h5 class="card-title user_card_title"><%= user.uname %></h5>
-            <p class="card-text user_card_email">Total Posts: <%= user.microposts.count %></p>
-            <p class="card-text user_card_creation">Time of Creation: <%= time_ago_in_words(user.created_at) %> ago</p>
-            <p class="card-text user_card_role">Role:
+            <h5 class="card-title card_username"><%= user.uname %></h5>
+            <p class="card-text card_posts">Total Posts: <%= user.microposts.count %> | Total Followers: <%= user.following.count %></p>
+            <p class="card-text card_time">Time of Creation: <%= time_ago_in_words(user.created_at) %> ago</p>
+            <p class="card-text card_role">Role:
               <% if user.admin %>
                 Administrator
               <% else %>
                 Standard User
               <% end %>
             </p>
-            <%= link_to 'View profile', user, class: 'btn btn-outline-success', style: 'cursor: crosshair' %>
+            <%= link_to 'View profile', user, class: 'btn btn-success button_pro', style: 'cursor: pointer' %>
           </div>
         </div>
       </div>
@@ -33,5 +31,4 @@
   <div class="mt-4">
     <%= will_paginate %>
   </div>
-</div>
 </div>

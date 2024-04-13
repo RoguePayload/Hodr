@@ -1,46 +1,53 @@
 <% provide(:title, "About") %>
-<div style="background: url('<%= asset_path 'hodr_about-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
-
 <div class="about-page">
-  <div class="jumbotron jumbotron-fluid text-light text-center about_intro_div" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), center / cover no-repeat;">
+  <div class="jumbotron jumbotron-fluid text-light text-center">
     <div class="container">
-      <%= image_tag("hodr_logo.png", alt: "Hodr Sci-Fi Logo", height: "300px", width: "100%") %>
-      <h1 class="about_h1">About Hodr</h1>
-      <p class="lead">
-        Hodr is a beacon in the digital cosmos, a revolution in the social media galaxy. It’s a domain where free spirits roam the cybernetic space, sharing their visions and voyages without the fear of being silenced. Here, in the vastness of the digital universe, Hodr stands as a sanctuary of free expression, privacy, and interstellar connection. Join our constellation of explorers in a venture beyond the known, where every voice echoes across stars.
+      <%= image_tag("mypage_logo.png", alt: "MyPage Logo", height: "300px", width: "100%") %>
+      <h1 class="about_heading">About MyPage</h1>
+      <p class="about_paragraph">
+        Welcome to MyPage, your new home for truly personal and unrestricted social networking. Here, every voice is heard, every opinion matters, and privacy is paramount. Join us to explore a platform where freedom and customization create a space that's genuinely yours.
       </p>
     </div>
   </div>
 
-  <section class="about-page about_secondary" style="background-color: rgba(0,0,0,0.8);">
+  <section class="about-page about_secondary">
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <h2 class="about_sec_h2">Our Mission</h2>
-        <p class="text-muted" style="color: #FFF;">In the boundless expanse of the internet, Hodr serves as a haven for those who seek to share their knowledge and curiosity without constraint. Inspired by the infinite possibilities of astrophysics and the precision of computer science, we are forging a community where the frontiers of exploration and expression are limitless.</p>
+        <h2 class="about_section_title">Our Mission</h2>
+        <p class="about_mypage">At MyPage, we champion digital freedom and user customization. We're breaking the mold of traditional social media to offer you a platform where you can express yourself without boundaries and tailor your experience down to the finest detail.</p>
 
-        <h2 class="about_sec_h2">The Navigator Behind Hodr</h2>
+        <h2 class="about_section_title">What Makes MyPage Different?</h2>
         <div class="media mb-4">
-          <%= image_tag("alienagent.jpg", class: "about_img mr-3 rounded-circle", alt: "Your Name", width: "100") %>
-          <div class="media-body">
-            <h5 class="mt-0 about_coder_h5">The Self-Taught Visionary</h5>
-            <p class="about_coder_p">Charting courses through both the celestial and cyber realms, I've navigated the vast seas of astrophysics and the intricate web of programming languages. With a background illuminated by the stars of hacktivism and the shadows of cyber warfare, I've pivoted towards utilizing my skills for the greater good. My arsenal includes Python, Ruby on Rails, PHP, and more, making me a versatile architect of the digital age. Hodr's journey into the unknown is captained by me, a testament to friendship and a shared decade of digital adventures. With a new horizon in sight, Hodr is set to embark on a mission filled with innovation, community, and the infinite potential of social connectivity.</p>
+          <%= image_tag("visionary_leader.jpg", class: "about_img mr-3 rounded-circle", alt: "Leader Image", width: "100") %>
+          <div class="media-body about_mypage">
+            <strong>Built on Integrity and Innovation</strong>
+            <p class="about_coder_p">At the helm is our founder, a visionary committed to privacy, freedom, and innovation. With a deep background in technology and a passionate belief in user rights, our leadership drives us forward into new territories of social interaction.</p>
           </div>
         </div>
 
-        <h2 class="about_sec_h2">Why Hodr?</h2>
-        <p class="text-muted" style="color: #FFF;">In the cosmos of Hodr, you’ll find:
-          <ul class="about_list">
-            <li><strong>Boundless Expression:</strong> Navigate through galaxies of thought without the fear of being lost in the void.</li>
-            <li><strong>Celestial Sanctuary:</strong> A realm where every creed and code is respected, a nexus of diversity and understanding.</li>
-            <li><strong>Quantum Privacy:</strong> In our universe, your digital footprint is yours alone, shielded by the latest in encryption and ethical principles.</li>
+        <h2 class="about_section_title">Key Features</h2>
+        <p class="about_mypage">Explore what makes MyPage unique:
+          <ul class="about_mypage">
+            <li><strong>Freedom of Expression:</strong> Speak your mind without fear of censorship.</li>
+            <li><strong>Full Customization:</strong> From fonts to themes, tailor your space to match your style.</li>
+            <li><strong>No Tracking:</strong> Your privacy is respected. No spying, no tracking.</li>
           </ul>
         </p>
 
-        <h2 class="about_join_h5">Embark With Us</h2>
-        <p class="text-muted">Your seat among the stars awaits. Join the Hodr odyssey and propel your social media experience into a new dimension, designed with the adventurer in mind.</p>
-        <%= link_to 'Begin Your Journey', signup_path, class: "btn btn-primary" %>
+        <h2 class="about_section_title">Join the Revolution</h2>
+        <p class="about_mypage">Step into a world where you control your digital presence. Unleash your creativity, advocate for your causes, or simply connect with others on your terms. Your new social journey starts here.</p>
+        <%= link_to 'Sign Up Today', signup_path, class: "btn btn-outline-warning btn-sm btn-block button_pro" %>
+
+        <h2 class="about_section_title">Membership Options</h2>
+        <p class="about_mypage">Choose the plan that's right for you:</p>
+        <ul class="about_mypage">
+            <li><strong>Free Membership:</strong> <br/> <strong>*</strong> Access core features with basic customization options. <br/> <strong>*</strong> Ideal for new users exploring the platform.</li>
+            <li><strong>Premium Membership:</strong><br/> <strong>*</strong> Enjoy advanced customization! <br/> <strong>*</strong> Ad-Free Browsing! <br/> <strong>*</strong> Exclusive Content. <br/><i>Make your profile stand out and enhance your experience without interruptions.</i></li>
+            <li><i><strong>Monthly Plan:</strong> $9.99</i> <br/> <strong>*</strong> Perfect for those who prefer flexibility.</li>
+            <li><i><strong>Yearly Plan:</strong> $89.99 <u>($7.50/month)</u></i> <br/> <strong>*</strong> Best value! Save over 20% annually for a commitment-free year of premium access.</li>
+        </ul>
+
       </div>
     </div>
   </section>
-</div>
 </div>
