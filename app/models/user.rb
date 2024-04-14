@@ -248,9 +248,11 @@ class User < ApplicationRecord
   end
 
 
-  def assign_first_1k_users_badge
-    badge = Badge.find_by(name: 'First 1K Users')
-    UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  def assign_content_maker_badge
+    badge = Badge.find_by(name: 'Content Maker')
+    if badge && microposts.count.between?(1, 100)
+      UserBadge.find_or_create_by(user: self, badge: badge)
+    end
   end
 
   def assign_content_maker_badge
