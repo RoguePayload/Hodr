@@ -149,7 +149,7 @@ module UsersHelper
     ]
 
     # Add disabled property for premium colors if user is not premium
-    if user.is_premium?
+    if user.is_premium? || user.admin?
       color_options = basic_colors + premium_colors
     else
       color_options = basic_colors + premium_colors.map { |color| color.merge(disabled: 'disabled') }

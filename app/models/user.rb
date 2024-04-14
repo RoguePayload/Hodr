@@ -197,6 +197,7 @@ class User < ApplicationRecord
   end
 
   def assign_all_badges
+    assign_admin_and_premium_badges if admin? && is_premium?
     assign_badges
   end
 
@@ -226,6 +227,22 @@ class User < ApplicationRecord
     return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[#?!@$%^&*-])/
 
     errors.add :password, 'Complexity requirement not met. Length should be 6-20 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
+  end
+
+  def assign_admin_and_premium_badges
+    # Logic to assign badges for users who are both admins and premium users
+    assign_admin_badge
+    assign_premium_badge
+  end
+
+  def assign_admin_badge
+    admin_badge = Badge.find_by(name: 'Admin Badge')
+    UserBadge.find_or_create_by(user: self, badge: admin_badge) if admin_badge
+  end
+
+  def assign_premium_badge
+    premium_badge = Badge.find_by(name: 'Premium Badge')
+    UserBadge.find_or_create_by(user: self, badge: premium_badge) if premium_badge
   end
 
   def assign_badges

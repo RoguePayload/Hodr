@@ -273,9 +273,9 @@
 
             <%= f.label :background, "Background Image:", class: 'form-label' %>
             <%= f.file_field :background_image, class: 'form-control', accept: 'image/png,image/jpeg' %>
-            <% if current_user.has_premium_access? %>
+            <% if current_user.is_premium? || current_user.admin? %>
               <p>You can also upload animated backgrounds (GIFs).</p>
-              <%= f.file_field :background_animation, class: 'form-control-file', accept: "image/gif" %>
+              <%= f.file_field :background_image, class: 'form-control-file', accept: "image/gif,image/png,image/jpeg,image/mp4" %>
             <% else %>
               <p>Upgrade to premium to unlock animated backgrounds.</p>
             <% end %>
@@ -298,17 +298,17 @@
               <label>Font Settings</label>
               <div class="form-group">
                 <%= f.label :heading_font, "Select a font for headings:" %>
-                <%= f.select :heading_font, options_for_select(google_fonts_for_selection(@user.is_premium), @user.heading_font), {}, {class: "form-control"} %>
+                <%= f.select :heading_font, options_for_select(google_fonts_for_selection(@user.is_premium || @user.admin?), @user.heading_font), {}, {class: "form-control"} %>
               </div>
 
               <div class="form-group">
                 <%= f.label :paragraph_font, "Select a font for paragraphs:" %>
-                <%= f.select :paragraph_font, options_for_select(google_fonts_for_selection(@user.is_premium), @user.paragraph_font), {}, {class: "form-control"} %>
+                <%= f.select :paragraph_font, options_for_select(google_fonts_for_selection(@user.is_premium || @user.admin?), @user.paragraph_font), {}, {class: "form-control"} %>
               </div>
 
               <div class="form-group">
                 <%= f.label :hyperlink_font, "Select a font for hyperlinks:" %>
-                <%= f.select :hyperlink_font, options_for_select(google_fonts_for_selection(@user.is_premium), @user.hyperlink_font), {}, {class: "form-control"} %>
+                <%= f.select :hyperlink_font, options_for_select(google_fonts_for_selection(@user.is_premium || @user.admin?), @user.hyperlink_font), {}, {class: "form-control"} %>
               </div>
             </div>
 

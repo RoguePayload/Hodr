@@ -24,13 +24,23 @@
                         <%= @user.jtitle %> <%= @user.cname %>
                       </p>
                       <p class="text-muted font-size-sm"><%= @user.city %> <%= @user.state %></p>
+
+                      <p>
+                        Number of Posts: <%= @user.microposts.count %><br/>
+                        Number of Followers: <%= @user.followers.count %>
+                      </p>
+
                       <% @user.badges.uniq.each do |badge| %>
       									<%= image_tag badge.image_url, class: 'profile-badge' %>
-      								<% end %>
+      								<% end %><br/>
+                      <br/>
                       <%= render 'follow_form' %>
-                      <% if @user == current_user && !@user.subscribed? %>
+                      <% if @user == current_user && @user.is_premium? %>
+                        <h6>You are a premium user!</h6>
+                      <% elsif @user == current_user && !@user.subscribed? %>
                         <%= link_to 'Upgrade', new_subscription_path, class: 'btn btn-primary' %>
                       <% end %>
+
                     </div>
                   </div>
                 </div>

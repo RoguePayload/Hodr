@@ -55,6 +55,14 @@
               Account
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #000;">
+              <li>
+                <% if @user == current_user && @user.is_premium? %>
+                  <h6>You are a premium user!</h6>
+                <% elsif @user == current_user && !@user.subscribed? %>
+                  <%= link_to 'Upgrade', new_subscription_path, class: 'btn btn-primary' %>
+                <% end %>
+              </li>
+              <li><hr class="dropdown-divider"></li>            
               <li><%= link_to "Profile", current_user, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
               <li><%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
               <li><hr class="dropdown-divider"></li>
