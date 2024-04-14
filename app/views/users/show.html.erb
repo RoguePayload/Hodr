@@ -212,11 +212,7 @@ document.addEventListener("DOMContentLoaded", function() {
   toggleBackgroundOption();
 });
 
-document.addEventListener("turbolinks:load", function() {
-  // Check if the background music element exists
-  var backgroundMusic = document.getElementById("background-music");
-
-  // Check if the background music element exists and if the user is on their own profile page or visiting another user's profile page with background music
+// Check if the background music element exists and if the user is on their own profile page or visiting another user's profile page with background music
   if (backgroundMusic && (window.location.pathname == "<%= user_path(current_user) %>" || window.location.pathname == "<%= user_path(@user) %>")) {
     // Play the audio when the page loads
     backgroundMusic.play();
@@ -224,18 +220,11 @@ document.addEventListener("turbolinks:load", function() {
     // Define a function to pause the audio when navigating away from the page
     function pauseBackgroundMusic() {
       backgroundMusic.pause();
-      document.removeEventListener("turbolinks:before-visit", backgroundMusic.play);
     }
 
     // Pause the audio when navigating away from the page
-    document.addEventListener("turbolinks:before-visit", backgroundMusic.stop);
-
-    // Resume playing the audio when returning to the page
-    document.addEventListener("turbolinks:load", function() {
-      backgroundMusic.play();
-    });
+    document.addEventListener("turbolinks:before-visit", stopBackgroundMusic);
   }
-});
 
 </script>
 <style>

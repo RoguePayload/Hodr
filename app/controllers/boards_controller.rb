@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show]
+  before_action :set_board, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:category_id].present?
@@ -7,12 +7,12 @@ class BoardsController < ApplicationController
     else
       @boards = Board.all
     end
-    @categories = Category.all # For the dropdown
+    @categories = Category.all
   end
 
-
   def show
-    @message = Message.new # For the message form on the board's page
+    @message = Message.new
+    @messages = @board.messages.order(created_at: :asc)
   end
 
   def new
@@ -21,6 +21,8 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.new(board_params)
+    @board.invite_link = generate_invite_link
+
     if @board.save
       redirect_to @board, notice: 'Board was successfully created.'
     else
@@ -28,40 +30,40 @@ class BoardsController < ApplicationController
     end
   end
 
-  def messages
-    @board = Board.find(params[:id])
-    render partial: 'messages', locals: { messages: @board.messages }
+  def edit
+    unless current_user.admin? || current_user == @board.owner
+      redirect_to @board, alert: 'You are not authorized to edit this board.'
+    end
+  end
+
+  def update
+    if @board.update(board_params)
+      redirect_to @board, notice: 'Board was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @board = Board.find(params[:id])
-    Rails.logger.debug "Deleting board: #{@board.inspect}"
     @board.destroy
     redirect_to boards_path, notice: 'Board was successfully deleted.'
-  rescue ActiveRecord::RecordNotFound => e
-    Rails.logger.debug "Board not found: #{e.inspect}"
-    redirect_to boards_path, alert: 'Board not found.'
   end
-
-  def fetch_messages
-    @board = Board.find(params[:id])
-    @messages = @board.messages.order(created_at: :asc)
-    render partial: 'messages', locals: { messages: @messages }, layout: false
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: "Board not found."
-  end
-
 
   private
+
+  def generate_invite_link
+    SecureRandom.hex(10) # Generate a random hexadecimal string of length 10
+  end  
 
   def set_board
     @board = Board.find(params[:id])
   end
 
   def board_params
-    params.require(:board).permit(:name, :avatar, :description, :category_id)
+    if current_user.is_premium? || current_user.admin?
+      params.require(:board).permit(:name, :avatar, :description, :category_id, :password, :invite_link)
+    else
+      params.require(:board).permit(:name, :description, :category_id, :invite_link)
+    end
   end
-
-
-
 end

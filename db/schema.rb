@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_13_210647) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_14_153137) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -76,6 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_210647) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
+    t.string "password_digest"
+    t.string "invite_link"
     t.index ["category_id"], name: "index_boards_on_category_id"
   end
 

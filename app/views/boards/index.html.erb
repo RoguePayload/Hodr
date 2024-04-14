@@ -1,29 +1,37 @@
-<h1 class="boards_main_title">Boards</h1>
+<h1 class="chambers_main_title">Chat Chambers</h1>
 
-<%= link_to 'Make A New Board', new_board_path, class: 'boards_main_new_title' %>
+<%= link_to 'Create a New Chat Chamber', new_board_path, class: 'btn btn-outline-danger' %>
 <br/>
 <br/>
 <%= form_with(url: boards_path, method: :get, local: true) do |form| %>
-  <%= form.label :category_id, 'Filter by category', class: 'boards_main_name' %>
-  <%= form.collection_select :category_id, @categories, :id, :name, include_blank: true, class: 'boards_drop_down' %>
-  <%= form.submit 'Filter', class: 'btn btn-success' %>
+  <%= form.label :category_id, 'Filter by category', class: 'chambers_main_name' %>
+  <%= form.collection_select :category_id, @categories, :id, :name, include_blank: true, class: 'chambers_drop_down' %>
+  <%= form.submit 'Filter', class: 'btn btn-outline-success' %>
 <% end %><br/>
 <br/>
-<ul>
+<div class="row">
   <% @boards.each do |board| %>
-    <li>
-      <% if board.avatar.attached? %>
-        <%= image_tag url_for(board.avatar), alt: 'Board Avatar', class: 'board-avatar-small' %>
-      <% else %>
-        <%= image_tag('board_avatar.png', alt: 'Board Avatar', class: 'board-avatar-small') %>
-      <% end %>&nbsp;&nbsp;
-      <%= link_to board.name, board, class: 'boards_main_name' %>
-      <span class="boards_main_count">(<%= board.messages.count %> messages)</span>
-        <% if current_user.admin? %>
-          <%= form_with url: board, method: :delete, local: true do |form| %>
-            <%= form.submit 'Delete Board', data: { confirm: 'Are you sure?' }, style: 'width: 25%; background-color: #F00; color: #000; font-family: "Orbitron", sans-serif;' %>
-          <% end %>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <% if board.avatar.attached? %>
+          <%= image_tag url_for(board.avatar), alt: 'Board Avatar', class: 'card-img-top' %>
+        <% else %>
+          <%= image_tag('board_avatar.png', alt: 'Board Avatar', class: 'card-img-top') %>
         <% end %>
-    </li><br/>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to board.name, board, class: 'chambers_card_name' %></h5>
+          <p class="card-text"><%= pluralize(board.messages.count, 'message') %></p>
+          <p class="card-text">Belongs To: <%= link_to board.user.uname, board.user %></p>
+          <% if board.password_protected? %>
+            <p class="card-text">Password Protected</p>
+          <% end %>
+          <% if current_user.admin? %>
+            <%= form_with url: board, method: :delete, local: true do |form| %>
+              <%= form.submit 'Delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
