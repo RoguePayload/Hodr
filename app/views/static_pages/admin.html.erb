@@ -1,5 +1,5 @@
 <% provide(:title, "Command Nexus") %>
-<div style="background: url('<%= asset_path 'hodr_admin-background.png' %>') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%">
+
 
 <div class="nexus-container" style="background-color: rgba(0,0,0,0.8); color: #C9D1D9; padding: 20px; min-height: 100vh;">
   <div class="row">
@@ -90,7 +90,7 @@
                   <% if user.avatar.attached? %>
                     <%= image_tag user.avatar, class: 'user_card_avatar', style: 'width: 25px; height: 25px;' %>
                   <% else %>
-                    <%= image_tag('hodr_logo.png', class: 'user_card_avatar', style: 'width: 25px; height: 25px;') %>
+                    <%= image_tag('mypage_logo.png', class: 'user_card_avatar', style: 'width: 25px; height: 25px;') %>
                   <% end %>
                 </td>
                 <td><%= user.uname %></td>
@@ -263,4 +263,3 @@ function Ads()
   }
 }
 </script>
-</div>

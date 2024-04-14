@@ -12,6 +12,10 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :chat_chambers
+  
+  has_many :chat_messages
+
   has_many :notifications, dependent: :destroy
 
   has_one_attached :avatar
@@ -28,9 +32,6 @@ class User < ApplicationRecord
 
   has_many :mentions
   has_many :mentioned_in_posts, through: :mentions, source: :micropost
-
-  has_many :board_memberships
-  has_many :boards, through: :board_memberships
 
   has_many :active_relationships, class_name:   "Relationship",
                                   foreign_key:  "follower_id",

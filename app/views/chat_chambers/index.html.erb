@@ -1,0 +1,30 @@
+<h1>Chat Chambers</h1>
+<%= link_to 'New Chat Chamber', new_chat_chamber_path %>
+
+<%= form_with(url: chat_chambers_path, method: :get, local: true) do |form| %>
+  <%= form.label :category, 'Filter by Category:' %>
+  <%= form.select :category, @categories, include_blank: 'All Categories' %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<h1>Chat Chambers</h1>
+
+<div class="row">
+  <% @chat_chambers.each do |chamber| %>
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem;">
+        <% if chamber.avatar.present? %>
+          <%= image_tag chamber.avatar, class: 'card-img-top' %>
+        <% else %>
+          <%= image_tag 'chat_chamber_avatar.png', class: 'card-img-top', alt: 'Default Avatar' %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= chamber.name %></h5>
+          <p class="card-text"><%= chamber.description %></p>
+          <p class="card-text">Created by: <%= link_to chamber.user.uname, user_path(chamber.user) %></p>          
+          <%= link_to 'Enter Chamber', chat_chamber_path(chamber), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

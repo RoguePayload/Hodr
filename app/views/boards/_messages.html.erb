@@ -1,9 +1,0 @@
-<% messages.each do |message| %>
-  <p class="board_chat_messages">
-    <%= message.content %>
-    <% if message.image.attached? %>
-      <br/><%= image_tag message.image, class: 'board_chat_image' %><br/>
-    <% end %>
-    - <i class="board_chat_user"><%= message.user.uname %></i>
-  </p>
-<% end %>

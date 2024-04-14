@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_14_153137) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_14_203549) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -78,6 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_153137) do
     t.integer "category_id"
     t.string "password_digest"
     t.string "invite_link"
+    t.string "password"
     t.index ["category_id"], name: "index_boards_on_category_id"
   end
 
@@ -113,6 +114,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_153137) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chat_chambers", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "category"
+    t.string "password_digest"
+    t.string "avatar"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chat_chambers_on_user_id"
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "chat_chamber_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_chamber_id"], name: "index_chat_messages_on_chat_chamber_id"
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -305,6 +328,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_153137) do
   add_foreign_key "board_memberships", "users"
   add_foreign_key "business_followers", "businesses"
   add_foreign_key "business_followers", "users"
+  add_foreign_key "chat_chambers", "users"
+  add_foreign_key "chat_messages", "chat_chambers"
+  add_foreign_key "chat_messages", "users"
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
   add_foreign_key "jobs", "businesses"

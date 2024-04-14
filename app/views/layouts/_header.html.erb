@@ -56,7 +56,7 @@
               <li><%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to "EULA & Terms", eula_path, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
-              <li><%= link_to "Chat Chambers", boards_path, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
+              <li><%= link_to 'Chat Chambers', chat_chambers_path, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
               <%= button_to "Log out", logout_path, method: :delete, form_class: 'd-inline', class: 'dropdown-item text-light', id: 'nav_button_pro' %>
             </ul>
           </li>

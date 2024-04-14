@@ -1,0 +1,17 @@
+<h1><%= @chat_chamber.name %></h1>
+<p><%= @chat_chamber.description %></p>
+<p>Category: <%= @chat_chamber.category %></p>
+
+<% if @chat_chamber.avatar.present? %>
+  <%= image_tag @chat_chamber.avatar %>
+<% else %>
+  <%= image_tag 'chat_chamber_avatar.png', style: 'width: 150px; height: 150px;' %>  <!-- Show a default image if no avatar -->
+<% end %>
+
+<h2>Messages</h2>
+<% @chat_messages.each do |message| %>
+  <div>
+    <strong><%= message.user.name %>:</strong>
+    <p><%= message.content %></p>
+  </div>
+<% end %>

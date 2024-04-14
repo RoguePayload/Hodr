@@ -1,0 +1,41 @@
+<%= form_with(model: chat_chamber, local: true, class: 'needs-validation', novalidate: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Enter chamber name', required: true %>
+    <div class="invalid-feedback">
+      Please provide a chamber name.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, class: 'form-label' %>
+    <%= form.text_area :description, class: 'form-control', placeholder: 'Describe your chamber', required: true, rows: 3 %>
+    <div class="invalid-feedback">
+      Please provide a description for the chamber.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :category, class: 'form-label' %>
+    <%= form.select :category, ChatChamber::CATEGORIES, {}, { class: 'form-select', required: true } %>
+    <div class="invalid-feedback">
+      Please select a category.
+    </div>
+  </div>
+
+  <% if current_user.is_premium? %>
+    <div class="mb-3">
+      <%= form.label :password, 'Chamber Password (optional)', class: 'form-label' %>
+      <%= form.password_field :password, class: 'form-control', placeholder: 'Enter password' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :avatar, 'Chamber Avatar (optional)', class: 'form-label' %>
+      <%= form.text_field :avatar, class: 'form-control', placeholder: 'Upload an avatar' %>
+    </div>
+  <% end %>
+
+  <div class="d-grid gap-2">
+    <%= form.submit chat_chamber.new_record? ? 'Create Chamber' : 'Update Chamber', class: 'btn btn-primary' %>
+  </div>
+<% end %>

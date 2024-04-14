@@ -28,6 +28,7 @@ gem 'clamby'
 gem 'browser'
 gem 'link_thumbnailer'
 gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
+gem 'byebug', '~> 11.0', group: :development
 
 
 group :development, :test do

@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :chat_chambers do
+    resources :chat_messages
+  end  
+
   # Routes for managing user sessions (login, logout)
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -32,14 +36,6 @@ Rails.application.routes.draw do
     member do
       patch :mark_as_read
     end
-  end
-
-  # Routes for managing boards and associated messages
-  resources :boards do
-    member do
-      get :fetch_messages
-    end
-    resources :messages, only: [:create]
   end
 
   # Routes for managing microposts and associated comments
