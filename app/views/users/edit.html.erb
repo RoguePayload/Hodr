@@ -294,6 +294,12 @@
                   { class: "form-control" } %>
             </div>
 
+            <label>Background Setting</label>
+            <div>
+              <%= f.radio_button :background_type, 'image', checked: @user.background_image.attached? %> Image
+              <%= f.radio_button :background_type, 'color', checked: @user.background_color.present? %> Color
+            </div>
+
           </div>
 
           <div class="form-group">

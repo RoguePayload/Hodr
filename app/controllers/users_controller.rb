@@ -48,13 +48,22 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
+    # Check what background type the user has selected and adjust accordingly
+    if params[:user][:background_type] == 'color'
+      @user.background_image.detach if @user.background_image.attached?
+    elsif params[:user][:background_type] == 'image'
+      @user.background_color = nil
+    end
+
     if @user.update(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "Your Page Successfully Updated!!!"
       redirect_to @user
     else
       render 'edit', status: :unprocessable_entity
     end
   end
+
 
     def edit
       @user = User.find(params[:id])

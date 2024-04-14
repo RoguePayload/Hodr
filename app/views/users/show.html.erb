@@ -1,6 +1,6 @@
 <% provide(:title, @user.uname) %>
 
-<% content_for :body_attributes, style: user_background_style(@user) %>
+<div style="<%= user_background_style(@user) %>">
 
 <div class="container">
     <div class="main-body">
@@ -154,3 +154,28 @@
                 </div>
               </section>
               </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const imageRadio = document.querySelector('input[name="user[background_type]"][value="image"]');
+  const colorRadio = document.querySelector('input[name="user[background_type]"][value="color"]');
+  const imageField = document.getElementById("background-image-field");
+  const colorField = document.getElementById("background-color-field");
+
+  function toggleBackgroundOption() {
+    if (imageRadio.checked) {
+      imageField.style.display = 'block';
+      colorField.style.display = 'none';
+    } else if (colorRadio.checked) {
+      imageField.style.display = 'none';
+      colorField.style.display = 'block';
+    }
+  }
+
+  imageRadio.addEventListener('change', toggleBackgroundOption);
+  colorRadio.addEventListener('change', toggleBackgroundOption);
+
+  // Initialize on load
+  toggleBackgroundOption();
+});
+</script>

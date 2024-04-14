@@ -9,11 +9,11 @@ module UsersHelper
 
   def user_background_style(user)
     if user.background_image.attached?
-      "background-image: url(#{url_for(user.background_image)}); background-size: cover; background-position: center center; background-color: transparent !important;"
+      "background-image: url(#{url_for(user.background_image)}); background-size: cover; background-attachment: fixed;"
     elsif user.background_color.present?
-      "background-color: #{user.background_color} !important;"
+      "background-color: #{user.background_color};"
     else
-      "" # Default background or another CSS rule
+      ""
     end
   end
 
