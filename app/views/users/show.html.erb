@@ -6,6 +6,15 @@
   <% else %>
     <% style = "" %>
   <% end %>
+  <% if @user.background_music.attached? %>
+    <audio autoplay loop id="background-music">
+      <source src="<%= url_for(@user.background_music) %>" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  <% end %>
+
+
+
 <div class="container">
     <div class="main-body">
           <div class="row gutters-sm">
@@ -202,6 +211,32 @@ document.addEventListener("DOMContentLoaded", function() {
   // Initialize on load
   toggleBackgroundOption();
 });
+
+document.addEventListener("turbolinks:load", function() {
+  // Check if the background music element exists
+  var backgroundMusic = document.getElementById("background-music");
+
+  // Check if the background music element exists and if the user is on their own profile page or visiting another user's profile page with background music
+  if (backgroundMusic && (window.location.pathname == "<%= user_path(current_user) %>" || window.location.pathname == "<%= user_path(@user) %>")) {
+    // Play the audio when the page loads
+    backgroundMusic.play();
+
+    // Define a function to pause the audio when navigating away from the page
+    function pauseBackgroundMusic() {
+      backgroundMusic.pause();
+      document.removeEventListener("turbolinks:before-visit", backgroundMusic.play);
+    }
+
+    // Pause the audio when navigating away from the page
+    document.addEventListener("turbolinks:before-visit", backgroundMusic.stop);
+
+    // Resume playing the audio when returning to the page
+    document.addEventListener("turbolinks:load", function() {
+      backgroundMusic.play();
+    });
+  }
+});
+
 </script>
 <style>
   h1, h2, h3, h4, h5, h6 {

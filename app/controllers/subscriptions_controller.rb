@@ -1,5 +1,4 @@
 class SubscriptionsController < ApplicationController
-  before_action :authenticate_user!
   # GET /subscriptions/new
   def new
     # Assuming you might need some setup before showing the form

@@ -117,7 +117,7 @@ class UsersController < ApplicationController
                                :twitch_affiliation, :youtube_affiliation, :premium_user,
                                :box_shadow, :box_shadow_color, :privacy,
                                :verification_badge, :admin_badge, :button_color,
-                               :button_outline)
+                               :button_outline, :remove_background_music, :other_attributes)
       end
 
       # Before filters

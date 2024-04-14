@@ -343,6 +343,28 @@
               </div>
             </div>
 
+            <div>
+              <label>Background Music</label>
+              <% if current_user.is_premium? || current_user.admin? %>
+                <!-- Allow audio upload -->
+                <div class="form-group">
+                  <%= f.label :background_music, "Upload Background Music" %>
+                  <%= f.file_field :background_music, accept: 'audio/*' %>
+                </div>
+              <% else %>
+                <!-- Show message to upgrade to premium -->
+                <div class="alert alert-warning" role="alert">
+                  <h4 class="alert-heading">Upgrade to premium to unlock background music</h4>
+                </div>
+              <% end %>
+              <% if @user.background_music.attached? %>
+                <div>
+                  <%= f.label :remove_background_music, "Remove background music" %>
+                  <%= f.check_box :remove_background_music %>
+                </div>
+              <% end %>
+            </div>
+
           </div>
 
           <div class="form-group">

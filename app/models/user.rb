@@ -4,6 +4,10 @@ class User < ApplicationRecord
 
   has_one :subscription
 
+  attr_accessor :remove_background_music
+
+  before_validation :remove_background_music_if_requested
+
   has_many :microposts, dependent: :destroy
 
   has_many :comments, dependent: :destroy
@@ -11,6 +15,8 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   has_one_attached :avatar
+
+  has_one_attached :background_music
 
   has_one_attached :banner
 
@@ -227,6 +233,10 @@ class User < ApplicationRecord
     return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[#?!@$%^&*-])/
 
     errors.add :password, 'Complexity requirement not met. Length should be 6-20 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
+  end
+
+  def remove_background_music_if_requested
+    self.background_music.purge if remove_background_music == "1"
   end
 
   def assign_admin_and_premium_badges
