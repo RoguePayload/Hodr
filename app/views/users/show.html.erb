@@ -1,12 +1,16 @@
 <% provide(:title, @user.uname) %>
 
 <div style="<%= user_background_style(@user) %>">
-
+  <% if @user.box_shadow? %>
+    <% style = "box-shadow: 7px 7px 10px #{@user.box_shadow_color};" %>
+  <% else %>
+    <% style = "" %>
+  <% end %>
 <div class="container">
     <div class="main-body">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-              <div class="card">
+              <div class="card" style="<%= style %>">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     <% if @user.avatar.attached? %>
@@ -31,7 +35,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card mt-3">
+              <div class="card mt-3" style="<%= style %>">
                 <ul class="list-group list-group-flush">
 
                   <!-- Display Users Website -->
@@ -78,13 +82,15 @@
             </div>
             <div class="col-md-8">
               <div class="card mb-3">
-                <div class="card-body">
+                <div class="card-body" style="<%= style %>">
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <%= @user.fname %> <%= @user.mname %> <%= @user.lname %>
+                      <p>
+                        <%= @user.fname %> <%= @user.mname %> <%= @user.lname %>
+                      </p>
                     </div>
                   </div>
                   <hr>
@@ -93,7 +99,9 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <%= @user.email %>
+                      <p>
+                        <%= @user.email %>
+                      </p>
                     </div>
                   </div>
                   <hr>
@@ -102,7 +110,9 @@
                       <h6 class="mb-0">Phone</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <%= @user.tel %>
+                      <p>
+                        <%= @user.tel %>
+                      </p>
                     </div>
                   </div>
                   <hr>
@@ -111,7 +121,9 @@
                       <h6 class="mb-0">Highest Degree</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <%= @user.degree %>
+                      <p>
+                        <%= @user.degree %>
+                      </p>
                     </div>
                   </div>
                   <hr>
@@ -120,7 +132,9 @@
                       <h6 class="mb-0">Address</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <%= @user.city %> <%= @user.state %>
+                      <p>
+                        <%= @user.city %> <%= @user.state %>
+                      </p>
                     </div>
                   </div>
                   <hr>
@@ -134,7 +148,7 @@
 
 
               					<!-- Feed -->
-              					<div class="card gedf-card" style="display: block; width: 100%">
+              					<div class="card gedf-card"  style="<%= style %>">
               					    <div class="btn-group" style="width: 100%;">
 
               					    </div>
@@ -179,3 +193,20 @@ document.addEventListener("DOMContentLoaded", function() {
   toggleBackgroundOption();
 });
 </script>
+<style>
+  h1, h2, h3, h4, h5, h6 {
+    font-family: <%= @user.heading_font || "default font" %>;
+    color: <%= @user.heading_color %>;
+  }
+  p {
+    font-family: <%= @user.paragraph_font || "default font" %>;
+    color: <%= @user.paragraph_color %>;
+  }
+  a {
+    font-family: <%= @user.hyperlink_font || "default font" %>;
+    color: <%= @user.hyperlink_color %>;
+  }
+  .box-shadow-enabled {
+  box-shadow: 0px 0px 5px <%= @user.box_shadow_color %>;
+  }
+</style>

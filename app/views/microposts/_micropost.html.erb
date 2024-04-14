@@ -67,3 +67,17 @@
   margin-top: 10px;
 }
 </style>
+<style>
+  h1, h2, h3, h4, h5, h6 {
+    font-family: <%= @user.heading_font || "default font" %>;
+    color: <%= @user.heading_color %>;
+  }
+  p {
+    font-family: <%= @user.paragraph_font || "default font" %>;
+    color: <%= @user.paragraph_color %>;
+  }
+  a {
+    font-family: <%= @user.hyperlink_font || "default font" %>;
+    color: <%= @user.hyperlink_color %>;
+  }
+</style>

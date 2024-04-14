@@ -33,7 +33,7 @@ class Micropost < ApplicationRecord
   private
 
   def assign_user_post_badges
-    user.assign_post_badges
+    user.assign_all_badges
   end
 
 

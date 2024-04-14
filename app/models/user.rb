@@ -196,16 +196,8 @@ class User < ApplicationRecord
      following.include?(other_user)
   end
 
-  # Call this method after creating or updating microposts
-  def assign_post_badges
-    assign_youngling_badge
-    assign_padawan_badge
-    # Add more methods for other badges as needed
-  end
-
   def assign_all_badges
-    assign_badge_based_on_id
-    assign_post_badges
+    assign_badges
   end
 
   def has_premium_access?
@@ -236,34 +228,63 @@ class User < ApplicationRecord
     errors.add :password, 'Complexity requirement not met. Length should be 6-20 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
   end
 
-  def assign_badge_based_on_id
-    assign_hundred_badge if id <= 100
-    assign_thousand_badge if id > 100 && id <= 1000
+  def assign_badges
+    assign_first_100_users_badge if id <= 100
+    assign_first_1k_users_badge if id > 100 && id <= 1000
+    assign_content_maker_badge if microposts.count.between?(1, 100)
+    assign_my_page_creator_badge if microposts.count.between?(101, 200)
+    assign_my_page_influencer_badge if microposts.count.between?(201, 300)
+    assign_my_page_post_creator_badge if microposts.count.between?(301, 400)
+    assign_my_page_heavy_influencer_badge if microposts.count.between?(401, 500)
+    assign_my_page_post_master_badge if microposts.count.between?(501, 1000)
+    assign_my_page_content_master_badge if microposts.count > 1000
   end
 
-  def assign_hundred_badge
-    return unless id <= 100
-    badge = Badge.find_by(name: 'First 100')
-    UserBadge.find_or_create_by(user: self, badge: badge) if badge
-  end
-
-  def assign_thousand_badge
-    return unless id > 100 && id <= 1000
-    badge = Badge.find_by(name: 'First 1K')
-    UserBadge.find_or_create_by(user: self, badge: badge) if badge
-  end
-
-  def assign_youngling_badge
-    if microposts.count >= 1 && microposts.count <= 100
-      badge = Badge.find_by(name: 'FreshAlien')
-      UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  def assign_first_100_users_badge
+    badge = Badge.find_by(name: 'First 100 Registered Users') # Ensure the correct badge name is used
+    if badge && id <= 100 # Check if badge exists and if user id is within the first 100 users
+      UserBadge.find_or_create_by(user: self, badge: badge)
     end
   end
 
-  def assign_padawan_badge
-    if microposts.count > 101 && microposts.count <= 200
-      badge = Badge.find_by(name: 'TravelingAlien')
-      UserBadge.find_or_create_by(user: self, badge: badge) if badge
-    end
+
+  def assign_first_1k_users_badge
+    badge = Badge.find_by(name: 'First 1K Users')
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  end
+
+  def assign_content_maker_badge
+    badge = Badge.find_by(name: 'Content Maker')
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  end
+
+  def assign_my_page_creator_badge
+    badge = Badge.find_by(name: 'MyPage Creator')
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  end
+
+  def assign_my_page_influencer_badge
+    badge = Badge.find_by(name: 'MyPage Influencer')
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  end
+
+  def assign_my_page_post_creator_badge
+    badge = Badge.find_by(name: 'MyPage Post Creator')
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  end
+
+  def assign_my_page_heavy_influencer_badge
+    badge = Badge.find_by(name: 'MyPage Heavy Influencer')
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  end
+
+  def assign_my_page_post_master_badge
+    badge = Badge.find_by(name: 'MyPage Post Master')
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
+  end
+
+  def assign_my_page_content_master_badge
+    badge = Badge.find_by(name: 'MyPage Content Master')
+    UserBadge.find_or_create_by(user: self, badge: badge) if badge
   end
 end

@@ -1,38 +1,72 @@
 Rails.application.routes.draw do
 
+  # Admin namespace for administrative routes
   namespace :admin do
     resources :ads
   end
-  get 'jobs/new'
-  get 'jobs/create'
-  get 'jobs/edit'
-  get 'jobs/update'
-  get 'jobs/destroy'
-  get 'jobs/show'
-  get 'products/new'
-  get 'products/create'
-  get 'products/edit'
-  get 'products/update'
-  get 'products/destroy'
-  get 'products/show'
-  get 'b_sessions/new'
-  get 'b_sessions/create'
-  get 'b_sessions/destroy'
-  get 'businesses/new'
-  get 'businesses/create'
-  get 'businesses/show'
-  get 'businesses', to: 'businesses#index'
-  get 'messages/create'
-  get 'boards/new'
-  get 'boards/create'
-  get 'boards/show'
-  get 'boards/index'
-  get 'sessions/new'
 
-  # Set Root Path #
+  # Routes for managing jobs
+  resources :jobs
+
+  # Routes for managing products
+  resources :products
+
+  # Routes for managing business sessions (login, logout)
+  resources :b_sessions, only: [:new, :create, :destroy]
+
+  # Routes for managing businesses and associated products and jobs
+  resources :businesses, except: [:index] do
+    resources :products
+    resources :jobs
+    member do
+      get 'edit_password'
+      patch 'update_password'
+    end
+  end
+
+  # Routes for managing user sessions (login, logout)
+  resources :sessions, only: [:new, :create, :destroy]
+
+  # Routes for managing notifications
+  resources :notifications, only: [:index] do
+    member do
+      patch :mark_as_read
+    end
+  end
+
+  # Routes for managing boards and associated messages
+  resources :boards do
+    member do
+      get :fetch_messages
+    end
+    resources :messages, only: [:create]
+  end
+
+  # Routes for managing microposts and associated comments
+  resources :microposts, only: [:create, :destroy] do
+    resources :comments, only: [:create, :destroy]
+  end
+
+  # Routes for managing relationships (follow, unfollow)
+  resources :relationships, only: [:create, :destroy]
+
+  # Routes for managing users and associated relationships, microposts
+  resources :users do
+    member do
+      get :following, :followers
+      get 'edit_password'
+      patch 'update_password'
+    end
+  end
+
+  # Routes for managing subscriptions
+  resources :subscriptions
+
+  # Route for canceling subscription
+  post 'subscriptions/:id/cancel', to: 'subscriptions#cancel', as: :cancel_subscription
+
+  # Static Pages
   root 'static_pages#home'
-
-  # Set Static Page Paths #
   get '/about',    to: 'static_pages#about'
   get '/howto',    to: 'static_pages#howto'
   get '/contact',  to: 'static_pages#contact'
@@ -41,49 +75,13 @@ Rails.application.routes.draw do
   get '/admin',    to: 'static_pages#admin'
   get '/android',  to: 'static_pages#android_privacy'
 
-
-  # Set Users Paths #
+  # Users Paths
   get    '/signup',   to: 'users#new'
   get    '/login',    to: 'sessions#new'
   post   '/login',    to: 'sessions#create'
   delete '/logout',   to: 'sessions#destroy'
 
-  # Set Project Resources #
-  resources :users do
-     member do
-        get :following, :followers
-        get 'edit_password', to: 'users#edit_password'
-        patch 'update_password', to: 'users#update_password'
-     end
-  end
-  resources :microposts,          only: [:create, :destroy]do
-    resources :comments, only: [:create, :destroy]
-  end
-  resources :relationships,       only: [:create, :destroy]
-  resources :boards do
-    member do
-      get :fetch_messages
-    end
-    resources :messages, only: [:create]
-  end
-  get '/microposts', to: 'users#show'
-  resources :businesses, only: [:new, :create, :show, :edit, :update, :index] do
-    resources :products
-    resources :jobs
-    get 'edit_password', to: 'businesses#edit_password'
-    patch 'update_password', to: 'businesses#update_password'
-  end
+  # Aliases for business login/logout
   get 'b_login', to: 'b_sessions#new', as: :b_login
-  post 'b_login', to: 'b_sessions#create'
   delete 'b_logout', to: 'sessions#destroy', as: :b_logout
-  resources :notifications, only: [:index] do
-    member do
-      patch :mark_as_read
-    end
-  end
-
-  resources :subscriptions
-
-  post 'subscriptions/:id/cancel', to: 'subscriptions#cancel', as: :cancel_subscription
-
 end

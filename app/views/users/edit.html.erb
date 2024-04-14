@@ -283,21 +283,64 @@
             <div class="form-group">
               <%= f.label :background_color, "Choose your background color:" %>
               <%= f.select :background_color,
-                  options_for_select(all_colors.map { |color|
-                    [
-                      color[:name],
-                      color[:value],
-                      { disabled: !@user.is_premium? && !["red", "green", "blue", "black", "white"].include?(color[:value]) }
-                    ]
-                  }, selected: @user.background_color),
-                  { include_blank: 'None (use image)' },
-                  { class: "form-control" } %>
+                   user_color_options(@user),
+                   include_blank: 'None (use image)',
+                   class: "form-control" %>
             </div>
 
             <label>Background Setting</label>
             <div>
               <%= f.radio_button :background_type, 'image', checked: @user.background_image.attached? %> Image
               <%= f.radio_button :background_type, 'color', checked: @user.background_color.present? %> Color
+            </div>
+
+            <div>
+              <label>Font Settings</label>
+              <div class="form-group">
+                <%= f.label :heading_font, "Select a font for headings:" %>
+                <%= f.select :heading_font, options_for_select(google_fonts_for_selection(@user.is_premium), @user.heading_font), {}, {class: "form-control"} %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :paragraph_font, "Select a font for paragraphs:" %>
+                <%= f.select :paragraph_font, options_for_select(google_fonts_for_selection(@user.is_premium), @user.paragraph_font), {}, {class: "form-control"} %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :hyperlink_font, "Select a font for hyperlinks:" %>
+                <%= f.select :hyperlink_font, options_for_select(google_fonts_for_selection(@user.is_premium), @user.hyperlink_font), {}, {class: "form-control"} %>
+              </div>
+            </div>
+
+            <div>
+              <label>Font Color Settings</label>
+              <div class="form-group">
+                <%= f.label :header_color, "Choose your header color:" %>
+                <%= f.select :header_color, user_color_options(@user), include_blank: 'None', class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :paragraph_color, "Choose your paragraph color:" %>
+                <%= f.select :paragraph_color, user_color_options(@user), include_blank: 'None', class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :hyperlink_color, "Choose your hyperlink color:" %>
+                <%= f.select :hyperlink_color, user_color_options(@user), include_blank: 'None', class: 'form-control' %>
+              </div>
+            </div>
+
+            <div>
+              <label>Box Shadow &amp; Colors</label>
+              <div class="form-group">
+                <%= f.label :box_shadow, "Enable Box Shadow:" %>
+                <%= f.check_box :box_shadow, class: "form-check-input" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :box_shadow_color, "Choose Box Shadow Color:" %>
+                <%= f.select :box_shadow_color, user_color_options(@user), class: "form-control" %>
+              </div>
             </div>
 
           </div>
@@ -543,3 +586,20 @@ function CustomizeBTN()
   }
 }
 </script>
+<style>
+  h1, h2, h3, h4, h5, h6 {
+    font-family: <%= @user.heading_font || "default font" %>;
+    color: <%= @user.heading_color %>;
+  }
+  p {
+    font-family: <%= @user.paragraph_font || "default font" %>;
+    color: <%= @user.paragraph_color %>;
+  }
+  a {
+    font-family: <%= @user.hyperlink_font || "default font" %>;
+    color: <%= @user.hyperlink_color %>;
+  }
+  .box-shadow-enabled {
+  box-shadow: 0px 0px 5px <%= @user.box_shadow_color %>;
+  }
+</style>
