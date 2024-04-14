@@ -47,42 +47,16 @@
     @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Jacquard+24&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&family=Teko:wght@300..700&display=swap')
     </style>
   </head>
-  <body>
+  <body class="<%= 'default-background' unless content_for?(:body_attributes) %>">
+
     <%= render 'layouts/header' %>
     <div class="container">
-    <!-- Language Selector Dropdown Menu -->
-
-
       <% flash.each do |message_type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
       <%= yield %>
     </div>
     <%= javascript_include_tag "chartkick", "data-turbo-track": "reload" %>
-    <!-- Import Google Cloud Translation API Client Library -->
-    <%= javascript_include_tag "https://www.gstatic.com/cloud-site-ux/v1/translations.bundle.js" %>
 
-    <!-- Custom JavaScript for Translation -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const languageSelector = document.getElementById("language-selector");
-
-        languageSelector.addEventListener("change", function() {
-          const selectedLanguage = languageSelector.value;
-          translateContent(selectedLanguage);
-        });
-
-        function translateContent(language) {
-          const elementsToTranslate = document.querySelectorAll(".translate");
-
-          elementsToTranslate.forEach(element => {
-            const originalText = element.innerText;
-
-            // Call Google Cloud Translation API to translate the text
-            google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: language, layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-          });
-        }
-      });
-    </script>
   </body>
 </html>

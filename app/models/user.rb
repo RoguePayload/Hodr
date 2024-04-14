@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   has_one_attached :banner
 
+  has_one_attached :background_image
+
   has_many :user_badges
 
   has_many :badges, through: :user_badges
@@ -208,7 +210,7 @@ class User < ApplicationRecord
 
   def has_premium_access?
     is_premium || admin?
-  end  
+  end
 
   # New custom validation method
   def email_excludes_forbidden_words
@@ -220,6 +222,10 @@ class User < ApplicationRecord
 
   def subscribed?
     subscription.present? && subscription.status == 'active'
+  end
+
+  def has_premium_access?
+    subscription.present? && (subscription.canceled_at.nil? || subscription.canceled_at > Time.current)
   end
 
   private

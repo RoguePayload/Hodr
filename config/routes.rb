@@ -84,5 +84,6 @@ Rails.application.routes.draw do
 
   resources :subscriptions
 
+  post 'subscriptions/:id/cancel', to: 'subscriptions#cancel', as: :cancel_subscription
 
 end

@@ -7,10 +7,26 @@
         <%= form_with(model: @user, html: { class: 'form-galactic-profile' }) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
 
+          <!-- Navigation for sections -->
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="ImageBTN()">Change Your Avatar/Banner</button>
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="IdentityBTN()">Change Your Identity</button>
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="CommunicationBTN()">Change Your Contact Intel</button>
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="AccountsBTN()">Change Your External Accounts</button>
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="EducationBTN()">Change Your Education Status</button>
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="MarriageBTN()">Change Your Marital &amp; Kids</button>
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="HobbiesBTN()">Change Your Hobbies &amp; Interests</button>
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="CareerBTN()">Change Your Career Path</button>
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="PasswordBTN()">Change Your Password</button>
+            <button type="button" class="btn btn-outline-success button_edit_pro" onclick="CustomizeBTN()">Customize Your Page</button>
+            <!-- Add additional tabs for each section accordingly -->
+          </div>
 
-          <!-- Image Configuration Section -->
-          <div class="image-configuration-section">
-            <h3 class="section-title">Image Configuration</h3>
+          <!-- Div Elements -->
+
+          <!-- Change User Avatar & Banner Images -->
+          <div id="UserImages" style="display: none">
+            <h3 class="section-title">Change Your Avatar &amp; Banner</h3>
             <p>Display Your Desired Avatar &amp; Banner For The World To See!</p>
 
             <div class="form-group">
@@ -24,9 +40,8 @@
             </div>
           </div>
 
-
-          <!-- Identity Matrix Section -->
-          <div class="identity-matrix-section">
+          <!-- Change User Identity -->
+          <div id="UserIdentity" style="display: none">
             <h3 class="section-title" style="color: #58a6ff; text-align: center;">Your Identity</h3>
             <p style="color: #8b949e; text-align: center;">Define your essence within the pages.</p>
 
@@ -58,9 +73,8 @@
             </div>
           </div>
 
-
-          <!-- Communication Relays Section -->
-          <div class="communication-relays-section">
+          <!-- Change User Communication Preferences -->
+          <div id="Comms" style="display: none">
             <h3 class="section-title" style="color: #58a6ff; text-align: center;">Communication Preferences</h3>
             <p style="color: #8b949e; text-align: center;">Display methods that other users can get ahold of you (OPTIONAL)</p>
 
@@ -106,9 +120,8 @@
             </div>
           </div>
 
-
-          <!-- Digital Footprint Section -->
-          <div class="digital-footprint-section">
+          <!-- Change User Digital Footprint -->
+          <div id="Digital" style="display: none">
             <h3 class="section-title" style="color: #58a6ff; text-align: center;">Digital Footprint</h3>
             <p style="color: #8b949e; text-align: center;">Let others know where else they can find you at!</p>
 
@@ -138,9 +151,8 @@
             </div>
           </div>
 
-
-          <!-- Education Information Section -->
-          <div class="education-section">
+          <!-- Change User Knowledge -->
+          <div id="Education" style="display: none">
             <h3 class="section-title" style="color: #58a6ff; text-align: center;">Knowledge Accumulation</h3>
             <p style="color: #8b949e; text-align: center;">Express your greatest educational achievements.</p>
 
@@ -160,9 +172,8 @@
             </div>
           </div>
 
-
-          <!-- Relationship Status Section -->
-          <div class="relationship-section">
+          <!-- Change User Maritial & Kids -->
+          <div id="Family" style="display: none">
             <h3 class="section-title" style="color: #58a6ff; text-align: center;">Marital &amp; Family</h3>
             <p style="color: #8b949e; text-align: center;">If you wish, you may give your marital &amp; family status!</p>
 
@@ -182,9 +193,8 @@
             </div>
           </div>
 
-
-          <!-- Activities & Hobbies Section -->
-          <div class="activities-section">
+          <!-- Change User Hobbies & Interests -->
+          <div id="Hobbies" style="display: none">
             <h3 class="section-title" style="color: #58a6ff; text-align: center;">Hobbies &amp; Interests</h3>
             <p style="color: #8b949e; text-align: center;">Let people know what you are interested in the most...or don't...</p>
 
@@ -214,9 +224,8 @@
             </div>
           </div>
 
-
-          <!-- Employment Information Section -->
-          <div class="employment-section">
+          <!-- Change User Professional Lifestyle -->
+          <div id="Pro" style="display: none">
             <h3 class="section-title" style="color: #58a6ff; text-align: center;">Professional Lifestyle</h3>
             <p style="color: #8b949e; text-align: center;">What do you do for a living?</p>
 
@@ -241,9 +250,8 @@
             </div>
           </div>
 
-
-          <!-- Change Password Section -->
-          <div class="password-section">
+          <!-- Change User Password -->
+          <div id="PWD" style="display: none">
             <h3 class="section-title" style="color: #58a6ff; text-align: center;">Password Alteration</h3>
             <p style="color: #8b949e; text-align: center;">Update your encryption key to secure your page.</p>
 
@@ -258,12 +266,274 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <%= f.submit "Save Configuration", class: "btn btn-outline-success btn-block button_pro" %>
+          <!-- Customize User Page -->
+          <div id="Customize" style="display: none">
+            <h3 class="section-title" style="color: #58a6ff; text-align: center;">MyPage Customization</h3>
+            <p style="color: #8b949e; text-align: center;">Make Your Page... Well, Your Page!!!</p>
+
+            <%= f.label :background, "Background Image:", class: 'form-label' %>
+            <%= f.file_field :background_image, class: 'form-control', accept: 'image/png,image/jpeg' %>
+            <% if current_user.has_premium_access? %>
+              <p>You can also upload animated backgrounds (GIFs).</p>
+              <%= f.file_field :background_animation, class: 'form-control-file', accept: "image/gif" %>
+            <% else %>
+              <p>Upgrade to premium to unlock animated backgrounds.</p>
+            <% end %>
+            <strong>OR</strong>
+            <div class="form-group">
+              <%= f.label :background_color, "Choose your background color:" %>
+              <%= f.select :background_color,
+                  options_for_select(all_colors.map { |color|
+                    [
+                      color[:name],
+                      color[:value],
+                      { disabled: !@user.is_premium? && !["red", "green", "blue", "black", "white"].include?(color[:value]) }
+                    ]
+                  }, selected: @user.background_color),
+                  { include_blank: 'None (use image)' },
+                  { class: "form-control" } %>
+            </div>
+
           </div>
 
-        <% end %>
+          <div class="form-group">
+            <%= f.submit "Save Configuration", class: "btn btn-outline-danger btn-block button_edit_pro" %>
+          </div>
+          <% end %>
       </div>
     </div>
   </div>
 </div>
+<script>
+
+/* Hide/Show Avatar & Banner Div Element */
+function ImageBTN()
+{
+  var a = document.getElementById("UserImages");
+  if (a.style.display === "none")
+  {
+    a.style.display = "block";
+    document.getElementById("UserIdentity").style.display = "none";
+    document.getElementById("Comms").style.display = "none";
+    document.getElementById("Digital").style.display = "none";
+    document.getElementById("Education").style.display = "none";
+    document.getElementById("Family").style.display = "none";
+    document.getElementById("Hobbies").style.display = "none";
+    document.getElementById("Pro").style.display = "none";
+    document.getElementById("PWD").style.display = "none";
+    document.getElementById("Customize").style.display = "none";
+  }
+  else
+  {
+    a.style.display = "none";
+  }
+}
+
+/* Hide/Show Identity Div Element */
+function IdentityBTN()
+{
+  var b = document.getElementById("UserIdentity");
+  if (b.style.display === "none")
+  {
+    b.style.display = "block";
+    document.getElementById("UserImages").style.display = "none";
+    document.getElementById("Comms").style.display = "none";
+    document.getElementById("Digital").style.display = "none";
+    document.getElementById("Education").style.display = "none";
+    document.getElementById("Family").style.display = "none";
+    document.getElementById("Hobbies").style.display = "none";
+    document.getElementById("Pro").style.display = "none";
+    document.getElementById("PWD").style.display = "none";
+    document.getElementById("Customize").style.display = "none";
+  }
+  else
+  {
+    b.style.display = "none";
+  }
+}
+
+
+/* Hide/Show Communication Div Element */
+function CommunicationBTN()
+{
+  var c = document.getElementById("Comms");
+  if (c.style.display === "none")
+  {
+    c.style.display = "block";
+    document.getElementById("UserIdentity").style.display = "none";
+    document.getElementById("UserImages").style.display = "none";
+    document.getElementById("Digital").style.display = "none";
+    document.getElementById("Education").style.display = "none";
+    document.getElementById("Family").style.display = "none";
+    document.getElementById("Hobbies").style.display = "none";
+    document.getElementById("Pro").style.display = "none";
+    document.getElementById("PWD").style.display = "none";
+    document.getElementById("Customize").style.display = "none";
+  }
+  else
+  {
+    c.style.display = "none";
+  }
+}
+
+/* Hide/Show Digital Footprint Div Element */
+function AccountsBTN()
+{
+  var d = document.getElementById("Digital");
+  if (d.style.display === "none")
+  {
+    d.style.display = "block";
+    document.getElementById("UserIdentity").style.display = "none";
+    document.getElementById("UserImages").style.display = "none";
+    document.getElementById("Comms").style.display = "none";
+    document.getElementById("Education").style.display = "none";
+    document.getElementById("Family").style.display = "none";
+    document.getElementById("Hobbies").style.display = "none";
+    document.getElementById("Pro").style.display = "none";
+    document.getElementById("PWD").style.display = "none";
+    document.getElementById("Customize").style.display = "none";
+  }
+  else
+  {
+    d.style.display = "none";
+  }
+}
+
+/* Hide/Show Education Div Element */
+function EducationBTN()
+{
+  var e = document.getElementById("Education");
+  if (e.style.display === "none")
+  {
+    e.style.display = "block";
+    document.getElementById("Digital").style.display = "none";
+    document.getElementById("UserIdentity").style.display = "none";
+    document.getElementById("UserImages").style.display = "none";
+    document.getElementById("Comms").style.display = "none";
+    document.getElementById("Family").style.display = "none";
+    document.getElementById("Hobbies").style.display = "none";
+    document.getElementById("Pro").style.display = "none";
+    document.getElementById("PWD").style.display = "none";
+    document.getElementById("Customize").style.display = "none";
+  }
+  else
+  {
+    e.style.display = "none";
+  }
+}
+
+/* Hide/Show Family Div Element */
+function MarriageBTN()
+{
+  var f = document.getElementById("Family");
+  if (f.style.display === "none")
+  {
+    f.style.display = "block";
+    document.getElementById("Education").style.display = "none";
+    document.getElementById("Digital").style.display = "none";
+    document.getElementById("UserImages").style.display = "none";
+    document.getElementById("UserIdentity").style.display = "none";
+    document.getElementById("Comms").style.display = "none";
+    document.getElementById("Hobbies").style.display = "none";
+    document.getElementById("Pro").style.display = "none";
+    document.getElementById("PWD").style.display = "none";
+    document.getElementById("Customize").style.display = "none";
+  }
+  else
+  {
+    f.style.display = "none";
+  }
+}
+
+/* Hide/Show Hobbies & Interests Div Element */
+function HobbiesBTN()
+{
+  var g = document.getElementById("Hobbies");
+  if (g.style.display === "none")
+  {
+    g.style.display = "block";
+    document.getElementById("Family").style.display = "none";
+    document.getElementById("Education").style.display = "none";
+    document.getElementById("Digital").style.display = "none";
+    document.getElementById("UserImages").style.display = "none";
+    document.getElementById("UserIdentity").style.display = "none";
+    document.getElementById("Comms").style.display = "none";
+    document.getElementById("Pro").style.display = "none";
+    document.getElementById("PWD").style.display = "none";
+    document.getElementById("Customize").style.display = "none";
+  }
+  else
+  {
+    g.style.display = "none";
+  }
+}
+
+/* Hide/Show Professional Career Div Element */
+function CareerBTN()
+{
+  var h = document.getElementById("Pro");
+  if (h.style.display === "none")
+  {
+    h.style.display = "block";
+    document.getElementById("Hobbies").style.display = "none";
+    document.getElementById("Family").style.display = "none";
+    document.getElementById("Education").style.display = "none";
+    document.getElementById("Digital").style.display = "none";
+    document.getElementById("UserImages").style.display = "none";
+    document.getElementById("UserIdentity").style.display = "none";
+    document.getElementById("Comms").style.display = "none";
+    document.getElementById("PWD").style.display = "none";
+    document.getElementById("Customize").style.display = "none";
+  }
+  else
+  {
+    h.style.display = "none";
+  }
+}
+
+/* Hide/Show Password Div Element */
+function PasswordBTN()
+{
+  var i = document.getElementById("PWD");
+  if (i.style.display === "none")
+  {
+    i.style.display = "block";
+    document.getElementById("Pro").style.display = "none";
+    document.getElementById("Hobbies").style.display = "none";
+    document.getElementById("Family").style.display = "none";
+    document.getElementById("Education").style.display = "none";
+    document.getElementById("Digital").style.display = "none";
+    document.getElementById("UserImages").style.display = "none";
+    document.getElementById("UserIdentity").style.display = "none";
+    document.getElementById("Comms").style.display = "none";
+    document.getElementById("Customize").style.display = "none";
+  }
+  else
+  {
+    i.style.display = "none";
+  }
+}
+
+/* Hide/Show Customize Div Element */
+function CustomizeBTN()
+{
+  var j = document.getElementById("Customize");
+  if (j.style.display === "none")
+  {
+    j.style.display = "block";
+    document.getElementById("PWD").style.display = "none";
+    document.getElementById("Pro").style.display = "none";
+    document.getElementById("Hobbies").style.display = "none";
+    document.getElementById("Family").style.display = "none";
+    document.getElementById("Education").style.display = "none";
+    document.getElementById("Digital").style.display = "none";
+    document.getElementById("UserImages").style.display = "none";
+    document.getElementById("UserIdentity").style.display = "none";
+    document.getElementById("Comms").style.display = "none";
+  }
+  else
+  {
+    j.style.display = "none";
+  }
+}
+</script>

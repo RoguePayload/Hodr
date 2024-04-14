@@ -38,7 +38,7 @@ class UsersController < ApplicationController
       admin.follow(@user) unless @user == admin
       @user.update(last_login_at: Time.current, last_login_ip: request.remote_ip)
       log_in @user
-      flash[:success] = "Welcome to Hodr!"
+      flash[:success] = "Welcome to MyPage!"
       @user.update(last_login_at: Time.current)
       redirect_to @user
     else
@@ -102,7 +102,13 @@ class UsersController < ApplicationController
 
       def user_params
         params.require(:user).permit(:uname, :fname, :mname, :lname, :tel, :email, :adr1, :adr2, :city, :state, :zip, :country, :git, :twitter, :ytube, :lin, :web, :degree, :sname, :cstudies, :marital, :spouse, :kids, :books,
-          :movies, :activity, :songs, :games, :jtitle, :cname, :ljob, :jdesc, :password, :password_confirmation, :bio, :cstudies, :avatar, :banner)
+          :movies, :activity, :songs, :games, :jtitle, :cname, :ljob, :jdesc, :password, :password_confirmation, :bio, :cstudies, :avatar, :banner,:background_image, :background_music, :background_color,
+                               :heading_font, :paragraph_font, :hyperlink_font,
+                               :heading_color, :paragraph_color, :hyperlink_color,
+                               :twitch_affiliation, :youtube_affiliation, :premium_user,
+                               :box_shadow, :box_shadow_color, :privacy,
+                               :verification_badge, :admin_badge, :button_color,
+                               :button_outline)
       end
 
       # Before filters

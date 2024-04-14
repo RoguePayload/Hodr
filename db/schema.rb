@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_13_172942) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_13_210647) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -275,6 +275,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_172942) do
     t.datetime "last_login_at"
     t.string "last_login_ip"
     t.boolean "is_premium"
+    t.string "background_image"
+    t.string "background_music"
+    t.string "background_color"
+    t.string "heading_font"
+    t.string "paragraph_font"
+    t.string "hyperlink_font"
+    t.string "heading_color"
+    t.string "paragraph_color"
+    t.string "hyperlink_color"
+    t.string "twitch_affiliation"
+    t.string "youtube_affiliation"
+    t.boolean "premium_user", default: false
+    t.boolean "box_shadow", default: false
+    t.string "box_shadow_color"
+    t.boolean "privacy", default: false
+    t.string "verification_badge"
+    t.string "admin_badge"
+    t.string "button_color"
+    t.string "button_outline"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

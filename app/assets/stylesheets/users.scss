@@ -48,11 +48,15 @@
 }
 
 /* Customize the Users Profile Page */
+.default-background {
+    background-color: #e2e8f0;
+}
+
 body{
     margin-top:20px;
     color: #1a202c;
     text-align: left;
-    background-color: #e2e8f0;
+    //background-color: #e2e8f0;
 }
 .main-body {
     padding: 15px;
@@ -109,4 +113,12 @@ body{
 .user_uname
 {
   font-family: "Crimson Text", serif;
+}
+
+
+/* Customize User Edit Page */
+.button_edit_pro
+{
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
 }

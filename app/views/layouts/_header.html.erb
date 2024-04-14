@@ -29,6 +29,13 @@
           </li>
         <% end %>
 
+        <% if current_user.has_premium_access? %>
+        <li class="nav-item">
+          <%= button_to "Stop Subscription", cancel_subscription_path, method: :post, data: { confirm: "Are you sure you want to cancel your subscription? You will still have access until the end of your billing period." } %>
+        </li>
+        <% end %>
+
+
         <% if logged_in? %>
           <% if user_signed_in? %>
             <li class="nav-item">

@@ -44,6 +44,26 @@ class SubscriptionsController < ApplicationController
   end
 
 
+  def cancel
+    @subscription = current_user.subscription
 
+    # Retrieve the Stripe subscription
+    stripe_subscription = Stripe::Subscription.retrieve(@subscription.stripe_subscription_id)
+
+    # Update the subscription to cancel at period end
+    Stripe::Subscription.update(
+      @subscription.stripe_subscription_id,
+      cancel_at_period_end: true
+    )
+
+    # Optionally update local subscription details to reflect the change
+    @subscription.update(canceled_at: Time.current)
+
+    flash[:notice] = "Your subscription will be canceled at the end of your billing period."
+    redirect_to user_path(current_user)
+  rescue Stripe::StripeError => e
+    flash[:alert] = "There was a problem canceling your subscription: #{e.message}"
+    redirect_to user_path(current_user)
+  end
 
 end

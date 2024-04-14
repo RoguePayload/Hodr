@@ -22,4 +22,16 @@ module ApplicationHelper
     simple_format(linked_content).html_safe
   end
 
+  def background_style
+    "background: #f8f9fa;" # Default background color
+  end
+
+  def user_background_style(user)
+    if user.background_image.attached?
+      "background: url(#{url_for(user.background_image)}) no-repeat center center fixed; background-size: cover;"
+    else
+      "background: #f8f9fa;" # Default background color if no image is set
+    end
+  end
+
 end
