@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <% if current_user.is_premium? %>
+  <% if current_user.is_premium? || current_user.admin? %>
     <div class="mb-3">
       <%= form.label :password, 'Chamber Password (optional)', class: 'form-label' %>
       <%= form.password_field :password, class: 'form-control', placeholder: 'Enter password' %>
