@@ -9,6 +9,8 @@
     <%= auto_link(simple_format(micropost.content), html: { target: '_blank' }) %>
   </span>
 
+
+
   <% if micropost.images.any? %>
     <!-- Display the first image outside the flexbox if it's an image -->
     <% if micropost.images.first.content_type.start_with?('image/') %>
