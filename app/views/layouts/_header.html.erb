@@ -11,61 +11,56 @@
       <!-- Navigation Links -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: 'btn btn-outline-success', id: 'nav_button_pro' %>
+          <%= link_to "Home", root_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to "About", about_path, class: 'btn btn-outline-warning', id: 'nav_button_pro' %>
+          <%= link_to "About", about_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to "How To", howto_path, class: 'btn btn-outline-primary', id: 'nav_button_pro' %>
+          <%= link_to "How To", howto_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Contact", contact_path, class: 'btn btn-outline-info', id: 'nav_button_pro' %>
+          <%= link_to "Contact", contact_path, class: 'nav-link' %>
         </li>
 
         <% if current_user&.admin %>
           <li class="nav-item">
-            <%= link_to "Admin Portal", admin_path, class: 'btn btn-outline-danger', id: 'nav_button_pro' %>
+            <%= link_to "Admin Portal", admin_path, class: 'nav-link' %>
           </li>
         <% end %>
-
-
 
         <% if logged_in? %>
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to notifications_path, class: 'btn btn-outline-warning', id: 'nav_button_pro' do %>
+              <%= link_to notifications_path, class: 'nav-link' do %>
                 Notifications (<%= current_user.notifications.where(read_at: nil).count %>)
               <% end %>
             </li>
           <% end %>
 
           <li class="nav-item">
-            <%= link_to "Users", users_path, class: 'btn btn-outline-success', id: 'nav_button_pro' %>
+            <%= link_to "Users", users_path, class: 'nav-link' %>
           </li>
 
           <!-- User Account Dropdown -->
           <li class="nav-item dropdown">
-            <a class="dropdown-toggle btn btn-outline-success" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000; font-family: 'Source Code Pro', monospace; padding-right: 7px;">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Account
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #000;">
-              </li>
-              <li><hr class="dropdown-divider"></li>
-              <li><%= link_to "Profile", current_user, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><%= link_to "EULA & Terms", eula_path, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
-              <li><%= link_to 'Chat Chambers', chat_chambers_path, class: 'dropdown-item text-light', id: 'nav_button_pro' %></li>
-              <%= button_to "Log out", logout_path, method: :delete, form_class: 'd-inline', class: 'dropdown-item text-light', id: 'nav_button_pro' %>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><%= link_to "Profile", current_user, class: 'dropdown-item' %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %></li>
+              <li><%= link_to "EULA & Terms", eula_path, class: 'dropdown-item' %></li>
+              <li><%= link_to 'Chat Chambers', chat_chambers_path, class: 'dropdown-item' %></li>
+              <li><%= button_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %></li>
             </ul>
           </li>
         <% else %>
-        <li class="nav-item">
-          <%= link_to "EULA & Terms", eula_path, class: 'btn btn-outline-danger', id: 'nav_button_pro' %>
-        </li>
           <li class="nav-item">
-            <%= link_to "Log in", login_path, class: 'btn btn-outline-success', id: 'nav_button_pro' %>
+            <%= link_to "EULA & Terms", eula_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log in", login_path, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>
