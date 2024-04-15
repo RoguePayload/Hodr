@@ -44,9 +44,9 @@
 
           <!-- User Account Dropdown -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-target="dropdown" aria-expanded="false">
+            <button type="button" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
               Account
-            </a>
+            </button>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><%= link_to "Profile", current_user, class: 'dropdown-item' %></li>
               <li><%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %></li>
