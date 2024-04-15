@@ -23,6 +23,17 @@
 
 
     <!-- Prevent Hackers from Hacking the Site -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'https://*'; object-src 'none';">-->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+      <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(self), fullscreen=(self), camera=(), microphone=()">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+
+
 
 
     <!-- Display Full Title -->
@@ -40,6 +51,9 @@
     <!-- Import Javascripts -->
     <%= javascript_importmap_tags %>
 
+    <!-- Include your JavaScript file -->
+    <%= javascript_tag 'application' %>
+
     <!-- Import Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +65,6 @@
 
     <!-- Import Chart Tracking Data -->
     <%= javascript_include_tag "chartkick", "data-turbo-track": "reload" %>
-
 
   </head>
   <body class="<%= 'default-background' unless content_for?(:body_attributes) %>">
