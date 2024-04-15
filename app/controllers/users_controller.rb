@@ -7,9 +7,14 @@ class UsersController < ApplicationController
   def index
     # Fetch paginated users
     @users = User.paginate(page: params[:page])
-
   end
 
+  def presence
+    user = User.find(params[:id])
+    # Example: Check if the user is considered 'online' or 'present'
+    is_present = user.online? # This assumes you have a way to track if the user is online
+    render json: { isPresent: is_present }
+  end
 
   def show
     @user = User.find(params[:id])

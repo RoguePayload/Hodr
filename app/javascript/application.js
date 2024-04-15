@@ -11,3 +11,4 @@ require("chartkick")
 require("chart.js")
 //= require rails-ujs
 import "bootstrap"
+import "./channels"

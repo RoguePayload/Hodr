@@ -1,0 +1,7 @@
+<!-- app/views/chat_messages/_message_list.html.erb -->
+<% chat_messages.each do |message| %>
+  <div class="message mb-2" data-user-id="<%= message.user_id %>">
+    <strong><%= message.user.uname %>:</strong>
+    <p><%= message.content %></p>
+  </div>
+<% end %>

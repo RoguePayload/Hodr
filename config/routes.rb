@@ -25,8 +25,9 @@ Rails.application.routes.draw do
   end
 
   resources :chat_chambers do
-    resources :chat_messages
-  end  
+    resources :chat_messages, only: [:create, :index]
+  end
+
 
   # Routes for managing user sessions (login, logout)
   resources :sessions, only: [:new, :create, :destroy]
@@ -54,6 +55,7 @@ Rails.application.routes.draw do
       patch 'update_password'
     end
   end
+  get 'users/:id/presence', to: 'users#presence'
 
   # Routes for managing subscriptions
   resources :subscriptions
