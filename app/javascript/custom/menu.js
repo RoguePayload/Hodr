@@ -1,19 +1,19 @@
 // Menu manipulation
-// Adds a toggle listener.
-//function addToggleListener(selected_id, menu_id, toggle_class)
-//{
-//  let selected_element = document.querySelector(`#${selected_id}`);
-//  selected_element.addEventListener("click", function(event)
-//  {
-//    event.preventDefault();
-//    let menu = document.querySelector(`#${menu_id}`)
-//    menu.classList.toggle(toggle_class);
-//  });
-//}
+document.addEventListener("turbo:load", function()
+{
+  // Add toggle listener for the navbar dropdown menu
+  let navbarToggle = document.getElementById("navbarNavToggle");
+  let navbarMenu = document.getElementById("navbarNav");
+  navbarToggle.addEventListener("click", function(event) {
+    event.preventDefault();
+    navbarMenu.classList.toggle("show");
+  });
 
-// Add toggle listeners to listen for clicks.
-//document.addEventListener("turbo:load", function()
-//{
-//  addToggleListener("hamburger", "navbar-menu", "collapse");
-//  addToggleListener("account", "dropdown-menu", "active");
-//});
+  // Add toggle listener for the account dropdown menu
+  let accountToggle = document.getElementById("navbarDropdownMenuLink");
+  let accountMenu = document.getElementById("navbarDropdownMenu");
+  accountToggle.addEventListener("click", function(event) {
+    event.preventDefault();
+    accountMenu.classList.toggle("show");
+  });
+});
