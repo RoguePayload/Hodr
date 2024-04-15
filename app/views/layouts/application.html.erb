@@ -58,6 +58,8 @@
 
     <!-- Import Chart Tracking Data -->
     <%= javascript_include_tag "chartkick", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+
 
   </head>
   <body class="<%= 'default-background' unless content_for?(:body_attributes) %>">
