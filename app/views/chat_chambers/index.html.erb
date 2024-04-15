@@ -9,19 +9,19 @@
 <% end %>
 
 <div class="row">
-  <% @chat_chambers.each do |chamber| %>
+  <% @chat_chambers.each do |chat_chamber| %>
     <div class="col-md-4">
       <div class="card" style="width: 18rem;">
-        <% if chamber.avatar.present? %>
-          <%= image_tag chamber.avatar, class: 'card-img-top' %>
+        <% if chat_chamber.avatar.attached? %>
+          <%= image_tag chat_chamber.avatar, class: 'card-img-top img-fluid rounded-circle mx-auto d-block', style: 'width: 150px; height: 150px;' %>
         <% else %>
-          <%= image_tag 'chat_chamber_avatar.png', class: 'card-img-top', alt: 'Default Avatar' %>
+          <%= image_tag 'chat_chamber_avatar.png', class: 'card-img-top img-fluid rounded-circle mx-auto d-block', style: 'width: 150px; height: 150px;' %>
         <% end %>
         <div class="card-body">
-          <h5 class="card-title"><%= chamber.name %></h5>
-          <p class="card-text"><%= chamber.description %></p>
-          <p class="card-text">Created by: <%= link_to chamber.user.uname, user_path(chamber.user) %></p>
-          <%= link_to 'Enter Chamber', chat_chamber_path(chamber), class: 'btn btn-primary' %>
+          <h5 class="card-title"><%= chat_chamber.name %></h5>
+          <p class="card-text"><%= chat_chamber.description %></p>
+          <p class="card-text">Created by: <%= link_to chat_chamber.user.uname, user_path(chat_chamber.user) %></p>
+          <%= link_to 'Enter Chamber', chat_chamber_path(chat_chamber), class: 'btn btn-primary' %>
         </div>
       </div>
     </div>

@@ -51,10 +51,10 @@
         <% end %>
         <% if @user.chat_chambers.any? %>
           <h5>Chat Chambers Created by <%= @user.uname %>:</h5>
-          <ul>
+          <ul class="list-group">
             <% @user.chat_chambers.each do |chat_chamber| %>
-              <li>
-                <%= image_tag 'chat_chamber_avatar.png', class: 'card-img-top', alt: 'Default Avatar', style: 'width: 50px; height: 50px;' %>
+              <li class="list-group-item">
+                <%= image_tag 'chat_chamber_avatar.png', class: 'rounded-circle', alt: 'Default Avatar', style: 'width: 50px; height: 50px; float: left; margin-right: 10px;' %>
                 <%= link_to chat_chamber.name, chat_chamber %>
               </li>
             <% end %>

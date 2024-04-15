@@ -40,11 +40,12 @@ class ChatChamber < ApplicationRecord
     'Ultimate Frisbee', 'Frisbee Golf', 'Horse Racing', 'Greyhound Racing',
     'Camel Racing', 'Drag Racing', 'Auto Racing', 'Formula 1', 'Rally Racing',
     'Motorcycle Racing', 'Motocross', 'ATV Racing', 'Kart Racing', 'Drone Racing',
-    'Adventure Racing', 'Orienteering'    
+    'Adventure Racing', 'Orienteering'
   ].freeze
 
   belongs_to :user
   has_many :chat_messages
+  has_one_attached :avatar 
   has_secure_password validations: false
   validates :category, inclusion: { in: CATEGORIES }
 end

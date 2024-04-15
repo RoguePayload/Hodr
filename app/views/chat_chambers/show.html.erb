@@ -4,7 +4,7 @@
     <div class="col-md-8">
       <div class="card shadow">
         <div class="card-body">
-          <% if @chat_chamber.avatar.present? %>
+          <% if @chat_chamber.avatar.attached? %>
             <%= image_tag @chat_chamber.avatar, class: 'card-img-top img-fluid rounded-circle mx-auto d-block', style: 'width: 150px; height: 150px;' %>
           <% else %>
             <%= image_tag 'chat_chamber_avatar.png', class: 'card-img-top img-fluid rounded-circle mx-auto d-block', style: 'width: 150px; height: 150px;' %>
@@ -13,6 +13,12 @@
           <p class="text-muted text-center"><%= @chat_chamber.description %></p>
           <p class="badge bg-secondary"><%= @chat_chamber.category %></p>
           <p class="badge bg-secondary"><%= @chat_chamber.user.uname %></p>
+          <% if current_user == @chat_chamber.user %>
+            <div class="text-center mt-3">
+              <%= button_to 'Update Chat Chamber', edit_chat_chamber_path(@chat_chamber), method: :get, class: 'badge bg-warning', data: { confirm: 'Are you sure you want to update this chat chamber?' } %>
+              <%= button_to 'Destroy Chat Chamber', @chat_chamber, method: :delete, class: 'badge bg-danger', data: { confirm: 'Are you sure you want to delete this chat chamber?' } %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

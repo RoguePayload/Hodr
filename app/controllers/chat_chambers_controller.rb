@@ -60,9 +60,13 @@ class ChatChambersController < ApplicationController
   # DELETE /chat_chambers/:id
   # Destroys a chat chamber and redirects to the chat chamber list
   def destroy
+    # Delete associated records before destroying the chat chamber
+    @chat_chamber.chat_messages.destroy_all
     @chat_chamber.destroy
+
     redirect_to chat_chambers_url, notice: 'Chat Chamber was successfully destroyed.'
   end
+
 
   private
 
