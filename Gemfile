@@ -30,7 +30,7 @@ gem 'link_thumbnailer'
 gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
 gem 'byebug', '~> 11.0', group: :development
 gem 'attr_encrypted'
-gem 'twitch-api', require: 'twitch'
+gem 'twitch'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 
