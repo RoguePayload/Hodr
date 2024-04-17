@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-
+  before_action :authenticate_api_key
+  
   def create
     @user = User.new(user_params)
     if @user.save
@@ -35,7 +36,7 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: { error: @user.errors.full_messages }, status: :unprocessable_entity
     end
-  end  
+  end
 
   private
 
@@ -50,5 +51,10 @@ class Api::V1::UsersController < ApplicationController
                            :button_outline, :remove_background_music, :other_attributes)
   end
 
-
+  def authenticate_api_key
+    api_key = request.headers['X-API-Key']
+    unless api_key && User.exists?(api_key: api_key)
+      render json: { error: 'Invalid API key' }, status: :unauthorized
+    end
+  end
 end
