@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  require 'twitch'
+  require_relative '../services/twitch_service'
 
   def index
     # Fetch paginated users
@@ -54,8 +56,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.twitch_affiliation.present? && user_is_live?(@user.twitch_affiliation)
-      game_title = get_current_game_title(@user.twitch_affiliation)
+    twitch_service = TwitchService.new(ENV['TWITCH_CLIENT_ID'])
+    if @user.twitch_affiliation.present? && twitch_service.user_is_live?(@user.twitch_affiliation)
+      game_title = twitch_service.get_current_game_title(@user.twitch_affiliation)
       Micropost.create(user_id: @user.id, content: "#{@user.twitch_affiliation} is now LIVE STREAMING playing #{game_title}. Come watch now: https://twitch.tv/#{@user.twitch_affiliation}")
     end
     # Check what background type the user has selected and adjust accordingly
