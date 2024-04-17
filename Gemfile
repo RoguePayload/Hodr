@@ -29,6 +29,7 @@ gem 'browser'
 gem 'link_thumbnailer'
 gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
 gem 'byebug', '~> 11.0', group: :development
+gem 'attr_encrypted'
 
 
 group :development, :test do
