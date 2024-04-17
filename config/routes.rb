@@ -82,4 +82,15 @@ Rails.application.routes.draw do
   # Aliases for business login/logout
   get 'b_login', to: 'b_sessions#new', as: :b_login
   delete 'b_logout', to: 'sessions#destroy', as: :b_logout
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:index, :show, :create, :update, :destroy]
+      resources :microposts, only: [:index, :show, :create, :update, :destroy] do
+        resources :comments, only: [:create, :update, :destroy]
+      end
+      # Add more resources as needed
+    end
+  end
+
 end
