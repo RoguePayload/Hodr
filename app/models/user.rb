@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attr_accessor :remove_background_music
 
+  validates :twitch_profile_name, format: { with: /\A[a-zA-Z0-9_]+\z/, message: "Only alphanumeric characters and underscores allowed" }, allow_blank: true
+
   before_validation :remove_background_music_if_requested
 
   has_many :microposts, dependent: :destroy

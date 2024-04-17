@@ -54,7 +54,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
+    if @user.twitch_affiliation.present? && user_is_live?(@user.twitch_affiliation)
+      game_title = get_current_game_title(@user.twitch_affiliation)
+      Micropost.create(user_id: @user.id, content: "#{@user.twitch_affiliation} is now LIVE STREAMING playing #{game_title}. Come watch now: https://twitch.tv/#{@user.twitch_affiliation}")
+    end
     # Check what background type the user has selected and adjust accordingly
     if params[:user][:background_type] == 'color'
       @user.background_image.detach if @user.background_image.attached?
@@ -146,4 +149,19 @@ class UsersController < ApplicationController
       def admin_user
         redirect_to(root_url, status: :see_other) unless current_user.admin?
       end
+
+      def user_is_live?(twitch_affiliation)
+        response = Twitch.streams.get_streams(user_login: twitch_affiliation)
+        response.data.any?
+      rescue Twitch::Error::NotFound
+        false
+      end
+
+      def get_current_game_title(twitch_affiliation)
+        response = Twitch.streams.get_streams(user_login: twitch_affiliation)
+        return unless response.data.any?
+
+        response.data.first.game_name
+      end
+
 end

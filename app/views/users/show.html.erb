@@ -183,6 +183,14 @@
                 </div>
               </div>
 
+              <div class="card gedf-card">
+                <div class="btn-group" style="width: 100%;">
+                  <% if @user.is_premium? && @user.twitch_affiliation.present? %>
+                    <!-- Embed Twitch live stream player -->
+                    <%= twitch_embed(@user.twitch_affiliation) %>
+                  <% end %>
+                </div>
+              </div>
 
               					<!-- Feed -->
               					<div class="card gedf-card"  style="<%= style %>">
