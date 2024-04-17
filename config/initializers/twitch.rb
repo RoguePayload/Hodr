@@ -1,4 +1,4 @@
 Twitch.configure do |config|
-  config.client_id = ENV['TWITCH_CLIENT_ID']
-  # Optionally, you can set other configuration options here
+  config.client_id     = 'your_client_id'
+  config.client_secret = 'your_client_secret'
 end
