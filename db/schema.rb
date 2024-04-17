@@ -77,7 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_203549) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.string "password_digest"
-    t.string "invite_link"
     t.string "password"
     t.index ["category_id"], name: "index_boards_on_category_id"
   end

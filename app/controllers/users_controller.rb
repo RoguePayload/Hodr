@@ -45,6 +45,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = "Welcome to MyPage!"
       @user.update(last_login_at: Time.current)
+      @user.assign_all_badges
       redirect_to @user
     else
       render 'new', status: :unprocessable_entity

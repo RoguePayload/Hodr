@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  after_create :assign_badge_based_on_id
+  after_create :assign_badges_based_on_id
 
   has_one :subscription
 
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   has_many :chat_chambers
-  
+
   has_many :chat_messages
 
   has_many :notifications, dependent: :destroy
@@ -268,9 +268,24 @@ class User < ApplicationRecord
     assign_my_page_content_master_badge if microposts.count > 1000
   end
 
+  def assign_badges_based_on_id
+    if id <= 100
+      assign_first_100_users_badge
+    elsif id <= 1000 && id >= 101
+      assign_first_1000_users_badge
+    end
+  end
+
   def assign_first_100_users_badge
-    badge = Badge.find_by(name: 'First 100 Registered Users') # Ensure the correct badge name is used
-    if badge && id <= 100 # Check if badge exists and if user id is within the first 100 users
+    badge = Badge.find_by(name: 'First 100 Registered Users')
+    if badge
+      UserBadge.find_or_create_by(user: self, badge: badge)
+    end
+  end
+
+  def assign_first_1000_users_badge
+    badge = Badge.find_by(name: 'First 1000 Registered Users')
+    if badge
       UserBadge.find_or_create_by(user: self, badge: badge)
     end
   end
