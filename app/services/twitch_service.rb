@@ -2,6 +2,9 @@
 require 'twitch'
 
 class TwitchService
+  def initialize(client_id)
+    end
+  end
 
   def user_is_live?(user_login)
     response = Twitch.streams.get_streams(user_login: user_login)
