@@ -156,6 +156,11 @@
             </div>
 
 
+            <div class="form-group">
+              <%= f.label :twitch_affiliation, "Twitch Affiliation:", class: 'form-label' %>
+              <%= f.text_field :twitch_affiliation, class: 'form-control', placeholder: 'Your Twitch Profile Name...' %>
+            </div>
+
           </div>
 
           <!-- Change User Knowledge -->
@@ -356,7 +361,7 @@
                 <%= f.label :transparent_background, "Transparent Background:" %>
                 <%= f.check_box :transparent_background, class: "form-check-input" %>
               </div>
-            </div>             
+            </div>
 
             <div>
               <label>Background Music</label>
