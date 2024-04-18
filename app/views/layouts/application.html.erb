@@ -66,7 +66,8 @@
     <%= javascript_include_tag "chartkick", "data-turbo-track": "reload" %>
 
   </head>
-  <body class="<%= 'default-background' unless content_for?(:body_attributes) %>">
+  <body<% if controller_name == 'users' && action_name == 'show' %> style="<%= user_background_style(@user) %>"<% end %>>
+
 
     <%= render 'layouts/header' %>
     <div class="container">
