@@ -26,7 +26,7 @@ class Micropost < ApplicationRecord
     return unless url
 
     # Use LinkThumbnailer to fetch URL info
-    preview = LinkThumbnailer.generate(url[0])
+    #preview = LinkThumbnailer.generate(url[0])
     # Store or process preview data as needed
   end
 
